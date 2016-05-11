@@ -38,3 +38,19 @@ $autoconf
 $automake --add-missin
 </pre>
 
+# How to test
+1. using `configure` generate `Makefile`
+<pre>
+$./configure
+</pre>
+
+2. using `make` to build code
+<pre>
+$make
+</pre>
+
+3. running `hello` program
+<pre>
+$cd src
+$./hello
+</pre>
