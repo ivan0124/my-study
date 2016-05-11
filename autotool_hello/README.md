@@ -1,7 +1,7 @@
 # autotool hello Project
 This sample demo how to use autotool to generate `configure`,
 
-which can auto generate `Makefile` for different platform.
+which can auto generate `Makefile` for different platform to make code.
 
 # Step Flow
 1. write `Makefile.am` for generating `Makefile.in`
