@@ -3,6 +3,8 @@ This sample demo how to use autotool to generate `configure`,
 
 which can auto generate `Makefile` for different platform to make code.
 
+![image link](https://github.com/ivan0124/my-study/blob/master/autotool_hello/image/autotool_20160511_1.png)
+
 # Step Flow
 1. write `Makefile.am` for generating `Makefile.in`
     
