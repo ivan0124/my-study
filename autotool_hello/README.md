@@ -10,7 +10,7 @@ which can auto generate `Makefile` for different platform.
     
     src directory Makefile: [src/Makefile.am](https://github.com/ivan0124/my-study/blob/master/autotool_hello/src/Makefile.am)
 
-2. generate configure.ac
+2. generate `configure.ac` for generating `configure`
 <pre>
 $autoscan
 $mv configure.scan configure.ac
