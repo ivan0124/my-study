@@ -12,3 +12,5 @@ define(macro,`ttt,xyz')
 <pre>
 $m4 hello.m4
 </pre>
+
+    ![link image](https://github.com/ivan0124/my-study/blob/master/m4_macro/image/m4_macro_20160511_1.png)
