@@ -8,7 +8,7 @@ which can auto generate `Makefile` for different platform to make code.
 # Step Flow
 1. write `Makefile.am` for generating `Makefile.in`
     
-    top level Makefile: [Makefile.am](https://github.com/ivan0124/my-study/edit/master/autotool_hello_shared_libraryMakefile.am)
+    top level Makefile: [Makefile.am](https://github.com/ivan0124/my-study/edit/master/autotool_hello_shared_library/Makefile.am)
     
     src directory Makefile: [src/Makefile.am](https://github.com/ivan0124/my-study/edit/master/autotool_hello_shared_library/src/Makefile.am)
 
