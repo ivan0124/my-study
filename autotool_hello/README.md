@@ -30,12 +30,17 @@ $AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 $aclocal
 </pre>
 
-5. generating `configure`
+5. generating `config.h.in`
+<pre>
+$autoheader
+</pre>
+
+6. generating `configure`
 <pre>
 $autoconf
 </pre>
 
-6. generating `Makefile.in`
+7. generating `Makefile.in`
 <pre>
 $automake --add-missin
 </pre>
