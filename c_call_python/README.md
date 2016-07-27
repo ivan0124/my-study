@@ -1,7 +1,10 @@
-# autotool hello shared library Project
-This sample demo how to use autotool to generate `configure`,
+# C call Python project
+This sample demo how to use C to call python object
 
-which can auto generate `Makefile` for different platform to make code.
+#Setup Python header files (on Unbutun14.04)
+<pre>
+sudo apt-get install python-dev
+</pre>
 
 ![image link](https://github.com/ivan0124/my-study/blob/master/autotool_hello/image/autotool_20160511_1.png)
 
