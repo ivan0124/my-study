@@ -48,17 +48,32 @@ $automake
 </pre>
 
 # How to test
-1. using `configure` generate `Makefile`
+1. generating `aclocal.m4` for generating `configure`
+<pre>
+$aclocal
+</pre>
+
+2. generating `configure`
+<pre>
+$autoconf
+</pre>
+
+3. generating `Makefile.in`
+<pre>
+$automake
+</pre>
+
+4. using `configure` generate `Makefile`
 <pre>
 $./configure
 </pre>
 
-2. using `make` to build code
+5. using `make` to build code
 <pre>
 $make
 </pre>
 
-3. running `hello` program
+6. running `hello` program
 <pre>
 $cd src
 $./hello
