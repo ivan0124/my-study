@@ -1,4 +1,4 @@
-# How to test (for Unbuntu 14.04)
+# How to test (for Ubuntu 14.04)
 1. copy node `lower-case.js, lower-case.html` to `~/.node-red/nodes`
 2. run `node-red`
 3. you will see node in browser
