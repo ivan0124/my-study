@@ -1,2 +1,3 @@
-# protocol-study
-check the [Wiki home]( https://github.com/ivan0124/my-study/wiki)
+# How to test (for Unbuntu 14.04)
+1. copy .js, .html to `~/.node-red/nodes`
+
