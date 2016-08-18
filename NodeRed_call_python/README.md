@@ -1,4 +1,4 @@
-#Tutorial
+#Node-Red Tutorial
 http://nodered.org/docs/creating-nodes/
 
 # Setup `python-shell` for Node.js(Node-Red) calling python
@@ -6,6 +6,8 @@ http://nodered.org/docs/creating-nodes/
 <pre>
 $ sudo npm install python-shell
 </pre>
+
+https://github.com/extrabacon/python-shell
 
 # How to test (for Ubuntu 14.04)
 1. copy node `lower-case.js, lower-case.html, hello.py` to `~/.node-red/nodes`
