@@ -10,6 +10,7 @@ module.exports = function(RED) {
 
             var PythonShell = require('python-shell');
             var options = {
+                scriptPath: '/mnt/my-study/NodeRed_call_python',
                 args: ['value1', 'value2', 'value3']
             };
             var pyshell = new PythonShell('hello.py', options);
