@@ -12,11 +12,11 @@ https://github.com/extrabacon/python-shell
 #Code Description
 1.set Python script path and argument
 <pre>
-            var options = {
-                scriptPath: '/mnt/my-study/NodeRed_call_python',
-                args: ['value1', 'value2', 'value3']
-            };
-            var pyshell = new PythonShell('hello.py', options);
+    var options = {
+        scriptPath: '/mnt/my-study/NodeRed_call_python', 
+        args: ['value1', 'value2', 'value3']
+     };
+     var pyshell = new PythonShell('hello.py', options);
 </pre>
 
 # How to test (for Ubuntu 14.04)
