@@ -1,7 +1,7 @@
 #How to setup TensorFlow environment ( for Ubuntu 14.04)
 1.Tutorial
 
-http://nodered.org/docs/creating-nodes/
+https://www.tensorflow.org/versions/r0.10/get_started/os_setup.html
 
 # How to use TensorBoard (for Ubuntu 14.04)
 1. run `tf_test.py` to generate logs
