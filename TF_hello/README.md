@@ -21,6 +21,12 @@ $ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/cpu/tenso
 $ sudo pip install --upgrade $TF_BINARY_URL
 </pre>
 
+5. install other dependencies
+<pre>
+# For Python 2.7:
+$ sudo apt-get install python-numpy swig python-dev python-wheel
+</pre>
+
 # How to use TensorBoard (for Ubuntu 14.04)
 1. run `tf_test.py` to generate logs
 <pre>
