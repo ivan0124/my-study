@@ -6,4 +6,4 @@ http://nodered.org/docs/creating-nodes/
 2. run `node-red`
 3. you will see node in browser
 
-![image link](https://github.com/ivan0124/my-study/blob/master/create_NodeRed_node/image/20160817_node_red.png)
+![image link](https://github.com/ivan0124/my-study/blob/master/NodeRed_PLA/image/NodeRed_PLA_20160822.png)
