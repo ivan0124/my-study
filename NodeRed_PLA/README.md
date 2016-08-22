@@ -121,3 +121,5 @@ http://nodered.org/docs/creating-nodes/
 	}
 ]
 ```
+
+![image link](https://github.com/ivan0124/my-study/blob/master/NodeRed_PLA/image/NodeRed_PLA_20160822_1.png)
