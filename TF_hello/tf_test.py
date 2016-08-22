@@ -30,7 +30,7 @@ sess.run(init)
 #add logs
 tf.scalar_summary('loss function', loss)
 merged_summary_op = tf.merge_all_summaries()
-summary_writer = tf.train.SummaryWriter('/home/ivan/tf_test/logs', sess.graph)
+summary_writer = tf.train.SummaryWriter('/mnt/my-study/TF_hello/logs', sess.graph)
 
 # Fit the line.
 for step in range(201):
