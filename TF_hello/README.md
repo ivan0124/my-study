@@ -1,5 +1,4 @@
-#Tutorial
-http://nodered.org/docs/creating-nodes/
+#How to setup TensorFlow environment ( for Ubuntu 14.04)
 
 # How to use TensorBoard (for Ubuntu 14.04)
 1. run `tf_test.py` to generate logs
@@ -10,3 +9,6 @@ $ ./tf_test.py
 <pre>
 $ tensorboard --logdir=/mnt/my-study/TF_hello/logs
 </pre>
+3. use Browser 127.0.0.1:6006 to see logs.
+
+![link images](https://github.com/ivan0124/my-study/blob/master/TF_hello/images/20160822_5.png)
