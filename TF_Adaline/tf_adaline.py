@@ -16,11 +16,8 @@ y_ =  tf.placeholder(tf.float32, [3, 1])
 
 #
 loss = tf.reduce_sum(tf.square(y_ - y_pred))
-optimizer = tf.train.GradientDescentOptimizer(0.0001)
+optimizer = tf.train.GradientDescentOptimizer(0.001)
 train = optimizer.minimize(loss)
-
-a=tf.reduce_sum([[1.,2.],[3.,4.], [5.,6.]],1)
-print("a=%s" % (a))
 
 # Before starting, initialize the variables.  We will 'run' this first.
 init = tf.initialize_all_variables()
@@ -29,11 +26,16 @@ init = tf.initialize_all_variables()
 sess = tf.Session()
 sess.run(init)
 
-print sess.run(y_pred, feed_dict={X: [[1., 1.], [2., 2.], [3.,3.]],W:[[3.],[4.]]})
+#add logs
+tf.scalar_summary('loss function', loss)
+merged_summary_op = tf.merge_all_summaries()
+summary_writer = tf.train.SummaryWriter('./logs', sess.graph)
+
 
 for i in range(100):
-  sess.run(train, feed_dict={X: [[1.,1.], [2.,2.], [3.,3.]], y_: [[1],[-1],[1]]})
+  x_data=[[1.,1.], [2.,2.], [3.,3.]]
+  y_answer=[[1.],[-1.],[1.]]
+  sess.run(train, feed_dict={X: x_data, y_: y_answer})
+  summary_str = sess.run(merged_summary_op, feed_dict={X: x_data, y_: y_answer}) 
+  summary_writer.add_summary(summary_str, i)
   
-print sess.run(a)
-
-print sess.run(W)
