@@ -29,9 +29,9 @@ $ sudo apt-get install python-numpy swig python-dev python-wheel
 
 
 # How to use TensorBoard (for Ubuntu 14.04)
-1. run `tf_test.py` to generate logs
+1. run `tf_adaline.py` to generate logs
 <pre>
-$ ./tf_test.py
+$ ./tf_adaline.py
 </pre>
 2. specify logs folder and start `TensorBoard`
 <pre>
