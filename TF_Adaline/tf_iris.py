@@ -26,6 +26,7 @@ inp = tf.placeholder(tf.float32, [None, 4])
 weights = tf.Variable(tf.zeros([4, 3]))
 bias = tf.Variable(tf.zeros([3]))
 
+#Activation Function is --> softmax()
 y = tf.nn.softmax(tf.matmul(inp, weights) + bias)
 
 #y_ is correct label
