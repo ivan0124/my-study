@@ -6,6 +6,7 @@ http://nodered.org/docs/creating-nodes/
 2. specify `pla.py` path in `my-pla.js`
 
 ![image link](https://github.com/ivan0124/my-study/blob/master/NodeRed_PLA/image/20160825_1.png)
+
 3. run `node-red`
 4. you will see node in browser
 
