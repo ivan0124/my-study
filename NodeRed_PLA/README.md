@@ -16,97 +16,78 @@ http://nodered.org/docs/creating-nodes/
 ```json
 [
 	{
-		"id": "9331ad12.c4ad58",
+		"id": "7c02f296.10d7bc",
 		"type": "debug",
-		"z": "aff07acb.e746a8",
-		"name": "Display status",
-		"active": true,
-		"console": "false",
-		"complete": "payload",
-		"x": 568,
-		"y": 76,
-		"wires": []
-	},
-	{
-		"id": "baba4683.ab67d8",
-		"type": "debug",
-		"z": "aff07acb.e746a8",
+		"z": "12a0fcbd.7a1fab",
 		"name": "",
 		"active": true,
 		"console": "false",
 		"complete": "false",
-		"x": 587,
-		"y": 252,
+		"x": 601.75,
+		"y": 268.75,
 		"wires": []
 	},
 	{
-		"id": "1aae4802.7f7e8",
+		"id": "2f99eaee.6e0396",
 		"type": "file in",
-		"z": "aff07acb.e746a8",
+		"z": "12a0fcbd.7a1fab",
 		"name": "",
 		"filename": "/home/ivan/.node-red/nodes/FILE.INI",
 		"format": "utf8",
-		"x": 344,
-		"y": 356,
+		"x": 358.75,
+		"y": 372.75,
 		"wires": [
 			[
-				"baba4683.ab67d8",
-				"46d61da4.c7a314"
+				"7c02f296.10d7bc",
+				"5563ecf3.99b86c"
 			]
 		]
 	},
 	{
-		"id": "ac2b6630.d844d",
-		"type": "inject",
-		"z": "aff07acb.e746a8",
-		"name": "set ML param",
-		"topic": "",
-		"payload": "",
-		"payloadType": "date",
-		"repeat": "",
-		"crontab": "",
-		"once": false,
-		"x": 105,
-		"y": 356,
-		"wires": [
-			[
-				"1aae4802.7f7e8"
-			]
-		]
-	},
-	{
-		"id": "46d61da4.c7a314",
+		"id": "5563ecf3.99b86c",
 		"type": "my-PLA",
-		"z": "aff07acb.e746a8",
+		"z": "12a0fcbd.7a1fab",
 		"name": "",
-		"x": 357,
-		"y": 159,
+		"x": 371.75,
+		"y": 175.75,
 		"wires": [
 			[
-				"9331ad12.c4ad58"
+				"c3cfd28e.8b3ae8"
 			]
 		]
 	},
 	{
-		"id": "b10ef2f5.4f9d9",
+		"id": "c3cfd28e.8b3ae8",
+		"type": "debug",
+		"z": "12a0fcbd.7a1fab",
+		"name": "Display status",
+		"active": true,
+		"console": "false",
+		"complete": "payload",
+		"x": 582.75,
+		"y": 92.75,
+		"wires": []
+	},
+	{
+		"id": "87bbfd3b.1edae8",
 		"type": "function",
-		"z": "aff07acb.e746a8",
+		"z": "12a0fcbd.7a1fab",
 		"name": "simulate device data",
 		"func": "\nif (msg.payload == \"input_data\"){\n   // context.global.input_T=0;\n   // context.global.input_H=0;\n    \n    if (typeof context.global.input_T == 'undefined'){\n        context.global.input_T = 0;\n    }\n    \n    if (typeof context.global.input_H == 'undefined'){\n        context.global.input_H = 0;\n    }\n    \n    //input_T\n    if (context.global.input_T > 100){\n        context.global.input_T = 0\n    }\n    else{\n        context.global.input_T += 5;\n    }\n    //input_H    \n    if (context.global.input_H > 100){\n        context.global.input_H = 0\n    }\n    else{\n        context.global.input_H += 10;\n    }\n    \n    msg.payload=context.global.input_T + \",\" + context.global.input_H\n}\nreturn msg;",
 		"outputs": 1,
 		"noerr": 0,
-		"x": 146,
-		"y": 160,
+		"x": 160.75,
+		"y": 176.75,
 		"wires": [
 			[
-				"46d61da4.c7a314"
+				"5563ecf3.99b86c"
 			]
 		]
 	},
 	{
-		"id": "ae456837.9a409",
+		"id": "42d5b823.38b878",
 		"type": "inject",
-		"z": "aff07acb.e746a8",
+		"z": "12a0fcbd.7a1fab",
 		"name": "timer to trigger",
 		"topic": "",
 		"payload": "input_data",
@@ -114,11 +95,30 @@ http://nodered.org/docs/creating-nodes/
 		"repeat": "",
 		"crontab": "",
 		"once": false,
-		"x": 132,
-		"y": 69,
+		"x": 146.75,
+		"y": 85.75,
 		"wires": [
 			[
-				"b10ef2f5.4f9d9"
+				"87bbfd3b.1edae8"
+			]
+		]
+	},
+	{
+		"id": "ef8ed13d.bbbdc",
+		"type": "inject",
+		"z": "12a0fcbd.7a1fab",
+		"name": "set ML param",
+		"topic": "",
+		"payload": "",
+		"payloadType": "date",
+		"repeat": "",
+		"crontab": "",
+		"once": false,
+		"x": 119.75,
+		"y": 372.75,
+		"wires": [
+			[
+				"2f99eaee.6e0396"
 			]
 		]
 	}
