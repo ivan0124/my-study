@@ -4,7 +4,6 @@ http://nodered.org/docs/creating-nodes/
 # How to test (for Ubuntu 14.04)
 1. copy node `my-pla.html, my-pla.js, pla.py, FILE.INI` to `~/.node-red/nodes`
 2. specify `pla.py` path in `my-pla.js`
-
 ![image link](https://github.com/ivan0124/my-study/blob/master/NodeRed_PLA/image/20160825_1.png)
 
 3. run `node-red`
