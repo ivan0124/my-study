@@ -72,3 +72,20 @@ c = tf.equal(tf.argmax(yy,1), tf.argmax(yy_,1))
 print ("c=%s" % sess.run(c))
 print ("c float=%s" % sess.run(tf.cast(c,"float")))
 '''
+
+'''
+species = list(ipd['Species'].unique())
+print ("ipd['Species'].unique()=\n%s" % (ipd['Species'].unique()))
+print ("species=\n%s" % (species))
+print ("np.eye(len(species))[0]=%s" % np.eye(len(species))[0])
+print ("np.eye(len(species))[1]=%s" % np.eye(len(species))[1])
+print ("np.eye(len(species))[2]=%s" % np.eye(len(species))[2])
+print ("species.index('setosa')=%s" % species.index('setosa'))
+print ("species.index('versicolor')=%s" % species.index('versicolor'))
+print ("species.index('virginica')=%s" % species.index('virginica'))
+ipd['One-hot'] = ipd['Species'].map(lambda x: np.eye(len(species))[species.index(x)] )
+print ("ipd.sample(5)=\n%s" % (ipd.sample(5)))
+
+#x-> x*x, input=[1,2,3] --> output=[1,4,9]
+print map( lambda x : x*x, [1, 2, 3] )
+'''
