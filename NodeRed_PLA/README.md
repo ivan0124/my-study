@@ -2,7 +2,7 @@
 http://nodered.org/docs/creating-nodes/
 
 # How to test (for Ubuntu 14.04)
-1. copy node `my-pla.html, my-pla.html, pla.py FILE.INI` to `~/.node-red/nodes`
+1. copy node `my-pla.html, my-pla.html, pla.py, FILE.INI` to `~/.node-red/nodes`
 2. run `node-red`
 3. you will see node in browser
 
