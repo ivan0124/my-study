@@ -52,5 +52,23 @@ print ("=accuracy=\n%s" % sess.run(accuracy, feed_dict={inp: [x for x in testSet
 
 print ("=weight=\n%s" % sess.run(weights))
 print ("=bias=\n%s" % sess.run(bias))
+
 #train = trainingSet.sample(50)
 #print ("train['One-hot'].as_matrix()=\n%s" % ([x for x in train['One-hot'].as_matrix()]))
+'''
+yy=[[1,0,0],
+    [1,0,0],
+    [1,0,0],
+    [0,0,1]]
+
+yy_=[[1,0,0],
+     [0,1,0],
+     [1,0,0],
+     [0,0,1]]
+print ("tf.argmax(yy,1)=%s" % sess.run(tf.argmax(yy,1)))
+print ("tf.argmax(yy_,1)=%s" % sess.run(tf.argmax(yy_,1)))
+
+c = tf.equal(tf.argmax(yy,1), tf.argmax(yy_,1))
+print ("c=%s" % sess.run(c))
+print ("c float=%s" % sess.run(tf.cast(c,"float")))
+'''
