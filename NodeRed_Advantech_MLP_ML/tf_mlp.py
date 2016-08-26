@@ -24,8 +24,8 @@ testSet = shuffled[len(shuffled)-50:]
 # Parameters
 learning_rate = 0.001
 training_epochs = 1000
-batch_size = 50
-display_step = 1
+#batch_size = 50
+#display_step = 1
 
 # Network Parameters
 n_hidden_1 = 256 # 1st layer number of features
