@@ -23,13 +23,15 @@ testSet = shuffled[len(shuffled)-50:]
 
 # Parameters
 learning_rate = 0.001
-training_epochs = 1000
+training_epochs = 100
 #batch_size = 50
 #display_step = 1
 
 # Network Parameters
 n_hidden_1 = 256 # 1st layer number of features
-n_hidden_2 = 256 # 2nd layer number of features
+n_hidden_2 = 128 # 2nd layer number of features
+n_hidden_3 = 64 # 3rd layer number of features
+n_hidden_4 = 128 # 4th layer number of features
 n_input = 4 # Iris data input (img shape: 1*4)
 n_classes = 3 # Iris total 3 classes
 
@@ -40,25 +42,35 @@ y_ = tf.placeholder(tf.float32, [None, n_classes])
 
 # Create model
 def multilayer_perceptron(x, weights, biases):
-    # Hidden layer with RELU activation
+    # Hidden layer1 with RELU activation
     layer_1 = tf.add(tf.matmul(x, weights['h1']), biases['b1'])
     layer_1 = tf.nn.relu(layer_1)
-    # Hidden layer with RELU activation
+    # Hidden layer2 with RELU activation
     layer_2 = tf.add(tf.matmul(layer_1, weights['h2']), biases['b2'])
     layer_2 = tf.nn.relu(layer_2)
+    # Hidden layer3 with RELU activation
+    layer_3 = tf.add(tf.matmul(layer_2, weights['h3']), biases['b3'])
+    layer_3 = tf.nn.relu(layer_3)
+    # Hidden layer4 with RELU activation
+    layer_4 = tf.add(tf.matmul(layer_3, weights['h4']), biases['b4'])
+    layer_4 = tf.nn.relu(layer_4)
     # Output layer with linear activation
-    out_layer = tf.matmul(layer_2, weights['out']) + biases['out']
+    out_layer = tf.matmul(layer_4, weights['out']) + biases['out']
     return out_layer
 
 # Store layers weight & bias
 weights = {
     'h1': tf.Variable(tf.random_normal([n_input, n_hidden_1])),
     'h2': tf.Variable(tf.random_normal([n_hidden_1, n_hidden_2])),
-    'out': tf.Variable(tf.random_normal([n_hidden_2, n_classes]))
+    'h3': tf.Variable(tf.random_normal([n_hidden_2, n_hidden_3])),
+    'h4': tf.Variable(tf.random_normal([n_hidden_3, n_hidden_4])),
+    'out': tf.Variable(tf.random_normal([n_hidden_4, n_classes]))
 }
 biases = {
     'b1': tf.Variable(tf.random_normal([n_hidden_1])),
     'b2': tf.Variable(tf.random_normal([n_hidden_2])),
+    'b3': tf.Variable(tf.random_normal([n_hidden_3])),
+    'b4': tf.Variable(tf.random_normal([n_hidden_4])),
     'out': tf.Variable(tf.random_normal([n_classes]))
 }
 
