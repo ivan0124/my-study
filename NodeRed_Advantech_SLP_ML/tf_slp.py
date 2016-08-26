@@ -47,12 +47,21 @@ init = tf.initialize_all_variables()
 sess = tf.Session()
 sess.run(init)
 
+#add logs
+tf.scalar_summary('cost function', cross_entropy)
+tf.scalar_summary('accuracy', accuracy)
+merged_summary_op = tf.merge_all_summaries()
+summary_writer = tf.train.SummaryWriter('./logs', sess.graph)
+
 #train neural model
 keys = ['sepal_length', 'sepal_width','petal_length', 'petal_width']
 for i in range(1000):
     train = trainingSet.sample(50)
     sess.run(train_step, feed_dict={inp: [x for x in train[keys].values],
                                     y_: [x for x in train['One-hot'].as_matrix()]})
+    summary_str = sess.run(merged_summary_op, feed_dict={inp: [x for x in train[keys].values],
+                                                         y_: [x for x in train['One-hot'].as_matrix()]})
+    summary_writer.add_summary(summary_str, i)
 
 #print train result
 print ("=accuracy=\n%s" % sess.run(accuracy, feed_dict={inp: [x for x in testSet[keys].values], 
