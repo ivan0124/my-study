@@ -21,6 +21,7 @@ def printProgress (iteration, total, prefix = '', suffix = '', decimals = 1, bar
         sys.stdout.flush()
 
 def main():
+    print ("Step1: load data path=./iris.csv...\n")
     ipd = pd.read_csv("./iris.csv")
     ipd.head()
 
@@ -42,11 +43,13 @@ def main():
     plt.show()
     '''
 
+    print ("Step2: Label species...\n")
     species = list(ipd['Species'].unique())
     ipd['One-hot'] = ipd['Species'].map(lambda x: np.eye(len(species))[species.index(x)] )
     #print ("ipd.sample(5)=\n%s" % (ipd.sample(5)))
 
     #split the data into training and test sets
+    print ("Step3: Split the data into training and test sets...\n")
     shuffled = ipd.sample(frac=1)
     trainingSet = shuffled[0:len(shuffled)-50]
     testSet = shuffled[len(shuffled)-50:]
@@ -54,6 +57,7 @@ def main():
     #print ("train=\n%s" % (train))
 
     #build Graph
+    print ("Step4: Build TensorFlow graph...\n")
     inp = tf.placeholder(tf.float32, [None, 4])
     weights = tf.Variable(tf.zeros([4, 3]))
     bias = tf.Variable(tf.zeros([3]))
@@ -74,20 +78,29 @@ def main():
     correct_prediction = tf.equal(tf.argmax(y,1), tf.argmax(y_,1))
     accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
 
+    #add logs
+    print ("Step5: Add TensorBoard logs...\n")
+    tf.scalar_summary('Cost function', cross_entropy)
+    tf.scalar_summary('Accuracy', accuracy)
+    merged_summary_op = tf.merge_all_summaries()
+    #summary_writer = tf.train.SummaryWriter('./logs/train', sess.graph)
+    #test_writer = tf.train.SummaryWriter('./logs/test')
+
+    print ("Step6: Initialized variabel and session...\n")
     init = tf.initialize_all_variables()
 
     sess = tf.Session()
     sess.run(init)
 
     #add logs
-    tf.scalar_summary('Cost function', cross_entropy)
-    tf.scalar_summary('Accuracy', accuracy)
-    merged_summary_op = tf.merge_all_summaries()
+    #tf.scalar_summary('Cost function', cross_entropy)
+    #tf.scalar_summary('Accuracy', accuracy)
+    #merged_summary_op = tf.merge_all_summaries()
     summary_writer = tf.train.SummaryWriter('./logs/train', sess.graph)
     test_writer = tf.train.SummaryWriter('./logs/test')
 
     #train neural model
-    #printProgress(i, l, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
+    print ("Step7: Start fit...\n")
     epochs=1000
     keys = ['sepal_length', 'sepal_width','petal_length', 'petal_width']
     for i in range(epochs):
@@ -104,8 +117,11 @@ def main():
         test_writer.add_summary(test_str, i)
 
     printProgress(epochs, epochs, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
+    
     #print train result
-    print ("\n=accuracy=\n%s" % sess.run(accuracy, feed_dict={inp: [x for x in testSet[keys].values], 
+
+    print ("\nStep8: Show fit result...\n")
+    print ("=accuracy=\n%s" % sess.run(accuracy, feed_dict={inp: [x for x in testSet[keys].values], 
                                     y_: [x for x in testSet['One-hot'].values]}))
 
     print ("=weight=\n%s" % sess.run(weights))
