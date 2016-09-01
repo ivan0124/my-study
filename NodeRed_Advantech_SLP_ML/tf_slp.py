@@ -6,7 +6,19 @@ import random
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
 
+# Print iterations progress
+def printProgress (iteration, total, prefix = '', suffix = '', decimals = 1, barLength = 100):
+    formatStr       = "{0:." + str(decimals) + "f}"
+    percents        = formatStr.format(100 * (iteration / float(total)))
+    filledLength    = int(round(barLength * iteration / float(total)))
+    bar             = '>' * filledLength + '-' * (barLength - filledLength)
+    sys.stdout.write('\r%s |%s| %s%s %s' % (prefix, bar, percents, '%', suffix)),
+    sys.stdout.flush()
+    if iteration == total:
+        sys.stdout.write('\n')
+        sys.stdout.flush()
 
 def main():
     ipd = pd.read_csv("./iris.csv")
@@ -75,8 +87,13 @@ def main():
     test_writer = tf.train.SummaryWriter('./logs/test')
 
     #train neural model
+    #printProgress(i, l, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
+    epochs=1000
     keys = ['sepal_length', 'sepal_width','petal_length', 'petal_width']
-    for i in range(1000):
+    for i in range(epochs):
+        if i%50 == 0:
+            printProgress(i, epochs, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
+
         train = trainingSet.sample(50)
         summary_str, _ = sess.run([merged_summary_op, train_step], feed_dict={inp: [x for x in train[keys].values],
                                                          y_: [x for x in train['One-hot'].as_matrix()]})
@@ -86,8 +103,9 @@ def main():
                                                          y_: [x for x in testSet['One-hot'].values]})
         test_writer.add_summary(test_str, i)
 
+    printProgress(epochs, epochs, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
     #print train result
-    print ("=accuracy=\n%s" % sess.run(accuracy, feed_dict={inp: [x for x in testSet[keys].values], 
+    print ("\n=accuracy=\n%s" % sess.run(accuracy, feed_dict={inp: [x for x in testSet[keys].values], 
                                     y_: [x for x in testSet['One-hot'].values]}))
 
     print ("=weight=\n%s" % sess.run(weights))
