@@ -83,8 +83,6 @@ def main():
     tf.scalar_summary('Cost function', cross_entropy)
     tf.scalar_summary('Accuracy', accuracy)
     merged_summary_op = tf.merge_all_summaries()
-    #summary_writer = tf.train.SummaryWriter('./logs/train', sess.graph)
-    #test_writer = tf.train.SummaryWriter('./logs/test')
 
     print ("Step6: Initialized variabel and session...\n")
     init = tf.initialize_all_variables()
@@ -92,10 +90,7 @@ def main():
     sess = tf.Session()
     sess.run(init)
 
-    #add logs
-    #tf.scalar_summary('Cost function', cross_entropy)
-    #tf.scalar_summary('Accuracy', accuracy)
-    #merged_summary_op = tf.merge_all_summaries()
+    #set logs write path
     summary_writer = tf.train.SummaryWriter('./logs/train', sess.graph)
     test_writer = tf.train.SummaryWriter('./logs/test')
 
@@ -120,7 +115,7 @@ def main():
     
     #print train result
 
-    print ("\nStep8: Show fit result...\n")
+    print ("\nStep8: Show fit result:\n")
     print ("=accuracy=\n%s" % sess.run(accuracy, feed_dict={inp: [x for x in testSet[keys].values], 
                                     y_: [x for x in testSet['One-hot'].values]}))
 
