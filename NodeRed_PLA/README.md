@@ -3,15 +3,19 @@ http://nodered.org/docs/creating-nodes/
 
 # How to test (for Ubuntu 14.04)
 1. copy node `my-pla.html, my-pla.js, pla.py, FILE.INI` to `~/.node-red/nodes`
-2. specify `pla.py` path in `my-pla.js`
+2. install python-shell. 
+<pre>
+$ sudo npm install python-shell
+</pre>
+3. specify `pla.py` path in `my-pla.js`
 ![image link](https://github.com/ivan0124/my-study/blob/master/NodeRed_PLA/image/20160825_1.png)
 
-3. run `node-red`
-4. you will see node in browser
+4. run `node-red`
+5. you will see node in browser
 
 ![image link](https://github.com/ivan0124/my-study/blob/master/NodeRed_PLA/image/NodeRed_PLA_20160822.png)
 
-4. import NodeRed test code
+6. import NodeRed test code
 
 ![image link](https://github.com/ivan0124/my-study/blob/master/NodeRed_PLA/image/NodeRed_PLA_20160822_1.png)
 
