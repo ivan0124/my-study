@@ -3,7 +3,7 @@ Node-Red tutorial: http://nodered.org/docs/creating-nodes/
 
 Python-shell tutorial: https://github.com/extrabacon/python-shell
 
-# How to test (for Ubuntu 14.04)
+# How to install (for Ubuntu 14.04)
 1. copy node `my-pla.html, my-pla.js, pla.py, FILE.INI` to `~/.node-red/nodes`
 2. install python-shell. 
 <pre>
@@ -17,7 +17,8 @@ $ sudo npm install python-shell
 
 ![image link](https://github.com/ivan0124/my-study/blob/master/NodeRed_PLA/image/NodeRed_PLA_20160822.png)
 
-6. import NodeRed test code
+# How to test (for Ubuntu 14.04)
+1. import NodeRed test code
 
 ![image link](https://github.com/ivan0124/my-study/blob/master/NodeRed_PLA/image/NodeRed_PLA_20160822_1.png)
 
