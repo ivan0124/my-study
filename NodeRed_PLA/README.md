@@ -1,5 +1,6 @@
 #Tutorial
-http://nodered.org/docs/creating-nodes/
+Node-Red tutorial: http://nodered.org/docs/creating-nodes/
+Python-shell tutorial: https://github.com/extrabacon/python-shell
 
 # How to test (for Ubuntu 14.04)
 1. copy node `my-pla.html, my-pla.js, pla.py, FILE.INI` to `~/.node-red/nodes`
