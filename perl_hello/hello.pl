@@ -1,2 +1,4 @@
 #!/usr/bin/perl
-print "Hello World!\n"
+
+$var=100;
+print "Hello World! var=$var\n";
