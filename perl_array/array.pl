@@ -76,3 +76,7 @@ print "arr[0]=$arr[0]\n";
 # 以 "-" 作分隔，將 @arr 連接成一個純量變數
 $str2 = join "-",@arr;
 print "str2=$str2\n";
+
+#2 dimension array
+$arrayRef=[[1,2],[3,4]];
+print "2D array:arrayRef[1][1] = $arrayRef->[1][1]\n";
