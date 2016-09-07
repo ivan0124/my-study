@@ -1,5 +1,5 @@
 #How to test
 <pre>
-$node hello.js
+$hello.pl
 </pre>
 
