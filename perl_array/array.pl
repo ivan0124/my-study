@@ -1,93 +1,61 @@
 #!/usr/bin/perl
 
-# 純量 (scalar)
+# 陣列(array)
 
-# (1) 純量：以 $ 開頭之變數，可儲存整數、浮點數、字串等
+# (1) 陣列：'@' 開頭，一連串的純量
 
-$val1 = 1;          # 1
-$val2 = 0x123;          # 十六進位數值 123
-print "val1=$val1\n";
-print "val2=$val2\n";
+@empty = ();    # 空陣列
 
-# 為了使數字方便辨識，可加入 _ 分隔，
-# 此變數數值為 23323930
-$val3 = 23_323_930;
-print "val3=$val3\n";
+# 一陣列內含兩元素 "Bill" "Mary"
+@arr1 = ("Bill","Mary");
 
-$val4 = -5e3;        # 科學記號
-print "val4=$val4\n";
+# @arr2 = ("Bill","Mary","John")
+@arr2 = (@arr1,"John");
 
-$str1 = "AB";           # 字串 "AB"
-print "str1=$str1\n";
+# @arr3 = ("John","Mary","Bill")
+@arr3 = reverse @arr2;
 
-$name = "Bill";
-print "Hello, $name\n";     # 雙引號可內嵌變數
-print 'Hello, $name\n';     # 單引號不行
-print "\n";
+# 按照 ASCII 碼排序，@arr4 = ("Bill","John","Mary")
+@arr4 = sort @arr2;
 
-# (2) 數值與字串間的自動轉換
+print $arr1[1];         # "Mary"
+print $#arr2;           # @arr2 最後一個元素的 index 即 2
+print $arr2[$#arr2];        # @arr2 最後一個元素
+print $arr2[-2];        # @arr2 倒數第二個元素
 
-$a = "1";           # 字串
-print "a=$a\n";
-$b = "2";           # 字串
-print "b=$b\n";
+@arr4 = ("a","b","c","d","e","f");
+@arr5 = @arr4[2..4];        # 取出 @arr4 第三到第五個元素
 
-# Perl 會先將 $a 與 $b 自動轉為數值再相加，傳回數值
-$c = $a + $b;
-print "c=a+b =$c\n";
+($a,$b) = ($b,$a);      # 交換 $a 與 $b
 
-$d = "12abc34";
-print "d=$d\n";
 
-# Perl 會略過 $d 內非數字起頭到結尾的部份，
-# 即 $d 被轉換為數值 12，再經計算 $e 為 24
-$e = $d * 2;
-print "e=d*2=$e\n";
-$f = "abc";
-print "f=$f\n";
+# (2) 純量與陣列語境
 
-# 若完全不是數字的字串，會被轉換成零，
-# 因此結果 $f 被轉換為零，再經計算 $g 亦為 0
-$g = $f * 2;
-print "g=f*2=$g\n";
+@array = ("a","b","c");     # 陣列
+$scalar1 = @array;      # Perl 會傳回 @array 的長度
+$scalar2 = sort @array;     # Perl 會傳回 undef
+$scalar3 = reverse @array;  # Perl 會傳回 "cba"
+$scalar4 = "@array";        # Perl 會傳回 "a b c"
 
-$a = 1;     # 數值
-print "a=$a\n";
+$scalar = "a";          # 純量
+($scalar);          # 陣列，元素個數為一
 
-# Perl 會將 $a 轉為字串，做字串相加，$b 為 "string1"
-$b = "string" . $a;
-print "b=string+'1'=$b\n";
-# 註：'.' 為字串相加運算子 
 
-# (3) 在字串內安插變數
+# (3) pop,push,shift,unshift 陣列處理
 
-$val = 12;
-print "val=$val\n";
-$str1 = "I have $val dollars.";     # 安插變數
-print "str1=$str1\n";
-$str2 = 'I have ' . $val . ' dollars.'; # 字串相加
+@arr = (0,1);
+push(@arr,2);   # push 後，@arr = (0,1,2)
+$a = pop(@arr); # pop 後，@arr = (0,1)，$a = 2
 
-$str3 = "def";
+@arr = (0,1);
+unshift(@arr,2);    # unshift 後，@arr = (2,0,1)
+$a = shift(@arr);   # shift 後，@arr = (0,1)，$a = 2
 
-# Perl 有時容易誤判變數名稱
-$str4 = "abc$str3ghijk";
+# (4) split,join
+$str = "It's my life.";
 
-# 加入 {} 之後，可讓 Perl 正確判斷安插變數名稱
-$str5 = "abc${str3}ghijk";
+# 以空白做分隔，將 $str 切成陣列，存入 @arr 
+@arr = split / /,$str;
 
-# (4) 特殊變數 $_
-
-$_ = "Bill\n";
-print;  # 若省略參數，預設為 $_，即 print $_;
-
-# (5) chomp,chop 刪除最後一個(換行)字元
-
-$str1 = "hello world.\n";
-
-chomp($str1);   # 刪除最後一個換行字元，變成 "hello world."
-
-chomp($str1);   # 無效果
-
-chop($str1);    # 刪除最後一個字元，變成 "hello world"
-
-chop($str1);    # 刪除最後一個字元，變成 "hello worl"
+# 以 "-" 作分隔，將 @arr 連接成一個純量變數
+$str2 = join "-",@arr;
