@@ -1,5 +1,5 @@
 #How to test
 <pre>
-$hello.pl
+$ scalar.pl
 </pre>
 
