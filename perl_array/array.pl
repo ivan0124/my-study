@@ -19,23 +19,36 @@
 @arr4 = sort @arr2;
 
 print $arr1[1];         # "Mary"
+print "\n";
 print $#arr2;           # @arr2 最後一個元素的 index 即 2
+print "\n";
 print $arr2[$#arr2];        # @arr2 最後一個元素
+print "\n";
 print $arr2[-2];        # @arr2 倒數第二個元素
+print "\n";
 
 @arr4 = ("a","b","c","d","e","f");
 @arr5 = @arr4[2..4];        # 取出 @arr4 第三到第五個元素
 
+$a=1;
+$b=2;
+print "(a,b)=($a,$b)\n";
 ($a,$b) = ($b,$a);      # 交換 $a 與 $b
+print "(a,b)=($a,$b)\n";
 
 
 # (2) 純量與陣列語境
 
 @array = ("a","b","c");     # 陣列
 $scalar1 = @array;      # Perl 會傳回 @array 的長度
+print "scalar1=$scalar1\n";
+
 $scalar2 = sort @array;     # Perl 會傳回 undef
 $scalar3 = reverse @array;  # Perl 會傳回 "cba"
+
+print "scalar3=$scalar3\n";
 $scalar4 = "@array";        # Perl 會傳回 "a b c"
+print "scalar4=$scalar4\n";
 
 $scalar = "a";          # 純量
 ($scalar);          # 陣列，元素個數為一
@@ -57,5 +70,9 @@ $str = "It's my life.";
 # 以空白做分隔，將 $str 切成陣列，存入 @arr 
 @arr = split / /,$str;
 
+$arr_str="@arr";
+print "arr[0]=$arr[0]\n";
+
 # 以 "-" 作分隔，將 @arr 連接成一個純量變數
 $str2 = join "-",@arr;
+print "str2=$str2\n";
