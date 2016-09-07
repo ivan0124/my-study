@@ -1,5 +1,5 @@
 #How to test
 <pre>
-$ array.pl
+$ subroutine.pl
 </pre>
 
