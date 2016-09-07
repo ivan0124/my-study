@@ -1,5 +1,5 @@
 #How to test
 <pre>
-$ scalar.pl
+$ array.pl
 </pre>
 
