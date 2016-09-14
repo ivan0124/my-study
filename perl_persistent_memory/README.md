@@ -1,5 +1,5 @@
 #How to test
 <pre>
-$hello.pl
+$p_memory.pl
 </pre>
 
