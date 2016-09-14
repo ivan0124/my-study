@@ -1,10 +1,15 @@
 #!/usr/bin/perl
 
-=pod
-comment here:
-This is a hello perl.
-Welcome !!
-=cut
+use Carp;
+use Persistent::Memory;
 
-$var=100;
-print "Hello World! var=$var\n";
+eval {
+    my $person = new Persistent::Memory($field_delimiter);
+    ### set the data store ###
+    $person->datastore($field_delimiter);
+
+    ### get the data store ###
+    $href = $person->datastore();
+    print "href=$href\n"
+};
+croak "Exception caught: $@" if $@;
