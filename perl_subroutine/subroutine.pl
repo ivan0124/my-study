@@ -1,44 +1,47 @@
 #!/usr/bin/perl
 
-#
-@array=("a","b","c","d");
+=head1
+Sample1: function input parameters.
+=cut
 
-print "run for loop ===>\n";
-for($i=0; $i<=$#array; $i++) {
-    print "array[$i]=$array[$i]\n";
+sub testFn{
+    local $a=55;
+    print "testFn is called. all param=@_\n";
+    print "testFn is called. input param 0=$_[0]\n";
+    print "testFn is called. input param 1=$_[1]\n";
 }
 
-#
-print "run foreach loop ===>\n";
-foreach $i (@array) {
-    print "$i\n";
+
+&testFn(10,11);
+
+=head2
+Sample2: function return value.
+=cut
+
+sub contextualSubroutine {
+	# 调用这里需要一个列表，那么就返回一个列表
+	return ("Everest", "K2", "Etna") if wantarray;
+
+	# 调用者需要一个scalar，那么就返回一个scalar
+	return 3;
 }
 
-#
-print "run foreach loop(0..3) ===>\n";
-foreach $i (0..3) {
-    print "array[$i]=$array[$i]\n";
+my @array = &contextualSubroutine();
+print "array=@array\n"; # "EverestK2Etna"
+
+my $scalar = &contextualSubroutine();
+print "scalar=$scalar\n"; # "3"
+
+
+=head1
+Sample3: function parameters can be changed.
+=cut
+
+sub reassign{
+    $_[0]=89;
 }
 
-#
-print "while loop ===>\n";
-$i=0;
-while($i<=3) {
-    print "array[$i]=$array[$i]\n";
-    $i++;
-}
+my $test_val=20;
+reassign($test_val);
 
-# last是跳出現在所在的迴圈，next則是跳過下面的指令直接執行下一次的迴圈。
-$i=0;
-while($i<=20) {
-    $i++;
-    if ($i <= 5){
-        print "continue loop. i=$i\n";
-        next;
-    }
-    print "i=$i\n";
-    if ($i > 10){
-        print "exit loop. i=$i\n";
-        last;
-    }
-}
+print "test_val=$test_val\n";
