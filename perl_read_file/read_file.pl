@@ -22,7 +22,7 @@ for($i=0; $line=<LISTMOTE>; $i++) {
 		}
         $plist[$i]->{"reliability"} = $w[4];
         $plist[$i]->{"latency"} = $w[5];
-        }
+}
 close(LISTMOTE);
 
 print "-----------------\n";
