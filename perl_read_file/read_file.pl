@@ -8,8 +8,9 @@ Welcome !!
 
 open(LISTMOTE, "cat ./info.txt |");
 for($i=0; $line=<LISTMOTE>; $i++) {
-        chop($line);
-        $line =~ s/^\s+//g;
+        chop($line); #刪除最後一字元          
+        $line =~ s/^\s+//g; #開頭多個空白全部移除 
+        print "$line\n";
         @w = split(/\s+/, $line);
         $plist[$i]->{"mac"} = $w[0];
         $plist[$i]->{"moteid"} = $w[1];
@@ -23,6 +24,8 @@ for($i=0; $line=<LISTMOTE>; $i++) {
         $plist[$i]->{"latency"} = $w[5];
         }
 close(LISTMOTE);
+
+print "-----------------\n";
 
 foreach $pr (@plist){
     local @cols;
