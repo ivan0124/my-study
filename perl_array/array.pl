@@ -80,3 +80,16 @@ print "str2=$str2\n";
 #2 dimension array
 $arrayRef=[[1,2],[3,4]];
 print "2D array:arrayRef[1][1] = $arrayRef->[1][1]\n";
+
+
+#2 dimension array
+local @plist;
+$plist[0]->{"mac"} = "11:22:33:44:55:66";
+$plist[0]->{"moteid"} = "1";
+$plist[1]->{"mac"} = "22:33:44:55:66:66";
+$plist[1]->{"moteid"} = "2";
+
+print "MAC=$plist[0]->{'mac'}\n";
+print "Mote ID=$plist[0]->{'moteid'}\n";
+print "MAC=$plist[1]->{'mac'}\n";
+print "Mote ID=$plist[1]->{'moteid'}\n";
