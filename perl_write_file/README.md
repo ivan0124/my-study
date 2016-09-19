@@ -1,5 +1,5 @@
 #How to test
 <pre>
-$read_file.pl
+$write_file.pl
 </pre>
 
