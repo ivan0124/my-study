@@ -1,5 +1,5 @@
 #How to test
 <pre>
-$hello.pl
+$ lwp.pl
 </pre>
 
