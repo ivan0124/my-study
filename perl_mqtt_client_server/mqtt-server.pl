@@ -5,7 +5,7 @@ use JSON;
 use Net::MQTT::Simple;
 #use Net::Address::IP::Local;
 
-my $TIMEOUT = 60;
+my $TIMEOUT = 65536;
 my $BROKER = "172.22.12.70";
 #my $BROKER = "127.0.0.1";
 
@@ -20,15 +20,19 @@ sub nr_wsn
 	#my $json_obj = JSON->new;
 	my $nr = 0;
 
-    print "exec nr_wsn >\n";
+        print "exec nr_wsn >\n";
 	eval {
 		local $SIG{ALRM} = sub {die "timeout.\n"};
 		alarm $TIMEOUT;
 
-		$mqtt->subscribe("/WSNMgmt/IoTGW/WSN/+/Setting"  => sub {
+		$mqtt->subscribe("/WSNMgmt/IoTGW/WSN/+/Setting_Request"  => sub {
     	                my ($topic, $message) = @_;
-                        print "$topic\n";
-                        print "[server] $message\n";
+                        print "[Server topic]:$topic\n";
+                        print "[Server message]: $message\n";
+                        #do things here
+                        sleep 2;
+                        #
+                        $mqtt->publish("/WSNMgmt/IoTGW/WSN/111/Setting_Response","[Server Response]:Perl Mqtt message~~~~");
 		});
 
 		$mqtt->subscribe("/WSNMgmt/IoTGW/WSN/+/Setting2"  => sub {
@@ -51,7 +55,6 @@ sub nr_wsn
                         
 		});
 
-                $mqtt->publish("/WSNMgmt/IoTGW/WSN/111/Setting","Perl Mqtt message~~~~");
 		$mqtt->run();
 
 		alarm(0);
