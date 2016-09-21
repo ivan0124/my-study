@@ -3,10 +3,11 @@
 use strict;
 use JSON;
 use Net::MQTT::Simple;
+#use Net::Address::IP::Local;
 
 my $TIMEOUT = 10;
 my $BROKER = "172.22.12.70";
-#my $BROKER = "localhost";
+#my $BROKER = "127.0.0.1";
 
 =pod=
 JSON: test data
