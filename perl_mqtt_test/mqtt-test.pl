@@ -21,26 +21,20 @@ sub nr_wsn
 
     print "exec nr_wsn >\n";
 	eval {
-		local $SIG{ALRM} = sub {die "timeout error\n"};
+		local $SIG{ALRM} = sub {die "timeout.\n"};
 		alarm $TIMEOUT;
 
 		$mqtt->subscribe("/WSNMgmt/IoTGW/WSN/+/Setting"  => sub {
-    	    my ($topic, $message) = @_;
-			my @t = split(/\//, $topic);
-			my $mac = $t[4];
-    	    my $decoded_json = decode_json($message);
+    	                my ($topic, $message) = @_;
                         print "$topic\n";
                         print "$message\n";
-                        print "$decoded_json->{'result'}->{'totalsize'}\n";
-                        print "$decoded_json->{'result'}->{'item'}[0]->{'NetID'}\n";
-                        print "$decoded_json->{'result'}->{'item'}[1]->{'NetID'}\n";
 		});
 
 		$mqtt->subscribe("/WSNMgmt/IoTGW/WSN/+/Setting2"  => sub {
-    	    my ($topic, $message) = @_;
+    	                my ($topic, $message) = @_;
 			my @t = split(/\//, $topic);
 			my $mac = $t[4];
-    	    my $decoded_json = decode_json($message);
+    	                my $decoded_json = decode_json($message);
                         print "$topic\n";
                         print "$message\n";
                         my $itmes=$decoded_json->{'result'}->{'item'};
@@ -53,8 +47,10 @@ sub nr_wsn
                             my $NetID     = $item->{NetID};
                             print "NetID=$NetID\n"
                         }
+                        
 		});
 
+                $mqtt->publish("/WSNMgmt/IoTGW/WSN/111/Setting","Perl Mqtt message~~~~");
 		$mqtt->run();
 
 		alarm(0);
