@@ -6,7 +6,7 @@ use Net::MQTT::Simple;
 #use Net::Address::IP::Local;
 
 my $TIMEOUT = 5;
-my $BROKER = "172.22.12.70";
+my $BROKER = "172.22.12.7";
 #my $BROKER = "127.0.0.1";
 
 =pod=
