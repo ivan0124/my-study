@@ -25,14 +25,14 @@ sub nr_wsn
 		local $SIG{ALRM} = sub {die "timeout.\n"};
 		alarm $TIMEOUT;
 
-		$mqtt->subscribe("/WSNMgmt/IoTGW/WSN/+/Setting_Request"  => sub {
+		$mqtt->subscribe("/WSNMgmt/IoTGW/WSN/+/Request"  => sub {
     	                my ($topic, $message) = @_;
                         print "[Server topic]:$topic\n";
                         print "[Server message]: $message\n";
                         #do things here
                         sleep 2;
                         #
-                        $mqtt->publish("/WSNMgmt/IoTGW/WSN/111/Setting_Response","[Server Response]:Perl Mqtt message~~~~");
+                        $mqtt->publish("/WSNMgmt/IoTGW/WSN/111/Response","[Server Response]:Perl Mqtt message~~~~");
 		});
 
 		$mqtt->subscribe("/WSNMgmt/IoTGW/WSN/+/Setting2"  => sub {
