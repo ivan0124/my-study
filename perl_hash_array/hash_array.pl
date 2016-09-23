@@ -20,3 +20,21 @@ print "---------------\n";
 foreach $value (values %hash){
     print "$value\n"
 };
+
+#
+my %WSN_topic;
+#
+$WSN_topic{"WSN"}{"Set"}{"NetID"}{"Request"} = "/WSNMgmt/IoTGW/WSN/SetNetID_Request/";
+$WSN_topic{"WSN"}{"Set"}{"NetID"}{"Response"} = "/WSNMgmt/IoTGW/WSN/SetNetID_Response/";
+$WSN_topic{"WSN"}{"Get"}{"NetID"}{"Request"} = "/WSNMgmt/IoTGW/WSN/GetNetID_Request/";
+$WSN_topic{"WSN"}{"Get"}{"NetID"}{"Response"} = "/WSNMgmt/IoTGW/WSN/GetNetID_Response/";
+#
+$WSN_topic{"WSN"}{"Set"}{"JoinKey"}{"Request"} = "/WSNMgmt/IoTGW/WSN/SetJoinKey_Request/";
+$WSN_topic{"WSN"}{"Set"}{"JoinKey"}{"Response"} = "/WSNMgmt/IoTGW/WSN/SetJoinKey_Response/";
+$WSN_topic{"WSN"}{"Get"}{"JoinKey"}{"Request"} = "/WSNMgmt/IoTGW/WSN/GetJoinKey_Request/";
+$WSN_topic{"WSN"}{"Get"}{"JoinKey"}{"Response"} = "/WSNMgmt/IoTGW/WSN/GetJoinKey_Response/";
+#
+my $action="Get";
+print "---------------\n";
+print "$WSN_topic{'WSN'}{$action}{'JoinKey'}{'Request'}\n";
+print "---------------\n";
