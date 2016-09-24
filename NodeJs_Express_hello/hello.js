@@ -4,7 +4,7 @@ var app = express();
 
 app.get('/', function (req, res) {
   // "Hello"
-  //console.log(greetings.sayHelloInEnglish());
+  greetings.sayHelloInEnglish();
   console.log('~~~~~~~~!!!!');
   // "Hola"  
   greetings.sayHelloInSpanish();  
