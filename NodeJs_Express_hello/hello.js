@@ -1,7 +1,12 @@
 var express = require('express');
+var greetings = require("./greetings.js");
 var app = express();
 
 app.get('/', function (req, res) {
+  // "Hello"
+  greetings.sayHelloInEnglish();
+  // "Hola"  
+  greetings.sayHelloInSpanish();  
   res.send('Hello World!');
 });
 
