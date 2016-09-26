@@ -33,7 +33,7 @@ app.get('/gethash', function (req, res) {
   cat.colour="gray";
   //
   map.forEach(function(value, key) {
-      console.log(key + " : " + value);
+      console.log(key + " : " + value.colour);
   });  
   res.send('/get/Hello World!');
 });
