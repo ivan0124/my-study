@@ -28,8 +28,9 @@ app.get('/json', function (req, res) {
                     \"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\"handlerName\":\"general\",\
                     \"sendTS\":160081020}}";
    var susiObj = JSON.parse(susiString);
-  console.log(susiObj.length);
-   console.log(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[0]);
+   //console.log(susiObj.length);
+   console.log(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e.length);
+   
    //   
   
    res.send(susiString);
