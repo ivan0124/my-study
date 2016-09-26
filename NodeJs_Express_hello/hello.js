@@ -16,10 +16,9 @@ app.get('/', function (req, res) {
 app.get('/sethash', function (req, res) { 
   
   var cat = {colour: "grey", name: "Spot", size: 46};
-  console.log('cat[colour]='+cat.colour);
-  
+  console.log('cat.colour='+cat.colour);
   map.set("some_key", cat);
-  console.log('set cat~~~~~~~~!!!!'+v.colour);
+  
   res.send('/set/Hello World!');
 });
 
