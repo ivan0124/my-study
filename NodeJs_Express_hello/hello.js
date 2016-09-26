@@ -15,18 +15,22 @@ app.get('/', function (req, res) {
 
 app.get('/sethash', function (req, res) { 
   
-  var cat = {colour: "grey", name: "Spot", size: 46};
+  var cat1 = {colour: "red", name: "Spot1", size: 46};
+  var cat2 = {colour: "blue", name: "Spot2", size: 36};
+  var cat3 = {colour: "green", name: "Spot3", size: 26};
   console.log('cat.colour='+cat.colour);
-  map.set("some_key", cat);
+  map.set("key1", cat1);
+  map.set("key2", cat2);
+  map.set("key3", cat3);
   
   res.send('/set/Hello World!');
 });
 
 app.get('/gethash', function (req, res) {
   
-  var cat=map.get("some_key"); // --> "some value"
+  var cat=map.get("key1"); // --> "some value"
   console.log('get cat.colour='+cat.colour);  
-  cat.colour="red";
+  cat.colour="gray";
   res.send('/get/Hello World!');
 });
 
