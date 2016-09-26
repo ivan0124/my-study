@@ -29,7 +29,7 @@ app.get('/json', function (req, res) {
                     \"sendTS\":160081020}}";
    var susiObj = JSON.parse(susiString);
    
-susiObj.keys.forEach(function(key) {
+susiObj.forEach(function(key) {
   //var val = o[key];
  
   //console.log("key="+key+",val="+val);
