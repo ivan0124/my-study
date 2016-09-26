@@ -25,6 +25,9 @@ app.get('/get', function (req, res) {
 });
 
 app.get('/set', function (req, res) {
+  
+  var v=map.get("some_key"); // --> "some value"
+  console.log('set ~~~~~~~~!!!!'+v.colour);  
   console.log('set ~~~~~~~~!!!!');
   res.send('/set/Hello World!');
 });
