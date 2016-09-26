@@ -31,8 +31,7 @@ app.get('/json', function (req, res) {
    
    //
    var string = JSON.stringify(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info);
-   var object = JSON.parse(string);
-   var getObject = object.getJSONObject("Info");
+   console.log("string="+string); 
   
    for (var i = 0; i < susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e.length; i++) { 
        console.log(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[i]); 
