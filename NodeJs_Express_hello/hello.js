@@ -11,8 +11,14 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
-app.get('/test', function (req, res) {  
-  res.send('/test/Hello World!');
+app.get('/get', function (req, res) {  
+  console.log('get ~~~~~~~~!!!!');
+  res.send('/get/Hello World!');
+});
+
+app.get('/set', function (req, res) {
+  console.log('set ~~~~~~~~!!!!');
+  res.send('/set/Hello World!');
 });
 
 
