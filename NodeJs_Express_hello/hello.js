@@ -28,12 +28,20 @@ app.get('/json', function (req, res) {
                     \"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\"handlerName\":\"general\",\
                     \"sendTS\":160081020}}";
    var suisObj = JSON.parse(susiString);
-   console.log(suisObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e.Size);
-  
-   //var myJson = {'key':'value', 'key2':'value2'};
-   for(var myKey in suisObj) {
-       console.log("key:"+myKey+", value:"+suisObj[myKey]);
-   }
+   console.log(suisObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[0]);
+   //
+   //object = suisObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info;
+   JSONObject getObject = suisObj.getJSONObject("suisObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info");
+   JSONArray getArray = getObject.getJSONArray("e");
+
+   for(int i = 0; i < getArray.size(); i++)
+   {
+      JSONObject objects = getArray.getJSONObject(i);
+      console.log(objects);
+      //Iterate through the elements of the array i.
+      //Get thier value.
+      //Get the value for the first element and the value for the last element.
+   }  
   
    res.send(susiString);
   
