@@ -29,7 +29,7 @@ app.get('/json', function (req, res) {
                     \"sendTS\":160081020}}";
    var susiObj = JSON.parse(susiString);
    //console.log(susiObj.length);
-   //console.log(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e.length);
+   console.log(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.length);
    for (var i = 0; i < susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e.length; i++) { 
        console.log(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[i]); 
    }
