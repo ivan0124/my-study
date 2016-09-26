@@ -31,7 +31,7 @@ app.get('/json', function (req, res) {
    console.log(suisObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[0]);
    //
   
-   console.log("length="+suisObj.getJSONArray('susiCommData\infoSpec\IoTGW\WSN\WSN0\Info\e'));
+   console.log("length="+suisObj.getJSONArray('susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e'));
    for (var i=0; i<suisObj['susiCommData'].length; i++){
        console.log("length="+suisObj['susiCommData'].length);//suisObj['susiCommData'][i]);
    }    
