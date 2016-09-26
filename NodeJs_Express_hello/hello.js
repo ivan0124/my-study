@@ -31,7 +31,7 @@ app.get('/json', function (req, res) {
    console.log(suisObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[0]);
    //
    for (var i=0; i<suisObj['susiCommData'].length; i++){
-       console.log(suisObj['susiCommData'][i]);
+       console.log("length="+suisObj['susiCommData'].length);//suisObj['susiCommData'][i]);
    }    
   
    res.send(susiString);
