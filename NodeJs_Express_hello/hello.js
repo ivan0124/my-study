@@ -13,6 +13,15 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
+app.get('/json', function (req, res) { 
+  
+  var jsonString = "{\"key\":\"value\"}";
+  var jsonObj = JSON.parse(jsonString);
+  console.log(jsonObj.key);  
+  res.send('Hello JSON!');
+  
+});
+
 app.get('/sethash', function (req, res) { 
   
   var cat1 = {colour: "red", name: "Spot1", size: 46};
