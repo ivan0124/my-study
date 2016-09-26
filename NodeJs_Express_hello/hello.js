@@ -29,17 +29,12 @@ app.get('/json', function (req, res) {
                     \"sendTS\":160081020}}";
    var susiObj = JSON.parse(susiString);
    
-susiObj.forEach(function(key) {
-  //var val = o[key];
- 
-  //console.log("key="+key+",val="+val);
-});  
-  /*
+  
    console.log(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info);
    for (var i = 0; i < susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e.length; i++) { 
        console.log(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[i]); 
    }
-   */
+   
    //   
   
    res.send(susiString);
