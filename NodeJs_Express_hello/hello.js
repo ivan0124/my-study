@@ -27,14 +27,9 @@ app.get('/json', function (req, res) {
                     \"bn\":\"Info\"},\"bn\":\"0007000E40ABCDEF\",\"ver\":1},\"bn\":\"WSN\",\"ver\":1},\"ver\":1}},\
                     \"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\"handlerName\":\"general\",\
                     \"sendTS\":160081020}}";
-   var suisObj = JSON.parse(susiString);
-   console.log(suisObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[0]);
-   //
-  String[] elementNames = JSONObject.getNames(suisObj);
-   //console.log("length="+suisObj.getJSONArray('susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e'));
-   //for (var i=0; i<suisObj['susiCommData'].length; i++){
-       //console.log("length="+suisObj['susiCommData'].length);//suisObj['susiCommData'][i]);
-   //}    
+   var susiObj = JSON.parse(susiString);
+   console.log(susidObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[0]);
+   //   
   
    res.send(susiString);
   
