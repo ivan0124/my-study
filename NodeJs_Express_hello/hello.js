@@ -24,8 +24,8 @@ app.get('/sethash', function (req, res) {
 
 app.get('/gethash', function (req, res) {
   
-  var v=map.get("some_key"); // --> "some value"
-  console.log('get v.colour~~~~~~~~!!!!'+v.colour);  
+  var cat=map.get("some_key"); // --> "some value"
+  console.log('get cat.colour='+cat.colour);  
   res.send('/get/Hello World!');
 });
 
