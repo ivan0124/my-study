@@ -31,7 +31,12 @@ app.get('/json', function (req, res) {
    
    //
    var string = JSON.stringify(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info);
-   console.log(string.size);
+   console.log(string.Size);
+   string.forEach(function(obj, key) {
+      //if (typeof obj != "undefined") {
+          //console.log(key + " : " + obj.colour);
+      //}
+  }); 
   
    for (var i = 0; i < susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e.length; i++) { 
        console.log(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[i]); 
