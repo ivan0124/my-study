@@ -26,6 +26,7 @@ app.get('/gethash', function (req, res) {
   
   var cat=map.get("some_key"); // --> "some value"
   console.log('get cat.colour='+cat.colour);  
+  cat.colour="red";
   res.send('/get/Hello World!');
 });
 
