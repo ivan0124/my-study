@@ -30,18 +30,9 @@ app.get('/json', function (req, res) {
    var suisObj = JSON.parse(susiString);
    console.log(suisObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[0]);
    //
-   //object = suisObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info;
-   //JSONObject getObject = suisObj.getJSONObject("susiCommData.infoSpec.IoTGW.WSN.WSN0.Info");
-   JSONArray getArray = suisObj.getJSONArray("e");
-
-   for(int i = 0; i < getArray.size(); i++)
-   {
-      JSONObject objects = getArray.getJSONObject(i);
-      console.log(objects);
-      //Iterate through the elements of the array i.
-      //Get thier value.
-      //Get the value for the first element and the value for the last element.
-   }  
+   for (var i=0; i<suisObj['susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e'].length; i++){
+       // here jsonObject['sync_contact_list'][i] is your current "bit"
+   }    
   
    res.send(susiString);
   
