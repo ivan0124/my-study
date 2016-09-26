@@ -1,6 +1,7 @@
 var express = require('express');
 var greetings = require("./greetings.js");
-var map = require('hashmap');
+var HashMap = require('hashmap').HashMap;
+var map = new HashMap();
 var app = express();
 
 app.get('/', function (req, res) {
