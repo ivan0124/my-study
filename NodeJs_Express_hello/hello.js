@@ -26,8 +26,11 @@ app.get('/json', function (req, res) {
                     {\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},{\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\
                     \"bn\":\"Info\"},\"bn\":\"0007000E40ABCDEF\",\"ver\":1},\"bn\":\"WSN\",\"ver\":1},\"ver\":1}},\
                     \"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\"handlerName\":\"general\",\
-                    \"sendTS\":160081020}}"
-  res.send(susiString);
+                    \"sendTS\":160081020}}";
+   var suisObj = JSON.parse(susiString);
+   console.log(jsonObj.susiCommData);
+  
+   res.send(susiString);
   
 });
 
