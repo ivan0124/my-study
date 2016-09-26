@@ -30,6 +30,7 @@ app.get('/json', function (req, res) {
    var susiObj = JSON.parse(susiString);
    
    //
+  JSONObject object = new JSONObject("12345");
    var string = JSON.stringify(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info);
    console.log("string="+string); 
   
