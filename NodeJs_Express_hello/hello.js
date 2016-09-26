@@ -28,11 +28,17 @@ app.get('/json', function (req, res) {
                     \"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\"handlerName\":\"general\",\
                     \"sendTS\":160081020}}";
    var susiObj = JSON.parse(susiString);
-   //console.log(susiObj.length);
+   
+susiObj.keys(o).forEach(function(key) {
+  var val = o[key];
+  console.log("key="+key+",val="+val);
+});  
+  /*
    console.log(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info);
    for (var i = 0; i < susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e.length; i++) { 
        console.log(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[i]); 
    }
+   */
    //   
   
    res.send(susiString);
