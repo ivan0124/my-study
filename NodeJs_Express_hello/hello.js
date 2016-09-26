@@ -29,10 +29,10 @@ app.get('/json', function (req, res) {
                     \"sendTS\":160081020}}";
    var susiObj = JSON.parse(susiString);
    
-susiObj.keys(o).forEach(function(key) {
-  var val = o[key];
-  logic();
-  console.log("key="+key+",val="+val);
+susiObj.keys.forEach(function(key) {
+  //var val = o[key];
+ 
+  //console.log("key="+key+",val="+val);
 });  
   /*
    console.log(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info);
