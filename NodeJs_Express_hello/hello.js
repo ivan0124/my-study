@@ -31,7 +31,7 @@ app.get('/json', function (req, res) {
    console.log(suisObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[0]);
    //
    for (var i=0; i<suisObj['susiCommData'].length; i++){
-       // here jsonObject['sync_contact_list'][i] is your current "bit"
+       console.log(suisObj['susiCommData'][i]);
    }    
   
    res.send(susiString);
