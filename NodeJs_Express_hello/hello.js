@@ -28,12 +28,14 @@ app.get('/sethash', function (req, res) {
 
 app.get('/gethash', function (req, res) {
   
-  var cat=map.get("key1"); // --> "some value"
-  console.log('get cat.colour='+cat.colour);  
-  cat.colour="gray";
+  //var cat=map.get("key1"); // --> "some value"
+  //console.log('get cat.colour='+cat.colour);  
+  //cat.colour="gray";
   //
   map.forEach(function(obj, key) {
-      console.log(key + " : " + obj.colour);
+      if (typeof obj != "undefined") {
+          console.log(key + " : " + obj.colour);
+      }
   });  
   res.send('/get/Hello World!');
 });
