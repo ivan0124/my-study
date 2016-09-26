@@ -1,5 +1,6 @@
 var express = require('express');
 var greetings = require("./greetings.js");
+var map = require('hashmap').HashMap;
 var app = express();
 
 app.get('/', function (req, res) {
@@ -11,8 +12,10 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
-app.get('/get', function (req, res) {  
-  console.log('get ~~~~~~~~!!!!');
+app.get('/get', function (req, res) { 
+  map.set("some_key", "some value");
+  var v=map.get("some_key"); // --> "some value"
+  console.log('get ~~~~~~~~!!!!'+v);
   res.send('/get/Hello World!');
 });
 
