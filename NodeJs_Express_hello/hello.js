@@ -16,7 +16,7 @@ app.get('/', function (req, res) {
 app.get('/get', function (req, res) { 
   
   var cat = {colour: "grey", name: "Spot", size: 46};
-  console.log('cat[colour]='+cat[colour]);
+  console.log('cat[colour]='+cat.colour);
   
   map.set("some_key", "some value");
   var v=map.get("some_key"); // --> "some value"
