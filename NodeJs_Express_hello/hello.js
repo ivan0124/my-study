@@ -18,7 +18,7 @@ app.get('/sethash', function (req, res) {
   var cat1 = {colour: "red", name: "Spot1", size: 46};
   var cat2 = {colour: "blue", name: "Spot2", size: 36};
   var cat3 = {colour: "green", name: "Spot3", size: 26};
-  console.log('cat.colour='+cat.colour);
+  //
   map.set("key1", cat1);
   map.set("key2", cat2);
   map.set("key3", cat3);
