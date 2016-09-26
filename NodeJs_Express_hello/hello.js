@@ -31,8 +31,8 @@ app.get('/json', function (req, res) {
    console.log(suisObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[0]);
    //
    //object = suisObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info;
-   JSONObject getObject = suisObj.getJSONObject("susiCommData.infoSpec.IoTGW.WSN.WSN0.Info");
-   JSONArray getArray = getObject.getJSONArray("e");
+   //JSONObject getObject = suisObj.getJSONObject("susiCommData.infoSpec.IoTGW.WSN.WSN0.Info");
+   JSONArray getArray = suisObj.getJSONArray("e");
 
    for(int i = 0; i < getArray.size(); i++)
    {
