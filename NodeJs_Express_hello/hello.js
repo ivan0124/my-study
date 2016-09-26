@@ -28,7 +28,12 @@ app.get('/json', function (req, res) {
                     \"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\"handlerName\":\"general\",\
                     \"sendTS\":160081020}}";
    var suisObj = JSON.parse(susiString);
-   console.log(suisObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e.size);
+   console.log(suisObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[0]);
+  
+   //var myJson = {'key':'value', 'key2':'value2'};
+   for(var myKey in suisObj) {
+       console.log("key:"+myKey+", value:"+suisObj[myKey]);
+   }
   
    res.send(susiString);
   
