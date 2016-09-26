@@ -28,9 +28,11 @@ app.get('/sethash', function (req, res) {
 
 app.get('/gethash', function (req, res) {
   
-  //var cat=map.get("key1"); // --> "some value"
-  //console.log('get cat.colour='+cat.colour);  
-  //cat.colour="gray";
+  var cat=map.get("key1");
+  if (typeof cat != "undefined") {
+      console.log('get cat.colour='+cat.colour);  
+      cat.colour="gray";
+  }
   //
   map.forEach(function(obj, key) {
       if (typeof obj != "undefined") {
