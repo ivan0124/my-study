@@ -31,6 +31,10 @@ app.get('/gethash', function (req, res) {
   var cat=map.get("key1"); // --> "some value"
   console.log('get cat.colour='+cat.colour);  
   cat.colour="gray";
+  //
+  map.forEach(function(value, key) {
+      console.log(key + " : " + value);
+  });  
   res.send('/get/Hello World!');
 });
 
