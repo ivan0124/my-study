@@ -18,9 +18,9 @@ app.get('/get', function (req, res) {
   var cat = {colour: "grey", name: "Spot", size: 46};
   console.log('cat[colour]='+cat.colour);
   
-  map.set("some_key", "some value");
+  map.set("some_key", cat);
   var v=map.get("some_key"); // --> "some value"
-  console.log('get ~~~~~~~~!!!!'+v);
+  console.log('get ~~~~~~~~!!!!'+v.colour);
   res.send('/get/Hello World!');
 });
 
