@@ -30,7 +30,7 @@ app.get('/json', function (req, res) {
    var suisObj = JSON.parse(susiString);
    console.log(suisObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[0]);
    //
-   console.log("length="+suisObj['susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e'].length);
+   console.log("length="+suisObj[susiCommData].length);
    for (var i=0; i<suisObj['susiCommData'].length; i++){
        console.log("length="+suisObj['susiCommData'].length);//suisObj['susiCommData'][i]);
    }    
