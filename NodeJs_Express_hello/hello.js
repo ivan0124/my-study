@@ -31,6 +31,7 @@ app.get('/json', function (req, res) {
    
 susiObj.keys(o).forEach(function(key) {
   var val = o[key];
+  logic();
   console.log("key="+key+",val="+val);
 });  
   /*
