@@ -15,10 +15,42 @@ app.get('/', function (req, res) {
 
 app.get('/json', function (req, res) { 
   
+  //
   var jsonString = "{\"key\":\"value\"}";
   var jsonObj = JSON.parse(jsonString);
-  console.log(jsonObj.key);  
-  res.send('Hello JSON!');
+  console.log(jsonObj.key);
+  //
+  var susiString = "{\"susiCommData\":{\"infoSpec\":
+{
+\"IoTGW\":
+    {\"WSN\":
+        {\"WSN0\":
+            {\"Info\":
+                {\"e\":[
+                         {\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},
+                         {\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},
+                         {\"n\":\"Name\",\"sv\":\"WSN0\",\"asm\":\"r\"},
+                         {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},
+                         {\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},
+                         {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}
+                     ],
+                 \"bn\":\"Info\"},
+             \"bn\":\"0007000E40ABCDEF\",
+             \"ver\":1
+            },
+         \"bn\":\"WSN\",
+         \"ver\":1
+        },
+     \"ver\":1
+    }
+},
+\"commCmd\":2052,
+\"requestID\":2001,
+\"agentID\":\"0000000E40ABCDEF\",
+\"handlerName\":\"general\",
+\"sendTS\":160081020
+}}"
+  res.send(susiString);
   
 });
 
