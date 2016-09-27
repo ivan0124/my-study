@@ -48,8 +48,8 @@ app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) {
    
    //
    console.log("Object.keys(susiObj)[0]="+Object.keys(susiObj)[0]); 
-    Object.keys(susiObj).forEach(function(k) {
-        console.log("k="+k); 
+    Object.keys(susiObj).forEach(function(k, v) {
+        console.log("k="+v); 
     });
 
    //
