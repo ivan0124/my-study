@@ -47,7 +47,7 @@ app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) {
    var susiObj = JSON.parse(susiString);
    
    //
-   console.log("Object.keys(susiObj)[0]="+Object.keys(susiObj)[0][0]); 
+   console.log("Object.keys(susiObj)[0]="+Object.value(susiObj)[0]); 
     Object.keys(susiObj).forEach(function(k) {
         console.log("k="+k); 
     });
