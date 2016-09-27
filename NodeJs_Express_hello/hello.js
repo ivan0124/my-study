@@ -16,6 +16,8 @@ app.get('/', function (req, res) {
 app.get('/json', function (req, res) { 
   
   //
+  console.log("original URL="+req.originalUrl);
+  //
   var jsonString = "{\"key\":\"value\"}";
   var jsonObj = JSON.parse(jsonString);
   console.log(jsonObj.key);
