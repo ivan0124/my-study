@@ -4,6 +4,7 @@
 <pre>
 $ cd  ~NodeJs_Express_hello
 $ npm install express --save
+$ npm install hashmap
 </pre>
 
 #How to test
