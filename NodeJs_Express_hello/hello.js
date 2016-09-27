@@ -17,7 +17,7 @@ app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) {
   
   //
   console.log("original URL="+req.originalUrl);
-  var res = req.originalUrl.replace("/", ".");
+  var res = req.originalUrl;
   console.log("replace URL="+res);
   //
   var jsonString = "{\"key\":\"value\"}";
