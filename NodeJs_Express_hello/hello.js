@@ -52,7 +52,7 @@ app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) {
    var cStr="infoSpec";
    console.log(" susiCommData.sendTS ----------------> " + susiObj[aStr][bStr] + ",type = " + typeof susiObj[aStr][bStr]);
   
-   console.log(" susiCommData.sendTS ----------------> " + susiObj[aStr][cStr] + ", type = " + typeof susiObj[aStr][cStr]);
+   console.log(" susiCommData.infoSpec ----------------> " + susiObj[aStr][cStr] + ", type = " + typeof susiObj[aStr][cStr]);
    //
    for (key in susiObj) {
        if (susiObj.hasOwnProperty(key)) {
