@@ -4,7 +4,8 @@
 <pre>
 $ cd  ~NodeJs_Express_hello
 $ npm install express --save
-$ npm install hashmap
+$ npm install mqtt --save
+$ npm install hashmap --save
 </pre>
 
 #How to test
