@@ -13,7 +13,7 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
-app.get('/json', function (req, res) { 
+app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) { 
   
   //
   console.log("original URL="+req.originalUrl);
