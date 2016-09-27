@@ -48,7 +48,7 @@ app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) {
    
    //
   //config = JSON.parse(jsonString);
-  for(var i = 0; i < susiObj.store_config.length; ++i) {
+  for(var i = 0; i < 3; ++i) {
      for(key in susiObj.store_config[i]) {
         console.log(susiObj.store_config[i][key]);
      }
