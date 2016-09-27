@@ -83,9 +83,10 @@ app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) {
    }
    //
    console.log("-------------------------------------------------------"); 
-   for (key in susiObj["susiCommData"]["infoSpec"]["IoTGW"]["WSN"]["WSN0"]["Info"]["e"]) {
-       if (susiObj["susiCommData"]["infoSpec"]["IoTGW"]["WSN"]["WSN0"]["Info"]["e"].hasOwnProperty(key)) {
-           console.log(key + " ===> " + susiObj["susiCommData"]["infoSpec"]["IoTGW"]["WSN"]["WSN0"]["Info"]["e"][key] + " ,type = " + typeof susiObj["susiCommData"]["infoSpec"]["IoTGW"]["WSN"]["WSN0"]["Info"]["e"][key]);
+   var eObj=susiObj["susiCommData"]["infoSpec"]["IoTGW"]["WSN"]["WSN0"]["Info"]["e"];
+   for (key in eObj) {
+       if (eObj.hasOwnProperty(key)) {
+           console.log(key + " ===> " + eObj[key] + " ,type = " + typeof eObj[key]);
        }
    }    
    //   
