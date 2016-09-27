@@ -90,7 +90,6 @@ app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) {
        }
    }    
    //   
-   res.sendStatus(200);
    res.send(susiString);
   
 });
