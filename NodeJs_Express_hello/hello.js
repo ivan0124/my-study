@@ -24,11 +24,10 @@ app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) {
       if ( i >=2 ){
           if ( i==2 ){
               cmdString=arr[2];
-              cmdString+=".";
           }
           else{
-              cmdString=arr[2];
               cmdString+=".";
+              cmdString+=arr[i];
           }
       }
   }
