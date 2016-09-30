@@ -28,6 +28,20 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
+function myTest( jsonObj ){
+  
+     for (key in jsonObj) {
+       if (jsonObj.hasOwnProperty(key)) {
+           console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
+           //console.log(" type = " + typeof jsonObj[key]);
+           for (key2 in jsonObj[key]) {
+               console.log(   key2 + " ======> " + jsonObj[key][key2] + " ,type = " + typeof jsonObj[key][key2]);
+               //console.log(" type = " + typeof jsonObj[key][key2]);
+           }
+       }
+   } 
+}
+
 app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) { 
   
   //
@@ -69,6 +83,8 @@ app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) {
   
    console.log(" susiCommData.infoSpec ----------------> " + susiObj[aStr][cStr] + ", type = " + typeof susiObj[aStr][cStr]);
    //
+   myTest( susiObj );
+  /*
    for (key in susiObj) {
        if (susiObj.hasOwnProperty(key)) {
            console.log(key + " ===> " + susiObj[key] + " ,type = " + typeof susiObj[key]);
@@ -78,7 +94,8 @@ app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) {
                //console.log(" type = " + typeof susiObj[key][key2]);
            }
        }
-   } 
+   }
+   */
    //
    console.log("Object.keys(susiObj)[0]="+Object.keys(susiObj)[0]); 
     Object.keys(susiObj).forEach(function(k) {
