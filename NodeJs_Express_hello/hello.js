@@ -66,7 +66,7 @@ function listObj( i, keyStr, jsonObj ){
    }
    else{
        i++;
-       console.log( 'listObj-------------------------------------------------');
+       console.log( 'listObj-------------------------------------------------key=' + key);
        listObj( i, keyStr + '/' + key, jsonObj[key]);
    }
 }
