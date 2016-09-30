@@ -56,7 +56,7 @@ function listObj( keyStr, jsonObj ){
               listObj( keyStr + '/' + key, jsonObj[key]);
           }
           else{
-              console.log( 'keyStr=======>' + keyStr '/' + key);
+              console.log( 'keyStr=======>' + keyStr + '/' + key);
               return;
           }
         
