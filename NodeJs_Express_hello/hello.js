@@ -68,11 +68,14 @@ function listObj( i, keyStr, jsonObj ){
               listObj( i, keyStr + '/' + key, jsonObj[key]);
           }
           else{
-              console.log( 'listObj return -------------------------------------------------key=' + key);
-              return;
+              //console.log( 'listObj return -------------------------------------------------key=' + key);
+              //return;
           }
       }
    }  
+  
+   console.log( 'listObj return -------------------------------------------------key=' + key);
+   return;  
  /*
    if ( i > 3){
        return ;         
