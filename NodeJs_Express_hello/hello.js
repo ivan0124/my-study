@@ -66,7 +66,7 @@ function listObj( i, keyStr, jsonObj ){
    }
    else{
        i++;
-       listObj( keyStr + '/' + key, jsonObj[key]);
+       listObj( i, keyStr + '/' + key, jsonObj[key]);
    }
 }
 
@@ -112,7 +112,7 @@ app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) {
    console.log(" susiCommData.infoSpec ----------------> " + susiObj[aStr][cStr] + ", type = " + typeof susiObj[aStr][cStr]);
    //
    //myTest( susiObj );
-   listObj('/restapi', susiObj);
+   listObj(0, '/restapi', susiObj);
   /*
    for (key in susiObj) {
        if (susiObj.hasOwnProperty(key)) {
