@@ -53,13 +53,12 @@ function listObj( keyStr, jsonObj ){
       if (jsonObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
           if (typeof jsonObj[key] === 'object' ){
-              listObj( keyStr + '/' + key, jsonObj[key]);
+              console.log( 'keyStr=======>' + keyStr + '/' + key);
           }
           else{
               console.log( 'keyStr=======>' + keyStr + '/' + key);
-              return;
           }
-        
+          listObj( keyStr + '/' + key, jsonObj[key]);
        }
     }  
 }
