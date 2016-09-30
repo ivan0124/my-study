@@ -32,13 +32,13 @@ function myTest( jsonObj ){
   
      for (key in jsonObj) {
        if (jsonObj.hasOwnProperty(key)) {
-           if ( typeof jsonObj[key] !== 'object' ){
+           if ( typeof jsonObj[key] === 'object' ){
                console.log(key + " G===> " + jsonObj[key] + " ,type = " + Object.prototype.toString.call(jsonObj));
                //console.log(key + " G===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
            }
            //console.log(" type = " + typeof jsonObj[key]);
            for (key2 in jsonObj[key]) {
-               if ( typeof jsonObj[key][key2] !== 'object' ){
+               if ( typeof jsonObj[key][key2] === 'object' ){
                    console.log(   key2 + " G======> " + jsonObj[key][key2] + " ,type = " + typeof jsonObj[key][key2]);
                }
                //console.log(" type = " + typeof jsonObj[key][key2]);
