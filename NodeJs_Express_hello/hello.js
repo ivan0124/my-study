@@ -38,7 +38,7 @@ function myTest( jsonObj ){
            }
            //console.log(" type = " + typeof jsonObj[key]);
            for (key2 in jsonObj[key]) {
-               if ( typeof jsonObj[key] === 'object' ){
+               if ( typeof jsonObj[key] !== 'object' ){
                    console.log(   key2 + " G======> " + jsonObj[key][key2] + " ,type = " + typeof jsonObj[key][key2]);
                }
                //console.log(" type = " + typeof jsonObj[key][key2]);
