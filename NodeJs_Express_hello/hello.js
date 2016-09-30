@@ -86,7 +86,8 @@ app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) {
     });
 
    //
-   var string = JSON.stringify(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[0]);
+   //var string = JSON.stringify(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[0]);
+   var string = JSON.stringify(susiObj.susiCommData.infoSpec);
    console.log("string="+string); 
   
   console.log(typeof susiObj["susiCommData"]["infoSpec"]["IoTGW"]["WSN"]["WSN0"]["Info"]); 
