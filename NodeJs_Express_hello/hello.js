@@ -32,14 +32,27 @@ function myTest( jsonObj ){
   
      for (key in jsonObj) {
        if (jsonObj.hasOwnProperty(key)) {
-           console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
+           if (typeof jsonObj[key] === "object"){
+               console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
+           }
            //console.log(" type = " + typeof jsonObj[key]);
            for (key2 in jsonObj[key]) {
                console.log(   key2 + " ======> " + jsonObj[key][key2] + " ,type = " + typeof jsonObj[key][key2]);
                //console.log(" type = " + typeof jsonObj[key][key2]);
            }
        }
-   } 
+    }  
+}
+
+function listObj( jsonObj ){
+  for (key in jsonObj) {
+      if (jsonObj.hasOwnProperty(key)) {
+          console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
+          if (typeof jsonObj[key] === "object"){
+          }
+        
+       }
+    }  
 }
 
 app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) { 
@@ -83,7 +96,7 @@ app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) {
   
    console.log(" susiCommData.infoSpec ----------------> " + susiObj[aStr][cStr] + ", type = " + typeof susiObj[aStr][cStr]);
    //
-   //myTest( susiObj );
+   myTest( susiObj );
   /*
    for (key in susiObj) {
        if (susiObj.hasOwnProperty(key)) {
