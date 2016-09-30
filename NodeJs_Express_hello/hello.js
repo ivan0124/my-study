@@ -47,11 +47,17 @@ function myTest( jsonObj ){
     }  
 }
 
-function listObj( jsonObj ){
+function listObj( keyStr, jsonObj ){
+  
   for (key in jsonObj) {
       if (jsonObj.hasOwnProperty(key)) {
-          console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
-          if (typeof jsonObj[key] === "object"){
+          //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
+          if (typeof jsonObj[key] === 'object' ){
+              listObj( keyStr + '/' + key, jsonObj[key]);
+          }
+          else{
+              console.log( 'keyStr=======>' + keyStr '/' + key);
+              return;
           }
         
        }
@@ -99,7 +105,8 @@ app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) {
   
    console.log(" susiCommData.infoSpec ----------------> " + susiObj[aStr][cStr] + ", type = " + typeof susiObj[aStr][cStr]);
    //
-   myTest( susiObj );
+   //myTest( susiObj );
+   listObj('/restapi/', susiObj);
   /*
    for (key in susiObj) {
        if (susiObj.hasOwnProperty(key)) {
