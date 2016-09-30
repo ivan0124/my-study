@@ -32,7 +32,7 @@ function myTest( jsonObj ){
   
      for (key in jsonObj) {
        if (jsonObj.hasOwnProperty(key)) {
-           if ( typeof jsonObj[key] === 'object' ){
+           if ( typeof jsonObj[key] !== 'object' ){
                console.log(key + " G===> " + jsonObj[key] + " ,type = " + Object.prototype.toString.call(jsonObj));
                //console.log(key + " G===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
            }
