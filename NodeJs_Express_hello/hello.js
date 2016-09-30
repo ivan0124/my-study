@@ -47,23 +47,27 @@ function myTest( jsonObj ){
     }  
 }
 
-function listObj( keyStr, jsonObj ){
+function listObj( i, keyStr, jsonObj ){
   
   for (key in jsonObj) {
       if (jsonObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
-          if (typeof jsonObj[key] === 'object' ){
-              console.log( 'keyStr=======>' + keyStr + '/' + key);
-          }
-          else{
-              console.log( 'keyStr=======>' + keyStr + '/' + key);
-          }
-          listObj( keyStr + '/' + key, jsonObj[key]);
+          //if (typeof jsonObj[key] === 'object' ){
+              console.log( 'keyStr=======>' + keyStr + '/' + key + ', keyVal=======>' + jsonObj[key]);
+          //}
+          //else{
+              //console.log( 'keyStr=======>' + keyStr + '/' + key);
+          //}
       }
-      else{
-          return;
-      }
-   }  
+   }
+   
+   if ( i > 3){
+       return ;         
+   }
+   else{
+       i++;
+       listObj( keyStr + '/' + key, jsonObj[key]);
+   }
 }
 
 app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) { 
