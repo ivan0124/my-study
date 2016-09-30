@@ -60,7 +60,19 @@ function listObj( i, keyStr, jsonObj ){
           //}
       }
    }
-   
+ //
+  for (key in jsonObj) {
+      if (jsonObj.hasOwnProperty(key)) {
+          //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
+          if (typeof jsonObj[key] === 'object' ){
+              listObj( i, keyStr + '/' + key, jsonObj[key]);
+          }
+          else{
+              return;
+          }
+      }
+   }  
+ /*
    if ( i > 3){
        return ;         
    }
@@ -69,6 +81,7 @@ function listObj( i, keyStr, jsonObj ){
        console.log( 'listObj-------------------------------------------------key=' + key);
        listObj( i, keyStr + '/' + key, jsonObj[key]);
    }
+   */
 }
 
 app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) { 
