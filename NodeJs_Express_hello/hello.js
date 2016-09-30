@@ -59,8 +59,11 @@ function listObj( keyStr, jsonObj ){
               console.log( 'keyStr=======>' + keyStr + '/' + key);
           }
           listObj( keyStr + '/' + key, jsonObj[key]);
-       }
-    }  
+      }
+      else{
+          return;
+      }
+   }  
 }
 
 app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) { 
