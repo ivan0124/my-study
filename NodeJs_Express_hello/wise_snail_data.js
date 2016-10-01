@@ -1,8 +1,9 @@
 
 var mqtt = require('mqtt');
-var client  = mqtt.connect('mqtt://test.mosquitto.org');
+var client;//  = mqtt.connect('mqtt://test.mosquitto.org');
 
 client.on('connect', function () {
+  console.log('[wise_snail] mqtt connected');
   client.subscribe('agentinfo');
 })
  
@@ -13,7 +14,8 @@ client.on('message', function (topic, message) {
 })
 
 module.exports = {
-  sayHelloInEnglishx: function() {
+  mqtt_connect: function() {
+    client  = mqtt.connect('mqtt://test.mosquitto.org');
     console.log('[wise_snail] sayHelloInEnglish');
     return "HELLO";
   },
