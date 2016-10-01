@@ -9,6 +9,7 @@ var mqtt = require('mqtt');
 var client  = mqtt.connect('mqtt://test.mosquitto.org');
 
 client.on('connect', function () {
+  console.log('hello.js mqtt connect !!!!');
   client.subscribe('presence');
   client.publish('agentinfo', 'Hello mqtt');
 })
@@ -30,6 +31,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/wise_snail_data', function (req, res) {
+  ws_data.mqtt_connect();
   client.publish('agentinfo', 'Hello WiseSnail Data');
   res.send('Hello WiseSnail Data!');
 });
