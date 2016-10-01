@@ -6,7 +6,8 @@ var map = new HashMap();
 var app = express();
 //Mqtt
 var mqtt = require('mqtt');
-var client  = mqtt.connect('mqtt://test.mosquitto.org');
+//var client  = mqtt.connect('mqtt://test.mosquitto.org');
+var client  = mqtt.connect('127.0.0.1');
 
 client.on('connect', function () {
   console.log('hello.js mqtt connect !!!!');
