@@ -1,7 +1,7 @@
 //Mqtt
 var mqtt = require('mqtt');
 //var client  = mqtt.connect('mqtt://test.mosquitto.org');
-var client  = mqtt.connect('mqtt://1.2.3.4');
+client  = mqtt.connect('mqtt://1.2.3.4');
 
 function connectMqtt(){
    
