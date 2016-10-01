@@ -7,7 +7,7 @@ var app = express();
 //Mqtt
 var mqtt = require('mqtt');
 //var client  = mqtt.connect('mqtt://test.mosquitto.org');
-var client  = mqtt.connect('mqtt://127.0.0.1');
+var client  = mqtt.connect('mqtt://127.0.0.2');
 
 client.on('connect', function () {
   console.log('hello.js mqtt connect !!!!');
