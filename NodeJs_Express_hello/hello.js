@@ -31,7 +31,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/wise_snail_data', function (req, res) {
-  ws_data.mqtt_connect();
+  ws_data.set_connectivity();
   client.publish('agentinfo', 'Hello WiseSnail Data');
   res.send('Hello WiseSnail Data!');
 });
