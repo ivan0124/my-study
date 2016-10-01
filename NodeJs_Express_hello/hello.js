@@ -178,6 +178,11 @@ app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) {
 
 app.get('/sethash', function (req, res) { 
   
+  var arr=[];
+  arr.push('aaaaa');
+  arr.push('bbbbb');
+  console.log('arr[0]=' + arr[0] + 'arr[1]=' + arr[1] + 'arr length=' + arr.length);
+  //
   var cat1 = {colour: "red", name: "Spot1", size: 46};
   var cat2 = {colour: "blue", name: "Spot2", size: 36};
   var cat3 = {colour: "green", name: "Spot3", size: 26};
