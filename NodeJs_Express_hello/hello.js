@@ -181,13 +181,13 @@ app.get('/sethash', function (req, res) {
   var arr=[];
   arr.push('aaaaa');
   arr.push('bbbbb');
-  console.log('arr[0]=' + arr[0] + 'arr[1]=' + arr[1] + 'arr length=' + arr.length);
+  console.log('arr[0]=' + arr[0] + ',arr[1]=' + arr[1] + ',arr length=' + arr.length);
   //
   //var cat1 = {colour: "red", name: "Spot1", size: 46};
   var cat1 = {colour: "red", name: [], size: 46};
   cat1.name.push('cccc');
   cat1.name.push('dddd');
-  console.log('cat1.name[0]=' + cat1.name[0] + 'cat1.name[1]=' + cat1.name[1] + 'cat1.name length=' + cat1.name.length);
+  console.log('cat1.name[0]=' + cat1.name[0] + ',cat1.name[1]=' + cat1.name[1] + ',cat1.name length=' + cat1.name.length);
   //
   var cat2 = {colour: "blue", name: "Spot2", size: 36};
   var cat3 = {colour: "green", name: "Spot3", size: 26};
