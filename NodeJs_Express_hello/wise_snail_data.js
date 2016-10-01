@@ -1,14 +1,14 @@
 //Mqtt
 var mqtt = require('mqtt');
 //var client  = mqtt.connect('mqtt://test.mosquitto.org');
-client  = mqtt.connect('mqtt://1.2.3.4');
+client  = mqtt.connect('mqtt://127.0.0.1');
 
 function connectMqtt(){
    
     if ( client.connected !== true ){
        console.log('mqtt connected=' + client.connected + ',try to connect to mqtt...');
-       client  = mqtt.connect('mqtt://127.0.0.1');
-       setTimeout(connectMqtt, 3000); 
+       //client  = mqtt.connect('mqtt://127.0.0.1');
+       //setTimeout(connectMqtt, 3000); 
     }
 }
 
