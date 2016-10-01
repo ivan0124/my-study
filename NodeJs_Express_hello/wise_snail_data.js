@@ -21,7 +21,7 @@ function connectMqtt(){
     console.log('mqtt_connected=' + mqtt_connected + 'try to connect to mqtt...');
 }
 
-setTimeout(connectMqtt, 1000); 
+setTimeout(connectMqtt, 3); 
 
 module.exports = {
   set_connectivity: function() {
