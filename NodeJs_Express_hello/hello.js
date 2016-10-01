@@ -1,5 +1,6 @@
 var express = require('express');
 var greetings = require("./greetings.js");
+var ws_data = require('./wise_snail_data.js');
 var HashMap = require('hashmap').HashMap;
 var map = new HashMap();
 var app = express();
@@ -9,7 +10,7 @@ var client  = mqtt.connect('mqtt://test.mosquitto.org');
 
 client.on('connect', function () {
   client.subscribe('presence');
-  client.publish('presence', 'Hello mqtt');
+  client.publish('agentinfo', 'Hello mqtt');
 })
  
 client.on('message', function (topic, message) {
@@ -26,6 +27,11 @@ app.get('/', function (req, res) {
   // "Hola"  
   greetings.sayHelloInSpanish();  
   res.send('Hello World!');
+});
+
+app.get('/wise_snail_data', function (req, res) {
+  client.publish('agentinfo', 'Hello WiseSnail Data');
+  res.send('Hello WiseSnail Data!');
 });
 
 function myTest( jsonObj ){
