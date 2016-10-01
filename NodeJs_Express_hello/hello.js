@@ -184,32 +184,32 @@ app.get('/sethash', function (req, res) {
   console.log('arr[0]=' + arr[0] + ',arr[1]=' + arr[1] + ',arr length=' + arr.length);
   //
   //var cat1 = {colour: "red", name: "Spot1", size: 46};
-  var cat1 = {colour: "red", name: [], size: 46};
+  var cat1 = {colour: 'red', name: [], size: 46};
   cat1.name.push('cccc');
   cat1.name.push('dddd');
   console.log('cat1.name[0]=' + cat1.name[0] + ',cat1.name[1]=' + cat1.name[1] + ',cat1.name length=' + cat1.name.length);
   //
-  var cat2 = {colour: "blue", name: "Spot2", size: 36};
-  var cat3 = {colour: "green", name: "Spot3", size: 26};
+  var cat2 = {colour: 'blue', name: 'Spot2', size: 36};
+  var cat3 = {colour: 'green', name: 'Spot3', size: 26};
   //
-  map.set("key1", cat1);
-  map.set("key2", cat2);
-  map.set("key3", cat3);
+  map.set('key1', cat1);
+  map.set('key2', cat2);
+  map.set('key3', cat3);
   
   res.send('/set/Hello World!');
 });
 
 app.get('/gethash', function (req, res) {
   
-  var cat=map.get("key1");
-  if (typeof cat != "undefined") {
+  var cat=map.get('key1');
+  if (typeof cat != 'undefined') {
       console.log('get cat.colour='+cat.colour);  
-      cat.colour="gray";
+      cat.colour='gray';
   }
   //
   map.forEach(function(obj, key) {
-      if (typeof obj != "undefined") {
-          console.log(key + " : " + obj.colour);
+      if (typeof obj !== 'undefined') {
+          console.log(key + ' : ' + obj.colour);
       }
   });  
   res.send('/get/Hello World!');
