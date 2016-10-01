@@ -19,10 +19,10 @@ client.on('message', function (topic, message) {
 function connectMqtt(){
   
     console.log('mqtt status=' + client.connected + ',try to connect to mqtt...');
-    setTimeout(connectMqtt, 3); 
+    setTimeout(connectMqtt, 3000); 
 }
 
-setTimeout(connectMqtt, 3); 
+setTimeout(connectMqtt, 3000); 
 
 module.exports = {
   set_connectivity: function() {
