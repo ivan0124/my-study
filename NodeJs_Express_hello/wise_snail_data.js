@@ -4,7 +4,7 @@ var mqtt = require('mqtt');
 client  = mqtt.connect('mqtt://127.0.0.1'); 
 
 client.on('connect', function () {
-  console.log('[WiseSnail] mqtt connect !!!!');
+  console.log('[wise_snail_data] mqtt connect !!!!');
   client.subscribe('agentinfo');
    
 })
@@ -18,9 +18,8 @@ client.on('message', function (topic, message) {
 
 module.exports = {
   set_connectivity: function() {
-    console.log('[wise_snail] set_connectivity');
-    client.publish('agentinfo', '[set_connectivity] Hello mqtt');
-    return "HELLO";
+    console.log('[wise_snail_data] set_connectivity');
+    return;
   },
        
   sayHelloInSpanishx: function() {
