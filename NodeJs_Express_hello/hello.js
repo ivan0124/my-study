@@ -192,6 +192,8 @@ app.get('/sethash', function (req, res) {
   var cat2 = {colour: 'blue', name: 'Spot2', size: 36};
   var cat3 = {colour: 'green', name: 'Spot3', size: 26};
   //
+  var connectivity={ capability:'null', sensor_hub: [] };
+  //
   map.set('key1', cat1);
   map.set('key2', cat2);
   map.set('key3', cat3);
