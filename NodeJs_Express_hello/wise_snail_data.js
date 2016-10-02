@@ -21,6 +21,7 @@ client.on('message', function (topic, message) {
     console.log('[wise_snail_data] conn key1 exist');
     var sen= conn.sensor_hub.get('123');
     console.log('sen.id=' + sen.cmd + ', sen.cap=' + sen.msg );
+    sen.msg = 'I change the msg';
   }
   else{
     console.log('[wise_snail_data] conn key1 does nost exist');
