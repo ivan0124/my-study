@@ -20,7 +20,7 @@ client.on('message', function (topic, message) {
   //
   var conn = {cap: 'null', sensor_hub: sensor_hub_map };
   var sen= conn.sensor_hub.get('123');
-  console.log('sen.id=' + tmp_sen.id + ', sen.cap=' + tmp_sen.cap );
+  console.log('sen.id=' + sen.id + ', sen.cap=' + sen.cap );
   //client.end()
   
 })
