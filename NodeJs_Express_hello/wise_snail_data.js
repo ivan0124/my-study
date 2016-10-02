@@ -16,11 +16,11 @@ client.on('message', function (topic, message) {
   console.log('topic=' + topic.toString() + ',  msg=' + message.toString());
   
   //
-  //var key_id=get_id( topic.toString());
+  var key_id=get_id( topic.toString());
   //
   console.log('[wise_snail_data] conn_map.count() = ' + conn_map.count());
   
-  var conn=conn_map.get('key1');
+  var conn=conn_map.get(key_id);
   console.log('[wise_snail_data] type conn = ' + typeof conn);
   
   if (typeof conn !== 'undefined') {
@@ -48,12 +48,10 @@ client.on('message', function (topic, message) {
   
 })
 
-/*
 function get_id( topic ){
   console.log('[get_id] get topic id' );
-  return 'Key1';
+  return 'key1';
 }
-*/
 
 module.exports = {
   set_connectivity: function() {
