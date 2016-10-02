@@ -20,7 +20,7 @@ client.on('message', function (topic, message) {
   if (typeof conn !== 'undefined') {
     console.log('[wise_snail_data] conn key1 exist');
     var sen= conn.sensor_hub.get('123');
-    console.log('sen.id=' + sen.cmd + ', sen.cap=' + sen.msg );
+    console.log('sen.cmd=' + sen.cmd + ', sen.msg=' + sen.msg );
     sen.msg = 'I change the msg';
     
   }
@@ -52,7 +52,7 @@ module.exports = {
   get_connectivity: function() {
     var sen= conn.sensor_hub.get('123');
     if (typeof sen !== 'undefined') {
-       console.log('sen.id=' + sen.cmd + ', sen.cap=' + sen.msg );
+       console.log('sen.cmd=' + sen.cmd + ', sen.msg=' + sen.msg );
     }
     return;
   }
