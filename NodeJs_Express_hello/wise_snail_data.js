@@ -16,7 +16,7 @@ client.on('message', function (topic, message) {
   console.log('topic=' + topic.toString() + ',  msg=' + message.toString());
   
   //
-  conn=conn_map.get('key1');
+  var conn=conn_map.get('key1');
   if (typeof conn != 'undefined') {
     
     console.log('[wise_snail_data] conn key1 does not exist');
@@ -31,8 +31,8 @@ client.on('message', function (topic, message) {
   }
   else{
     console.log('[wise_snail_data] conn key1 exist');
-    var sen= conn.sensor_hub.get('123');
-    console.log('sen.id=' + sen.cmd + ', sen.cap=' + sen.msg );
+    //var sen= conn.sensor_hub.get('123');
+    //console.log('sen.id=' + sen.cmd + ', sen.cap=' + sen.msg );
   }
   //
   //client.end()
