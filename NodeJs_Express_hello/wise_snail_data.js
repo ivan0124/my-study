@@ -27,9 +27,6 @@ client.on('message', function (topic, message) {
 })
 
 
-function s
-
-
 module.exports = {
   set_connectivity: function() {
     console.log('[wise_snail_data] set_connectivity');
