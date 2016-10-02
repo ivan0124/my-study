@@ -18,7 +18,7 @@ client.on('message', function (topic, message) {
   //
   var key_id=get_id( topic.toString());
   //
-  var conn=conn_map.get(key_id);
+  var conn=conn_map.get('Key1');
   if (typeof conn !== 'undefined') {
     console.log('[wise_snail_data] conn key1 exist');
     var sen= conn.sensor_hub.get('123');
