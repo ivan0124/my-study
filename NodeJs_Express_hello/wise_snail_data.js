@@ -15,12 +15,12 @@ client.on('message', function (topic, message) {
   console.log('topic=' + topic.toString() + ',  msg=' + message.toString());
   
   var sensor_hub_map = new HashMap();
-  var sensor1 = {id: topic.toString(), cap: message.toString() };
+  var sensor1 = { cmd: topic.toString(), msg: message.toString() };
   sensor_hub_map.set('123', sensor1);
   //
   var conn = {cap: 'null', sensor_hub: sensor_hub_map };
   var sen= conn.sensor_hub.get('123');
-  console.log('sen.id=' + sen.id + ', sen.cap=' + sen.cap );
+  console.log('sen.id=' + sen.cmd + ', sen.cap=' + sen.msg );
   //client.end()
   
 })
