@@ -23,7 +23,7 @@ client.on('message', function (topic, message) {
   var conn=conn_map.get('key1');
   console.log('[wise_snail_data] type conn = ' + typeof conn);
   
-  if (typeof conn != 'undefined') {
+  if (typeof conn !== 'undefined') {
     console.log('[wise_snail_data] conn key1 exist');
     var sen= conn.sensor_hub.get('123');
     console.log('sen.cmd=' + sen.cmd + ', sen.msg=' + sen.msg );
