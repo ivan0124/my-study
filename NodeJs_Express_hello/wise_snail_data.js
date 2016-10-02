@@ -16,7 +16,7 @@ client.on('message', function (topic, message) {
   console.log('topic=' + topic.toString() + ',  msg=' + message.toString());
   
   //
-  var key_id=get_id( topic.toString());
+  //var key_id=get_id( topic.toString());
   //
   var conn=conn_map.get('Key1');
   console.log('[wise_snail_data] type conn = ' + typeof conn);
@@ -46,10 +46,12 @@ client.on('message', function (topic, message) {
   
 })
 
+/*
 function get_id( topic ){
   console.log('[get_id] get topic id' );
   return 'Key1';
 }
+*/
 
 module.exports = {
   set_connectivity: function() {
