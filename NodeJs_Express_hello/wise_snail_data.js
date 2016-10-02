@@ -20,7 +20,7 @@ client.on('message', function (topic, message) {
   //
   console.log('[wise_snail_data] conn_map.count() = ' + conn_map.count());
   
-  var conn=conn_map.get('Key1');
+  var conn=conn_map.get('key1');
   console.log('[wise_snail_data] type conn = ' + typeof conn);
   
   if (typeof conn != 'undefined') {
