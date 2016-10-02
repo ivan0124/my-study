@@ -56,16 +56,23 @@ function get_id( topic ){
 module.exports = {
   set_connectivity: function() {
     console.log('[wise_snail_data] set_connectivity');
+    var conn=conn_map.get('key1');
+    if (typeof conn !== 'undefined') {
+       var sensor1 = { cmd: 'xxxx', msg: 'yyyy' };
+       conn_map.sensor_hub.set('456', sensor1);
+    }    
     return;
   },
        
   get_connectivity: function() {
     var conn=conn_map.get('key1');
     if (typeof conn !== 'undefined') {
+      /*
       var sen= conn.sensor_hub.get('123');
       if (typeof sen !== 'undefined') {
         console.log('[get_connectivity]sen.cmd=' + sen.cmd + ', sen.msg=' + sen.msg );
       }
+      */
     }
     return;
   }
