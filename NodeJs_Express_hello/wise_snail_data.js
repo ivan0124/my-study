@@ -34,12 +34,12 @@ client.on('message', function (topic, message) {
     console.log('[wise_snail_data] conn key1 does nost exist');
     
     var sensor_hub_map = new HashMap();
-    var sensor1 = { cmd: topic.toString(), msg: message.toString() };
-    sensor_hub_map.set('123', sensor1);
+    ////var sensor1 = { cmd: topic.toString(), msg: message.toString() };
+    ////sensor_hub_map.set('123', sensor1);
     //
     var co = {cap: 'null', sensor_hub: sensor_hub_map };
-    var sen= co.sensor_hub.get('123');
-    console.log('sen.cmd=' + sen.cmd + ', sen.msg=' + sen.msg );
+    ////var sen= co.sensor_hub.get('123');
+    ////console.log('sen.cmd=' + sen.cmd + ', sen.msg=' + sen.msg );
     conn_map.set(key_id, co);    
 
   }
@@ -58,7 +58,10 @@ module.exports = {
     console.log('[wise_snail_data] set_connectivity');
     var conn=conn_map.get('key1');
     if (typeof conn !== 'undefined') {
-       var sensor1 = { cmd: 'xxxx', msg: 'yyyy' };
+       var sensor1 = { cmd: 'xxxx_1', msg: 'yyyy_1' };
+       conn.sensor_hub.set('123', sensor1);
+       //
+       var sensor2 = { cmd: 'xxxx_2', msg: 'yyyy_2' };
        conn.sensor_hub.set('456', sensor1);
     }    
     return;
