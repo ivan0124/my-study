@@ -1,6 +1,7 @@
 //Mqtt
 var mqtt = require('mqtt');
 var HashMap = require('hashmap').HashMap;
+var conn_map = new HashMap();
 
 client  = mqtt.connect('mqtt://127.0.0.1'); 
 
@@ -21,6 +22,8 @@ client.on('message', function (topic, message) {
   var conn = {cap: 'null', sensor_hub: sensor_hub_map };
   var sen= conn.sensor_hub.get('123');
   console.log('sen.id=' + sen.cmd + ', sen.cap=' + sen.msg );
+  
+  conn_map.set('key1', conn);
   //client.end()
   
 })
