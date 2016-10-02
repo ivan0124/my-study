@@ -16,7 +16,7 @@ client.on('message', function (topic, message) {
   console.log('topic=' + topic.toString() + ',  msg=' + message.toString());
   
   //
-  var conn=conn_map.get('key1');
+  conn=conn_map.get('key1');
   if (typeof conn != 'undefined') {
     
     console.log('[wise_snail_data] conn key1 does not exist');
