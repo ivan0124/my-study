@@ -37,6 +37,11 @@ app.get('/wise_snail_data', function (req, res) {
   res.send('Hello WiseSnail Data!');
 });
 
+app.get('/get_wise_snail_data', function (req, res) {
+  ws_data.get_connectivity();
+  res.send('Get WiseSnail Data!');
+});
+
 function myTest( jsonObj ){
   
      for (key in jsonObj) {
