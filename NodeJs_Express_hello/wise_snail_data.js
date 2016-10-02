@@ -16,6 +16,8 @@ client.on('message', function (topic, message) {
   console.log('topic=' + topic.toString() + ',  msg=' + message.toString());
   
   //
+  get_id( topic.toString());
+  //
   var conn=conn_map.get('key1');
   if (typeof conn !== 'undefined') {
     console.log('[wise_snail_data] conn key1 exist');
@@ -42,6 +44,9 @@ client.on('message', function (topic, message) {
   
 })
 
+function get_id( topic ){
+  console.log('[get_id] get topic id' );
+}
 
 module.exports = {
   set_connectivity: function() {
