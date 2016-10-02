@@ -62,7 +62,7 @@ module.exports = {
        conn.sensor_hub.set('123', sensor1);
        //
        var sensor2 = { cmd: 'xxxx_2', msg: 'yyyy_2' };
-       conn.sensor_hub.set('456', sensor1);
+       conn.sensor_hub.set('456', sensor2);
     }    
     return;
   },
