@@ -59,7 +59,7 @@ module.exports = {
     var conn=conn_map.get('key1');
     if (typeof conn !== 'undefined') {
        var sensor1 = { cmd: 'xxxx', msg: 'yyyy' };
-       conn_map.sensor_hub.set('456', sensor1);
+       conn.sensor_hub.set('456', sensor1);
     }    
     return;
   },
