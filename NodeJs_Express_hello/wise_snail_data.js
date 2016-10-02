@@ -12,7 +12,7 @@ client.on('connect', function () {
  
 client.on('message', function (topic, message) {
   // message is Buffer 
-  console.log('topic=' + topic + 'msg=' + message.toString());
+  console.log('topic=' + topic.toString() + 'msg=' + message.toString());
   
   
   var sensor_hub_map = new HashMap();
