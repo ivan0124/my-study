@@ -17,11 +17,12 @@ client.on('message', function (topic, message) {
   
   //
   var conn=conn_map.get('key1');
-  if (typeof conn != 'undefined') {
+  if (typeof conn !== 'undefined') {
     console.log('[wise_snail_data] conn key1 exist');
     var sen= conn.sensor_hub.get('123');
     console.log('sen.id=' + sen.cmd + ', sen.cap=' + sen.msg );
     sen.msg = 'I change the msg';
+    
   }
   else{
     console.log('[wise_snail_data] conn key1 does nost exist');
@@ -48,7 +49,11 @@ module.exports = {
     return;
   },
        
-  sayHelloInSpanishx: function() {
-    return "Hola";
+  get_connectivity: function() {
+    var sen= conn.sensor_hub.get('123');
+    if (typeof sen !== 'undefined') {
+       console.log('sen.id=' + sen.cmd + ', sen.cap=' + sen.msg );
+    }
+    return;
   }
 };
