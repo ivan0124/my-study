@@ -18,6 +18,8 @@ client.on('message', function (topic, message) {
   //
   //var key_id=get_id( topic.toString());
   //
+  console.log('[wise_snail_data] conn_map.count() = ' + conn_map.count());
+  
   var conn=conn_map.get('Key1');
   console.log('[wise_snail_data] type conn = ' + typeof conn);
   
