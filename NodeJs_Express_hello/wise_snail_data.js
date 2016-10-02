@@ -14,7 +14,7 @@ client.on('message', function (topic, message) {
   // message is Buffer 
   console.log('topic=' + topic.toString() + 'msg=' + message.toString());
   
-  
+  /*
   var sensor_hub_map = new HashMap();
   var sensor1 = {id: topic.toString(), cap: message.toString() };
   sensor_hub_map.set('123', sensor1);
@@ -23,6 +23,7 @@ client.on('message', function (topic, message) {
   var sen= conn.sensor_hub.get('123');
   console.log('sen.id=' + tmp_sen.id + ', sen.cap=' + tmp_sen.cap );
   //client.end()
+  */
 })
 
 
