@@ -39,7 +39,7 @@ client.on('message', function (topic, message) {
     //
     var co = {cap: 'null', sensor_hub: sensor_hub_map };
     var sen= co.sensor_hub.get('123');
-    console.log('sen.id=' + sen.cmd + ', sen.cap=' + sen.msg );
+    console.log('sen.cmd=' + sen.cmd + ', sen.msg=' + sen.msg );
     conn_map.set(key_id, co);    
 
   }
@@ -67,12 +67,13 @@ module.exports = {
   get_connectivity: function() {
     var conn=conn_map.get('key1');
     if (typeof conn !== 'undefined') {
-      /*
-      var sen= conn.sensor_hub.get('123');
-      if (typeof sen !== 'undefined') {
-        console.log('[get_connectivity]sen.cmd=' + sen.cmd + ', sen.msg=' + sen.msg );
-      }
-      */
+      
+      conn.sensor_hub.forEach(function(obj, key) {
+          if (typeof obj !== 'undefined') {
+              console.log('key=' +  key + ', sen.cmd=' + obj.cmd + ', sen.msg=' + obj.msg );
+          }
+      });
+      
     }
     return;
   }
