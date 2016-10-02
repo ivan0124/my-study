@@ -193,10 +193,22 @@ app.get('/sethash', function (req, res) {
   console.log('arr[0]=' + arr[0] + ',arr[1]=' + arr[1] + ',arr length=' + arr.length);
   //
   //var cat1 = {colour: "red", name: "Spot1", size: 46};
+  var sensor_hub_map = new HashMap();
+  var sensor1 = {id: '123', cap: 'gggg' };
+  sensor_hub_map.set('123', sensor1);
+  //
+  var cat1 = {colour: 'red', name: sensor_hub_map, size: 46};
+  //cat1.name.push('cccc');
+  //cat1.name.push('dddd');
+  var tmp_sen=cat1.name.get('123');
+  console.log('tmp_sen.id=' + tmp_sen.id + ',tmp_sen.cap=' + tmp_sen.cap );
+  //
+  /*
   var cat1 = {colour: 'red', name: [], size: 46};
   cat1.name.push('cccc');
   cat1.name.push('dddd');
   console.log('cat1.name[0]=' + cat1.name[0] + ',cat1.name[1]=' + cat1.name[1] + ',cat1.name length=' + cat1.name.length);
+  */
   //
   var cat2 = {colour: 'blue', name: 'Spot2', size: 36};
   var cat3 = {colour: 'green', name: 'Spot3', size: 26};
