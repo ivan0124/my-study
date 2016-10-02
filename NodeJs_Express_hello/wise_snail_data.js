@@ -68,6 +68,7 @@ module.exports = {
   },
        
   get_connectivity: function() {
+    console.log('[get_connectivity] conn_map.count() = ' + conn_map.count());
     var conn=conn_map.get('key1');
     if (typeof conn !== 'undefined') {
       
