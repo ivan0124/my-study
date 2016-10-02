@@ -13,7 +13,7 @@ client.on('connect', function () {
  
 client.on('message', function (topic, message) {
   // message is Buffer 
-  console.log('topic=' + topic.toString() + ',  msg=' + message.susiCommData);
+  console.log('topic=' + topic.toString() + ',  msg=' + message.toString());
   
   //
   var key_id=get_id( topic.toString());
