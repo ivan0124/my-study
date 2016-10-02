@@ -36,7 +36,7 @@ client.on('message', function (topic, message) {
     sensor_hub_map.set('123', sensor1);
     //
     var co = {cap: 'null', sensor_hub: sensor_hub_map };
-    var sen= conn.sensor_hub.get('123');
+    var sen= co.sensor_hub.get('123');
     console.log('sen.id=' + sen.cmd + ', sen.cap=' + sen.msg );
     conn_map.set('key1', co);    
 
