@@ -9,7 +9,7 @@ client  = mqtt.connect('mqtt://127.0.0.1');
 var msgType = { error: -1, unknown: 0,
                 vgw_connect: 1, vgw_os_info: 2, vgw_capability: 3, vgw_willmessage: 4,
                 vgw_disconnect:5 };
-var vgwObj = { connect: 'null' };
+var vgwObj = { connect: 'null', os_info: 'null' };
 
 
 client.on('connect', function () {
