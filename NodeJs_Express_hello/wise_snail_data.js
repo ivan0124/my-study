@@ -72,6 +72,11 @@ client.on('message', function (topic, message) {
           
           break;
       }
+    case msgType.vgw_info_spec:
+      {
+          console.log('[' + device_id + ']' + ': vgw_info_spec');
+          break;
+      }
     case msgType.vgw_disconnect:
       {
           console.log('[' + device_id + ']' + ': vgw_disconnect');
@@ -160,6 +165,11 @@ function getMsgType(topic, jsonObj){
         if ( jsonObj.susiCommData.commCmd === 116 ){
             return msgType.vgw_os_info;
         }
+      
+        if ( jsonObj.susiCommData.commCmd === 2052 ){
+            return msgType.vgw_info_spec;
+        } 
+          
     }
   
     if ( topic_arr[4] === 'willmessage'){
