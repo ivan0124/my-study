@@ -207,10 +207,10 @@ function getMsgType(topic, jsonObj){
       
         if ( jsonObj.susiCommData.type === 'SenHub' && 
              jsonObj.susiCommData.commCmd === 1 ){
-             if ( jsonObj.susiCommData.status === 1){
+             if ( jsonObj.susiCommData.status === '1'){
                  return msgType.sen_connect;
              }
-             if ( jsonObj.susiCommData.status === 0){
+             if ( jsonObj.susiCommData.status === '0'){
                  return msgType.sen_disconnect;
              }
         }      
