@@ -42,10 +42,11 @@ client.on('message', function (topic, message) {
     case msgType.vgw_connect:
       {
           console.log('[' + device_id + ']' + ': vgw_connect');
-          vgwObj.connect = message.toString();
+          var vgw = JSON.parse(JSON.stringify(vgwObj));
+          vgw.connect = message.toString();
           if ( vgw_map.has(device_id) === false ) {
               console.log('[' + device_id + ']' + ': create vgw_map');
-              vgw_map.set(device_id, vgwObj );
+              vgw_map.set(device_id, vgw );
           }
           break;
       }
