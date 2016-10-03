@@ -55,7 +55,7 @@ app.get('/vgw_disconnect', function (req, res) {
 \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCDEF\",\"mac\":\"000E4CABCDEF\",\"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
 \"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":0,\"commCmd\":1,\"requestID\":21,\"agentID\":\"0000000E4CABCDEF\",\
 \"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}');
-  res.send('vgw_agentinfoack');
+  res.send('vgw_disconnect');
 });
 
 app.get('/vgw_willmessage', function (req, res) {
