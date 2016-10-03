@@ -172,10 +172,10 @@ function is_ip_valid( ip ){
       return false;
   }
   
-  if ( (ip_arr[0] > 0 && ip_arr[0] < 256) &&
-       (ip_arr[1] > 0 && ip_arr[1] < 256) &&
-       (ip_arr[2] > 0 && ip_arr[2] < 256) &&
-       (ip_arr[3] > 0 && ip_arr[3] < 256)){
+  if ( (ip_arr[0] >= 0 && ip_arr[0] < 256) &&
+       (ip_arr[1] >= 0 && ip_arr[1] < 256) &&
+       (ip_arr[2] >= 0 && ip_arr[2] < 256) &&
+       (ip_arr[3] >= 0 && ip_arr[3] < 256)){
       return true;      
   }
   
