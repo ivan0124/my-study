@@ -5,7 +5,7 @@ var conn_map = new HashMap();
 
 client  = mqtt.connect('mqtt://127.0.0.1'); 
 
-var susiCmdType = { error: -1, vgw_connect: 1, vgw_os_info: 2, vgw_capability: 3 };
+var msgType = { error: -1, vgw_connect: 1, vgw_os_info: 2, vgw_capability: 3 };
 
 
 client.on('connect', function () {
@@ -22,8 +22,8 @@ client.on('message', function (topic, message) {
   var msg_type = getSusiCmdType(topic, message);
   
   switch(msg_type){
-    case susiCmdType.vgw_connect:
-      console.log('susiCmdType.vgw_connect');
+    case msgType.vgw_connect:
+      console.log('msgType.vgw_connect');
       break;
     default:
       console.log('default');
@@ -69,7 +69,7 @@ function getSusiCmdType(topic, message){
         var jsonObj = JSON.parse(message.toString());
     } catch (e) {
         console.error(e);
-        return susiCmdType.error;
+        return msgType.error;
     }
     
     var topic_arr = topic.toString().split('/');
@@ -78,12 +78,12 @@ function getSusiCmdType(topic, message){
         console.log('=======> topic_arr[4] =' + topic_arr[4]);
         console.log('jsonObj.susiCommData.type =' + jsonObj.susiCommData.type + ',jsonObj.susiCommData.commCmd ='  + jsonObj.susiCommData.commCmd);
         if ( jsonObj.susiCommData.type === 'IoTGW' && jsonObj.susiCommData.commCmd === 1){
-            return susiCmdType.vgw_connect;
+            return msgType.vgw_connect;
         }
     }
     
     
-    return susiCmdType.error;
+    return msgType.error;
 }
 
 function get_id( topic ){
