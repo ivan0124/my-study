@@ -6,7 +6,7 @@ var vgw_map = new HashMap();
 
 client  = mqtt.connect('mqtt://127.0.0.1'); 
 
-var msgType = { error: -1, unknown: 0,vgw_connect: 1, vgw_os_info: 2, vgw_capability: 3 };
+var msgType = { error: -1, unknown: 0,vgw_connect: 1, vgw_os_info: 2, vgw_capability: 3, vgw_willmessage: 4 };
 var vgwObj = { vgw_connect: 'null' };
 
 
@@ -30,9 +30,14 @@ client.on('message', function (topic, message) {
   switch(msg_type){
     case msgType.vgw_connect:
       {
-          console.log('[' + device_id + ']' + ': msgType.vgw_connect');
+          console.log('[' + device_id + ']' + ': vgw_connect');
           vgwObj.vgw_connect = message.toString();
           vgw_map.set(device_id, vgwObj );
+          break;
+      }
+    case msgType.vgw_willmessage:
+      {
+          console.log('[' + device_id + ']' + ': vgw_willmessage');
           break;
       }
     case msgType.unknown:
@@ -94,6 +99,10 @@ function getMsgType(topic, message){
         if ( jsonObj.susiCommData.type === 'IoTGW' && jsonObj.susiCommData.commCmd === 1){
             return msgType.vgw_connect;
         }
+    }
+  
+    if ( topic_arr[4] === 'willmessage'){
+        return msgType.vgw_willmessage;
     }
     
     
