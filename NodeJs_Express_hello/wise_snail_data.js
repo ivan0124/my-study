@@ -139,7 +139,9 @@ function getMsgType(topic, message){
     }
   
     if ( topic_arr[4] === 'agentactionreq'){
-        return msgType.vgw_os_info;
+        if ( jsonObj.susiCommData.commCmd === 116 ){
+            return msgType.vgw_os_info;
+        }
     }
   
     if ( topic_arr[4] === 'willmessage'){
