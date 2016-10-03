@@ -87,17 +87,6 @@ client.on('message', function (topic, message) {
                   //add conn_map here
                     var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
                     list_info_spec_all_connectivity(infoObj);
-                    /*
-                    for (key in infoObj) {
-                         if (infoObj.hasOwnProperty(key)) {
-                             //if ( typeof infoObj[key] === 'object' ){
-                                 console.log('[key]:' +key + " =" + infoObj[key] + " ,type = " + Object.prototype.toString.call(infoObj));
-                                 console.log('infoObj[bn]=====' + infoObj['bn']);
-                                 //console.log(key + " G===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
-                             //}
-                         }
-                     }
-                     */
                     //var connObj = { vgw: 'null',  sensor_hub_list: {} };
                     //conn_map.set('123', connObj);
                 }
