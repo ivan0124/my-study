@@ -19,7 +19,9 @@ client.on('connect', function () {
  
 client.on('message', function (topic, message) {
   // message is Buffer 
+  console.log('--------------------------------------------------------------');
   console.log('topic=' + topic.toString() + ',  msg=' + message.toString());
+  console.log('msg=' + message.toString());
   
   var msg_type = getMsgType(topic, message);
   var device_id = topic.toString().split('/')[3];
@@ -39,6 +41,8 @@ client.on('message', function (topic, message) {
       console.log('default');
       break;
   }
+  
+  console.log('--------------------------------------------------------------');
   /*
   //
   var key_id=get_id( topic.toString());
