@@ -140,6 +140,24 @@ function getMsgType(topic, message){
     return msgType.unknown;
 }
 
+function is_ip_valid( ip ){
+  
+  var ip_arr=ip.split('.');
+  //console.log( 'ip_arr.length = ' + ip_arr.length);
+  if (ip_arr.length !== 4 ){
+      return false;
+  }
+  
+  if ( (ip_arr[0] > 0 && ip_arr[0] < 256) &&
+       (ip_arr[1] > 0 && ip_arr[1] < 256) &&
+       (ip_arr[2] > 0 && ip_arr[2] < 256) &&
+       (ip_arr[3] > 0 && ip_arr[3] < 256)){
+      return true;      
+  }
+  
+  return false;
+}
+
 function get_id( topic ){
   console.log('[get_id] get topic id' );
   return 'key1';
