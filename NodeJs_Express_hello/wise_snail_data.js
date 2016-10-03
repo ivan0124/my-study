@@ -226,4 +226,8 @@ module.exports = {
     }
     return;
   }
+  
+  show_vgw_map: function() {
+    return;
+  }
 };
