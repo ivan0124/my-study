@@ -9,7 +9,7 @@ client  = mqtt.connect('mqtt://127.0.0.1');
 var msgType = { error: -1, unknown: 0,
                 vgw_connect: 1, vgw_os_info: 2, vgw_info_spec: 3, vgw_willmessage: 4,
                 vgw_disconnect:5 };
-var vgwObj = { connect: 'null', os_info: 'null', dev_info_spec: 'null'  };
+var devObj = { connect: 'null', os_info: 'null', dev_info_spec: 'null'  };
 
 
 client.on('connect', function () {
@@ -42,8 +42,8 @@ client.on('message', function (topic, message) {
     case msgType.vgw_connect:
       {
           console.log('[' + device_id + ']' + ': vgw_connect');
-          //copy vgwObj object as vgw objcect
-          var vgw = JSON.parse(JSON.stringify(vgwObj));
+          //copy devObj object as vgw objcect
+          var vgw = JSON.parse(JSON.stringify(devObj));
           vgw.connect = message.toString();
           if ( vgw_map.has(device_id) === false ) {
               console.log('[' + device_id + ']' + ': create vgw_map');
@@ -76,7 +76,7 @@ client.on('message', function (topic, message) {
       }
     case msgType.vgw_info_spec:
       {
-          console.log('vgwObj.connect ================> ' + vgwObj.connect);
+          console.log('devObj.connect ================> ' + devObj.connect);
           console.log('[' + device_id + ']' + ': vgw_info_spec');
           if ( vgw_map.has(device_id) === true ) {
                 var vgw=vgw_map.get(device_id);
