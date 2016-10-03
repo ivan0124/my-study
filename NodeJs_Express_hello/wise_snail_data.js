@@ -230,8 +230,8 @@ module.exports = {
   show_all_vgw_map: function() {
     vgw_map.forEach(function(obj, key) {
       if (typeof obj !== 'undefined') {
-          console.log(key + ' : ' + obj.connect);
-          console.log(key + ' : ' + obj.os_info);
+          console.log('['+key+']'+'[connect]' + ' : ' + obj.connect);
+          console.log('['+key+']'+'[os_info]' + ' : ' + obj.os_info);
       }
     }); 
     return;
