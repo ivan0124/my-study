@@ -104,7 +104,9 @@ function getMsgType(topic, message){
   
     if ( topic_arr[4] === 'agentinfoack'){
         //console.log('jsonObj.susiCommData.type =' + jsonObj.susiCommData.type + ',jsonObj.susiCommData.commCmd ='  + jsonObj.susiCommData.commCmd);
-        if ( jsonObj.susiCommData.type === 'IoTGW' && jsonObj.susiCommData.commCmd === 1){
+        if ( jsonObj.susiCommData.type === 'IoTGW' && 
+             jsonObj.susiCommData.commCmd === 1 &&
+             jsonObj.susiCommData.status === 1){
             return msgType.vgw_connect;
         }
     }
