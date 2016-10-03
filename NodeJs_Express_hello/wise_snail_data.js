@@ -225,9 +225,15 @@ module.exports = {
       
     }
     return;
-  }
+  },
   
   show_vgw_map: function() {
+    vgw_map.forEach(function(obj, key) {
+      if (typeof obj !== 'undefined') {
+          console.log(key + ' : ' + obj.connect);
+          console.log(key + ' : ' + obj.os_info);
+      }
+    }); 
     return;
   }
 };
