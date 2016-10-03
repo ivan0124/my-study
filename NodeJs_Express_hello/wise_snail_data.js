@@ -3,12 +3,14 @@ var mqtt = require('mqtt');
 var HashMap = require('hashmap').HashMap;
 var conn_map = new HashMap();
 var vgw_map = new HashMap();
+var sensor_hub_map = new HashMap();
 
 client  = mqtt.connect('mqtt://127.0.0.1'); 
 
 const msgType = { error: -1, unknown: 0,
-                vgw_connect: 1, vgw_os_info: 2, vgw_info_spec: 3, vgw_willmessage: 4,
-                vgw_disconnect:5, vgw_info: 6 };
+                  vgw_connect: 1, vgw_os_info: 2, vgw_info_spec: 3, vgw_willmessage: 4,
+                  vgw_disconnect: 5, vgw_info: 6,
+                  sen_connect: 7 };
 var devObj = { connect: 'null', os_info: 'null', dev_info_spec: 'null',  dev_info: 'null'};
 
 
@@ -125,6 +127,10 @@ client.on('message', function (topic, message) {
               console.log('[' + device_id + ']' + ': remove vgw_map');
               vgw_map.remove(device_id);
           }
+          break;
+      }
+    case msgType.sen_connect:
+      {
           break;
       }
     case msgType.unknown:
