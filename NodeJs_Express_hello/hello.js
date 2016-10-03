@@ -42,6 +42,18 @@ app.get('/get_wise_snail_data', function (req, res) {
   res.send('Get WiseSnail Data!');
 });
 
+app.get('/ip_valid', function (req, res) {
+  
+  var ip='192.168.1.1';
+  var ip_arr=ip.split('.');
+  console.log( 'ip_arr.length---------------' + ip_arr.length);
+  if (ip_arr.length !== 4 ){
+      console.log( 'ip_arr.length !== 4---------------');
+  }
+  
+  res.send('Get WiseSnail Data!');
+});
+
 app.get('/vgw_agentinfoack', function (req, res) {
   client.publish('/cagent/admin/0000000E4CABCDEF/agentinfoack', '{\"susiCommData\":{\"devID\":\"0000000E4CABCDEF\",\"parentID\":\"\",\
 \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCDEF\",\"mac\":\"000E4CABCDEF\",\"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
