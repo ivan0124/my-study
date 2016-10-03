@@ -86,6 +86,8 @@ client.on('message', function (topic, message) {
                   vgw.dev_info_spec = message.toString();
                   //add conn_map here
                     var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
+                    list_info_spec_all_connectivity(infoObj);
+                    /*
                     for (key in infoObj) {
                          if (infoObj.hasOwnProperty(key)) {
                              //if ( typeof infoObj[key] === 'object' ){
@@ -94,7 +96,8 @@ client.on('message', function (topic, message) {
                                  //console.log(key + " G===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
                              //}
                          }
-                     }                  
+                     }
+                     */
                     //var connObj = { vgw: 'null',  sensor_hub_list: {} };
                     //conn_map.set('123', connObj);
                 }
@@ -260,6 +263,20 @@ function getMsgType(topic, jsonObj){
     
     
     return msgType.unknown;
+}
+
+function list_info_spec_all_connectivity( infoObj ){
+  
+  //var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
+  for (key in infoObj) {
+    if (infoObj.hasOwnProperty(key)) {
+      //if ( typeof infoObj[key] === 'object' ){
+      console.log('[key]:' +key + " =" + infoObj[key] + " ,type = " + Object.prototype.toString.call(infoObj));
+      console.log('infoObj[bn]=====' + infoObj['bn']);
+      //console.log(key + " G===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
+      //}
+     }
+   } 
 }
 
 function is_ip_valid( ip ){
