@@ -19,7 +19,16 @@ client.on('message', function (topic, message) {
   // message is Buffer 
   console.log('topic=' + topic.toString() + ',  msg=' + message.toString());
   
-  getSusiCmdType(topic, message);
+  var msg_type = getSusiCmdType(topic, message);
+  
+  switch(msg_type){
+    case susiCmdType.vgw_connect:
+      console.log('susiCmdType.vgw_connect');
+      break;
+    default:
+      console.log('default');
+      break;
+  }
   /*
   //
   var key_id=get_id( topic.toString());
