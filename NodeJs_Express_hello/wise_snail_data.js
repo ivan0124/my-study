@@ -269,7 +269,7 @@ function list_info_spec_all_connectivity( infoObj ){
    }
    */
   
-  console.log( 'listObj Start-------------------------------------------------');
+  //console.log( 'listObj Start-------------------------------------------------');
   for (key in infoObj) {
       if (infoObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
@@ -297,7 +297,7 @@ function list_info_spec_all_connectivity( infoObj ){
       }
    }  
   
-   console.log( 'listObj return -------------------------------------------------key=' + key);
+   //console.log( 'listObj return -------------------------------------------------key=' + key);
    return;    
 }
 
