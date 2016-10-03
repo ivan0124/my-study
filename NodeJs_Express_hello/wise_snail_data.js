@@ -59,13 +59,10 @@ function getSusiCmdType(topic, message){
     try {
         var jsonObj = JSON.parse(message.toString());
     } catch (e) {
-        return console.error(e);
-    }
-    console.log('typeof jsonObj =' + typeof jsonObj);
-  
-    if ( typeof jsonObj === 'undefined' ){
+        console.error(e);
         return susiCmdType.error;
     }
+    
     console.log('jsonObj.susiCommData.type =' + jsonObj.susiCommData.type + ',jsonObj.susiCommData.commCmd ='  + jsonObj.susiCommData.commCmd);
     
     return susiCmdType.vgw_connect;
