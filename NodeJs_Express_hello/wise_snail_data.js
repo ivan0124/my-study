@@ -122,14 +122,6 @@ client.on('message', function (topic, message) {
 
 function getMsgType(topic, jsonObj){
   
-  /*
-    try {
-        var jsonObj = JSON.parse(message.toString());
-    } catch (e) {
-        console.error(e);
-        return msgType.error;
-    }
-    */
     var topic_arr = topic.toString().split('/');
     //console.log('=======> topic_arr[4] =' + topic_arr[4]);
   
