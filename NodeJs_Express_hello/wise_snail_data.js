@@ -57,7 +57,7 @@ client.on('message', function (topic, message) {
 function getSusiCmdType(topic, message){
   
     var jsonObj = JSON.parse(message.toString());
-    console.log('jsonObj.susiCommData.type' + jsonObj.susiCommData.type);
+    console.log('jsonObj.susiCommData.type =' + jsonObj.susiCommData.type);
     return susiCmdType.vgw_connect;
 }
 
