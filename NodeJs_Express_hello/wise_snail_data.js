@@ -84,6 +84,9 @@ client.on('message', function (topic, message) {
                 var vgw=vgw_map.get(device_id);
                 if (typeof vgw !== 'undefined') {
                   vgw.dev_info_spec = message.toString();
+                  //add conn_map here
+                    var connObj = { vgw: 'null',  sensor_hub_list: {} };
+                    conn_map.set('123', connObj);
                 }
           }
           else{
