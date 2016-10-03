@@ -19,7 +19,7 @@ client.on('message', function (topic, message) {
   // message is Buffer 
   console.log('topic=' + topic.toString() + ',  msg=' + message.toString());
   
-  var msg_type = getSusiCmdType(topic, message);
+  var msg_type = getMsgType(topic, message);
   
   switch(msg_type){
     case msgType.vgw_connect:
@@ -65,7 +65,7 @@ client.on('message', function (topic, message) {
   */
 })
 
-function getSusiCmdType(topic, message){
+function getMsgType(topic, message){
   
     try {
         var jsonObj = JSON.parse(message.toString());
