@@ -257,6 +257,8 @@ module.exports = {
       if (typeof obj !== 'undefined') {
           console.log('['+key+']'+'[connect]' + ' : ' + obj.connect);
           console.log('['+key+']'+'[os_info]' + ' : ' + obj.os_info);
+          console.log('['+key+']'+'[os_info]' + ' : ' + obj.dev_info_spec);
+        
       }
     }); 
     console.log('--------------------------------------------------------------');
