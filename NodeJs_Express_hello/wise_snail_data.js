@@ -20,7 +20,7 @@ client.on('connect', function () {
 client.on('message', function (topic, message) {
   // message is Buffer 
   console.log('--------------------------------------------------------------');
-  console.log('topic=' + topic.toString() + ',  msg=' + message.toString());
+  console.log('topic=' + topic.toString() );
   console.log('msg=' + message.toString());
   
   var msg_type = getMsgType(topic, message);
