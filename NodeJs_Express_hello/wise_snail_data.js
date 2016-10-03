@@ -89,6 +89,20 @@ client.on('message', function (topic, message) {
           }        
           break;
       }
+    case msgType.vgw_info:
+      {
+          console.log('[' + device_id + ']' + ': vgw_info');
+          if ( vgw_map.has(device_id) === true ) {
+                var vgw=vgw_map.get(device_id);
+                if (typeof vgw !== 'undefined') {
+                  vgw.dev_info = message.toString();
+                }
+          }
+          else{
+               console.log('[msgType.vgw_info]: vgw_map does not exist !!');
+          }         
+          break;
+      }
     case msgType.vgw_disconnect:
       {
           console.log('[' + device_id + ']' + ': vgw_disconnect');
@@ -267,7 +281,7 @@ module.exports = {
           console.log('['+key+']'+'[connect]' + ' : ' + obj.connect);
           console.log('['+key+']'+'[os_info]' + ' : ' + obj.os_info);
           console.log('['+key+']'+'[dev_info_spec]' + ' : ' + obj.dev_info_spec);
-        
+          console.log('['+key+']'+'[dev_info]' + ' : ' + obj.dev_info);
       }
     }); 
     console.log('--------------------------------------------------------------');
