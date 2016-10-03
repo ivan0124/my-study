@@ -133,6 +133,10 @@ client.on('message', function (topic, message) {
       {
           break;
       }
+    case msgType.sen_disconnect:
+      {
+          break;
+      }      
     case msgType.unknown:
       console.log('msgType.unknown');
       break;
