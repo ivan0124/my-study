@@ -131,6 +131,14 @@ client.on('message', function (topic, message) {
       }
     case msgType.sen_connect:
       {
+          console.log('[' + device_id + ']' + ': sen_connect');
+          //copy devObj object as vgw objcect
+          var sen = JSON.parse(JSON.stringify(devObj));
+          sen.connect = message.toString();
+          if ( sensor_hub_map.has(device_id) === false ) {
+              console.log('[' + device_id + ']' + ': create sensor_hub_map');
+              sensor_hub_map.set(device_id, sen );
+          }        
           break;
       }
     case msgType.sen_disconnect:
