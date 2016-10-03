@@ -33,7 +33,10 @@ client.on('message', function (topic, message) {
       {
           console.log('[' + device_id + ']' + ': vgw_connect');
           vgwObj.vgw_connect = message.toString();
-          vgw_map.set(device_id, vgwObj );
+          if ( vgw_map.has(device_id) === false ) {
+              console.log('[' + device_id + ']' + ': create vgw_map');
+              vgw_map.set(device_id, vgwObj );
+          }
           break;
       }
     case msgType.vgw_willmessage:
