@@ -274,7 +274,9 @@ function list_info_spec_all_connectivity( infoObj ){
       if (infoObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
           //if (typeof jsonObj[key] === 'object' ){
-              console.log( key + ', keyVal=======>' + infoObj[key]);
+              if ( key === 'Info' ){
+                  console.log( 'keyVal=======>' + infoObj['bn']);
+              }
           //}
           //else{
               //console.log( 'keyStr=======>' + keyStr + '/' + key);
