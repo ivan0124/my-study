@@ -75,9 +75,9 @@ function getMsgType(topic, message){
     }
     
     var topic_arr = topic.toString().split('/');
+    console.log('=======> topic_arr[4] =' + topic_arr[4]);
   
     if ( topic_arr[4] === 'agentinfoack'){
-        console.log('=======> topic_arr[4] =' + topic_arr[4]);
         console.log('jsonObj.susiCommData.type =' + jsonObj.susiCommData.type + ',jsonObj.susiCommData.commCmd ='  + jsonObj.susiCommData.commCmd);
         if ( jsonObj.susiCommData.type === 'IoTGW' && jsonObj.susiCommData.commCmd === 1){
             return msgType.vgw_connect;
