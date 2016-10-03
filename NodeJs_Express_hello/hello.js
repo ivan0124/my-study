@@ -58,7 +58,7 @@ function is_ip_valid( ip ){
   }
   
   return false;
-}
+};
 
 app.get('/ip_valid', function (req, res) {
   
