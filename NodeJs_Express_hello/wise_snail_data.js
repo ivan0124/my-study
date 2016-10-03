@@ -17,6 +17,7 @@ client.on('connect', function () {
   //client.subscribe('agentinfo');
   client.subscribe('/cagent/admin/+/agentinfoack');
   client.subscribe('/cagent/admin/+/willmessage');
+  client.subscribe('/cagent/admin/+/agentactionreq');
    
 })
  
