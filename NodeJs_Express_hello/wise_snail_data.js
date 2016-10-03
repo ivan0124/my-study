@@ -51,7 +51,8 @@ client.on('message', function (topic, message) {
       }
     case msgType.vgw_os_info:
       {
-          console.log('[' + device_id + ']' + ': vgw_os_info');
+          console.log('[' + device_id + ']' + ': vgw_os_info, IP=' + jsonObj.susiCommData.osInfo.IP);
+          
           break;
       }
     case msgType.vgw_disconnect:
