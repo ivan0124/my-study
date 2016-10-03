@@ -41,6 +41,15 @@ client.on('message', function (topic, message) {
           }
           break;
       }
+    case msgType.vgw_disconnect:
+      {
+          console.log('[' + device_id + ']' + ': vgw_disconnect');
+          if ( vgw_map.has(device_id) === true ) {
+              console.log('[' + device_id + ']' + ': remove vgw_map');
+              vgw_map.remove(device_id);
+          }
+          break;        
+      }
     case msgType.vgw_willmessage:
       {
           console.log('[' + device_id + ']' + ': vgw_willmessage');
