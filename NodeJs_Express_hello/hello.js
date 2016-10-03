@@ -31,6 +31,11 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
+app.get('/show_all_vgw_map', function (req, res) {
+  ws_data.show_all_vgw_map();
+  res.send('show_all_vgw_map!');
+});
+
 app.get('/wise_snail_data', function (req, res) {
   ws_data.set_connectivity();
   client.publish('agentinfo', 'Hello WiseSnail Data');
