@@ -52,11 +52,22 @@ client.on('message', function (topic, message) {
     case msgType.vgw_os_info:
       {
           console.log('[' + device_id + ']' + ': vgw_os_info, IP=' + jsonObj.susiCommData.osInfo.IP);
+          /*
           if ( is_ip_valid(jsonObj.susiCommData.osInfo.IP) === true ){
             console.log('[' + device_id + ']' + ': ip_base');
           }
           else{
             console.log('[' + device_id + ']' + ': none_ip_base');
+          }
+          */
+          if ( vgw_map.has(device_id) === true ) {
+                var vgw=vgw_map.get(device_id);
+                if (typeof vgw !== 'undefined') {
+                  vgw.os_info = message.toString();
+                }
+          }
+          else{
+               console.log('[msgType.vgw_os_info]: vgw_map does not exist !!');
           }
           
           break;
