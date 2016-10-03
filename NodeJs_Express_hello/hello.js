@@ -63,9 +63,9 @@ function is_ip_valid( ip ){
 app.get('/ip_valid', function (req, res) {
   
   var ip='192.168.1.1';
-  /*
-  var res = is_ip_valid( ip );
   
+  var res = is_ip_valid( ip );
+  /*
   if ( res === true){
     console.log( 'valid ip');
   }
