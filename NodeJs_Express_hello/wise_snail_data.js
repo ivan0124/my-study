@@ -85,7 +85,7 @@ client.on('message', function (topic, message) {
                 if (typeof vgw !== 'undefined') {
                   vgw.dev_info_spec = message.toString();
                   //add conn_map here
-                    var infoObj=jsonObj.susiCommData.infoSpec.IoTGW.WSN;
+                    var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
                     for (key in infoObj) {
                          if (infoObj.hasOwnProperty(key)) {
                              //if ( typeof infoObj[key] === 'object' ){
