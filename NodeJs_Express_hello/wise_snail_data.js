@@ -5,6 +5,9 @@ var conn_map = new HashMap();
 
 client  = mqtt.connect('mqtt://127.0.0.1'); 
 
+var susiCmdType{ vgw_connect: 1, vgw_os_info: 2, vgw_capability: 3 };
+
+
 client.on('connect', function () {
   console.log('[wise_snail_data] mqtt connect !!!!');
   //client.subscribe('agentinfo');
@@ -16,6 +19,7 @@ client.on('message', function (topic, message) {
   // message is Buffer 
   console.log('topic=' + topic.toString() + ',  msg=' + message.toString());
   
+  getSusiCmdType(topic, message);
   /*
   //
   var key_id=get_id( topic.toString());
@@ -49,6 +53,10 @@ client.on('message', function (topic, message) {
   //client.end()
   */
 })
+
+function getSusiCmdType(topic, message){
+    return susiCmdType.vgw_connect;
+}
 
 function get_id( topic ){
   console.log('[get_id] get topic id' );
