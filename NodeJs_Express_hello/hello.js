@@ -100,6 +100,14 @@ app.get('/vgw_willmessage', function (req, res) {
   res.send('vgw_willmessage');
 });
 
+app.get('/vgw_os_info', function (req, res) {
+  client.publish('/cagent/admin/0000000E4CABCDEF/agentactionreq', '{\"susiCommData\":{\"osInfo\":{\"cagentVersion\":\"3.1.23\",\
+  \"cagentType\":\"IoTGW\",\"osVersion\":\"SnailOS\",\"biosVersion\":\"\",\"platformName\":\"\",\"processorName\":\"SnailGW\",\
+  \"osArch\":\"SnailX86\",\"totalPhysMemKB\":123,\"macs":"000E40ABCDEF\",\"IP\":\"192.168.0.100\"},\"commCmd\":116,\"requestID\":109,\
+  \"agentID\":\"0000000E40ABCDEF\",\"handlerName\":\"general\",\"sendTS\":1466730390}}');
+  res.send('vgw_os_info');
+});
+
 
 function myTest( jsonObj ){
   
