@@ -257,6 +257,7 @@ function getMsgType(topic, jsonObj){
 function list_info_spec_all_connectivity( infoObj ){
   
   //var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
+  /*
   for (key in infoObj) {
     if (infoObj.hasOwnProperty(key)) {
       //if ( typeof infoObj[key] === 'object' ){
@@ -265,7 +266,37 @@ function list_info_spec_all_connectivity( infoObj ){
       //console.log(key + " G===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
       //}
      }
-   } 
+   }
+   */
+  
+  console.log( 'listObj Start-------------------------------------------------');
+  for (key in infoObj) {
+      if (infoObj.hasOwnProperty(key)) {
+          //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
+          //if (typeof jsonObj[key] === 'object' ){
+              console.log( key + ', keyVal=======>' + infoObj[key]);
+          //}
+          //else{
+              //console.log( 'keyStr=======>' + keyStr + '/' + key);
+          //}
+      }
+   }
+ //
+  for (key in infoObj) {
+      if (infoObj.hasOwnProperty(key)) {
+          //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
+          if (typeof infoObj[key] === 'object' ){
+              list_info_spec_all_connectivity(infoObj[key]);
+          }
+          else{
+              //console.log( 'listObj return -------------------------------------------------key=' + key);
+              //return;
+          }
+      }
+   }  
+  
+   console.log( 'listObj return -------------------------------------------------key=' + key);
+   return;    
 }
 
 function is_ip_valid( ip ){
