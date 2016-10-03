@@ -55,9 +55,12 @@ client.on('message', function (topic, message) {
 })
 
 function getSusiCmdType(topic, message){
-  /*
-    var jsonObj = JSON.parse(message.toString());
   
+    try {
+        var jsonObj = JSON.parse(message.toString());
+    } catch (e) {
+        return console.error(e);
+    }
     console.log('typeof jsonObj =' + typeof jsonObj);
   
     if ( typeof jsonObj === 'undefined' ){
