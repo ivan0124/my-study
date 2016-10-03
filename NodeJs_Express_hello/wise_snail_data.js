@@ -10,7 +10,7 @@ client  = mqtt.connect('mqtt://127.0.0.1');
 const msgType = { error: -1, unknown: 0,
                   vgw_connect: 1, vgw_os_info: 2, vgw_info_spec: 3, vgw_willmessage: 4,
                   vgw_disconnect: 5, vgw_info: 6,
-                  sen_connect: 7 };
+                  sen_connect: 7, sen_disconnect: 8 };
 var devObj = { connect: 'null', os_info: 'null', dev_info_spec: 'null',  dev_info: 'null'};
 
 
@@ -192,6 +192,16 @@ function getMsgType(topic, jsonObj){
                  return msgType.vgw_disconnect;
              }
         }
+      
+        if ( jsonObj.susiCommData.type === 'SenHub' && 
+             jsonObj.susiCommData.commCmd === 1 ){
+             if ( jsonObj.susiCommData.status === 1){
+                 return msgType.sen_connect;
+             }
+             if ( jsonObj.susiCommData.status === 0){
+                 return msgType.sen_disconnect;
+             }
+        }      
     }
   
     if ( topic_arr[4] === 'agentactionreq'){
