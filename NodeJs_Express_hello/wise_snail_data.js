@@ -8,8 +8,8 @@ client  = mqtt.connect('mqtt://127.0.0.1');
 
 var msgType = { error: -1, unknown: 0,
                 vgw_connect: 1, vgw_os_info: 2, vgw_info_spec: 3, vgw_willmessage: 4,
-                vgw_disconnect:5 };
-var devObj = { connect: 'null', os_info: 'null', dev_info_spec: 'null'  };
+                vgw_disconnect:5, vgw_info: 6 };
+var devObj = { connect: 'null', os_info: 'null', dev_info_spec: 'null',  dev_info: 'null'};
 
 
 client.on('connect', function () {
@@ -182,11 +182,17 @@ function getMsgType(topic, jsonObj){
         if ( jsonObj.susiCommData.commCmd === 2052 ){
             if ( typeof jsonObj.susiCommData.infoSpec.IoTGW !== 'undefined' ){
                 return msgType.vgw_info_spec;
-            }
-            
-        } 
-          
+            }  
+        }       
     }
+  
+    if ( topic_arr[4] === 'deviceinfo'){   
+        if ( jsonObj.susiCommData.commCmd === 2055 ){
+            if ( typeof jsonObj.susiCommData.data.IoTGW !== 'undefined' ){
+                return msgType.vgw_info;
+            }  
+        }       
+    }  
   
     if ( topic_arr[4] === 'willmessage'){
         return msgType.vgw_willmessage;
