@@ -8,6 +8,7 @@ client  = mqtt.connect('mqtt://127.0.0.1');
 client.on('connect', function () {
   console.log('[wise_snail_data] mqtt connect !!!!');
   client.subscribe('agentinfo');
+  client.subscribe('/cagent/admin/+/agentinfoack');
    
 })
  
