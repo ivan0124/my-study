@@ -46,10 +46,18 @@ app.get('/ip_valid', function (req, res) {
   
   var ip='192.168.1.1';
   var ip_arr=ip.split('.');
-  console.log( 'ip_arr.length---------------' + ip_arr.length);
+  console.log( 'ip_arr.length = ' + ip_arr.length);
   if (ip_arr.length !== 4 ){
-      console.log( 'ip_arr.length !== 4---------------');
+      console.log( 'ip_arr.length !== 4 ');
   }
+  
+  if ( (ip_arr[0] > 0 && ip_arr[0] < 256) &&
+       (ip_arr[1] > 0 && ip_arr[1] < 256) &&
+       (ip_arr[2] > 0 && ip_arr[2] < 256) &&
+       (ip_arr[3] > 0 && ip_arr[3] < 256)){
+      console.log( 'valid ip');      
+  }
+        
   
   res.send('Get WiseSnail Data!');
 });
