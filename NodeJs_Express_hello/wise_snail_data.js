@@ -42,6 +42,11 @@ client.on('message', function (topic, message) {
           }
           break;
       }
+    case msgType.vgw_os_info:
+      {
+          console.log('[' + device_id + ']' + ': vgw_os_info');
+          break;
+      }
     case msgType.vgw_disconnect:
       {
           console.log('[' + device_id + ']' + ': vgw_disconnect');
@@ -131,6 +136,10 @@ function getMsgType(topic, message){
                  return msgType.vgw_disconnect;
              }
         }
+    }
+  
+    if ( topic_arr[4] === 'agentactionreq'){
+        return msgType.vgw_os_info;
     }
   
     if ( topic_arr[4] === 'willmessage'){
