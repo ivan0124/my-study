@@ -67,7 +67,7 @@ function getSusiCmdType(topic, message){
         return susiCmdType.error;
     }
     console.log('jsonObj.susiCommData.type =' + jsonObj.susiCommData.type + ',jsonObj.susiCommData.commCmd ='  + jsonObj.susiCommData.commCmd);
-    */
+    
     return susiCmdType.vgw_connect;
 }
 
