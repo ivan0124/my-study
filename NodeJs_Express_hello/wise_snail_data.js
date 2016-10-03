@@ -90,6 +90,7 @@ client.on('message', function (topic, message) {
                          if (infoObj.hasOwnProperty(key)) {
                              if ( typeof infoObj[key] === 'object' ){
                                  console.log(key + " G===> " + infoObj[key] + " ,type = " + Object.prototype.toString.call(infoObj));
+                                 console.log('infoObj[bn]=====' + infoObj['bn']);
                                  //console.log(key + " G===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
                              }
                          }
