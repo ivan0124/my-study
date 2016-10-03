@@ -111,11 +111,6 @@ client.on('message', function (topic, message) {
           if ( vgw_map.has(device_id) === true ) {
               console.log('[' + device_id + ']' + ': remove vgw_map');
               //
-              var vgw = vgw_map.get(device_id);
-              if (typeof vgw != 'undefined') {
-                  console.log('get vgw.connect='+vgw.connect);  
-              }
-              //
               vgw_map.remove(device_id);
           }
           break;        
@@ -146,11 +141,6 @@ client.on('message', function (topic, message) {
           console.log('[' + device_id + ']' + ': sen_disconnect');
           if ( sensor_hub_map.has(device_id) === true ) {
               console.log('[' + device_id + ']' + ': remove sensor_hub_map');
-              //
-              var sen = sensor_hub_map.get(device_id);
-              if (typeof sen != 'undefined') {
-                  console.log('get sen.connect='+ sen.connect);  
-              }
               //
               sensor_hub_map.remove(device_id);
           }        
