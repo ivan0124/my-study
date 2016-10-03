@@ -5,7 +5,7 @@ var conn_map = new HashMap();
 
 client  = mqtt.connect('mqtt://127.0.0.1'); 
 
-var msgType = { error: -1, vgw_connect: 1, vgw_os_info: 2, vgw_capability: 3 };
+var msgType = { error: -1, unknown: 0,vgw_connect: 1, vgw_os_info: 2, vgw_capability: 3 };
 
 
 client.on('connect', function () {
@@ -25,6 +25,8 @@ client.on('message', function (topic, message) {
     case msgType.vgw_connect:
       console.log('msgType.vgw_connect');
       break;
+    case msgType.unknown:
+      console.log('msgType.unknown');
     default:
       console.log('default');
       break;
@@ -83,7 +85,7 @@ function getSusiCmdType(topic, message){
     }
     
     
-    return msgType.error;
+    return msgType.unknown;
 }
 
 function get_id( topic ){
