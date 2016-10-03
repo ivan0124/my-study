@@ -2,10 +2,12 @@
 var mqtt = require('mqtt');
 var HashMap = require('hashmap').HashMap;
 var conn_map = new HashMap();
+var vgw_map = new HashMap();
 
 client  = mqtt.connect('mqtt://127.0.0.1'); 
 
 var msgType = { error: -1, unknown: 0,vgw_connect: 1, vgw_os_info: 2, vgw_capability: 3 };
+var vgwObj = { vgw_connect: 'null' };
 
 
 client.on('connect', function () {
@@ -27,6 +29,8 @@ client.on('message', function (topic, message) {
     case msgType.vgw_connect:
       {
           console.log('[' + device_id + ']' + ': msgType.vgw_connect');
+          vgwObj.vgw_connect = message.toString();
+          vgw_map.set(device_id, vgwObj );
           break;
       }
     case msgType.unknown:
