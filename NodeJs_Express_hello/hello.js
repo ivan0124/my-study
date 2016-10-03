@@ -89,6 +89,16 @@ app.get('/sen_agentinfoack', function (req, res) {
   res.send('sen_agentinfoack');
 });
 
+app.get('/sen_disconnect', function (req, res) {
+  client.publish('/cagent/admin/0017000E40000001/agentinfoack', '{\"susiCommData\":{\"devID\":\"0017000E40000001\",\
+    \"hostname\":\"AAA\",\"sn\":\"0017000E40000001\",\"mac\":\"0017000E40000001\",\"version\":\"3.1.23\",\"type\":\"SenHub\",\
+    \"product\":\"WISE-1020\",\"manufacture\":\"\",\"status\":\"0\",\"commCmd\":1,\"requestID\":30002,\"agentID\":\"0017000E40000001\",\
+    \"handlerName\":\"general\",\"sendTS\":160081026}}');
+  res.send('sen_agentinfoack');
+});
+
+
+
 app.get('/vgw_info', function (req, res) {
   client.publish('/cagent/admin/0000000E4CABCDEF/deviceinfo', '{\"susiCommData\":{\"data\":{\"IoTGW\":{\"WSN\":{\"WSN0\":{\"Info\":\
   {\"e\":[{\"n\":\"SenHubList\",\"sv\":\"0017000E40000000,0017000E40000001\"},{\"n\":\"Neighbor\",\"sv\":\"0017000E40000000,0017000E40000001\"},\
