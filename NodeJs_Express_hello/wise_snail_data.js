@@ -27,7 +27,14 @@ client.on('message', function (topic, message) {
   console.log('topic=' + topic.toString() );
   console.log('msg=' + message.toString());
   
-  var msg_type = getMsgType(topic, message);
+  try {
+      var jsonObj = JSON.parse(message.toString());
+  } catch (e) {
+      console.error(e);
+      return;
+  }
+  
+  var msg_type = getMsgType(topic, jsonObj);
   var device_id = topic.toString().split('/')[3];
   
   
@@ -113,15 +120,16 @@ client.on('message', function (topic, message) {
   */
 })
 
-function getMsgType(topic, message){
+function getMsgType(topic, jsonObj){
   
+  /*
     try {
         var jsonObj = JSON.parse(message.toString());
     } catch (e) {
         console.error(e);
         return msgType.error;
     }
-    
+    */
     var topic_arr = topic.toString().split('/');
     //console.log('=======> topic_arr[4] =' + topic_arr[4]);
   
