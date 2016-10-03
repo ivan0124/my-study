@@ -313,6 +313,16 @@ module.exports = {
       }
     }); 
     console.log('--------------------------------------------------------------');
+    console.log('Show all sensor_hub_map');
+    sensor_hub_map.forEach(function(obj, key) {
+      if (typeof obj !== 'undefined') {
+          console.log('['+key+']'+'[connect]' + ' : ' + obj.connect);
+          console.log('['+key+']'+'[os_info]' + ' : ' + obj.os_info);
+          console.log('['+key+']'+'[dev_info_spec]' + ' : ' + obj.dev_info_spec);
+          console.log('['+key+']'+'[dev_info]' + ' : ' + obj.dev_info);
+      }
+    });     
+    console.log('--------------------------------------------------------------');
     return;
   }
 };
