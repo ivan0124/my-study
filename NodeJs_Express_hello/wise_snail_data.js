@@ -5,7 +5,7 @@ var conn_map = new HashMap();
 
 client  = mqtt.connect('mqtt://127.0.0.1'); 
 
-var susiCmdType{ vgw_connect: 1, vgw_os_info: 2, vgw_capability: 3 };
+var susiCmdType = { vgw_connect: 1, vgw_os_info: 2, vgw_capability: 3 };
 
 
 client.on('connect', function () {
