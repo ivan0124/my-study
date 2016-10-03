@@ -194,7 +194,7 @@ function getMsgType(topic, jsonObj){
     //console.log('=======> topic_arr[4] =' + topic_arr[4]);
   
     if ( topic_arr[4] === 'agentinfoack'){
-        //console.log('jsonObj.susiCommData.type =' + jsonObj.susiCommData.type + ',jsonObj.susiCommData.commCmd ='  + jsonObj.susiCommData.commCmd);
+        console.log('jsonObj.susiCommData.type =' + jsonObj.susiCommData.type + ',jsonObj.susiCommData.commCmd ='  + jsonObj.susiCommData.commCmd);
         if ( jsonObj.susiCommData.type === 'IoTGW' && 
              jsonObj.susiCommData.commCmd === 1 ){
              if ( jsonObj.susiCommData.status === 1){
