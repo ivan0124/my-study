@@ -42,9 +42,37 @@ app.get('/get_wise_snail_data', function (req, res) {
   res.send('Get WiseSnail Data!');
 });
 
+function is_ip_valid( ip ){
+  
+  var ip_arr=ip.split('.');
+  console.log( 'ip_arr.length = ' + ip_arr.length);
+  if (ip_arr.length !== 4 ){
+      return false;
+  }
+  
+  if ( (ip_arr[0] > 0 && ip_arr[0] < 256) &&
+       (ip_arr[1] > 0 && ip_arr[1] < 256) &&
+       (ip_arr[2] > 0 && ip_arr[2] < 256) &&
+       (ip_arr[3] > 0 && ip_arr[3] < 256)){
+      return true;      
+  }
+  
+  return false;
+}
+
 app.get('/ip_valid', function (req, res) {
   
   var ip='192.168.1.1';
+  
+  var res = is_ip_valid( ip );
+  
+  if ( res === true){
+    console.log( 'valid ip');
+  }
+  else{
+    console.log( 'invalid ip !!!');
+  }
+  /*
   var ip_arr=ip.split('.');
   console.log( 'ip_arr.length = ' + ip_arr.length);
   if (ip_arr.length !== 4 ){
@@ -57,7 +85,7 @@ app.get('/ip_valid', function (req, res) {
        (ip_arr[3] > 0 && ip_arr[3] < 256)){
       console.log( 'valid ip');      
   }
-        
+  */      
   
   res.send('Get WiseSnail Data!');
 });
