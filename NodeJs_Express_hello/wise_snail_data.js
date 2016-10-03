@@ -44,6 +44,7 @@ client.on('message', function (topic, message) {
           console.log('[' + device_id + ']' + ': vgw_willmessage');
           if ( vgw_map.has(device_id) === true ) {
               console.log('[' + device_id + ']' + ': remove vgw_map');
+              vgw_map.remove(device_id);
           }
           break;
       }
