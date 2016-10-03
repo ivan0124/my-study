@@ -72,6 +72,9 @@ function getSusiCmdType(topic, message){
         return susiCmdType.error;
     }
     
+    var topic_arr = topic.toString().split("/");
+  
+    console.log('topic_arr[3] =' + topic_arr[3]);
     console.log('jsonObj.susiCommData.type =' + jsonObj.susiCommData.type + ',jsonObj.susiCommData.commCmd ='  + jsonObj.susiCommData.commCmd);
     
     return susiCmdType.vgw_connect;
