@@ -128,22 +128,26 @@ client.on('message', function (topic, message) {
       {
           console.log('[' + device_id + ']' + ': sen_connect');
           //copy devObj object as vgw objcect
+          /*
           var sen = JSON.parse(JSON.stringify(devObj));
           sen.connect = message.toString();
           if ( sensor_hub_map.has(device_id) === false ) {
               console.log('[' + device_id + ']' + ': create sensor_hub_map');
               sensor_hub_map.set(device_id, sen );
-          }        
+          } 
+          */
           break;
       }
     case msgType.sen_disconnect:
       {
           console.log('[' + device_id + ']' + ': sen_disconnect');
+          /*
           if ( sensor_hub_map.has(device_id) === true ) {
               console.log('[' + device_id + ']' + ': remove sensor_hub_map');
               //
               sensor_hub_map.remove(device_id);
-          }        
+          } 
+          */
           break;
       }      
     case msgType.unknown:
