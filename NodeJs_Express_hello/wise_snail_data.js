@@ -14,6 +14,7 @@ client.on('connect', function () {
   console.log('[wise_snail_data] mqtt connect !!!!');
   //client.subscribe('agentinfo');
   client.subscribe('/cagent/admin/+/agentinfoack');
+  client.subscribe('/cagent/admin/+/willmessage');
    
 })
  
