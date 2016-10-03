@@ -42,12 +42,20 @@ app.get('/get_wise_snail_data', function (req, res) {
   res.send('Get WiseSnail Data!');
 });
 
-app.get('/gw_agentinfoack', function (req, res) {
+app.get('/vgw_agentinfoack', function (req, res) {
   client.publish('/cagent/admin/0000000E4CABCDEF/agentinfoack', '{\"susiCommData\":{\"devID\":\"0000000E4CABCDEF\",\"parentID\":\"\",\
 \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCDEF\",\"mac\":\"000E4CABCDEF\",\"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
 \"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":1,\"commCmd\":1,\"requestID\":21,\"agentID\":\"0000000E4CABCDEF\",\
 \"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}');
-  res.send('gw_agentinfoack');
+  res.send('vgw_agentinfoack');
+});
+
+app.get('/vgw_willmessage', function (req, res) {
+  client.publish('/cagent/admin/0000000E4CABCDEF/agentinfoack', '{\"susiCommData\":{\"devID\":\"0000000E4CABCDEF\",\"parentID\":\"\",\
+\"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCDEF\",\"mac\":\"000E4CABCDEF\",\"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
+\"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":1,\"commCmd\":1,\"requestID\":21,\"agentID\":\"0000000E4CABCDEF\",\
+\"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}');
+  res.send('vgw_willmessage');
 });
 
 
