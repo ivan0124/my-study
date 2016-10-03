@@ -6,7 +6,9 @@ var vgw_map = new HashMap();
 
 client  = mqtt.connect('mqtt://127.0.0.1'); 
 
-var msgType = { error: -1, unknown: 0,vgw_connect: 1, vgw_os_info: 2, vgw_capability: 3, vgw_willmessage: 4 };
+var msgType = { error: -1, unknown: 0,
+                vgw_connect: 1, vgw_os_info: 2, vgw_capability: 3, vgw_willmessage: 4,
+                vgw_disconnect:5 };
 var vgwObj = { vgw_connect: 'null' };
 
 
@@ -105,9 +107,13 @@ function getMsgType(topic, message){
     if ( topic_arr[4] === 'agentinfoack'){
         //console.log('jsonObj.susiCommData.type =' + jsonObj.susiCommData.type + ',jsonObj.susiCommData.commCmd ='  + jsonObj.susiCommData.commCmd);
         if ( jsonObj.susiCommData.type === 'IoTGW' && 
-             jsonObj.susiCommData.commCmd === 1 &&
-             jsonObj.susiCommData.status === 1){
-            return msgType.vgw_connect;
+             jsonObj.susiCommData.commCmd === 1 ){
+             if ( jsonObj.susiCommData.status === 1){
+                 return msgType.vgw_connect;
+             }
+             if ( jsonObj.susiCommData.status === 0){
+                 return msgType.vgw_disconnect;
+             }
         }
     }
   
