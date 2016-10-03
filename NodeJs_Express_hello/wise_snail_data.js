@@ -167,6 +167,9 @@ function getMsgType(topic, jsonObj){
         }
       
         if ( jsonObj.susiCommData.commCmd === 2052 ){
+            if ( typeof jsonObj.susiCommData.infoSpec.IoTGW !== 'undefined' ){
+                console.log('susiCommData.infoSpec.IoTGW');
+            }
             return msgType.vgw_info_spec;
         } 
           
