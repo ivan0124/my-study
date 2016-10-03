@@ -62,7 +62,7 @@ function is_ip_valid( ip ){
 
 app.get('/ip_valid', function (req, res) {
   
-  var ip='192.168.1.1';
+  var ip='0.0.0.0';
   
   var ret = is_ip_valid( ip );
   
