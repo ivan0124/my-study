@@ -260,7 +260,7 @@ function list_info_spec_all_connectivity( infoObj ){
   for (key in infoObj) {
       if (infoObj.hasOwnProperty(key)) {
           if ( key === 'Info' ){
-              console.log( 'keyVal=======>' + infoObj['bn'] + ', keyPath=======>'+ JSON.stringify(infoObj['bn']));       
+              console.log( 'keyVal=======>' + infoObj['bn'] );       
           }
       }
    }
