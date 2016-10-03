@@ -228,12 +228,15 @@ module.exports = {
   },
   
   show_all_vgw_map: function() {
+    console.log('--------------------------------------------------------------');
+    console.log('Show all vgw_map');
     vgw_map.forEach(function(obj, key) {
       if (typeof obj !== 'undefined') {
           console.log('['+key+']'+'[connect]' + ' : ' + obj.connect);
           console.log('['+key+']'+'[os_info]' + ' : ' + obj.os_info);
       }
     }); 
+    console.log('--------------------------------------------------------------');
     return;
   }
 };
