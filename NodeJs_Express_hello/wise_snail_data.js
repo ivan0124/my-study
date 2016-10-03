@@ -52,7 +52,7 @@ client.on('message', function (topic, message) {
     case msgType.vgw_os_info:
       {
           console.log('[' + device_id + ']' + ': vgw_os_info, IP=' + jsonObj.susiCommData.osInfo.IP);
-          if ( is_ip_valid(jsonObj.susiCommData.osInfo.IP) === ture ){
+          if ( is_ip_valid(jsonObj.susiCommData.osInfo.IP) === true ){
             console.log('[' + device_id + ']' + ': ip_base');
           }
           else{
