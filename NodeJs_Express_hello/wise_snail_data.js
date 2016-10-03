@@ -103,6 +103,7 @@ client.on('message', function (topic, message) {
       }
     case msgType.unknown:
       console.log('msgType.unknown');
+      break;
     default:
       console.log('default');
       break;
@@ -167,7 +168,7 @@ function getMsgType(topic, jsonObj){
         }
       
         if ( jsonObj.susiCommData.commCmd === 2052 ){
-            if ( typeof jsonObj.susiCommData.infoSpec.IoTG !== 'undefined' ){
+            if ( typeof jsonObj.susiCommData.infoSpec.IoTGW !== 'undefined' ){
                 console.log('susiCommData.infoSpec.IoTGW');
                 return msgType.vgw_info_spec;
             }
