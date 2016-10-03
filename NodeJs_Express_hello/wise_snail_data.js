@@ -20,11 +20,13 @@ client.on('message', function (topic, message) {
   console.log('topic=' + topic.toString() + ',  msg=' + message.toString());
   
   var msg_type = getMsgType(topic, message);
-  
+  var device_id = topic.toString().split('/')[3];
   switch(msg_type){
     case msgType.vgw_connect:
-      console.log('msgType.vgw_connect');
-      break;
+      {
+          console.log('[' + device_id + ']' + 'msgType.vgw_connect');
+          break;
+      }
     case msgType.unknown:
       console.log('msgType.unknown');
     default:
