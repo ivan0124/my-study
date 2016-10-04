@@ -254,6 +254,7 @@ function getMsgType(topic, jsonObj){
 }
 
 function list_info_all_sensor_hub(){
+  console.log('==================> list_info_all_sensor_hub');
 }
 
 
