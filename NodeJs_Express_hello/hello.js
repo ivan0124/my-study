@@ -120,7 +120,7 @@ app.get('/case1_test_add_connectivity', function (req, res) {
   {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCD06\",\"ver\":1},\"bn\":\"BLE\",\"ver\":1},\"ver\":1}},\
   \"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\"handlerName\":\"general\",\"sendTS\":160081020}}');  
 
-   ws_data.show_all_vgw_map();
+  setTimeout(ws_data.show_all_vgw_map(), 2000);
   
   res.send('case1_test_add_connectivity');
 });
