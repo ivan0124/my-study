@@ -265,7 +265,10 @@ function list_info_all_sensor_hub( vgw_id, connName, layer, connType, infoObj ){
              console.log( 'SenHubList :' + infoObj['sv'] ); 
              var conn = conn_map.get(connName);
              if ( conn !== 'undefined' ){
-               console.log( connName + 'exist');
+               
+             }
+             else{
+               console.log( connName + ' does not exist');
              }
           }
           if ( key === 'bn' ){
