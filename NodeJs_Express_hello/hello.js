@@ -241,6 +241,8 @@ app.get('/add_json', function (req, res) {
   var susiObj = JSON.parse(susiString);
   
   susiObj.susiCommData.test= 123;
+  var string = JSON.stringify(susiObj.susiCommData.test);
+  console.log("string="+string);
   res.send('add_json');
 });
 
