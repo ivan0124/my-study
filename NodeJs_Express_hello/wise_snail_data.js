@@ -264,9 +264,12 @@ function list_info_spec_all_connectivity( layer, connType, infoObj ){
               if ( layer === 2 ){
                 connType = infoObj[key];
               }
-            
               if ( layer === 3 ){
-                 console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] );  
+                 console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
+                 var device_id=infoObj[key];
+                 var sen_hub_map = new HashMap();
+                 var connObj = { vgw: 'null',  sensor_hub_list: sen_hub_map };
+                 conn_map.set(device_id, connObj);        
               }
           }
       }
