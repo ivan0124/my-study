@@ -86,7 +86,7 @@ client.on('message', function (topic, message) {
                   vgw.dev_info_spec = message.toString();
                   //add conn_map here
                     var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
-                    list_info_spec_all_connectivity(infoObj);
+                    list_info_spec_all_connectivity(0, infoObj);
                     //var connObj = { vgw: 'null',  sensor_hub_list: {} };
                     //conn_map.set('123', connObj);
                 }
@@ -254,13 +254,13 @@ function getMsgType(topic, jsonObj){
     return msgType.unknown;
 }
 
-function list_info_spec_all_connectivity( infoObj ){
+function list_info_spec_all_connectivity( layer, infoObj ){
   
   //console.log( 'Start-------------------------------------------------');
   for (key in infoObj) {
       if (infoObj.hasOwnProperty(key)) {
           if ( key === 'bn' ){
-              console.log( '[key] :' + key +', infoObj[' + key +']=======>' + infoObj[key] );       
+              console.log( '[layer] :' + layer +', infoObj[' + key +']=======>' + infoObj[key] );       
           }
       }
    }
@@ -269,10 +269,13 @@ function list_info_spec_all_connectivity( infoObj ){
       if (infoObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
           if (typeof infoObj[key] === 'object' ){
-              list_info_spec_all_connectivity(infoObj[key]);
+              layer++;
+              list_info_spec_all_connectivity(layer, infoObj[key]);
           }
       }
    }  
+  
+   layer--;
    return;    
 }
 
