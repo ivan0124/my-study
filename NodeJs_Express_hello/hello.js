@@ -240,7 +240,7 @@ app.get('/add_json', function (req, res) {
                     \"sendTS\":160081020}}";
   var susiObj = JSON.parse(susiString);
   
-  susiObj.susiCommData.test= 123;
+  susiObj.susiCommData.infoSpec.IoTGW.test= {"ZigBee":{"bn":20}};
   var string = JSON.stringify(susiObj);
   console.log("string="+string);
   res.send('add_json');
