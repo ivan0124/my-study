@@ -87,8 +87,6 @@ client.on('message', function (topic, message) {
                   //add conn_map here
                     var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
                     list_info_spec_all_connectivity(jsonObj.susiCommData.agentID ,0, 'null', infoObj);
-                    //var connObj = { vgw: 'null',  sensor_hub_list: {} };
-                    //conn_map.set('123', connObj);
                 }
           }
           else{
@@ -103,6 +101,7 @@ client.on('message', function (topic, message) {
                 var vgw=vgw_map.get(device_id);
                 if (typeof vgw !== 'undefined') {
                   vgw.dev_info = message.toString();
+                  list_info_all_sensor_hub();
                 }
           }
           else{
@@ -253,6 +252,10 @@ function getMsgType(topic, jsonObj){
     
     return msgType.unknown;
 }
+
+function list_info_all_sensor_hub(){
+}
+
 
 function list_info_spec_all_connectivity( vgw_id, layer, connType, infoObj ){
   
