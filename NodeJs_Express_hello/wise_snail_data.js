@@ -276,7 +276,7 @@ function list_info_spec_all_connectivity( layer, connType, infoObj ){
       if (infoObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
           if (typeof infoObj[key] === 'object' ){
-              list_info_spec_all_connectivity(layer, infoObj[key]);
+              list_info_spec_all_connectivity(layer, connType, infoObj[key]);
           }
       }
    }  
