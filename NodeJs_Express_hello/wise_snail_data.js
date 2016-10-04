@@ -103,7 +103,7 @@ client.on('message', function (topic, message) {
                   vgw.dev_info = message.toString();
                   //add sensorhub list here
                   var infoObj=jsonObj.susiCommData.data.IoTGW;
-                  list_info_all_sensor_hub(jsonObj.susiCommData.agentID ,0, 'null', infoObj);                  
+                  list_info_all_sensor_hub(jsonObj.susiCommData.agentID , 'null', 0, 'null', infoObj);                  
                 }
           }
           else{
@@ -255,7 +255,7 @@ function getMsgType(topic, jsonObj){
     return msgType.unknown;
 }
 
-function list_info_all_sensor_hub( vgw_id, layer, connType, infoObj ){
+function list_info_all_sensor_hub( vgw_id, connName, layer, connType, infoObj ){
   
   //console.log( 'Start-------------------------------------------------');
   layer++;
@@ -269,12 +269,8 @@ function list_info_all_sensor_hub( vgw_id, layer, connType, infoObj ){
                 connType = infoObj[key];
               }
               if ( layer === 3 ){
-                 console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
-                 
-                 for (var i = 0; i < infoObj.Info.e.length; i++) { 
-                     //console.log(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[i]); 
-                     console.log(infoObj['Info']['e'][i]); 
-                 }
+                 connName = infoObj[key];
+                 console.log( '[layer] :' + layer + ', connType='+ connType +', connName =======>' + connName ); 
               }
           }
       }
@@ -284,7 +280,7 @@ function list_info_all_sensor_hub( vgw_id, layer, connType, infoObj ){
       if (infoObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
           if (typeof infoObj[key] === 'object' ){
-              list_info_all_sensor_hub(vgw_id, layer, connType, infoObj[key]);
+              list_info_all_sensor_hub(vgw_id, connName, layer, connType, infoObj[key]);
           }
       }
    }  
