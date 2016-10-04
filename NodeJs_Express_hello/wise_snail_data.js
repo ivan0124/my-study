@@ -368,7 +368,7 @@ module.exports = {
     });     
     console.log('--------------------------------------------------------------');
     console.log('Show all conn_map');
-    sensor_hub_map.forEach(function(obj, key) {
+    conn_map.forEach(function(obj, key) {
       if (typeof obj !== 'undefined') {
           console.log('['+key+']'+'[vgw_id]' + ' : ' + obj.vgw_id);
           console.log('['+key+']'+'[sensor_hub_list.count]' + ' : ' + obj.sensor_hub_list.count());
