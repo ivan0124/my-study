@@ -257,6 +257,7 @@ function getMsgType(topic, jsonObj){
 function list_info_spec_all_connectivity( layer, infoObj ){
   
   //console.log( 'Start-------------------------------------------------');
+  layer++;
   for (key in infoObj) {
       if (infoObj.hasOwnProperty(key)) {
           if ( key === 'bn' ){
@@ -269,7 +270,6 @@ function list_info_spec_all_connectivity( layer, infoObj ){
       if (infoObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
           if (typeof infoObj[key] === 'object' ){
-              layer++;
               list_info_spec_all_connectivity(layer, infoObj[key]);
           }
       }
