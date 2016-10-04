@@ -263,6 +263,10 @@ function list_info_all_sensor_hub( vgw_id, connName, layer, connType, infoObj ){
       if (infoObj.hasOwnProperty(key)) {
           if ( infoObj[key] === 'SenHubList' ){
              console.log( 'SenHubList :' + infoObj['sv'] ); 
+             var conn = comm_map.get(connName);
+             if ( conn !== 'undefined' ){
+               console.log( connName + 'exist');
+             }
           }
           if ( key === 'bn' ){
               if ( layer === 2 ){
