@@ -261,7 +261,7 @@ function list_info_all_sensor_hub( vgw_id, layer, connType, infoObj ){
   layer++;
   for (key in infoObj) {
       if (infoObj.hasOwnProperty(key)) {
-          if ( infoObj[key] === 'SenHubList' ){
+          if ( infoObj.key === 'SenHubList' ){
              console.log( 'SenHubList :' + infoObj['sv'] ); 
           }
           if ( key === 'bn' ){
