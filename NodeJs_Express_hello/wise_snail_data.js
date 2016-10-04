@@ -268,7 +268,7 @@ function list_info_spec_all_connectivity( layer, connType, infoObj ){
                  console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
                  var device_id=infoObj[key];
                  var sen_hub_map = new HashMap();
-                 var connObj = { vgw: 'null',  sensor_hub_list: sen_hub_map };
+                 var connObj = { vgw_id: 'null',  sensor_hub_list: sen_hub_map };
                  conn_map.set(device_id, connObj);        
               }
           }
@@ -367,6 +367,14 @@ module.exports = {
       }
     });     
     console.log('--------------------------------------------------------------');
+    console.log('Show all conn_map');
+    sensor_hub_map.forEach(function(obj, key) {
+      if (typeof obj !== 'undefined') {
+          console.log('['+key+']'+'[vgw_id]' + ' : ' + obj.vgw_id);
+          console.log('['+key+']'+'[sensor_hub_list.count]' + ' : ' + obj.sensor_hub_list.count());
+      }
+    });     
+    console.log('--------------------------------------------------------------');    
     return;
   }
 };
