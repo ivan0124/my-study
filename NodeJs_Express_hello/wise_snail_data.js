@@ -259,8 +259,8 @@ function list_info_spec_all_connectivity( infoObj ){
   //console.log( 'Start-------------------------------------------------');
   for (key in infoObj) {
       if (infoObj.hasOwnProperty(key)) {
-          if ( infoObj['bn'] !== 'undefined' ){
-              console.log( '[key] :' + key +', infoObj[key][bn]=======>' + infoObj[key]['bn'] );       
+          if ( key === 'bn' ){
+              console.log( '[key] :' + key +', infoObj[' + key +'][bn]=======>' + infoObj[key]['bn'] );       
           }
       }
    }
