@@ -267,10 +267,19 @@ function list_info_spec_all_connectivity( vgw_id, layer, connType, infoObj ){
               if ( layer === 3 ){
                  console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
                  var device_id=infoObj[key];
-                 var sen_hub_map = new HashMap();
-                 var connObj = { vgw_id: vgw_id,  sensor_hub_list: sen_hub_map };           
-                 conn_map.set(device_id, connObj);
-               
+                
+                 if ( conn_map.has(device_id) === false ) {
+                     //console.log('[' + device_id + ']' + ': remove vgw_map');
+                     //vgw_map.remove(device_id);
+                     var sen_hub_map = new HashMap();
+                     var connObj = { vgw_id: vgw_id,  sensor_hub_list: sen_hub_map };           
+                     conn_map.set(device_id, connObj);                   
+                 }
+                 else{
+                     //var conn = conn_map.get(device_id);
+                      //conn.vgw_id = vgw_id;
+                      
+                 }
               }
           }
       }
