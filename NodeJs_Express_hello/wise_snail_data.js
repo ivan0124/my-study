@@ -86,7 +86,7 @@ client.on('message', function (topic, message) {
                   vgw.dev_info_spec = message.toString();
                   //add conn_map here
                     var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
-                    list_info_spec_all_connectivity(susiCommData.agentID ,0, 'null', infoObj);
+                    list_info_spec_all_connectivity(jsonObj.susiCommData.agentID ,0, 'null', infoObj);
                     //var connObj = { vgw: 'null',  sensor_hub_list: {} };
                     //conn_map.set('123', connObj);
                 }
