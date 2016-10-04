@@ -268,8 +268,9 @@ function list_info_spec_all_connectivity( layer, connType, infoObj ){
                  console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
                  var device_id=infoObj[key];
                  var sen_hub_map = new HashMap();
-                 var connObj = { vgw_id: 'null',  sensor_hub_list: sen_hub_map };
-                 conn_map.set(device_id, connObj);        
+                 var connObj = { vgw_id: 'null',  sensor_hub_list: sen_hub_map };           
+                 conn_map.set(device_id, connObj);
+               
               }
           }
       }
