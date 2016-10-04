@@ -268,19 +268,10 @@ function list_info_all_sensor_hub( vgw_id, layer, connType, infoObj ){
               }
               if ( layer === 3 ){
                  console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
-                 var device_id=infoObj[key];
-                
-                 if ( conn_map.has(device_id) === false ) {
-                     //console.log('[' + device_id + ']' + ': remove vgw_map');
-                     //vgw_map.remove(device_id);
-                     var sen_hub_map = new HashMap();
-                     var connObj = { vgw_id: vgw_id,  sensor_hub_list: sen_hub_map };           
-                     conn_map.set(device_id, connObj);                   
-                 }
-                 else{
-                     //var conn = conn_map.get(device_id);
-                      //conn.vgw_id = vgw_id;
-                      
+                 var myStr="susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e";
+                 for (var i = 0; i < infoObj.Info.e.length; i++) { 
+                     //console.log(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[i]); 
+                     console.log(sinfoObj['e'][i]); 
                  }
               }
           }
