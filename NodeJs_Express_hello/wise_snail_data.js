@@ -265,9 +265,9 @@ function list_info_spec_all_connectivity( layer, connType, infoObj ){
                 connType = infoObj[key];
               }
             
-              //if ( layer === 3 ){
+              if ( layer === 3 ){
                  console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] );  
-              //}
+              }
           }
       }
    }
