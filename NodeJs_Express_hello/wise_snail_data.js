@@ -261,13 +261,16 @@ function list_info_all_sensor_hub( vgw_id, layer, connType, infoObj ){
   layer++;
   for (key in infoObj) {
       if (infoObj.hasOwnProperty(key)) {
+          if ( infoObj[key] === 'SenHubList' ){
+             console.log( 'SenHubList :' + infoObj['sv'] ); 
+          }
           if ( key === 'bn' ){
               if ( layer === 2 ){
                 connType = infoObj[key];
               }
               if ( layer === 3 ){
                  console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
-                 var myStr="susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e";
+                 
                  for (var i = 0; i < infoObj.Info.e.length; i++) { 
                      //console.log(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[i]); 
                      console.log(infoObj['Info']['e'][i]); 
