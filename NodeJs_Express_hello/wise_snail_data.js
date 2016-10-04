@@ -101,7 +101,9 @@ client.on('message', function (topic, message) {
                 var vgw=vgw_map.get(device_id);
                 if (typeof vgw !== 'undefined') {
                   vgw.dev_info = message.toString();
-                  list_info_all_sensor_hub();
+                  //add sensorhub list here
+                  var infoObj=jsonObj.susiCommData.data.IoTGW;
+                  list_info_all_sensor_hub(jsonObj.susiCommData.agentID ,0, 'null', infoObj);                  
                 }
           }
           else{
@@ -253,8 +255,48 @@ function getMsgType(topic, jsonObj){
     return msgType.unknown;
 }
 
-function list_info_all_sensor_hub(){
+function list_info_all_sensor_hub( vgw_id, layer, connType, infoObj ){
+  
   console.log('==================> list_info_all_sensor_hub');
+  //console.log( 'Start-------------------------------------------------');
+  layer++;
+  for (key in infoObj) {
+      if (infoObj.hasOwnProperty(key)) {
+          if ( key === 'bn' ){
+              if ( layer === 2 ){
+                connType = infoObj[key];
+              }
+              if ( layer === 3 ){
+                 console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
+                 var device_id=infoObj[key];
+                
+                 if ( conn_map.has(device_id) === false ) {
+                     //console.log('[' + device_id + ']' + ': remove vgw_map');
+                     //vgw_map.remove(device_id);
+                     var sen_hub_map = new HashMap();
+                     var connObj = { vgw_id: vgw_id,  sensor_hub_list: sen_hub_map };           
+                     conn_map.set(device_id, connObj);                   
+                 }
+                 else{
+                     //var conn = conn_map.get(device_id);
+                      //conn.vgw_id = vgw_id;
+                      
+                 }
+              }
+          }
+      }
+   }
+ //
+  for (key in infoObj) {
+      if (infoObj.hasOwnProperty(key)) {
+          //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
+          if (typeof infoObj[key] === 'object' ){
+              list_info_spec_all_connectivity(vgw_id, layer, connType, infoObj[key]);
+          }
+      }
+   }  
+  
+   layer--;  
 }
 
 
