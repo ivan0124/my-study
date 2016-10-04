@@ -120,6 +120,13 @@ app.get('/case1_test_add_connectivity', function (req, res) {
   {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCD06\",\"ver\":1},\"bn\":\"BLE\",\"ver\":1},\"ver\":1}},\
   \"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\"handlerName\":\"general\",\"sendTS\":160081020}}');  
 
+  //send virtual gateway info
+  client.publish('/cagent/admin/0000000E4CABCD99/deviceinfo', '{\"susiCommData\":{\"data\":{\"IoTGW\":{\"WSN\":{\"WSN0\":{\"Info\":\
+  {\"e\":[{\"n\":\"SenHubList\",\"sv\":\"0017000E40000000,0017000E40000001\"},{\"n\":\"Neighbor\",\"sv\":\"0017000E40000000,0017000E40000001\"},\
+  {\"n\":\"Name\",\"sv\":\"WSN0\"},{\"n\":\"Health\",\"v\":\"100.000000\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\"},{\"n\":\"reset\",\"bv\":\"0\"}],\
+  \"bn\":\"Info\"},\"bn\":\"0007000E40ABCD99\",\"ver\":1},\"bn\":\"WSN\"},\"ver\":1}},\"commCmd\":2055,\
+  \"requestID\":2001,\"agentID\":\"0000000E40ABCD99\",\"handlerName\":\"general\",\"sendTS\":160081025}}'); 
+  
   setTimeout(ws_data.show_all_vgw_map, 2000);
   
   res.send('case1_test_add_connectivity');
