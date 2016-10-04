@@ -271,7 +271,7 @@ function list_info_all_sensor_hub( vgw_id, layer, connType, infoObj ){
                  var myStr="susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e";
                  for (var i = 0; i < infoObj.Info.e.length; i++) { 
                      //console.log(susiObj.susiCommData.infoSpec.IoTGW.WSN.WSN0.Info.e[i]); 
-                     console.log(sinfoObj['e'][i]); 
+                     console.log(infoObj['e'][i]); 
                  }
               }
           }
