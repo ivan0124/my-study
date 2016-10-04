@@ -257,7 +257,6 @@ function getMsgType(topic, jsonObj){
 
 function list_info_all_sensor_hub( vgw_id, layer, connType, infoObj ){
   
-  console.log('==================> list_info_all_sensor_hub');
   //console.log( 'Start-------------------------------------------------');
   layer++;
   for (key in infoObj) {
