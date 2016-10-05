@@ -312,6 +312,7 @@ function sensor_hub_map_get_senhub( sensor_hub_id ){
                console.log('senKey =====> ' + senKey + ', typeof senKey: ' + typeof senKey );
                console.log('sensor_hub_id =====> ' + sensor_hub_id + ', typeof sensor_hub_id: ' + typeof sensor_hub_id);
                if (senKey === sensor_hub_id.trim()){
+                 console.log('senKey === sensor_hub_id');
                  return senObj;
                }
              }
