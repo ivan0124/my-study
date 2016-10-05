@@ -428,11 +428,11 @@ module.exports = {
     console.log('Show all conn_map');
     conn_map.forEach(function(obj, key) {
       if (typeof obj !== 'undefined') {
-          console.log('(VGW)'+obj.vgw_id );
-          console.log(' |---(connectivity)' + key);
+          console.log('(VGW):'+obj.vgw_id );
+          console.log(' |---(connectivity):' + key);
           obj.sensor_hub_list.forEach(function(senObj, senKey){
              if (typeof senObj !== 'undefined'){
-               console.log('    |---(SensorHub)' + senKey);
+               console.log('    |---(SensorHub):' + senKey);
              }
           });
       }
