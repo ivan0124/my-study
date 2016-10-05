@@ -86,7 +86,9 @@ client.on('message', function (topic, message) {
                 if (typeof vgw !== 'undefined') {
                   vgw.dev_info_spec = message.toString();
                   //add conn_map here
-                    var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
+                    //var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
+                    //copy obj to infoObj
+                    var infoObj = JSON.parse(JSON.stringify(jsonObj.susiCommData.infoSpec.IoTGW));
                     list_info_spec_all_connectivity(device_id ,0, 'null', infoObj);
                 }
           }
