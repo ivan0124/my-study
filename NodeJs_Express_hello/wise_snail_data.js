@@ -132,9 +132,9 @@ client.on('message', function (topic, message) {
           //copy devObj object as vgw objcect
           var senObj;
           console.log('>>>>> typeof senObj : ' + typeof senObj);
-          sensor_hub_map_get_senhub( device_id, function senObj( obj ){ 
-            console.log('[senObj]: ' + obj +', obj.connect='+ obj.connect);
-            obj.connect = message.toString();
+          sensor_hub_map_get_senhub( device_id, function ( senObj ){ 
+            console.log('[senObj]: ' + senObj +', obj.connect='+ senObj.connect);
+            senObj.connect = message.toString();
           } );
           
           /*
@@ -308,13 +308,13 @@ function sensor_hub_map_add_senhub( vgw_id, conn_id, layer, connType, infoObj ){
    layer--;  
 }
 
-function sensor_hub_map_get_senhub( sensor_hub_id, senObj ){
+function sensor_hub_map_get_senhub( sensor_hub_id, callback ){
   
     conn_map.forEach(function(obj, key) {
       if (typeof obj !== 'undefined') {
           if ( obj.sensor_hub_list.has ( sensor_hub_id ) === true ){
             console.log('obj.sensor_hub_list.has ( sensor_hub_id ) === true ');
-            senObj(obj.sensor_hub_list.get( sensor_hub_id ));
+            callback(obj.sensor_hub_list.get( sensor_hub_id ));
             return;
           }
       }
