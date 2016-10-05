@@ -130,7 +130,8 @@ client.on('message', function (topic, message) {
       {
           console.log('[' + device_id + ']' + ': sen_connect');
           //copy devObj object as vgw objcect
-          var senObj={};
+          var senObj;
+          console.log('>>>>> typeof senObj : ' + typeof senObj);
           sensor_hub_map_get_senhub( device_id, senObj );
           console.log('[senObj]: ' + senObj);
           /*
