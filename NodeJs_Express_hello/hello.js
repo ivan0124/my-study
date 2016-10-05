@@ -127,7 +127,7 @@ app.get('/case1_test_add_connectivity', function (req, res) {
   \"bn\":\"Info\"},\"bn\":\"0007000E40ABCD99\",\"ver\":1},\"bn\":\"WSN\"},\"ver\":1}},\"commCmd\":2055,\
   \"requestID\":2001,\"agentID\":\"0000000E40ABCD99\",\"handlerName\":\"general\",\"sendTS\":160081025}}'); 
   
-  //setTimeout(ws_data.show_all_vgw_map, 2000);
+  setTimeout(ws_data.show_all_vgw_map, 2000);
   
   res.send('case1_test_add_connectivity');
 });
