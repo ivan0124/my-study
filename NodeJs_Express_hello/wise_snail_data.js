@@ -310,8 +310,8 @@ function sensor_hub_map_get_senhub( sensor_hub_id ){
           obj.sensor_hub_list.forEach(function(senObj, senKey){
              if (typeof senObj !== 'undefined'){
                console.log('senKey =====> ' + senKey + ', typeof senKey: ' + typeof senKey );
-               console.log('sensor_hub_id =====> ' + sensor_hub_id.toString().trim() + ', typeof sensor_hub_id: ' + typeof sensor_hub_id);
-               if (senKey === sensor_hub_id.toString().trim()){
+               console.log('sensor_hub_id =====> ' + sensor_hub_id + ', typeof sensor_hub_id: ' + typeof sensor_hub_id);
+               if (senKey === sensor_hub_id.trim()){
                  return senObj;
                }
              }
