@@ -259,6 +259,7 @@ function getMsgType(topic, jsonObj){
 
 function getOSType( vgw_id ){
 
+  console.log('[getOSType]vgw_id=' + vgw_id);
   if ( vgw_map.has(vgw_id) === false ) {
     console.log('[getOSType] vgw_map.has(vgw_id) === false');
     return 'null';
