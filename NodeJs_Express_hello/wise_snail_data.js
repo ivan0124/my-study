@@ -69,6 +69,7 @@ client.on('message', function (topic, message) {
           if ( vgw_map.has(device_id) === true ) {
                 var vgw=vgw_map.get(device_id);
                 if (typeof vgw !== 'undefined') {
+                  console.log('[msgType.vgw_os_info] ************************');
                   vgw.os_info = message.toString();
                 }
           }
