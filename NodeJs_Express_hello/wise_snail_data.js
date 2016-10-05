@@ -472,7 +472,7 @@ module.exports = {
             console.log('(VGW):'+obj.vgw_id );
             tmp_vgw_id = obj.vgw_id;
           }
-          console.log(' |-(Connectivity):' + key);
+          console.log(' |-(Connectivity):' + key + '(os type:' + obj.os_type + ')');
           obj.sensor_hub_list.forEach(function(senObj, senKey){
              if (typeof senObj !== 'undefined'){
                console.log('    |--(SensorHub):' + senKey);
