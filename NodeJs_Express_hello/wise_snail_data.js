@@ -307,16 +307,9 @@ function sensor_hub_map_get_senhub( sensor_hub_id ){
   
     conn_map.forEach(function(obj, key) {
       if (typeof obj !== 'undefined') {
-          obj.sensor_hub_list.forEach(function(senObj, senKey){
-             if (typeof senObj !== 'undefined'){
-               console.log('senKey =====> ' + senKey + ', typeof senKey: ' + typeof senKey );
-               console.log('sensor_hub_id =====> ' + sensor_hub_id + ', typeof sensor_hub_id: ' + typeof sensor_hub_id);
-               if (senKey === sensor_hub_id){
-                 console.log('senKey === sensor_hub_id');
-                 return senObj;
-               }
-             }
-          });
+          if ( obj.sensor_hub_list.has ( sensor_hub_id ) === true ){
+            console.log('obj.sensor_hub_list.has ( sensor_hub_id ) === true ');
+          }
       }
     }); 
   
