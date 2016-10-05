@@ -279,11 +279,11 @@ function getOSType( vgw_id ){
   }  
   
   if ( is_ip_valid( os_info_obj.susiCommData.osInfo.IP) === true ){
-    console.log('[' + device_id + ']' + ': ip_base');
+    console.log('[' + vgw_id + ']' + ': ip_base');
     return 'ip_base'
   }
   else{
-    console.log('[' + device_id + ']' + ': none_ip_base');
+    console.log('[' + vgw_id + ']' + ': none_ip_base');
     return 'none_ip_base';
   }  
   
