@@ -105,7 +105,8 @@ client.on('message', function (topic, message) {
                 if (typeof vgw !== 'undefined') {
                   vgw.dev_info = message.toString();
                   //add sensorhub list here
-                  var infoObj=jsonObj.susiCommData.data.IoTGW;
+                  //var infoObj=jsonObj.susiCommData.data.IoTGW;
+                  var infoObj = JSON.parse(JSON.stringify(jsonObj.susiCommData.data.IoTGW));
                   list_info_all_sensor_hub(jsonObj.susiCommData.agentID , 'null', 0, 'null', infoObj);                  
                 }
           }
