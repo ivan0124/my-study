@@ -426,9 +426,13 @@ module.exports = {
     });     
     console.log('--------------------------------------------------------------');
     console.log('Show all conn_map');
+    var tmp_vgw_id='';
     conn_map.forEach(function(obj, key) {
       if (typeof obj !== 'undefined') {
-          console.log('(VGW):'+obj.vgw_id );
+          if ( tmp_vgw_id !== obj.vgw_id){
+            console.log('(VGW):'+obj.vgw_id );
+            tmp_vgw_id = obj.vgw_id;
+          }
           console.log(' |---(connectivity):' + key);
           obj.sensor_hub_list.forEach(function(senObj, senKey){
              if (typeof senObj !== 'undefined'){
