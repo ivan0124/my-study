@@ -459,7 +459,6 @@ module.exports = {
           obj.sensor_hub_list.forEach(function(senObj, senKey){
              if (typeof senObj !== 'undefined'){
                console.log('    |--(SensorHub):' + senKey);
-               console.log('senObj.connect = ' + senObj.connect);
              }
           });
       }
