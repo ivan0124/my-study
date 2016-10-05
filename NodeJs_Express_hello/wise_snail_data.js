@@ -389,16 +389,18 @@ function is_ip_valid( ip ){
   
   console.log( '[is_ip_valid] ip = ' + ip);
   var ip_arr=ip.split('.');
-  //console.log( 'ip_arr.length = ' + ip_arr.length);
+  console.log( 'ip_arr.length = ' + ip_arr.length);
   if (ip_arr.length !== 4 ){
       return false;
   }
   
+  console.log( '[is_ip_valid] ip = 3 ');
   if (ip_arr[0] === 0 && ip_arr[1] === 0 &&
       ip_arr[2] === 0 && ip_arr[3] === 0){
       return false;
   }
   
+  console.log( '[is_ip_valid] ip = 4 ');
   if ( (ip_arr[0] >= 0 && ip_arr[0] < 256) &&
        (ip_arr[1] >= 0 && ip_arr[1] < 256) &&
        (ip_arr[2] >= 0 && ip_arr[2] < 256) &&
@@ -406,6 +408,7 @@ function is_ip_valid( ip ){
       return true;      
   }
   
+  console.log( '[is_ip_valid] ip = 5 ');
   return false;
 }
 
