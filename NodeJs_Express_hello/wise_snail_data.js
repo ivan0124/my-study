@@ -256,10 +256,28 @@ function getMsgType(topic, jsonObj){
     return msgType.unknown;
 }
 
-/*
+
 function getOSType( vgw_id ){
+
+  if ( vgw_map.has(vgw_id) === false ) {
+    console.log('[getOSType] vgw_map.has(vgw_id) === false');
+    return 'null';
+  }
+    
+  var vgw=vgw_map.get(vgw_id);
+  if (typeof vgw === 'undefined') {
+     console.log('[getOSType] vgw_map.has(vgw_id) === false');
+    return 'null';                 
+  }
   
-  if ( is_ip_valid(jsonObj.susiCommData.osInfo.IP) === true ){
+  try {
+      var os_info_obj = JSON.parse(vgw.os_info);
+  } catch (e) {
+      console.error(e);
+      return 'null';
+  }  
+  
+  if ( is_ip_valid( os_info_obj.susiCommData.osInfo.IP) === true ){
     console.log('[' + device_id + ']' + ': ip_base');
     return 'ip_base'
   }
@@ -267,8 +285,9 @@ function getOSType( vgw_id ){
     console.log('[' + device_id + ']' + ': none_ip_base');
     return 'none_ip_base';
   }  
+  
 }
-*/
+
 
 function list_info_all_sensor_hub( vgw_id, conn_id, layer, connType, infoObj ){
   
@@ -333,15 +352,14 @@ function list_info_spec_all_connectivity( vgw_id, layer, connType, infoObj ){
                 
                  if ( conn_map.has(device_id) === false ) {
                      //console.log('[' + device_id + ']' + ': remove vgw_map');
-                     //vgw_map.remove(device_id);                                      
+                     console.log('getOSType(vfw_id) =========== ' + getOSType(vfw_id));                                      
                      var sen_hub_map = new HashMap();
                      var connObj = { vgw_id: vgw_id,  sensor_hub_list: sen_hub_map };           
                      conn_map.set(device_id, connObj);                   
                  }
                  else{
                      //var conn = conn_map.get(device_id);
-                      //conn.vgw_id = vgw_id;
-                      
+                      //conn.vgw_id = vgw_id;            
                  }
               }
           }
