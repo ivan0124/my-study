@@ -429,11 +429,10 @@ module.exports = {
     conn_map.forEach(function(obj, key) {
       if (typeof obj !== 'undefined') {
           console.log('['+obj.vgw_id+']');
-          console.log('|');
-          console.log('|-' + key);
+          console.log('|---' + key);
           obj.sensor_hub_list.forEach(function(senObj, senKey){
              if (typeof senObj !== 'undefined'){
-               console.log('---' + senKey);
+               console.log('|------' + senKey);
              }
           });
       }
