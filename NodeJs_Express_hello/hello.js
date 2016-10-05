@@ -139,6 +139,12 @@ app.get('/case1_test_add_connectivity', function (req, res) {
   \"bn\":\"Info\"},\"bn\":\"0007000E40ABCD99\",\"ver\":1},\"bn\":\"WSN\"},\"ver\":1}},\"commCmd\":2055,\
   \"requestID\":2001,\"agentID\":\"0000000E40ABCD99\",\"handlerName\":\"general\",\"sendTS\":160081025}}'); 
   
+  //send sensor hub
+  client.publish('/cagent/admin/0017000E40000001/agentinfoack', '{\"susiCommData\":{\"devID\":\"0017000E40000001\",\
+    \"hostname\":\"AAA\",\"sn\":\"0017000E40000001\",\"mac\":\"0017000E40000001\",\"version\":\"3.1.23\",\"type\":\"SenHub\",\
+    \"product\":\"WISE-1020\",\"manufacture\":\"\",\"status\":\"1\",\"commCmd\":1,\"requestID\":30002,\"agentID\":\"0017000E40000001\",\
+    \"handlerName\":\"general\",\"sendTS\":160081026}}');
+  
   setTimeout(ws_data.show_all_vgw_map, 2000);
   
   res.send('case1_test_add_connectivity');
