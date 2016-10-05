@@ -387,6 +387,7 @@ function list_info_spec_all_connectivity( vgw_id, layer, connType, infoObj ){
 
 function is_ip_valid( ip ){
   
+  console.log( '[is_ip_valid] ip = ' + ip);
   var ip_arr=ip.split('.');
   //console.log( 'ip_arr.length = ' + ip_arr.length);
   if (ip_arr.length !== 4 ){
