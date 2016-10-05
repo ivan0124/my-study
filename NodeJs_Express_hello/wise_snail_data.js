@@ -58,14 +58,6 @@ client.on('message', function (topic, message) {
     case msgType.vgw_os_info:
       {
           console.log('[' + device_id + ']' + ': vgw_os_info, IP=' + jsonObj.susiCommData.osInfo.IP);
-          /*
-          if ( is_ip_valid(jsonObj.susiCommData.osInfo.IP) === true ){
-            console.log('[' + device_id + ']' + ': ip_base');
-          }
-          else{
-            console.log('[' + device_id + ']' + ': none_ip_base');
-          }
-          */
           if ( vgw_map.has(device_id) === true ) {
                 var vgw=vgw_map.get(device_id);
                 if (typeof vgw !== 'undefined') {
@@ -89,7 +81,7 @@ client.on('message', function (topic, message) {
                     //var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
                     //copy obj to infoObj
                     var infoObj = JSON.parse(JSON.stringify(jsonObj.susiCommData.infoSpec.IoTGW));
-                    list_info_spec_all_connectivity(device_id ,0, 'null', infoObj);
+                    conn_map_add_connectivity(device_id ,0, 'null', infoObj);
                 }
           }
           else{
@@ -342,7 +334,7 @@ function list_info_all_sensor_hub( vgw_id, conn_id, layer, connType, infoObj ){
 }
 
 
-function list_info_spec_all_connectivity( vgw_id, layer, connType, infoObj ){
+function conn_map_add_connectivity( vgw_id, layer, connType, infoObj ){
   
   //console.log( 'Start-------------------------------------------------');
   layer++;
@@ -376,7 +368,7 @@ function list_info_spec_all_connectivity( vgw_id, layer, connType, infoObj ){
       if (infoObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
           if (typeof infoObj[key] === 'object' ){
-              list_info_spec_all_connectivity(vgw_id, layer, connType, infoObj[key]);
+              conn_map_add_connectivity(vgw_id, layer, connType, infoObj[key]);
           }
       }
    }  
