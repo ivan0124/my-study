@@ -96,6 +96,17 @@ app.get('/case1_test_add_connectivity', function (req, res) {
 \"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":1,\"commCmd\":1,\"requestID\":21,\"agentID\":\"0000000E4CABCDEF\",\
 \"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}');
   
+  /*send os info*/
+  client.publish('/cagent/admin/0000000E4CABCD99/agentactionreq', '{\"susiCommData\":{\"osInfo\":{\"cagentVersion\":\"3.1.23\",\
+  \"cagentType\":\"IoTGW\",\"osVersion\":\"SnailOS\",\"biosVersion\":\"\",\"platformName\":\"\",\"processorName\":\"SnailGW\",\
+  \"osArch\":\"SnailX86\",\"totalPhysMemKB\":123,\"macs":"000E40ABCD99\",\"IP\":\"192.168.1.1\"},\"commCmd\":116,\"requestID\":109,\
+  \"agentID\":\"0000000E40ABCD99\",\"handlerName\":\"general\",\"sendTS\":1466730390}}');
+  
+  client.publish('/cagent/admin/0000000E4CABCDEF/agentactionreq', '{\"susiCommData\":{\"osInfo\":{\"cagentVersion\":\"3.1.23\",\
+  \"cagentType\":\"IoTGW\",\"osVersion\":\"SnailOS\",\"biosVersion\":\"\",\"platformName\":\"\",\"processorName\":\"SnailGW\",\
+  \"osArch\":\"SnailX86\",\"totalPhysMemKB\":123,\"macs":"000E40ABCDEF\",\"IP\":\"192.168.1.1\"},\"commCmd\":116,\"requestID\":109,\
+  \"agentID\":\"0000000E40ABCDEF\",\"handlerName\":\"general\",\"sendTS\":1466730390}}');  
+  
   /*send info_spec*/
   //1 device
   client.publish('/cagent/admin/0000000E4CABCD99/agentactionreq', '{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"WSN\":\
