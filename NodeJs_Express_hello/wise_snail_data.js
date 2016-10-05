@@ -134,6 +134,7 @@ client.on('message', function (topic, message) {
           console.log('>>>>> typeof senObj : ' + typeof senObj);
           sensor_hub_map_get_senhub( device_id, function senObj( obj ){ 
             console.log('[senObj]: ' + obj +', obj.connect='+ obj.connect);
+            obj.connect = message.toString();
           } );
           
           /*
@@ -459,6 +460,7 @@ module.exports = {
           obj.sensor_hub_list.forEach(function(senObj, senKey){
              if (typeof senObj !== 'undefined'){
                console.log('    |--(SensorHub):' + senKey);
+               console.log('senObj.connect = ' + senObj.connect);
              }
           });
       }
