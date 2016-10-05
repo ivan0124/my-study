@@ -434,7 +434,7 @@ module.exports = {
              if (typeof senObj !== 'undefined'){
                console.log('-' + senKey);
              }
-          }
+          });
       }
     });     
     console.log('--------------------------------------------------------------');    
