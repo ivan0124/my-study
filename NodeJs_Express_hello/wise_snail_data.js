@@ -5,7 +5,8 @@ var conn_map = new HashMap();
 var vgw_map = new HashMap();
 var sensor_hub_map = new HashMap();
 
-client  = mqtt.connect('mqtt://127.0.0.1'); 
+client  = mqtt.connect('mqtt://127.0.0.1');
+client.queueQoSZero = false;
 
 const msgType = { error: -1, unknown: 0,
                   vgw_connect: 1, vgw_os_info: 2, vgw_info_spec: 3, vgw_willmessage: 4,
@@ -255,6 +256,20 @@ function getMsgType(topic, jsonObj){
     return msgType.unknown;
 }
 
+/*
+function getOSType( vgw_id ){
+  
+  if ( is_ip_valid(jsonObj.susiCommData.osInfo.IP) === true ){
+    console.log('[' + device_id + ']' + ': ip_base');
+    return 'ip_base'
+  }
+  else{
+    console.log('[' + device_id + ']' + ': none_ip_base');
+    return 'none_ip_base';
+  }  
+}
+*/
+
 function list_info_all_sensor_hub( vgw_id, conn_id, layer, connType, infoObj ){
   
   //console.log( 'Start-------------------------------------------------');
@@ -318,7 +333,7 @@ function list_info_spec_all_connectivity( vgw_id, layer, connType, infoObj ){
                 
                  if ( conn_map.has(device_id) === false ) {
                      //console.log('[' + device_id + ']' + ': remove vgw_map');
-                     //vgw_map.remove(device_id);
+                     //vgw_map.remove(device_id);                                      
                      var sen_hub_map = new HashMap();
                      var connObj = { vgw_id: vgw_id,  sensor_hub_list: sen_hub_map };           
                      conn_map.set(device_id, connObj);                   
