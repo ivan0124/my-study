@@ -99,7 +99,7 @@ client.on('message', function (topic, message) {
                   //add sensorhub list here
                   //var infoObj=jsonObj.susiCommData.data.IoTGW;
                   var infoObj = JSON.parse(JSON.stringify(jsonObj.susiCommData.data.IoTGW));
-                  list_info_all_sensor_hub(device_id , 'null', 0, 'null', infoObj);                  
+                  sensor_hub_map_add_senhub(device_id , 'null', 0, 'null', infoObj);                  
                 }
           }
           else{
@@ -159,40 +159,8 @@ client.on('message', function (topic, message) {
       console.log('default');
       break;
   }
-  
   console.log('--------------------------------------------------------------');
-  /*
-  //
-  var key_id=get_id( topic.toString());
-  //
-  console.log('[wise_snail_data] conn_map.count() = ' + conn_map.count());
   
-  var conn=conn_map.get(key_id);
-  console.log('[wise_snail_data] type conn = ' + typeof conn);
-  
-  if (typeof conn !== 'undefined') {
-    console.log('[wise_snail_data] conn key1 exist');
-    var sen= conn.sensor_hub.get('123');
-    console.log('sen.cmd=' + sen.cmd + ', sen.msg=' + sen.msg );
-    sen.msg = 'I change the msg';
-    
-  }
-  else{
-    console.log('[wise_snail_data] conn key1 does nost exist');
-    
-    var sensor_hub_map = new HashMap();
-    ////var sensor1 = { cmd: topic.toString(), msg: message.toString() };
-    ////sensor_hub_map.set('123', sensor1);
-    //
-    var co = {cap: 'null', sensor_hub: sensor_hub_map };
-    ////var sen= co.sensor_hub.get('123');
-    ////console.log('sen.cmd=' + sen.cmd + ', sen.msg=' + sen.msg );
-    conn_map.set(key_id, co);    
-
-  }
-  //
-  //client.end()
-  */
 })
 
 function getMsgType(topic, jsonObj){
@@ -287,7 +255,7 @@ function getOSType( vgw_id ){
 }
 
 
-function list_info_all_sensor_hub( vgw_id, conn_id, layer, connType, infoObj ){
+function sensor_hub_map_add_senhub( vgw_id, conn_id, layer, connType, infoObj ){
   
   //console.log( 'Start-------------------------------------------------');
   layer++;
@@ -325,7 +293,7 @@ function list_info_all_sensor_hub( vgw_id, conn_id, layer, connType, infoObj ){
       if (infoObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
           if (typeof infoObj[key] === 'object' ){
-              list_info_all_sensor_hub(vgw_id, conn_id, layer, connType, infoObj[key]);
+              sensor_hub_map_add_senhub(vgw_id, conn_id, layer, connType, infoObj[key]);
           }
       }
    }  
