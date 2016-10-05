@@ -313,7 +313,6 @@ function sensor_hub_map_get_senhub( sensor_hub_id, callback ){
     conn_map.forEach(function(obj, key) {
       if (typeof obj !== 'undefined') {
           if ( obj.sensor_hub_list.has ( sensor_hub_id ) === true ){
-            console.log('obj.sensor_hub_list.has ( sensor_hub_id ) === true ');
             callback(obj.sensor_hub_list.get( sensor_hub_id ));
             return;
           }
