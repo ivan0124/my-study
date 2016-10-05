@@ -264,10 +264,11 @@ function list_info_all_sensor_hub( vgw_id, connName, layer, connType, infoObj ){
           if ( infoObj[key] === 'SenHubList' ){
              console.log( 'SenHubList :' + infoObj['sv'] ); 
              var conn = conn_map.get(connName);
-             if ( conn !== 'undefined' ){
+             if ( typeof conn !== 'undefined' && typeof conn.sensor_hub_list !== 'undefined'){
                var sen_arr = infoObj['sv'].split(',');
                for (var i=0 ; i < sen_arr.length ; i++){
                  console.log('sen_arr['+i+'] = ' + sen_arr[i]);
+                 
                }
              }
              else{
