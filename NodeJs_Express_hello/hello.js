@@ -195,7 +195,7 @@ app.get('/vgw_agentinfoack', function (req, res) {
   client.publish('/cagent/admin/0000000E4CABCD99/agentinfoack', '{\"susiCommData\":{\"devID\":\"0000000E4CABCD99\",\"parentID\":\"\",\
 \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCD99\",\"mac\":\"000E4CABCD99\",\"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
 \"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":1,\"commCmd\":1,\"requestID\":21,\"agentID\":\"0000000E4CABCD99\",\
-\"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}', {qos:0, retain: false});
+\"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}');
   /*
   client.publish('/cagent/admin/0000000E4CABCDEF/agentinfoack', '{\"susiCommData\":{\"devID\":\"0000000E4CABCDEF\",\"parentID\":\"\",\
 \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCDEF\",\"mac\":\"000E4CABCDEF\",\"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
