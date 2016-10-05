@@ -290,6 +290,8 @@ function getOSType( vgw_id ){
     return 'none_ip_base';
   }  
   
+  return 'null';
+  
 }
 
 
@@ -356,9 +358,9 @@ function list_info_spec_all_connectivity( vgw_id, layer, connType, infoObj ){
                 
                  if ( conn_map.has(device_id) === false ) {
                      //console.log('[' + device_id + ']' + ': remove vgw_map');
-                     console.log('getOSType(vgw_id) =========== ' + getOSType(vgw_id));                                      
+                     //console.log('getOSType(vgw_id) =========== ' + getOSType(vgw_id));                                      
                      var sen_hub_map = new HashMap();
-                     var connObj = { vgw_id: vgw_id,  sensor_hub_list: sen_hub_map };           
+                     var connObj = { vgw_id: vgw_id,  os_type: getOSType(vgw_id), sensor_hub_list: sen_hub_map };           
                      conn_map.set(device_id, connObj);                   
                  }
                  else{
