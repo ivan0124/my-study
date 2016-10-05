@@ -170,6 +170,10 @@ client.on('message', function (topic, message) {
   
 })
 
+function getStatusFromMsg( connectMsg ){
+  return 'connecting....';
+}
+
 function getMsgType(topic, jsonObj){
   
     var topic_arr = topic.toString().split('/');
