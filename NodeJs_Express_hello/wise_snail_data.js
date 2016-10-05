@@ -269,8 +269,8 @@ function list_info_all_sensor_hub( vgw_id, conn_id, layer, connType, infoObj ){
                for (var i=0 ; i < sen_arr.length ; i++){
                  console.log('=== sen_arr['+i+'] = ' + sen_arr[i]);
                  var device_id = sen_arr[i];
-                 //var senObj = { vgw_id: vgw_id,  sensor_hub_list: sen_hub_map };           
-                 //conn.sensor_hub_list.set(device_id, senObj);
+                 var senObj = JSON.parse(JSON.stringify(devObj));
+                 conn.sensor_hub_list.set(device_id, senObj);
                }
              }
              else{
