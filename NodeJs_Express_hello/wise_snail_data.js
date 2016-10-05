@@ -133,7 +133,7 @@ client.on('message', function (topic, message) {
           var senObj;
           console.log('>>>>> typeof senObj : ' + typeof senObj);
           sensor_hub_map_get_senhub( device_id, function senObj( obj ){ 
-            console.log('[senObj]: ' + senObj);
+            console.log('[senObj]: ' + obj);
           } );
           
           /*
