@@ -255,7 +255,7 @@ function getMsgType(topic, jsonObj){
     return msgType.unknown;
 }
 
-function list_info_all_sensor_hub( vgw_id, connName, layer, connType, infoObj ){
+function list_info_all_sensor_hub( vgw_id, conn_id, layer, connType, infoObj ){
   
   //console.log( 'Start-------------------------------------------------');
   layer++;
@@ -263,16 +263,18 @@ function list_info_all_sensor_hub( vgw_id, connName, layer, connType, infoObj ){
       if (infoObj.hasOwnProperty(key)) {
           if ( infoObj[key] === 'SenHubList' ){
              console.log( 'SenHubList :' + infoObj['sv'] ); 
-             var conn = conn_map.get(connName);
+             var conn = conn_map.get(conn_id);
              if ( typeof conn !== 'undefined' && typeof conn.sensor_hub_list !== 'undefined'){
                var sen_arr = infoObj['sv'].split(',');
                for (var i=0 ; i < sen_arr.length ; i++){
                  console.log('=== sen_arr['+i+'] = ' + sen_arr[i]);
-                 
+                 var device_id = sen_arr[i];
+                 var senObj = { vgw_id: vgw_id,  sensor_hub_list: sen_hub_map };           
+                 conn.sensor_hub_list.set(device_id, senObj);
                }
              }
              else{
-               console.log( connName + ' does not exist');
+               console.log( conn_id + ' does not exist or conn.sensor_hub_list is undefined');
              }
           }
           if ( key === 'bn' ){
@@ -280,8 +282,8 @@ function list_info_all_sensor_hub( vgw_id, connName, layer, connType, infoObj ){
                 connType = infoObj[key];
               }
               if ( layer === 3 ){
-                 connName = infoObj[key];
-                 console.log( '[layer] :' + layer + ', connType='+ connType +', connName =======>' + connName ); 
+                 conn_id = infoObj[key];
+                 console.log( '[layer] :' + layer + ', connType='+ connType +', connName =======>' + conn_id ); 
               }
           }
       }
@@ -291,7 +293,7 @@ function list_info_all_sensor_hub( vgw_id, connName, layer, connType, infoObj ){
       if (infoObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
           if (typeof infoObj[key] === 'object' ){
-              list_info_all_sensor_hub(vgw_id, connName, layer, connType, infoObj[key]);
+              list_info_all_sensor_hub(vgw_id, conn_id, layer, connType, infoObj[key]);
           }
       }
    }  
