@@ -132,8 +132,10 @@ client.on('message', function (topic, message) {
           //copy devObj object as vgw objcect
           var senObj;
           console.log('>>>>> typeof senObj : ' + typeof senObj);
-          sensor_hub_map_get_senhub( device_id, senObj );
-          console.log('[senObj]: ' + senObj);
+          sensor_hub_map_get_senhub( device_id, function senObj( obj ){ 
+            console.log('[senObj]: ' + senObj);
+          } );
+          
           /*
           var sen = JSON.parse(JSON.stringify(devObj));
           sen.connect = message.toString();
@@ -311,7 +313,7 @@ function sensor_hub_map_get_senhub( sensor_hub_id, senObj ){
       if (typeof obj !== 'undefined') {
           if ( obj.sensor_hub_list.has ( sensor_hub_id ) === true ){
             console.log('obj.sensor_hub_list.has ( sensor_hub_id ) === true ');
-            senObj = obj.sensor_hub_list.get( sensor_hub_id );
+            senObj(obj.sensor_hub_list.get( sensor_hub_id ));
             return;
           }
       }
