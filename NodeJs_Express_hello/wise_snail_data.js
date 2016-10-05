@@ -436,7 +436,7 @@ module.exports = {
           console.log(' |-(Connectivity):' + key);
           obj.sensor_hub_list.forEach(function(senObj, senKey){
              if (typeof senObj !== 'undefined'){
-               console.log('    |---(SensorHub):' + senKey);
+               console.log('    |--(SensorHub):' + senKey);
              }
           });
       }
