@@ -69,7 +69,6 @@ client.on('message', function (topic, message) {
           if ( vgw_map.has(device_id) === true ) {
                 var vgw=vgw_map.get(device_id);
                 if (typeof vgw !== 'undefined') {
-                  console.log('[msgType.vgw_os_info] ************************');
                   vgw.os_info = message.toString();
                 }
           }
@@ -88,7 +87,7 @@ client.on('message', function (topic, message) {
                   vgw.dev_info_spec = message.toString();
                   //add conn_map here
                     var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
-                    list_info_spec_all_connectivity(jsonObj.susiCommData.agentID ,0, 'null', infoObj);
+                    list_info_spec_all_connectivity(device_id ,0, 'null', infoObj);
                 }
           }
           else{
@@ -268,7 +267,7 @@ function getOSType( vgw_id ){
     
   var vgw=vgw_map.get(vgw_id);
   if (typeof vgw === 'undefined') {
-     console.log('[getOSType] vgw_map.has(vgw_id) === false');
+    console.log('[getOSType] vgw_map.has(vgw_id) === false');
     return 'null';                 
   }
   
