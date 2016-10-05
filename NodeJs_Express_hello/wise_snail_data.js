@@ -130,7 +130,8 @@ client.on('message', function (topic, message) {
       {
           console.log('[' + device_id + ']' + ': sen_connect');
           //copy devObj object as vgw objcect
-          var senObj = sensor_hub_map_get_senhub( device_id );
+          var senObj={};
+          sensor_hub_map_get_senhub( device_id, senObj );
           console.log('[senObj]: ' + senObj);
           /*
           var sen = JSON.parse(JSON.stringify(devObj));
@@ -303,17 +304,17 @@ function sensor_hub_map_add_senhub( vgw_id, conn_id, layer, connType, infoObj ){
    layer--;  
 }
 
-function sensor_hub_map_get_senhub( sensor_hub_id ){
+function sensor_hub_map_get_senhub( sensor_hub_id, senObj ){
   
     conn_map.forEach(function(obj, key) {
       if (typeof obj !== 'undefined') {
           if ( obj.sensor_hub_list.has ( sensor_hub_id ) === true ){
             console.log('obj.sensor_hub_list.has ( sensor_hub_id ) === true ');
+            senObj = obj.sensor_hub_list.get( sensor_hub_id );
+            return;
           }
       }
     }); 
-  
-    return 'null';
 }
 
 
