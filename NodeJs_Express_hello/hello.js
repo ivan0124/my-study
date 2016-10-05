@@ -89,7 +89,7 @@ app.get('/case1_test_add_connectivity', function (req, res) {
   client.publish('/cagent/admin/0000000E4CABCD99/agentinfoack', '{\"susiCommData\":{\"devID\":\"0000000E4CABCD99\",\"parentID\":\"\",\
 \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCD99\",\"mac\":\"000E4CABCD99\",\"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
 \"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":1,\"commCmd\":1,\"requestID\":21,\"agentID\":\"0000000E4CABCD99\",\
-\"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}',{qos:0, retain: false});
+\"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}');
   //
   client.publish('/cagent/admin/0000000E4CABCDEF/agentinfoack', '{\"susiCommData\":{\"devID\":\"0000000E4CABCDEF\",\"parentID\":\"\",\
 \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCDEF\",\"mac\":\"000E4CABCDEF\",\"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
@@ -138,7 +138,7 @@ app.get('/sen_agentinfoack', function (req, res) {
   client.publish('/cagent/admin/0017000E40000001/agentinfoack', '{\"susiCommData\":{\"devID\":\"0017000E40000001\",\
     \"hostname\":\"AAA\",\"sn\":\"0017000E40000001\",\"mac\":\"0017000E40000001\",\"version\":\"3.1.23\",\"type\":\"SenHub\",\
     \"product\":\"WISE-1020\",\"manufacture\":\"\",\"status\":\"1\",\"commCmd\":1,\"requestID\":30002,\"agentID\":\"0017000E40000001\",\
-    \"handlerName\":\"general\",\"sendTS\":160081026}}', {qos:0, retain: false});
+    \"handlerName\":\"general\",\"sendTS\":160081026}}');
   res.send('sen_agentinfoack');
 });
 
