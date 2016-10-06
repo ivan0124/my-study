@@ -122,7 +122,7 @@ client.on('message', function (topic, message) {
     case msgType.vgw_willmessage:
       {
           console.log('[' + device_id + ']' + ': vgw_willmessage');
-          vgw_map_remove_vgw( device_id );
+          remove_vgw( device_id );
         /*
           if ( vgw_map.has(device_id) === true ) {
               console.log('[' + device_id + ']' + ': remove vgw_map');
