@@ -294,7 +294,8 @@ function sensor_hub_map_add_senhub( vgw_id, conn_id, layer, infoObj ){
   for (key in infoObj) {
       if (infoObj.hasOwnProperty(key)) {
           if ( infoObj[key] === 'SenHubList' ){
-             console.log( 'SenHubList :' + infoObj['sv'] ); 
+             console.log( 'SenHubList :' + infoObj['sv'] );
+             console.log( '======================= SenHubList length :' + infoObj['sv'].toString().length ); 
              var conn = conn_map.get(conn_id);
              if ( typeof conn !== 'undefined' && typeof conn.sensor_hub_list !== 'undefined'){
                var sen_arr = infoObj['sv'].split(',');
