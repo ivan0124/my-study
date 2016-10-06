@@ -320,9 +320,11 @@ function sensor_hub_map_get_senhub( sensor_hub_id, callback ){
 
 function sensor_hub_map_remove_senhub( sensor_hub_id ){
   
+    console.log('sensor_hub_id = ' + sensor_hub_id);
     conn_map.forEach(function(obj, key) {
       if (typeof obj !== 'undefined') {
           if ( obj.sensor_hub_list.has ( sensor_hub_id ) === true ){
+             console.log('obj.sensor_hub_list.has ( sensor_hub_id ) === true');
             obj.sensor_hub_list.remove ( sensor_hub_id );
             return 0;
           }
