@@ -343,7 +343,7 @@ app.get('/add_json', function (req, res) {
   
   var Name1='ttt';
   susiObj.susiCommData.infoSpec.IoTGW[Name1] = {"ZigBee":{"bn":20}};
-  susiObj.susiCommData.infoSpec.IoTGW.test2 = {"ZigBee":{"bn":20}};
+  susiObj.susiCommData.infoSpec.IoTGW['WSN'].test2 = {"ZigBee":{"bn":20}};
   var string = JSON.stringify(susiObj);
   console.log("string="+string);
   res.send('add_json');
