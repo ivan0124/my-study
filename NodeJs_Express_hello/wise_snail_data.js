@@ -129,11 +129,12 @@ client.on('message', function (topic, message) {
     case msgType.sen_connect:
       {
           console.log('[' + device_id + ']' + ': sen_connect');
-          sensor_hub_map_get_senhub( device_id, function ( senObj ){ 
+          var res = sensor_hub_map_get_senhub( device_id, function ( senObj ){ 
             console.log('[senObj]: ' + senObj );
             senObj.connect = message.toString();
           } );
           
+          console.log("result = " + res);
           break;
       }
     case msgType.sen_disconnect:
@@ -308,14 +309,19 @@ function sensor_hub_map_add_senhub( vgw_id, conn_id, layer, infoObj ){
 
 function sensor_hub_map_get_senhub( sensor_hub_id, callback ){
   
+    var res=-1;
+  
     conn_map.forEach(function(obj, key) {
       if (typeof obj !== 'undefined') {
           if ( obj.sensor_hub_list.has ( sensor_hub_id ) === true ){
+            res = 0;
             callback(obj.sensor_hub_list.get( sensor_hub_id ));
             return;
           }
       }
-    }); 
+    });
+  
+    return res;
 }
 
 function sensor_hub_map_remove_senhub( sensor_hub_id ){
