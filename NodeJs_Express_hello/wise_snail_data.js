@@ -463,7 +463,7 @@ module.exports = {
           console.log(' |-(Connectivity)('+ obj.os_type +'):' + key );
           obj.sensor_hub_list.forEach(function(senObj, senKey){
              if (typeof senObj !== 'undefined'){
-               var status=getStatusFromMsg( senObj.connect );
+               var status= 'on';//getStatusFromMsg( senObj.connect );
                console.log('    |--(SensorHub)(+' status + '):' + senKey);
              }
           });
