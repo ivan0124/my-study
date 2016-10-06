@@ -11,7 +11,7 @@ client.queueQoSZero = false;
 const msgType = { error: -1, unknown: 0,
                   vgw_connect: 1, vgw_os_info: 2, vgw_info_spec: 3, vgw_willmessage: 4,
                   vgw_disconnect: 5, vgw_info: 6,
-                  sen_connect: 7, sen_disconnect: 8, sen_info_spec: 9 };
+                  sen_connect: 7, sen_disconnect: 8, sen_info_spec: 9, sen_info: 10 };
 var devObj = { connect: 'null', os_info: 'null', dev_info_spec: 'null',  dev_info: 'null'};
 
 
@@ -154,6 +154,11 @@ client.on('message', function (topic, message) {
           //console.log("result = " + res);
           break;
       }
+    case msgType.sen_info:
+      {
+          console.log('[' + device_id + ']' + ': sen_info');
+          break;
+      }
     case msgType.unknown:
       console.log('msgType.unknown');
       break;
@@ -214,6 +219,11 @@ function getMsgType(topic, jsonObj){
             if ( typeof jsonObj.susiCommData.data.IoTGW !== 'undefined' ){
                 return msgType.vgw_info;
             }  
+          
+            if ( typeof jsonObj.susiCommData.data.SenHub !== 'undefined' ){
+                return msgType.sen_info;
+            }          
+          
         }       
     }  
   
