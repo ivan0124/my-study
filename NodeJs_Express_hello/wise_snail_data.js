@@ -12,7 +12,7 @@ const msgType = { error: -1, unknown: 0,
                   vgw_connect: 1, vgw_os_info: 2, vgw_info_spec: 3, vgw_willmessage: 4,
                   vgw_disconnect: 5, vgw_info: 6,
                   sen_connect: 7, sen_disconnect: 8, sen_info_spec: 9, sen_info: 10 };
-var devObj = { connect: 'null', os_info: 'null', dev_info_spec: 'null',  dev_info: 'null'};
+var devObj = { vgw_id: 'null', connect: 'null', os_info: 'null', dev_info_spec: 'null',  dev_info: 'null'};
 
 
 client.on('connect', function () {
@@ -51,6 +51,7 @@ client.on('message', function (topic, message) {
           vgw.connect = message.toString();
           if ( vgw_map.has(device_id) === false ) {
               console.log('[' + device_id + ']' + ': create vgw_map');
+              vgw.vgw_id = device_id.toString();
               vgw_map.set(device_id, vgw );
           }
           break;
