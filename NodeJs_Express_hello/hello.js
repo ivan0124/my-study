@@ -85,7 +85,7 @@ app.get('/ip_valid', function (req, res) {
 
 app.get('/case1_test_add_connectivity', function (req, res) {
   
-  /*send connect*/
+  /*send vgw connect*/
   client.publish('/cagent/admin/0000000E4CABCD99/agentinfoack', '{\"susiCommData\":{\"devID\":\"0000000E4CABCD99\",\"parentID\":\"\",\
 \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCD99\",\"mac\":\"000E4CABCD99\",\"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
 \"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":1,\"commCmd\":1,\"requestID\":21,\"agentID\":\"0000000E4CABCD99\",\
@@ -96,7 +96,7 @@ app.get('/case1_test_add_connectivity', function (req, res) {
 \"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":1,\"commCmd\":1,\"requestID\":21,\"agentID\":\"0000000E4CABCDEF\",\
 \"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}');
   
-  /*send os info*/
+  /*send vgw os info*/
   client.publish('/cagent/admin/0000000E4CABCD99/agentactionreq', '{\"susiCommData\":{\"osInfo\":{\"cagentVersion\":\"3.1.23\",\
   \"cagentType\":\"IoTGW\",\"osVersion\":\"SnailOS\",\"biosVersion\":\"\",\"platformName\":\"\",\"processorName\":\"SnailGW\",\
   \"osArch\":\"SnailX86\",\"totalPhysMemKB\":123,\"macs":"000E40ABCD99\",\"IP\":\"192.168.1.1\"},\"commCmd\":116,\"requestID\":109,\
@@ -107,7 +107,7 @@ app.get('/case1_test_add_connectivity', function (req, res) {
   \"osArch\":\"SnailX86\",\"totalPhysMemKB\":123,\"macs":"000E40ABCDEF\",\"IP\":\"192.168.1.1\"},\"commCmd\":116,\"requestID\":109,\
   \"agentID\":\"0000000E40ABCDEF\",\"handlerName\":\"general\",\"sendTS\":1466730390}}');  
   
-  /*send info_spec*/
+  /*send vgw info_spec*/
   //1 device
   client.publish('/cagent/admin/0000000E4CABCD99/agentactionreq', '{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"WSN\":\
   {\"WSN0\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
@@ -132,7 +132,7 @@ app.get('/case1_test_add_connectivity', function (req, res) {
   {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCD06\",\"ver\":1},\"bn\":\"BLE\",\"ver\":1},\"ver\":1}},\
   \"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\"handlerName\":\"general\",\"sendTS\":160081020}}');  
 
-  //send virtual gateway info
+  //send vgw info
   client.publish('/cagent/admin/0000000E4CABCD99/deviceinfo', '{\"susiCommData\":{\"data\":{\"IoTGW\":{\"WSN\":{\"WSN0\":{\"Info\":\
   {\"e\":[{\"n\":\"SenHubList\",\"sv\":\"0017000E40000000,0017000E40000001\"},{\"n\":\"Neighbor\",\"sv\":\"0017000E40000000,0017000E40000001\"},\
   {\"n\":\"Name\",\"sv\":\"WSN0\"},{\"n\":\"Health\",\"v\":\"100.000000\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\"},{\"n\":\"reset\",\"bv\":\"0\"}],\
@@ -145,7 +145,6 @@ app.get('/case1_test_add_connectivity', function (req, res) {
     \"product\":\"WISE-1020\",\"manufacture\":\"\",\"status\":\"1\",\"commCmd\":1,\"requestID\":30002,\"agentID\":\"0017000E40000001\",\
     \"handlerName\":\"general\",\"sendTS\":160081026}}');
   
-  setTimeout(ws_data.show_all_vgw_map, 2000);
   // send sensor hub disconnect
   /*
   client.publish('/cagent/admin/0017000E40000001/agentinfoack', '{\"susiCommData\":{\"devID\":\"0017000E40000001\",\
@@ -153,6 +152,18 @@ app.get('/case1_test_add_connectivity', function (req, res) {
     \"product\":\"WISE-1020\",\"manufacture\":\"\",\"status\":\"0\",\"commCmd\":1,\"requestID\":30002,\"agentID\":\"0017000E40000001\",\
     \"handlerName\":\"general\",\"sendTS\":160081026}}');  
   */
+  
+    client.publish('/cagent/admin/0017000E40000001/agentinfoack', '{\"susiCommData\":{\"infoSpec\":{\"SenHub\":\
+    {\"SenData\":{\"e\":[{\"n\":\"Temperature\",\"u\":\"Cel\",\"v\":0,\"min\":-100,\"max\":200,\"asm\":\"r\",\"type\":\"d\",\"rt\":\"ucum.Cel\",\
+    \"st\":\"ipso\",\"exten\":\"\"},{\"n\":\"Humidity\",\"u\":\"%\",\"v\":0,\"min\":0,\"max\":100,\"asm\":\"r\",\"type\":\"d\",\"rt\":\"ucum.%\",\
+    st\":\"ipso\",\"exten\":\"\"},{\"n\":\"GPIO1\",\"u\":\"\",\"bv\":0,\"min\":0,\"max\":1,\"asm\":\"r\",\"type\":\"b\",\"rt\":\"\",\"st\":\"ipso\",\
+    \"exten\":\"\"},{\"n\":\"GPIO2\",\"u\":\"\",\"bv\":0,\"min\":0,\"max\":1,\"asm\":\"r\",\"type\":\"b\",\"rt\":\"\",\"st\":\"ipso\",\"exten\":\"\"}],\
+    \"bn\":\"SenData\"},\"Info\":{\"e\":[{\"n\":\"Name\",\"sv\":\"SenHub1\",\"asm\":\"rw\"},{\"n\":\"sw\",\"sv\":\"1.0.00\",\"asm\":\"r\"}],\
+    \"bn\":\"Info\"},\"Net\":{\"e\":[{\"n\":\"sw\",\"sv\":\"1.0.00\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
+    {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"}],\"bn\":\"Net\"}}},\"commCmd\":2052,\"requestID\":2001,\
+    \"agentID\":\"0017000E40000000\",\"handlerName\":\"general\",\"sendTS\":160081024}}');
+  
+  setTimeout(ws_data.show_all_vgw_map, 2000);
   
   res.send('case1_test_add_connectivity');
 });
