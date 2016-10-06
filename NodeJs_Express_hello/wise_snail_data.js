@@ -134,14 +134,14 @@ client.on('message', function (topic, message) {
             senObj.connect = message.toString();
           } );
           
-          console.log("result = " + res);
+          //console.log("result = " + res);
           break;
       }
     case msgType.sen_disconnect:
       {
           console.log('[' + device_id + ']' + ': sen_disconnect');
           var res = sensor_hub_map_remove_senhub( device_id );
-          console.log("result = " + res);
+          //console.log("result = " + res);
           break;
       }      
     case msgType.unknown:
@@ -331,7 +331,7 @@ function sensor_hub_map_remove_senhub( sensor_hub_id ){
     conn_map.forEach(function(obj, key) {
       if (typeof obj !== 'undefined') {
           if ( obj.sensor_hub_list.has ( sensor_hub_id ) === true ){
-            console.log('obj.sensor_hub_list.has ( sensor_hub_id ) === true');
+            //console.log('obj.sensor_hub_list.has ( sensor_hub_id ) === true');
             obj.sensor_hub_list.remove ( sensor_hub_id );
             res = 0;
           }
