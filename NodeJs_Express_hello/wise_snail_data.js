@@ -178,7 +178,7 @@ function getStatusFromMsg( connectMsg ){
       return '';
   }   
   
-  var status = JSON.stringify(msgObj);
+  var status = JSON.stringify(msgObj.susiCommData.status);
   console.log('msgObj =' + status);
   if ( status === 1 || status === '1' ){
     return 'on';
