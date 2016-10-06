@@ -343,9 +343,11 @@ function sensor_hub_map_add_senhub( vgw_id, conn_id, layer, infoObj ){
                  for (var i=0 ; i < sen_arr.length ; i++){
                    console.log('=== sen_arr['+i+'] = ' + sen_arr[i]);
                    var device_id = sen_arr[i];
-                   var senObj = JSON.parse(JSON.stringify(devObj));
-                   senObj.vgw_id = conn.vgw_id;
-                   conn.sensor_hub_list.set(device_id, senObj);
+                   if ( conn.sensor_hub_list.get( device_id ) === false ){
+                       var senObj = JSON.parse(JSON.stringify(devObj));
+                       senObj.vgw_id = conn.vgw_id;
+                       conn.sensor_hub_list.set(device_id, senObj);
+                   }
                  }
                }
                else{
