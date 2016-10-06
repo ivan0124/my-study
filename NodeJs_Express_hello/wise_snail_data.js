@@ -344,6 +344,7 @@ function sensor_hub_map_add_senhub( vgw_id, conn_id, layer, infoObj ){
                    console.log('=== sen_arr['+i+'] = ' + sen_arr[i]);
                    var device_id = sen_arr[i];
                    if ( conn.sensor_hub_list.get( device_id ) === false ){
+                       console('=====================device_id=' + device_id);
                        var senObj = JSON.parse(JSON.stringify(devObj));
                        senObj.vgw_id = conn.vgw_id;
                        conn.sensor_hub_list.set(device_id, senObj);
