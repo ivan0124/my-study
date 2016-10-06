@@ -12,6 +12,7 @@ const msgType = { error: -1, unknown: 0,
                   vgw_connect: 1, vgw_os_info: 2, vgw_info_spec: 3, vgw_willmessage: 4,
                   vgw_disconnect: 5, vgw_info: 6,
                   sen_connect: 7, sen_disconnect: 8, sen_info_spec: 9, sen_info: 10 };
+const osType = { none_ip_base: 'none_ip_base', ip_base: 'ip_base'};
 var devObj = { vgw_id: 'null', connect: 'null', os_info: 'null', dev_info_spec: 'null',  dev_info: 'null'};
 
 
@@ -282,12 +283,12 @@ function getOSType( vgw_id ){
   }  
   
   if ( is_ip_valid( os_info_obj.susiCommData.osInfo.IP) === true ){
-    console.log('[' + vgw_id + ']' + ': ip_base');
-    return 'ip_base'
+    console.log('[' + vgw_id + ']' + ': ' + osType.ip_base);
+    return osType.ip_base;
   }
   else{
-    console.log('[' + vgw_id + ']' + ': none_ip_base');
-    return 'none_ip_base';
+    console.log('[' + vgw_id + ']' + ':' + osType.none_ip_base);
+    return osType.none_ip_base;
   }  
   
   return 'null';
