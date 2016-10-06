@@ -172,19 +172,9 @@ client.on('message', function (topic, message) {
 
 function getStatusFromMsg( connectMsg ){
   
-  console.log('connectMsg = ' + connectMsg);
+  //console.log('connectMsg = ' + connectMsg);
   try {
       var msgObj = JSON.parse(connectMsg.toString());
-    /*
-  for (key in msgObj) {
-      if (msgObj.hasOwnProperty(key)) {
-          //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
-          //if (typeof jsonObj[key] === 'object' ){
-              console.log( 'keyStr=======>' + key + ', keyVal=======>' + msgObj[key]);
- 
-      }
-   }    
-   */
       var status = msgObj.susiCommData.status;
       console.log('msgObj =' + status);
       if ( status === 1 || status === '1' ){
@@ -192,7 +182,7 @@ function getStatusFromMsg( connectMsg ){
       }    
   } catch (e) {
       console.error(e);
-      return '';
+      return 'off';
   }   
   
   return 'off';
