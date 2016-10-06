@@ -179,7 +179,7 @@ function getStatusFromMsg( connectMsg ){
       if (msgObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
           //if (typeof jsonObj[key] === 'object' ){
-              console.log( 'keyStr=======>' + key + ', keyVal=======>' + jsonObj[key]);
+              console.log( 'keyStr=======>' + key + ', keyVal=======>' + msgObj[key]);
  
       }
    }    
