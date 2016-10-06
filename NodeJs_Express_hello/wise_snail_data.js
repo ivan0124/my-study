@@ -11,7 +11,7 @@ client.queueQoSZero = false;
 const msgType = { error: -1, unknown: 0,
                   vgw_connect: 1, vgw_os_info: 2, vgw_info_spec: 3, vgw_willmessage: 4,
                   vgw_disconnect: 5, vgw_info: 6,
-                  sen_connect: 7, sen_disconnect: 8 };
+                  sen_connect: 7, sen_disconnect: 8, sen_info_spec: 9 };
 var devObj = { connect: 'null', os_info: 'null', dev_info_spec: 'null',  dev_info: 'null'};
 
 
