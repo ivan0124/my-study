@@ -301,11 +301,11 @@ function vgw_map_remove_vgw( vgw_id ){
   var vgw_type = getOSType( vgw_id );
   
   if ( vgw_type === osType.none_ip_base ){
-    console.log('[' + vgw_id + ']' + ':' + osType.none_ip_base);
+    console.log('[' + vgw_id + ']=====' + ':' + osType.none_ip_base);
   }
   
   if ( vgw_type === osType.ip_base ){
-    console.log('[' + vgw_id + ']' + ':' + osType.ip_base);
+    console.log('[' + vgw_id + ']=====' + ':' + osType.ip_base);
   }  
   /*
   if ( vgw_map.has(device_id) === true ) {
