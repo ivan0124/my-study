@@ -129,7 +129,7 @@ client.on('message', function (topic, message) {
     case msgType.sen_connect:
       {
           console.log('[' + device_id + ']' + ': sen_connect');
-          var res = sensor_hub_map_get_senhub( device_id, function ( senObj ){ 
+          var res = sensor_hub_map_get_senhub( 'device_id', function ( senObj ){ 
             console.log('[senObj]: ' + senObj );
             senObj.connect = message.toString();
           } );
