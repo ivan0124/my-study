@@ -140,7 +140,7 @@ client.on('message', function (topic, message) {
       {
           console.log('[' + device_id + ']' + ': sen_disconnect');
           sensor_hub_map_remove_senhub( device_id, function ( result ){
-             console.log("result = " + res);
+             console.log("result = " + result);
           });
          
           break;
