@@ -181,7 +181,6 @@ function getStatusFromMsg( connectMsg ){
         return 'on';
       }    
   } catch (e) {
-      console.error(e);
       return 'off';
   }   
   
