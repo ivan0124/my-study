@@ -172,7 +172,7 @@ client.on('message', function (topic, message) {
 
 function getStatusFromMsg( connectMsg ){
   try {
-      var msgObj = JSON.parse(connectMsg);
+      var msgObj = JSON.parse(connectMsg.toString());
   } catch (e) {
       console.error(e);
       return '';
