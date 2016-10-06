@@ -452,7 +452,7 @@ module.exports = {
     });     
     console.log('--------------------------------------------------------------');
     console.log('Show all conn_map');
-    console.log('getStatusFromMsg=' + getStatusFromMsg(''));
+    //console.log('getStatusFromMsg=' + getStatusFromMsg(''));
     var tmp_vgw_id='';
     conn_map.forEach(function(obj, key) {
       if (typeof obj !== 'undefined') {
@@ -463,7 +463,8 @@ module.exports = {
           console.log(' |-(Connectivity)('+ obj.os_type +'):' + key );
           obj.sensor_hub_list.forEach(function(senObj, senKey){
              if (typeof senObj !== 'undefined'){
-               console.log('    |--(SensorHub):' + senKey);
+               var status=getStatusFromMsg( senObj.connect );
+               console.log('    |--(SensorHub)(+' status + '):' + senKey);
              }
           });
       }
