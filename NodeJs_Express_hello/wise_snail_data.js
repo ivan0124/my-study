@@ -246,7 +246,7 @@ function getMsgType(topic, jsonObj){
 
 function getStatusFromMsg( connectMsg ){
   
-  //console.log('connectMsg = ' + connectMsg);
+  console.log('connectMsg = ' + connectMsg);
   try {
       var msgObj = JSON.parse(connectMsg.toString());
       var status = msgObj.susiCommData.status;
