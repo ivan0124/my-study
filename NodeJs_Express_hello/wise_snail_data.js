@@ -121,10 +121,13 @@ client.on('message', function (topic, message) {
     case msgType.vgw_willmessage:
       {
           console.log('[' + device_id + ']' + ': vgw_willmessage');
+          vgw_map_remove_vgw( device_id );
+        /*
           if ( vgw_map.has(device_id) === true ) {
               console.log('[' + device_id + ']' + ': remove vgw_map');
               vgw_map.remove(device_id);
           }
+        */
           break;
       }
     case msgType.sen_connect:
@@ -292,12 +295,15 @@ function getOSType( vgw_id ){
 }
 
 function vgw_map_remove_vgw( vgw_id ){
+  
+  var vgw_type = getOSType( vgw_id );
   /*
   if ( vgw_map.has(device_id) === true ) {
       console.log('[' + device_id + ']' + ': remove vgw_map');
       vgw_map.remove(device_id);
   } 
   */
+  
 }
 
 function sensor_hub_map_add_senhub( vgw_id, conn_id, layer, infoObj ){
