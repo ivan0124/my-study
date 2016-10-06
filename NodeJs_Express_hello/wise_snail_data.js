@@ -518,6 +518,7 @@ module.exports = {
   },
   
   show_all_vgw_map: function() {
+    /*
     console.log('--------------------------------------------------------------');
     console.log('Show all vgw_map');
     vgw_map.forEach(function(obj, key) {
@@ -537,7 +538,8 @@ module.exports = {
           console.log('['+key+']'+'[dev_info_spec]' + ' : ' + obj.dev_info_spec);
           console.log('['+key+']'+'[dev_info]' + ' : ' + obj.dev_info);
       }
-    });     
+    });
+    */
     console.log('--------------------------------------------------------------');
     console.log('Show all conn_map');
     //console.log('getStatusFromMsg=' + getStatusFromMsg(''));
