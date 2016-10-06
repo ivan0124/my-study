@@ -289,17 +289,19 @@ function sensor_hub_map_add_senhub( vgw_id, conn_id, layer, connType, infoObj ){
                console.log( conn_id + ' does not exist or conn.sensor_hub_list is undefined');
              }
           }
-        /*
+        
           if ( key === 'bn' ){
+            /*
               if ( layer === 2 ){
                 connType = infoObj[key];
               }
+              */
               if ( layer === 3 ){
                  conn_id = infoObj[key];
                  console.log( '[layer] :' + layer + ', connType='+ connType +', connName =======>' + conn_id ); 
               }
           }
-          */
+          
       }
    }
  //
