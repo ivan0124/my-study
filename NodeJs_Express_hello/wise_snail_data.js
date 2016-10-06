@@ -291,14 +291,8 @@ function sensor_hub_map_add_senhub( vgw_id, conn_id, layer, infoObj ){
           }
         
           if ( key === 'bn' ){
-            /*
-              if ( layer === 2 ){
-                connType = infoObj[key];
-              }
-              */
               if ( layer === 3 ){
                  conn_id = infoObj[key];
-                 //console.log( '[layer] :' + layer + ', connType='+ connType +', connName =======>' + conn_id ); 
               }
           }
           
