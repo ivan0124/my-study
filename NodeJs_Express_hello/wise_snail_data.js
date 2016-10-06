@@ -55,6 +55,16 @@ client.on('message', function (topic, message) {
           }
           break;
       }
+    case msgType.vgw_disconnect:
+      {
+          console.log('[' + device_id + ']' + ': vgw_disconnect');
+          if ( vgw_map.has(device_id) === true ) {
+              console.log('[' + device_id + ']' + ': remove vgw_map');
+              //
+              vgw_map.remove(device_id);
+          }
+          break;        
+      }      
     case msgType.vgw_os_info:
       {
           console.log('[' + device_id + ']' + ': vgw_os_info, IP=' + jsonObj.susiCommData.osInfo.IP);
@@ -107,16 +117,6 @@ client.on('message', function (topic, message) {
           }         
           break;
       }
-    case msgType.vgw_disconnect:
-      {
-          console.log('[' + device_id + ']' + ': vgw_disconnect');
-          if ( vgw_map.has(device_id) === true ) {
-              console.log('[' + device_id + ']' + ': remove vgw_map');
-              //
-              vgw_map.remove(device_id);
-          }
-          break;        
-      }
     case msgType.vgw_willmessage:
       {
           console.log('[' + device_id + ']' + ': vgw_willmessage');
@@ -151,7 +151,7 @@ client.on('message', function (topic, message) {
             console.log('[senObj]: ' + senObj );
             senObj.dev_info_spec = message.toString();
           } );
-          console.log("result = " + res);
+          //console.log("result = " + res);
           break;
       }
     case msgType.unknown:
