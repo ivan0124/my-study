@@ -295,25 +295,34 @@ function getOSType( vgw_id ){
   
 }
 
-function vgw_map_remove_vgw( vgw_id ){
+function remove_vgw( vgw_id ){
   
   console.log('vgw_map_remove_vgw =================');
   var vgw_type = getOSType( vgw_id );
+  var conn_id;
   
   if ( vgw_type === osType.none_ip_base ){
-    console.log('[' + vgw_id + ']=====' + ':' + osType.none_ip_base);
+    //console.log('[' + vgw_id + ']=====' + ':' + osType.none_ip_base);
+    //vgw_map.remove(device_id);
+    conn_map.forEach(function(obj, key) {
+      if (typeof obj !== 'undefined') {
+        if ( obj.vgw_id === vgw_id ){
+          conn_id = key;
+          //remove all sensor hub
+          obj.sensor_hub_list.clear();
+          return;
+        }
+      }
+    }); 
+    
+    //remove connectivity
+    console.log('remove conn_id == ' + conn_id);
+    conn_map.remove(conn_id);
   }
   
   if ( vgw_type === osType.ip_base ){
     console.log('[' + vgw_id + ']=====' + ':' + osType.ip_base);
   }  
-  /*
-  if ( vgw_map.has(device_id) === true ) {
-      console.log('[' + device_id + ']' + ': remove vgw_map');
-      vgw_map.remove(device_id);
-  } 
-  */
-  
 }
 
 function sensor_hub_map_add_senhub( vgw_id, conn_id, layer, infoObj ){
