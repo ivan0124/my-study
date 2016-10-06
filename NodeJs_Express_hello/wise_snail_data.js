@@ -173,16 +173,15 @@ client.on('message', function (topic, message) {
 function getStatusFromMsg( connectMsg ){
   try {
       var msgObj = JSON.parse(connectMsg.toString());
+      var status = msgObj.susiCommData.status;
+      console.log('msgObj =' + status);
+      if ( status === 1 || status === '1' ){
+        return 'on';
+      }    
   } catch (e) {
       console.error(e);
       return '';
   }   
-  
-  var status = msgObj.susiCommData.status;
-  console.log('msgObj =' + status);
-  if ( status === 1 || status === '1' ){
-    return 'on';
-  }
   
   return 'off';
 }
