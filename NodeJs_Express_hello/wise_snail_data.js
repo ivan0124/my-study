@@ -139,13 +139,8 @@ client.on('message', function (topic, message) {
     case msgType.sen_disconnect:
       {
           console.log('[' + device_id + ']' + ': sen_disconnect');
-          /*
-          if ( sensor_hub_map.has(device_id) === true ) {
-              console.log('[' + device_id + ']' + ': remove sensor_hub_map');
-              //
-              sensor_hub_map.remove(device_id);
-          } 
-          */
+          var res = sensor_hub_map_remove_senhub( device_id );
+          console.log("res = " + res);
           break;
       }      
     case msgType.unknown:
