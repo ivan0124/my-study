@@ -524,7 +524,6 @@ module.exports = {
              if (typeof senObj !== 'undefined'){
                var status= getStatusFromMsg( senObj.connect );
                console.log('    |--(SensorHub)('+ status + '):' + senKey);
-               console.log('sen vgw_id=' + senObj.vgw_id);
              }
           });
       }
