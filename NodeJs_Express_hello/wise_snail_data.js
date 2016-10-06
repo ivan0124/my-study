@@ -99,7 +99,7 @@ client.on('message', function (topic, message) {
                   //add sensorhub list here
                   //var infoObj=jsonObj.susiCommData.data.IoTGW;
                   var infoObj = JSON.parse(JSON.stringify(jsonObj.susiCommData.data.IoTGW));
-                  sensor_hub_map_add_senhub(device_id , 'null', 0, 'null', infoObj);                  
+                  sensor_hub_map_add_senhub(device_id , 'null', 0, infoObj);                  
                 }
           }
           else{
@@ -267,7 +267,7 @@ function getOSType( vgw_id ){
 }
 
 
-function sensor_hub_map_add_senhub( vgw_id, conn_id, layer, connType, infoObj ){
+function sensor_hub_map_add_senhub( vgw_id, conn_id, layer, infoObj ){
   
   //console.log( 'Start-------------------------------------------------');
   layer++;
@@ -309,7 +309,7 @@ function sensor_hub_map_add_senhub( vgw_id, conn_id, layer, connType, infoObj ){
       if (infoObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
           if (typeof infoObj[key] === 'object' ){
-              sensor_hub_map_add_senhub(vgw_id, conn_id, layer, connType, infoObj[key]);
+              sensor_hub_map_add_senhub(vgw_id, conn_id, layer, infoObj[key]);
           }
       }
    }  
