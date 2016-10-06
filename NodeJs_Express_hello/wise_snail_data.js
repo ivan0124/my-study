@@ -175,6 +175,7 @@ function getStatusFromMsg( connectMsg ){
   console.log('connectMsg = ' + connectMsg);
   try {
       var msgObj = JSON.parse(connectMsg.toString());
+    /*
   for (key in msgObj) {
       if (msgObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
@@ -183,6 +184,7 @@ function getStatusFromMsg( connectMsg ){
  
       }
    }    
+   */
       var status = msgObj.susiCommData.status;
       console.log('msgObj =' + status);
       if ( status === 1 || status === '1' ){
