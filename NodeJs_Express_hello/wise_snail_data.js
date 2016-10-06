@@ -171,6 +171,8 @@ client.on('message', function (topic, message) {
 })
 
 function getStatusFromMsg( connectMsg ){
+  
+  console.log('connectMsg = ' + connectMsg);
   try {
       var msgObj = JSON.parse(connectMsg.toString());
       var status = msgObj.susiCommData.status;
