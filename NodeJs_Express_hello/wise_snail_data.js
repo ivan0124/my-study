@@ -308,6 +308,7 @@ function remove_vgw( vgw_id ){
       if (typeof obj !== 'undefined') {
         if ( obj.vgw_id === vgw_id ){
           conn_id = key;
+          console.log('remove conn_id == ' + conn_id + ', vgw_id=' + obj.vgw_id);
           //remove all sensor hub
           obj.sensor_hub_list.clear();
           return;
@@ -316,7 +317,7 @@ function remove_vgw( vgw_id ){
     }); 
     
     //remove connectivity
-    console.log('remove conn_id == ' + conn_id);
+    console.log('remove conn_id == ' + conn_id );
     conn_map.remove(conn_id);
   }
   
