@@ -296,18 +296,21 @@ function sensor_hub_map_add_senhub( vgw_id, conn_id, layer, infoObj ){
           if ( infoObj[key] === 'SenHubList' ){
              console.log( 'SenHubList :' + infoObj['sv'] );
              console.log( '======================= SenHubList length :' + infoObj['sv'].toString().length ); 
-             var conn = conn_map.get(conn_id);
-             if ( typeof conn !== 'undefined' && typeof conn.sensor_hub_list !== 'undefined'){
-               var sen_arr = infoObj['sv'].split(',');
-               for (var i=0 ; i < sen_arr.length ; i++){
-                 console.log('=== sen_arr['+i+'] = ' + sen_arr[i]);
-                 var device_id = sen_arr[i];
-                 var senObj = JSON.parse(JSON.stringify(devObj));
-                 conn.sensor_hub_list.set(device_id, senObj);
+            
+             if ( typeof infoObj['sv'] !== 'undefined' && infoObj['sv'].toString().length !== 0 ){
+               var conn = conn_map.get(conn_id);
+               if ( typeof conn !== 'undefined' && typeof conn.sensor_hub_list !== 'undefined'){
+                 var sen_arr = infoObj['sv'].split(',');
+                 for (var i=0 ; i < sen_arr.length ; i++){
+                   console.log('=== sen_arr['+i+'] = ' + sen_arr[i]);
+                   var device_id = sen_arr[i];
+                   var senObj = JSON.parse(JSON.stringify(devObj));
+                   conn.sensor_hub_list.set(device_id, senObj);
+                 }
                }
-             }
-             else{
-               console.log( conn_id + ' does not exist or conn.sensor_hub_list is undefined');
+               else{
+                 console.log( conn_id + ' does not exist or conn.sensor_hub_list is undefined');
+               }
              }
           }
         
