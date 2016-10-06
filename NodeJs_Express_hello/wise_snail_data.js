@@ -290,6 +290,14 @@ function getOSType( vgw_id ){
   
 }
 
+function vgw_map_remove_vgw( vgw_id ){
+  /*
+  if ( vgw_map.has(device_id) === true ) {
+      console.log('[' + device_id + ']' + ': remove vgw_map');
+      vgw_map.remove(device_id);
+  } 
+  */
+}
 
 function sensor_hub_map_add_senhub( vgw_id, conn_id, layer, infoObj ){
   
