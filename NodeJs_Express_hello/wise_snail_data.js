@@ -496,6 +496,7 @@ module.exports = {
              if (typeof senObj !== 'undefined'){
                var status= getStatusFromMsg( senObj.connect );
                console.log('    |--(SensorHub)('+ status + '):' + senKey);
+               console.log('dev_info_spec=' + senObj.dev_info_spec);
              }
           });
       }
