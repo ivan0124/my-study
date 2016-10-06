@@ -139,8 +139,10 @@ client.on('message', function (topic, message) {
     case msgType.sen_disconnect:
       {
           console.log('[' + device_id + ']' + ': sen_disconnect');
-          var res = sensor_hub_map_remove_senhub( device_id );
-          console.log("res = " + res);
+          sensor_hub_map_remove_senhub( device_id, function ( result ){
+             console.log("result = " + res);
+          });
+         
           break;
       }      
     case msgType.unknown:
@@ -318,7 +320,7 @@ function sensor_hub_map_get_senhub( sensor_hub_id, callback ){
     }); 
 }
 
-function sensor_hub_map_remove_senhub( sensor_hub_id ){
+function sensor_hub_map_remove_senhub( sensor_hub_id, callback ){
   
     console.log('sensor_hub_id = ' + sensor_hub_id);
     conn_map.forEach(function(obj, key) {
@@ -326,13 +328,12 @@ function sensor_hub_map_remove_senhub( sensor_hub_id ){
           if ( obj.sensor_hub_list.has ( sensor_hub_id ) === true ){
             console.log('obj.sensor_hub_list.has ( sensor_hub_id ) === true');
             obj.sensor_hub_list.remove ( sensor_hub_id );
-            return 0;
+            callback('remove success');
           }
       }
     }); 
    
-    console.log('return -1');
-    return -1;
+    callback('remove fail');
 }
 
 
