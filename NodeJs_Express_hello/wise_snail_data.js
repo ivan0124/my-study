@@ -143,7 +143,17 @@ client.on('message', function (topic, message) {
           var res = sensor_hub_map_remove_senhub( device_id );
           //console.log("result = " + res);
           break;
-      }      
+      }
+    case msgType.sen_info_spec:
+      {
+          console.log('[' + device_id + ']' + ': sen_info_spec');
+          var res = sensor_hub_map_get_senhub( 'device_id', function ( senObj ){ 
+            console.log('[senObj]: ' + senObj );
+            senObj.dev_info_spec = message.toString();
+          } );
+          console.log("result = " + res);
+          break;
+      }
     case msgType.unknown:
       console.log('msgType.unknown');
       break;
@@ -154,22 +164,6 @@ client.on('message', function (topic, message) {
   console.log('--------------------------------------------------------------');
   
 })
-
-function getStatusFromMsg( connectMsg ){
-  
-  //console.log('connectMsg = ' + connectMsg);
-  try {
-      var msgObj = JSON.parse(connectMsg.toString());
-      var status = msgObj.susiCommData.status;
-      if ( status === 1 || status === '1' ){
-        return 'on';
-      }    
-  } catch (e) {
-      return 'off';
-  }   
-  
-  return 'off';
-}
 
 function getMsgType(topic, jsonObj){
   
@@ -208,6 +202,10 @@ function getMsgType(topic, jsonObj){
             if ( typeof jsonObj.susiCommData.infoSpec.IoTGW !== 'undefined' ){
                 return msgType.vgw_info_spec;
             }  
+          
+            if ( typeof jsonObj.susiCommData.infoSpec.SenHub !== 'undefined' ){
+                return msgType.sen_info_spec;
+            }  
         }       
     }
   
@@ -225,6 +223,22 @@ function getMsgType(topic, jsonObj){
     
     
     return msgType.unknown;
+}
+
+function getStatusFromMsg( connectMsg ){
+  
+  //console.log('connectMsg = ' + connectMsg);
+  try {
+      var msgObj = JSON.parse(connectMsg.toString());
+      var status = msgObj.susiCommData.status;
+      if ( status === 1 || status === '1' ){
+        return 'on';
+      }    
+  } catch (e) {
+      return 'off';
+  }   
+  
+  return 'off';
 }
 
 
