@@ -153,11 +153,12 @@ app.get('/case1_test_add_connectivity', function (req, res) {
     \"handlerName\":\"general\",\"sendTS\":160081026}}');  
   */
   
-    client.publish('/cagent/admin/0017000E40000001/agentactionreq', '{\"susiCommData\":{\"infoSpec\":{\"SenHub\":\
-    {\"SenData\":{\"e\":[{\"n\":\"Temperature\",\"u\":\"Cel\",\"v\":0,\"min\":-100,\"max\":200,\"asm\":\"r\",\"type\":\"d\",\"rt\":\"ucum.Cel\",\
-    \"st\":\"ipso\",\"exten\":\"\"},{\"n\":\"Humidity\",\"u\":\"%\",\"v\":0,\"min\":0,\"max\":100,\"asm\":\"r\",\"type\":\"d\",\"rt\":\"ucum.%\",\
-    st\":\"ipso\",\"exten\":\"\"},{\"n\":\"GPIO1\",\"u\":\"\",\"bv\":0,\"min\":0,\"max\":1,\"asm\":\"r\",\"type\":\"b\",\"rt\":\"\",\"st\":\"ipso\",\
-    \"exten\":\"\"},{\"n\":\"GPIO2\",\"u\":\"\",\"bv\":0,\"min\":0,\"max\":1,\"asm\":\"r\",\"type\":\"b\",\"rt\":\"\",\"st\":\"ipso\",\"exten\":\"\"}],\
+    client.publish('/cagent/admin/0017000E40000001/agentactionreq', \
+                   '{\"susiCommData\":{\"infoSpec\":{\"SenHub\":{\"SenData\":{\"e\":[{\"n\":\"Temperature\",\
+    \"u\":\"Cel\",\"v\":0,\"min\":-100,\"max\":200,\"asm\":\"r\",\"type\":\"d\",\"rt\":\"ucum.Cel\",\"st\":\"ipso\",\"exten\":\"\"},\
+    {\"n\":\"Humidity\",\"u\":\"%\",\"v\":0,\"min\":0,\"max\":100,\"asm\":\"r\",\"type\":\"d\",\"rt\":\"ucum.%\",\"st\":\"ipso\",\"exten\":\"\"},\
+    {\"n\":\"GPIO1\",\"u\":\"\",\"bv\":0,\"min\":0,\"max\":1,\"asm\":\"r\",\"type\":\"b\",\"rt\":\"\",\"st\":\"ipso\",\"exten\":\"\"},\
+    {\"n\":\"GPIO2\",\"u\":\"\",\"bv\":0,\"min\":0,\"max\":1,\"asm\":\"r\",\"type\":\"b\",\"rt\":\"\",\"st\":\"ipso\",\"exten\":\"\"}],\
     \"bn\":\"SenData\"},\"Info\":{\"e\":[{\"n\":\"Name\",\"sv\":\"SenHub1\",\"asm\":\"rw\"},{\"n\":\"sw\",\"sv\":\"1.0.00\",\"asm\":\"r\"}],\
     \"bn\":\"Info\"},\"Net\":{\"e\":[{\"n\":\"sw\",\"sv\":\"1.0.00\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
     {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"}],\"bn\":\"Net\"}}},\"commCmd\":2052,\"requestID\":2001,\
