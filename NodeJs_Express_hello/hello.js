@@ -152,7 +152,7 @@ app.get('/case1_test_add_connectivity', function (req, res) {
     \"product\":\"WISE-1020\",\"manufacture\":\"\",\"status\":\"0\",\"commCmd\":1,\"requestID\":30002,\"agentID\":\"0017000E40000001\",\
     \"handlerName\":\"general\",\"sendTS\":160081026}}');  
   */
-  
+  // send sensor hub info_spec
     client.publish('/cagent/admin/0017000E40000001/agentactionreq', '{\"susiCommData\":{\"infoSpec\":{\"SenHub\":{\"SenData\":{\"e\":[{\"n\":\"Temperature\",\
     \"u\":\"Cel\",\"v\":0,\"min\":-100,\"max\":200,\"asm\":\"r\",\"type\":\"d\",\"rt\":\"ucum.Cel\",\"st\":\"ipso\",\"exten\":\"\"},\
     {\"n\":\"Humidity\",\"u\":\"%\",\"v\":0,\"min\":0,\"max\":100,\"asm\":\"r\",\"type\":\"d\",\"rt\":\"ucum.%\",\"st\":\"ipso\",\"exten\":\"\"},\
@@ -162,6 +162,11 @@ app.get('/case1_test_add_connectivity', function (req, res) {
     \"bn\":\"Info\"},\"Net\":{\"e\":[{\"n\":\"sw\",\"sv\":\"1.0.00\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
     {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"}],\"bn\":\"Net\"}}},\"commCmd\":2052,\"requestID\":2001,\
     \"agentID\":\"0017000E40000000\",\"handlerName\":\"general\",\"sendTS\":160081024}}');
+  // send sensor hub info
+    client.publish('/cagent/admin/0017000E40000001/deviceinfo', '{\"susiCommData\":{\"data\":{\"SenHub\":{\"SenData\":{\"e\":[{\"n\":\"Temperature\",\
+    \"v\":1},{\"n\":\"Humidity\",\"v\":57},{\"n\":\"GPIO1\",\"bv\":0},{\"n\":\"GPIO2\",\"bv\":0}],\"bn\":\"SenData\"},\"Info\":{\"e\":[],\"bn\":\"Info\"},\
+    \"Net\":{\"e\":[],\"bn\":\"Net\"},\"Action\":{\"e\":[],\"bn\":\"Action\"},\"ver\":1}},\"commCmd\":2055,\"requestID\":2001,\
+    \"agentID\":\"0017000E40000001\",\"handlerName\":\"general\",\"sendTS\":160081031}}');
   
   setTimeout(ws_data.show_all_vgw_map, 2000);
   
