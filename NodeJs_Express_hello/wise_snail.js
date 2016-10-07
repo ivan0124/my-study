@@ -92,6 +92,7 @@ module.exports = {
   test: function() {
     console.log('[wise_snail] test');
     vgw_agentinfoack(1, 'IoTGW', '000E4CABCD77', false);
+    vgw_agentactionreq(1, 'IoTGW', '000E4CABCD77', false);
     return;
   },
 };
