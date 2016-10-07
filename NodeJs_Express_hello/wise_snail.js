@@ -24,7 +24,7 @@ client.on('message', function (topic, message) {
   
 })
 
-function vgw_agentinfoack(vgw_mac){
+function vgw_agentinfoack(vgw_mac, connected ){
   
   var msg='{\"susiCommData\":{\"devID\":\"0000000E4CABCD99\",\"parentID\":\"\",\
             \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCD99\",\"mac\":\"000E4CABCD99\",\
@@ -43,6 +43,13 @@ function vgw_agentinfoack(vgw_mac){
   msgObj.susiCommData.agentID ='0000' + vgw_mac;
   msgObj.susiCommData.sendTS.$date = new Date().getTime();
   
+  if ( connected === true ){
+    msgObj.susiCommData.status = 1;
+  }
+  else{
+    msgObj.susiCommData.status = 0;
+  }
+  
   var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentinfoack';
   var message = JSON.stringify(msgObj);
   client.publish(topic, message);
@@ -51,7 +58,7 @@ function vgw_agentinfoack(vgw_mac){
 module.exports = {
   test: function() {
     console.log('[wise_snail] test');
-    vgw_agentinfoack('000E4CABCD77');
+    vgw_agentinfoack('000E4CABCD77', true);
     return;
   },
 };
