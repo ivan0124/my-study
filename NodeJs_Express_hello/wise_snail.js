@@ -58,7 +58,7 @@ function vgw_agentinfoack(vgw_mac, connected ){
 module.exports = {
   test: function() {
     console.log('[wise_snail] test');
-    vgw_agentinfoack('000E4CABCD77', true);
+    vgw_agentinfoack('000E4CABCD77', false);
     return;
   },
 };
