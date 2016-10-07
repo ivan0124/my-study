@@ -29,7 +29,7 @@ function test1(vgw_id){
   var msg='{\"susiCommData\":{\"devID\":\"0000000E4CABCD99\",\"parentID\":\"\",\
             \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCD99\",\"mac\":\"000E4CABCD99\",\
             \"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
-            \"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":1,\"commCmd\":1,
+            \"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":1,\"commCmd\":1,\
             \"requestID\":21,\"agentID\":\"0000000E4CABCD99\",\
             \"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}';
    
