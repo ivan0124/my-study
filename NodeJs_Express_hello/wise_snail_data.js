@@ -33,8 +33,9 @@ client.on('message', function (topic, message) {
   console.log('msg=' + message.toString());
 
   try {
-      var msg = message.slice(0,message.length-1);
-      var jsonObj = JSON.parse(msg.toString());
+      var re = /\0/g;
+      str = message.toString().replace(re, "");
+      var jsonObj = JSON.parse(str);
   } catch (e) {
       console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
       console.error(e);
