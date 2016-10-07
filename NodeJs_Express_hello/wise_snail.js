@@ -101,8 +101,13 @@ function vgw_send_info_spec( vgw_mac ){
             {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
             {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"}'
    
-  var connObj=[{type:'WSN', connName:'0007000E40ABCD31'}];
-  console.log('============= connObj.type --------------: ' + connObj.type );
+  var connObj={{type:'WSN', connName:'0007000E40ABCD31'}]};
+  for (key in connObj) {
+      if (jsonObj.hasOwnProperty(key)) {
+              console.log( key + ', keyVal=======>' + jsonObj[key]);
+
+      }
+   }
   
   var msgObj = JSON.parse(msg);
  
