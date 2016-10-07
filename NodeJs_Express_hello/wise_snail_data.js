@@ -167,8 +167,6 @@ client.on('message', function (topic, message) {
       console.log('default');
       break;
   }
-  
-  jsonObj='';
   console.log('--------------------------------------------------------------');
   
 })
