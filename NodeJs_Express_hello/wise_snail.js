@@ -1,5 +1,9 @@
 var mqtt = require('mqtt');
 
+var vgw_id_prefix = '0000';
+var conn_id_prefix = '0007';
+var senhub_id_prefix = '0017';
+
 client  = mqtt.connect('mqtt://127.0.0.1');
 client.queueQoSZero = false;
 
@@ -40,8 +44,8 @@ function vgw_connect(dev_type, ver, vgw_mac, connected ){
   msgObj.susiCommData.mac = vgw_mac;
   msgObj.susiCommData.sn = vgw_mac;
   msgObj.susiCommData.hostname = dev_type + '('+ vgw_mac.substr(8,4) + ')';
-  msgObj.susiCommData.devID ='0000' + vgw_mac;
-  msgObj.susiCommData.agentID ='0000' + vgw_mac;
+  msgObj.susiCommData.devID = vgw_id_prefix + vgw_mac;
+  msgObj.susiCommData.agentID = vgw_id_prefix + vgw_mac;
   msgObj.susiCommData.sendTS.$date = new Date().getTime();
   
   if ( connected === true ){
@@ -68,7 +72,36 @@ function vgw_send_os_info( dev_type, ver, vgw_mac, is_ip_base ){
   msgObj.susiCommData.osInfo.cagentType = dev_type;
   msgObj.susiCommData.osInfo.cagentVersion = ver;
   msgObj.susiCommData.osInfo.macs= vgw_mac;
-  msgObj.susiCommData.agentID = '0000' + vgw_mac;
+  msgObj.susiCommData.agentID = vgw_id_prefix + vgw_mac;
+  msgObj.susiCommData.sendTS = new Date().getTime();
+  
+  if ( is_ip_base === true ){
+    msgObj.susiCommData.osInfo.IP = '127.0.0.1';
+  }
+  else{
+    msgObj.susiCommData.status = '0.0.0.0';
+  }
+  
+  var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
+  var message = JSON.stringify(msgObj);
+  client.publish(topic, message);
+}
+
+function send_info_spec(){
+  
+  var msg='{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"Ethernet\":{\"Ethernet\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\
+            \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"Ethernet\",\"asm\":\"r\"},\
+            {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
+            {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCDEF\",\"ver\":1},\
+            \"bn\":\"Ethernet\",\"ver\":1},\"ver\":1}},\"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\
+            \"handlerName\":\"general\",\"sendTS\":160081020}}';
+   
+  var msgObj = JSON.parse(msg);
+ 
+  msgObj.susiCommData.osInfo.cagentType = dev_type;
+  msgObj.susiCommData.osInfo.cagentVersion = ver;
+  msgObj.susiCommData.osInfo.macs= vgw_mac;
+  msgObj.susiCommData.agentID = vgw_id_prefix + vgw_mac;
   msgObj.susiCommData.sendTS = new Date().getTime();
   
   if ( is_ip_base === true ){
