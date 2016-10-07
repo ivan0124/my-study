@@ -46,7 +46,7 @@ function test1(vgw_mac){
 module.exports = {
   test: function() {
     console.log('[wise_snail] test');
-    test1('0000000E4CABCD77');
+    test1('000E4CABCD77');
     return;
   },
 };
