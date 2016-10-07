@@ -87,7 +87,7 @@ function vgw_send_os_info( dev_type, ver, vgw_mac, is_ip_base ){
   client.publish(topic, message);
 }
 
-function send_info_spec(){
+function send_info_spec( vgw_mac ){
   
   var msg='{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"Ethernet\":{\"Ethernet\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\
             \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"Ethernet\",\"asm\":\"r\"},\
@@ -98,18 +98,8 @@ function send_info_spec(){
    
   var msgObj = JSON.parse(msg);
  
-  msgObj.susiCommData.osInfo.cagentType = dev_type;
-  msgObj.susiCommData.osInfo.cagentVersion = ver;
-  msgObj.susiCommData.osInfo.macs= vgw_mac;
   msgObj.susiCommData.agentID = vgw_id_prefix + vgw_mac;
   msgObj.susiCommData.sendTS = new Date().getTime();
-  
-  if ( is_ip_base === true ){
-    msgObj.susiCommData.osInfo.IP = '127.0.0.1';
-  }
-  else{
-    msgObj.susiCommData.status = '0.0.0.0';
-  }
   
   var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
   var message = JSON.stringify(msgObj);
