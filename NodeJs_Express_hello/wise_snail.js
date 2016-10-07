@@ -192,10 +192,12 @@ module.exports = {
                conn2:{ type: 'BLE', bnName:'0007000E40ABCD32', info: JSON.parse(Info2) }
               };
 */    
+    var connectivityObj;
     create_connObj(function( connObj ){
       console.log('create connectivity object');  
+      connectivityObj = connObj;
     });
-    vgw_send_info_spec(mac, connObj);
+    vgw_send_info_spec(mac, connectivityObj);
     return;
   },
 };
