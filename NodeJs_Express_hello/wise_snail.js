@@ -101,7 +101,9 @@ function vgw_send_info_spec( vgw_mac ){
             {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
             {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"}'
    
-  var connObj={conn1:{ type: 'WSN', bnName:'0007000E40ABCD31' }};
+  var connObj={conn1:{ type: 'WSN', bnName:'0007000E40ABCD31' },
+               conn2:{ type: 'WSN', bnName:'0007000E40ABCD32' }
+              };
   
   for (key in connObj) {
       if (connObj.hasOwnProperty(key)) {
