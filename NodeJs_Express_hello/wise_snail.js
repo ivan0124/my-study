@@ -27,13 +27,15 @@ client.on('message', function (topic, message) {
 function test1(vgw_id){
   
   var msg='{\"susiCommData\":{\"devID\":\"0000000E4CABCD99\",\"parentID\":\"\",\
-\"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCD99\",\"mac\":\"000E4CABCD99\",\"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
-\"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":1,\"commCmd\":1,\"requestID\":21,\"agentID\":\"0000000E4CABCD99\",\
-\"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}';
+            \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCD99\",\"mac\":\"000E4CABCD99\",\
+            \"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
+            \"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":1,\"commCmd\":1,
+            \"requestID\":21,\"agentID\":\"0000000E4CABCD99\",\
+            \"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}';
    
   //var vgw = JSON.parse(JSON.stringify(devObj));
   var msgObj = JSON.parse(msg);
-  msgObj.susiCommData = {"ZigBee":{"bn":20}};
+  //msgObj.susiCommData = {"ZigBee":{"bn":20}};
   
   
   client.publish('/cagent/admin/0000000E4CABCD99/agentinfoack', JSON.stringify(msgObj));
