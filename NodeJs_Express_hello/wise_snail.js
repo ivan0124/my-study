@@ -113,11 +113,11 @@ function vgw_send_info_spec( vgw_mac, connObj ){
         var conn_bnName = connObj[key]['bnName'];
         var conn_info = connObj[key]['info'];
         
-        if ( msgObj.susiCommData.infoSpec.IoTGW.hasOwnProperty(conn_type) == false ){
+        if ( msgObj.susiCommData.infoSpec.IoTGW.hasOwnProperty(conn_type) === false ){
           //console.log( 'create type ========: ' + conn_type);
           msgObj.susiCommData.infoSpec.IoTGW[conn_type]={};
         }
-        if ( msgObj.susiCommData.infoSpec.IoTGW.hasOwnProperty(conn_bnName) == false ){
+        if ( msgObj.susiCommData.infoSpec.IoTGW.hasOwnProperty(conn_bnName) === false ){
           //console.log( 'create conn_bnName ========: ' + conn_bnName);
           msgObj.susiCommData.infoSpec.IoTGW[conn_type][conn_bnName]={};
         }
