@@ -87,7 +87,7 @@ function vgw_send_os_info( dev_type, ver, vgw_mac, is_ip_base ){
   client.publish(topic, message);
 }
 
-function send_info_spec( vgw_mac ){
+function vgw_send_info_spec( vgw_mac ){
   
   var msg='{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"Ethernet\":{\"Ethernet\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\
             \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"Ethernet\",\"asm\":\"r\"},\
@@ -132,6 +132,7 @@ module.exports = {
     var ver = '3.1.23';
     vgw_connect(dev_type, ver, mac, true);
     vgw_send_os_info(dev_type, ver,  mac, true);
+    vgw_send_info_spec(mac);
     return;
   },
 };
