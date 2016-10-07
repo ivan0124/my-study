@@ -108,6 +108,8 @@ function vgw_send_info_spec( vgw_mac ){
   for (key in connObj) {
       if (connObj.hasOwnProperty(key)) {
         console.log( key + ', keyVal=======>' + connObj[key]);
+        console.log( 'type=======>' + connObj[key]['type']);
+        console.log( 'bnName=======>' + connObj[key]['bnName']);
       }
    }
   
