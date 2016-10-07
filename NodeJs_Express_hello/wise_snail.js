@@ -106,10 +106,11 @@ function vgw_send_info_spec( vgw_mac ){
               };
   
   var msgObj = JSON.parse(msg);
- 
+
   msgObj.susiCommData.agentID = vgw_id_prefix + vgw_mac;
   msgObj.susiCommData.sendTS = new Date().getTime();
   //create connectivity and assigne InfoMsg
+  msgObj.susiCommData.infoSpec.IoTGW = {};
   for (key in connObj) {
       if (connObj.hasOwnProperty(key)) {
         //console.log( key + ', keyVal=======>' + connObj[key]);
