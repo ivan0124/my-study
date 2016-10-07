@@ -56,7 +56,7 @@ function vgw_connect(dev_type, ver, vgw_mac, connected ){
   client.publish(topic, message);
 }
 
-function vgw_send_os_info( dev_type, ver, vgw_mac, connected ){
+function vgw_send_os_info( dev_type, ver, vgw_mac, is_ip_base ){
   
   var msg='{\"susiCommData\":{\"osInfo\":{\"cagentVersion\":\"3.1.23\",\
   \"cagentType\":\"IoTGW\",\"osVersion\":\"SnailOS\",\"biosVersion\":\"\",\"platformName\":\"\",\"processorName\":\"SnailGW\",\
@@ -65,23 +65,18 @@ function vgw_send_os_info( dev_type, ver, vgw_mac, connected ){
    
   var msgObj = JSON.parse(msg);
  
-  /*
-  msgObj.susiCommData.commCmd = cmd_id;
-  msgObj.susiCommData.type = dev_type;
-  msgObj.susiCommData.mac = vgw_mac;
-  msgObj.susiCommData.sn = vgw_mac;
-  msgObj.susiCommData.hostname = dev_type + '('+ vgw_mac.substr(8,4) + ')';
-  msgObj.susiCommData.devID ='0000' + vgw_mac;
-  msgObj.susiCommData.agentID ='0000' + vgw_mac;
-  msgObj.susiCommData.sendTS.$date = new Date().getTime();
+  msgObj.susiCommData.osInfo.cagentType = dev_type;
+  msgObj.susiCommData.osInfo.cagentVersion = ver;
+  msgObj.susiCommData.osInfo.macs= vgw_mac;
+  msgObj.susiCommData.osInfo.agentID = '0000' + vgw_mac;
+  msgObj.susiCommData.sendTS = new Date().getTime();
   
-  if ( connected === true ){
-    msgObj.susiCommData.status = 1;
+  if ( is_ip_base === true ){
+    msgObj.susiCommData.osInfo.IP = '127.0.0.1';
   }
   else{
-    msgObj.susiCommData.status = 0;
+    msgObj.susiCommData.status = '0.0.0.0';
   }
-  */
   
   var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentactionreq';
   var message = JSON.stringify(msgObj);
