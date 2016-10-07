@@ -101,11 +101,11 @@ function vgw_send_info_spec( vgw_mac ){
   msgObj.susiCommData.agentID = vgw_id_prefix + vgw_mac;
   msgObj.susiCommData.sendTS = new Date().getTime();
   msgObj.susiCommData.infoSpec.IoTGW['WSN']['WSN0']['Info'] = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},\
-                         {\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
+  {\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
                          {\"n\":\"Name\",\"sv\":\"WSN0\",\"asm\":\"r\"},\
                          {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},\
                          {\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
-                         {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"};
+                         {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"}';
                          
   msgObj.susiCommData.infoSpec.IoTGW['WSN']['WSN0']['bn'] = conn_id_prefix + vgw_mac;
   msgObj.susiCommData.infoSpec.IoTGW['WSN']['WSN0']['ver'] = 1;
