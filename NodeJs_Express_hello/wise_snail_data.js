@@ -34,7 +34,7 @@ client.on('message', function (topic, message) {
 
   try {
       var re = /\0/g;
-      str = message.toString().replace(re, "");
+      str = message.toString().replace(re, '');
       var jsonObj = JSON.parse(str);
   } catch (e) {
       console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
