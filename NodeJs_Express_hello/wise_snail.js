@@ -35,7 +35,6 @@ function vgw_connect(dev_type, vgw_mac, connected ){
    
   var msgObj = JSON.parse(msg);
  
-  msgObj.susiCommData.commCmd = cmd_id;
   msgObj.susiCommData.type = dev_type;
   msgObj.susiCommData.mac = vgw_mac;
   msgObj.susiCommData.sn = vgw_mac;
