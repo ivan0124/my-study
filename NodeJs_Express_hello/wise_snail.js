@@ -45,9 +45,9 @@ function create_connObj( callback ){
             {\"n\":\"Health\",\"v\":\"70.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
             {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"}';  
    
-  var connObj={conn1:{ type: 'BLE', bnName:'0007000E40ABCD31', info: JSON.parse(Info1)},
-               conn2:{ type: 'BLE', bnName:'0007000E40ABCD32', info: JSON.parse(Info2) },
-               conn3:{ type: 'WSN', bnName:'0007000E40ABCD33', info: JSON.parse(Info3) }
+  var connObj={conn1:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD31', info: JSON.parse(Info1)},
+               conn2:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD32', info: JSON.parse(Info2) },
+               conn3:{ type: 'WSN', bnName: conn_id_prefix + '000E40ABCD33', info: JSON.parse(Info3) }
               }; 
   
   callback( connObj );
