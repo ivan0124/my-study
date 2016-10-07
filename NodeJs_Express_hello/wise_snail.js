@@ -107,9 +107,8 @@ module.exports = {
     var mac='000E4CABCD77';
     var dev_type='IoTGW';
     var ver = '3.1.23';
-    //vgw_connect(dev_type, ver, mac, true);
-    //vgw_send_os_info(dev_type, ver,  mac, true);
-    ttt();
+    vgw_connect(dev_type, ver, mac, true);
+    vgw_send_os_info(dev_type, ver,  mac, true);
     return;
   },
 };
