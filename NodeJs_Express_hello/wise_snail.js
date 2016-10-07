@@ -33,7 +33,38 @@ function vgw_agentinfoack(cmd_id, dev_type, vgw_mac, connected ){
             \"requestID\":21,\"agentID\":\"0000000E4CABCD99\",\
             \"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}';
    
-  //var vgw = JSON.parse(JSON.stringify(devObj));
+  var msgObj = JSON.parse(msg);
+ 
+  msgObj.susiCommData.commCmd = cmd_id;
+  msgObj.susiCommData.type = dev_type;
+  msgObj.susiCommData.mac = vgw_mac;
+  msgObj.susiCommData.sn = vgw_mac;
+  msgObj.susiCommData.hostname = dev_type + '('+ vgw_mac.substr(8,4) + ')';
+  msgObj.susiCommData.devID ='0000' + vgw_mac;
+  msgObj.susiCommData.agentID ='0000' + vgw_mac;
+  msgObj.susiCommData.sendTS.$date = new Date().getTime();
+  
+  if ( connected === true ){
+    msgObj.susiCommData.status = 1;
+  }
+  else{
+    msgObj.susiCommData.status = 0;
+  }
+  
+  var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentinfoack';
+  var message = JSON.stringify(msgObj);
+  client.publish(topic, message);
+}
+
+function vgw_agentactionreq(cmd_id, dev_type, vgw_mac, connected ){
+  
+  var msg='{\"susiCommData\":{\"devID\":\"0000000E4CABCD99\",\"parentID\":\"\",\
+            \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCD99\",\"mac\":\"000E4CABCD99\",\
+            \"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
+            \"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":1,\"commCmd\":1,\
+            \"requestID\":21,\"agentID\":\"0000000E4CABCD99\",\
+            \"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}';
+   
   var msgObj = JSON.parse(msg);
  
   msgObj.susiCommData.commCmd = cmd_id;
