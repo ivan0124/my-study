@@ -28,30 +28,7 @@ client.on('message', function (topic, message) {
   
 })
 
-function create_connObj( callback ){
-  
-  var Info1 = '{\"e\":[{\"n\":\"SenHubList\",\
-            \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
-            {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
-            {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"}';
-  
-  var Info2 = '{\"e\":[{\"n\":\"SenHubList\",\
-            \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
-            {\"n\":\"Health\",\"v\":\"70.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
-            {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"}';
-  
-  var Info3 = '{\"e\":[{\"n\":\"SenHubList\",\
-            \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"WSN\",\"asm\":\"r\"},\
-            {\"n\":\"Health\",\"v\":\"70.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
-            {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"}';  
-   
-  var connObj={conn1:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD31', info: JSON.parse(Info1)},
-               conn2:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD32', info: JSON.parse(Info2) },
-               conn3:{ type: 'WSN', bnName: conn_id_prefix + '000E40ABCD33', info: JSON.parse(Info3) }
-              }; 
-  
-  callback( connObj );
-}
+
 
 function vgw_connect(dev_type, ver, vgw_mac, connected ){
   
@@ -174,6 +151,32 @@ function ttt(){
       return;
   }
 }
+
+function create_connObj( callback ){
+  
+  var Info1 = '{\"e\":[{\"n\":\"SenHubList\",\
+            \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
+            {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
+            {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"}';
+  
+  var Info2 = '{\"e\":[{\"n\":\"SenHubList\",\
+            \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
+            {\"n\":\"Health\",\"v\":\"70.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
+            {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"}';
+  
+  var Info3 = '{\"e\":[{\"n\":\"SenHubList\",\
+            \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"WSN\",\"asm\":\"r\"},\
+            {\"n\":\"Health\",\"v\":\"70.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
+            {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"}';  
+   
+  var connObj={conn1:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD31', info: JSON.parse(Info1)},
+               conn2:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD32', info: JSON.parse(Info2) },
+               conn3:{ type: 'WSN', bnName: conn_id_prefix + '000E40ABCD33', info: JSON.parse(Info3) }
+              }; 
+  
+  callback( connObj );
+}
+
 module.exports = {
   test: function() {
     console.log('[wise_snail] test');
