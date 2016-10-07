@@ -18,11 +18,10 @@ var devObj = { vgw_id: 'null', connect: 'null', os_info: 'null', dev_info_spec: 
 
 client.on('connect', function () {
   console.log('[wise_snail_data] mqtt connect !!!!');
-  //client.subscribe('agentinfo');
-  //client.subscribe('/cagent/admin/+/agentinfoack');
-  //client.subscribe('/cagent/admin/+/willmessage');
+  client.subscribe('/cagent/admin/+/agentinfoack');
+  client.subscribe('/cagent/admin/+/willmessage');
   client.subscribe('/cagent/admin/+/agentactionreq');
-  //client.subscribe('/cagent/admin/+/deviceinfo'); 
+  client.subscribe('/cagent/admin/+/deviceinfo'); 
    
 })
  
