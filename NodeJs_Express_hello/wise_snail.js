@@ -24,7 +24,7 @@ client.on('message', function (topic, message) {
   
 })
 
-function test1(vgw_mac){
+function vgw_agentinfoack(vgw_mac){
   
   var msg='{\"susiCommData\":{\"devID\":\"0000000E4CABCD99\",\"parentID\":\"\",\
             \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCD99\",\"mac\":\"000E4CABCD99\",\
@@ -51,7 +51,7 @@ function test1(vgw_mac){
 module.exports = {
   test: function() {
     console.log('[wise_snail] test');
-    test1('000E4CABCD77');
+    vgw_agentinfoack('000E4CABCD77');
     return;
   },
 };
