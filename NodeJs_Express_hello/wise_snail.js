@@ -24,7 +24,7 @@ client.on('message', function (topic, message) {
   
 })
 
-function vgw_connect(cmd_id, dev_type, vgw_mac, connected ){
+function vgw_connect(dev_type, vgw_mac, connected ){
   
   var msg='{\"susiCommData\":{\"devID\":\"0000000E4CABCD99\",\"parentID\":\"\",\
             \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCD99\",\"mac\":\"000E4CABCD99\",\
@@ -91,7 +91,7 @@ function vgw_send_os_info( dev_type, vgw_mac, connected ){
 module.exports = {
   test: function() {
     console.log('[wise_snail] test');
-    vgw_connect(1, 'IoTGW', '000E4CABCD77', true);
+    vgw_connect('IoTGW', '000E4CABCD77', true);
     vgw_send_os_info('IoTGW', '000E4CABCD77', true);
     return;
   },
