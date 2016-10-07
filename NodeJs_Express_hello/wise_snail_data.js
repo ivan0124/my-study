@@ -35,6 +35,7 @@ client.on('message', function (topic, message) {
   try {
       var jsonObj = JSON.parse(message.toString());
   } catch (e) {
+      console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
       console.error(e);
       return;
   }
