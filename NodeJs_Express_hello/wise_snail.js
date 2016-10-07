@@ -103,8 +103,8 @@ function vgw_send_info_spec( vgw_mac ){
    
   var connObj={type:'WSN', connName:'0007000E40ABCD31'};
   for (key in connObj) {
-      if (jsonObj.hasOwnProperty(key)) {
-              console.log( key + ', keyVal=======>' + jsonObj[key]);
+      if (connObj.hasOwnProperty(key)) {
+              console.log( key + ', keyVal=======>' + connObj[key]);
 
       }
    }
