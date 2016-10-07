@@ -78,7 +78,7 @@ function vgw_send_os_info( dev_type, ver, vgw_mac, is_ip_base ){
     msgObj.susiCommData.status = '0.0.0.0';
   }
   
-  var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentactionreq';
+  var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
   var message = JSON.stringify(msgObj);
   client.publish(topic, message);
 }
