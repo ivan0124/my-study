@@ -92,7 +92,7 @@ module.exports = {
   test: function() {
     console.log('[wise_snail] test');
     vgw_connect(1, 'IoTGW', '000E4CABCD77', true);
-    vgw_vgw_send_os_info(1, 'IoTGW', '000E4CABCD77', true);
+    vgw_send_os_info('IoTGW', '000E4CABCD77', true);
     return;
   },
 };
