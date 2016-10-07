@@ -58,10 +58,10 @@ function vgw_agentinfoack(cmd_id, dev_type, vgw_mac, connected ){
 
 function vgw_agentactionreq(cmd_id, dev_type, vgw_mac, connected ){
   
-  var msg=''{\"susiCommData\":{\"osInfo\":{\"cagentVersion\":\"3.1.23\",\
+  var msg='{\"susiCommData\":{\"osInfo\":{\"cagentVersion\":\"3.1.23\",\
   \"cagentType\":\"IoTGW\",\"osVersion\":\"SnailOS\",\"biosVersion\":\"\",\"platformName\":\"\",\"processorName\":\"SnailGW\",\
   \"osArch\":\"SnailX86\",\"totalPhysMemKB\":123,\"macs":"000E40ABCD99\",\"IP\":\"192.168.1.1\"},\"commCmd\":116,\"requestID\":109,\
-  \"agentID\":\"0000000E40ABCD99\",\"handlerName\":\"general\",\"sendTS\":1466730390}}'';
+  \"agentID\":\"0000000E40ABCD99\",\"handlerName\":\"general\",\"sendTS\":1466730390}}';
    
   var msgObj = JSON.parse(msg);
  
