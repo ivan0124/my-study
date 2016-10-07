@@ -35,7 +35,7 @@ function test1(vgw_id){
    
   //var vgw = JSON.parse(JSON.stringify(devObj));
   var msgObj = JSON.parse(msg);
-  //msgObj.susiCommData = {"ZigBee":{"bn":20}};
+  msgObj.susiCommData.devID=vgw_id;
   
   
   client.publish('/cagent/admin/0000000E4CABCD99/agentinfoack', JSON.stringify(msgObj));
@@ -44,7 +44,7 @@ function test1(vgw_id){
 module.exports = {
   test: function() {
     console.log('[wise_snail] test');
-    test1();
+    test1('0000000E4CABCD77');
     return;
   },
 };
