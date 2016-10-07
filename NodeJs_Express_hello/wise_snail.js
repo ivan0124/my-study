@@ -68,7 +68,7 @@ function vgw_send_os_info( dev_type, ver, vgw_mac, is_ip_base ){
   msgObj.susiCommData.osInfo.cagentType = dev_type;
   msgObj.susiCommData.osInfo.cagentVersion = ver;
   msgObj.susiCommData.osInfo.macs= vgw_mac;
-  msgObj.susiCommData.osInfo.agentID = '0000' + vgw_mac;
+  msgObj.susiCommData.agentID = '0000' + vgw_mac;
   msgObj.susiCommData.sendTS = new Date().getTime();
   
   if ( is_ip_base === true ){
