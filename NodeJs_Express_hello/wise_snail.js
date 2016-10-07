@@ -102,7 +102,7 @@ function vgw_send_info_spec( vgw_mac ){
             {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"}'
    
   var connObj=[{type:'WSN', connName:'0007000E40ABCD31'}];
-  console.log('connObj.type --------------: ' + connObj.type );
+  console.log('============= connObj.type --------------: ' + connObj.type );
   
   var msgObj = JSON.parse(msg);
  
