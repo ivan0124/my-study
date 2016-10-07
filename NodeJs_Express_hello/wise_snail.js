@@ -1,11 +1,7 @@
 
 module.exports = {
-  sayHelloInEnglish: function() {
-    console.log('[greetings] sayHelloInEnglish');
-    return "HELLO";
+  test: function() {
+    console.log('[wise_snail] test');
+    return;
   },
-       
-  sayHelloInSpanish: function() {
-    return "Hola";
-  }
 };
