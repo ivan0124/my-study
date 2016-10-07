@@ -28,10 +28,10 @@ client.on('connect', function () {
  
 client.on('message', function (topic, message) {
   // message is Buffer 
-  var msg=message.toString();
-  //console.log('--------------------------------------------------------------');
- // console.log('topic=' + topic.toString() );
-  //console.log('msg=' + msg);
+  //var msg=message.toString();
+  console.log('--------------------------------------------------------------');
+  console.log('topic=' + topic.toString() );
+  console.log('msg=' + msg);
   
   try {
       var jsonObj = JSON.parse(msg);
