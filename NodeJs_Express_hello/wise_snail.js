@@ -40,7 +40,7 @@ function test1(vgw_mac){
   msgObj.susiCommData.hostname = 'IotGW('+ vgw_mac.substr(8,4) + ')';
   msgObj.susiCommData.devID ='0000' + vgw_mac;
   msgObj.susiCommData.agentID ='0000' + vgw_mac;
-  msgObj.susiCommData.sendTS.$date = 999;
+  msgObj.susiCommData.sendTS.$date = new Date().getTime();
   
   var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentinfoack';
   var message = JSON.stringify(msgObj);
