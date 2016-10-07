@@ -105,40 +105,25 @@ function vgw_send_info_spec( vgw_mac ){
                conn2:{ type: 'BLE', bnName:'0007000E40ABCD32' }
               };
   
-  for (key in connObj) {
-      if (connObj.hasOwnProperty(key)) {
-        console.log( key + ', keyVal=======>' + connObj[key]);
-        console.log( 'type=======>' + connObj[key]['type']);
-        console.log( 'bnName=======>' + connObj[key]['bnName']);
-      }
-   }
-  
   var msgObj = JSON.parse(msg);
  
   msgObj.susiCommData.agentID = vgw_id_prefix + vgw_mac;
   msgObj.susiCommData.sendTS = new Date().getTime();
-  //
-  msgObj.susiCommData.infoSpec.IoTGW['WSN']={};
-  msgObj.susiCommData.infoSpec.IoTGW['WSN']['WSN0']={};
-  msgObj.susiCommData.infoSpec.IoTGW['WSN']['WSN0']['Info'] = JSON.parse(InfoMsg);
-                         
-  msgObj.susiCommData.infoSpec.IoTGW['WSN']['WSN0']['bn'] = conn_id_prefix + vgw_mac;
-  msgObj.susiCommData.infoSpec.IoTGW['WSN']['WSN0']['ver'] = 1;
-  //
+  //create connectivity and assigne InfoMsg
   for (key in connObj) {
       if (connObj.hasOwnProperty(key)) {
-        console.log( key + ', keyVal=======>' + connObj[key]);
-        console.log( 'type=======>' + connObj[key]['type']);
-        console.log( 'bnName=======>' + connObj[key]['bnName']);
+        //console.log( key + ', keyVal=======>' + connObj[key]);
+        //console.log( 'type=======>' + connObj[key]['type']);
+        //console.log( 'bnName=======>' + connObj[key]['bnName']);
         var conn_type= connObj[key]['type'];
         var conn_bnName = connObj[key]['bnName'];
         
         if ( msgObj.susiCommData.infoSpec.IoTGW.hasOwnProperty(conn_type) == false ){
-          console.log( 'create type ========: ' + conn_type);
+          //console.log( 'create type ========: ' + conn_type);
           msgObj.susiCommData.infoSpec.IoTGW[conn_type]={};
         }
         if ( msgObj.susiCommData.infoSpec.IoTGW.hasOwnProperty(conn_bnName) == false ){
-          console.log( 'create conn_bnName ========: ' + conn_bnName);
+          //console.log( 'create conn_bnName ========: ' + conn_bnName);
           msgObj.susiCommData.infoSpec.IoTGW[conn_type][conn_bnName]={};
         }
         //assign value
