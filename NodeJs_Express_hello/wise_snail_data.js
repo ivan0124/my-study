@@ -35,7 +35,6 @@ client.on('message', function (topic, message) {
   
   try {
       var jsonObj = JSON.parse(message.toString());
-      return;
   } catch (e) {
       console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
       console.error(e);
@@ -168,6 +167,8 @@ client.on('message', function (topic, message) {
       console.log('default');
       break;
   }
+  
+  jsonObj='';
   console.log('--------------------------------------------------------------');
   
 })
