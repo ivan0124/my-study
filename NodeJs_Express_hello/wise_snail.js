@@ -141,8 +141,7 @@ function vgw_send_info_spec( vgw_mac ){
           console.log( 'create conn_bnName ========: ' + conn_bnName);
           msgObj.susiCommData.infoSpec.IoTGW[conn_bnName]={};
         }
-        //
-        assign value
+        //assign value
         msgObj.susiCommData.infoSpec.IoTGW[conn_type][conn_bnName]['Info'] = JSON.parse(InfoMsg);
         msgObj.susiCommData.infoSpec.IoTGW[conn_type][conn_bnName]['bn'] = conn_bnName;
         msgObj.susiCommData.infoSpec.IoTGW[conn_type][conn_bnName]['ver'] = 1;
