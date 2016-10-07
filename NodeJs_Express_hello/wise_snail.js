@@ -139,7 +139,7 @@ function vgw_send_info_spec( vgw_mac ){
         }
         if ( msgObj.susiCommData.infoSpec.IoTGW.hasOwnProperty(conn_bnName) == false ){
           console.log( 'create conn_bnName ========: ' + conn_bnName);
-          msgObj.susiCommData.infoSpec.IoTGW[conn_bnName]={};
+          msgObj.susiCommData.infoSpec.IoTGW[conn_type][conn_bnName]={};
         }
         //assign value
         msgObj.susiCommData.infoSpec.IoTGW[conn_type][conn_bnName]['Info'] = JSON.parse(InfoMsg);
