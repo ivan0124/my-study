@@ -90,8 +90,10 @@ function vgw_send_os_info( dev_type, vgw_mac, connected ){
 module.exports = {
   test: function() {
     console.log('[wise_snail] test');
-    vgw_connect('IoTGW', '000E4CABCD77', true);
-    vgw_send_os_info('IoTGW', '000E4CABCD77', true);
+    var mac='000E4CABCD77';
+    var dev_type='IoTGW';
+    vgw_connect(dev_type, mac, true);
+    vgw_send_os_info(dev_type, mac, true);
     return;
   },
 };
