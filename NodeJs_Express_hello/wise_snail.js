@@ -95,21 +95,7 @@ function vgw_send_info_spec( vgw_mac, connObj ){
             {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCDEF\",\"ver\":1},\
             \"bn\":\"Ethernet\",\"ver\":1},\"ver\":1}},\"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\
             \"handlerName\":\"general\",\"sendTS\":160081020}}';
-  /*
-  var Info1 = '{\"e\":[{\"n\":\"SenHubList\",\
-            \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
-            {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
-            {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"}';
-  
-  var Info2 = '{\"e\":[{\"n\":\"SenHubList\",\
-            \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
-            {\"n\":\"Health\",\"v\":\"70.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
-            {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"}';  
-   
-  var connObj={conn1:{ type: 'BLE', bnName:'0007000E40ABCD31', info: JSON.parse(Info1)},
-               conn2:{ type: 'BLE', bnName:'0007000E40ABCD32', info: JSON.parse(Info2) }
-              };
-  */
+
   var msgObj = JSON.parse(msg);
 
   msgObj.susiCommData.agentID = vgw_id_prefix + vgw_mac;
