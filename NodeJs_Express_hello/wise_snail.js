@@ -28,6 +28,25 @@ client.on('message', function (topic, message) {
   
 })
 
+function create_connObj( callback ){
+  
+  var Info1 = '{\"e\":[{\"n\":\"SenHubList\",\
+            \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
+            {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
+            {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"}';
+  
+  var Info2 = '{\"e\":[{\"n\":\"SenHubList\",\
+            \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
+            {\"n\":\"Health\",\"v\":\"70.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
+            {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"}';  
+   
+  var connObj={conn1:{ type: 'BLE', bnName:'0007000E40ABCD31', info: JSON.parse(Info1)},
+               conn2:{ type: 'BLE', bnName:'0007000E40ABCD32', info: JSON.parse(Info2) }
+              }; 
+  
+  callback( connObj );
+}
+
 function vgw_connect(dev_type, ver, vgw_mac, connected ){
   
   var msg='{\"susiCommData\":{\"devID\":\"0000000E4CABCD99\",\"parentID\":\"\",\
@@ -158,7 +177,7 @@ module.exports = {
     vgw_connect(dev_type, ver, mac, true);
     vgw_send_os_info(dev_type, ver,  mac, true);
  
-
+/*
   var Info1 = '{\"e\":[{\"n\":\"SenHubList\",\
             \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
             {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
@@ -172,8 +191,10 @@ module.exports = {
   var connObj={conn1:{ type: 'BLE', bnName:'0007000E40ABCD31', info: JSON.parse(Info1)},
                conn2:{ type: 'BLE', bnName:'0007000E40ABCD32', info: JSON.parse(Info2) }
               };
-    
-    
+*/    
+    create_connObj(function( connObj ){
+      console.log('create connectivity object');  
+    });
     vgw_send_info_spec(mac, connObj);
     return;
   },
