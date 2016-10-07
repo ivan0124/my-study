@@ -1,5 +1,6 @@
 var express = require('express');
 var greetings = require("./greetings.js");
+var ws = require('./wise_snail.js');
 var ws_data = require('./wise_snail_data.js');
 var HashMap = require('hashmap').HashMap;
 var map = new HashMap();
@@ -24,12 +25,8 @@ client.on('message', function (topic, message) {
 
 
 app.get('/', function (req, res) {
-  // "Hello"
-  greetings.sayHelloInEnglish();
-  console.log('~~~~~~~~!!!!');
-  // "Hola"  
-  greetings.sayHelloInSpanish();  
-  res.send('Hello World!');
+  ws.test();
+  res.send('test');
 });
 
 app.get('/show_all_vgw_map', function (req, res) {
