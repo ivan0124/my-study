@@ -46,7 +46,7 @@ function create_connObj( callback ){
             {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"}';  
    
   var connObj={conn1:{ type: 'BLE', bnName:'0007000E40ABCD31', info: JSON.parse(Info1)},
-               conn2:{ type: 'BLE', bnName:'0007000E40ABCD32', info: JSON.parse(Info2) }
+               conn2:{ type: 'BLE', bnName:'0007000E40ABCD32', info: JSON.parse(Info2) },
                conn3:{ type: 'BLE', bnName:'0007000E40ABCD33', info: JSON.parse(Info3) }
               }; 
   
