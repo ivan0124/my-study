@@ -26,7 +26,7 @@ client.on('connect', function () {
    
 })
  
-client.on('message', function (topic, message) {
+client.on('message', function (topic, var message) {
   // message is Buffer 
 
   console.log('--------------------------------------------------------------');
