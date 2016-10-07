@@ -33,7 +33,7 @@ client.on('message', function (topic, message) {
   console.log('msg=' + message.toString());
 
   try {
-      var jsonObj = JSON.parse(message.toString());
+      var jsonObj = JSON.parse(message.toString().slice(0, - 1));
   } catch (e) {
       console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
       console.error(e);
