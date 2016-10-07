@@ -28,13 +28,13 @@ client.on('connect', function () {
  
 client.on('message', function (topic, message) {
   // message is Buffer 
-  var msg=message.toString();
+
   console.log('--------------------------------------------------------------');
   console.log('topic=' + topic.toString() );
-  console.log('msg=' + msg);
+  console.log('msg=' + message.toString());
   
   try {
-      var jsonObj = JSON.parse(msg);
+      var jsonObj = JSON.parse(message.toString());
   } catch (e) {
       console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
       console.error(e);
