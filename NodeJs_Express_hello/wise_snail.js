@@ -37,6 +37,7 @@ function test1(vgw_mac){
   var msgObj = JSON.parse(msg);
  
   msgObj.susiCommData.mac = vgw_mac;
+  msgObj.susiCommData.sn = vgw_mac;
   msgObj.susiCommData.hostname = 'IotGW('+ vgw_mac.substr(8,4) + ')';
   msgObj.susiCommData.devID ='0000' + vgw_mac;
   msgObj.susiCommData.agentID ='0000' + vgw_mac;
