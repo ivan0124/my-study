@@ -41,8 +41,9 @@ function test1(vgw_mac){
   msgObj.susiCommData.devID ='0000' + vgw_mac;
   msgObj.susiCommData.agentID ='0000' + vgw_mac;
   
-  
-  client.publish('/cagent/admin/0000000E4CABCD99/agentinfoack', JSON.stringify(msgObj));
+  var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentinfoack';
+  var message = JSON.stringify(msgObj);
+  client.publish(topic, message);
 }
 
 module.exports = {
