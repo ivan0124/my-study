@@ -277,7 +277,7 @@ function create_connObj( vgw_mac, callback ){
       }
    }    
   
-  callback( connObj );
+  callback( msgObj );
 }
 
 function create_connObj_info( connObj, callback ){
