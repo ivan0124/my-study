@@ -204,7 +204,7 @@ function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
         var conn_bnName = connObj[key]['bnName'];
         var conn_info = connObj[key]['info'];
         
-        if ( msgObj.susiCommData.infoSpec.IoTGW.hasOwnProperty(conn_type) === false ){
+        if ( msgObj['susiCommData']['infoSpec']['IoTGW'].hasOwnProperty(conn_type) === false ){
           //console.log( 'create type ========: ' + conn_type);
           msgObj.susiCommData.infoSpec.IoTGW[conn_type]={};
         }
