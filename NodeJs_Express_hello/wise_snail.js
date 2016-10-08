@@ -97,7 +97,7 @@ function vgw_send_info_spec( vgw_mac, msgObj ){
   client.publish(topic, message);
 }
 
-function vgw_send_info( vgw_mac, connObj ){
+function vgw_send_info( vgw_mac, msgObj ){
   
   var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/deviceinfo';
   var message = JSON.stringify(msgObj);
