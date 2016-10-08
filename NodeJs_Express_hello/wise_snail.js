@@ -206,8 +206,8 @@ function ttt(){
   }
 }
 
-function create_connObj( vgw_mac, callback ){
-  
+function create_connObj( vgw_mac, connObj, callback ){
+  /*
   var Info1 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},\
                        {\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
                        {\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
@@ -236,7 +236,7 @@ function create_connObj( vgw_mac, callback ){
                conn2:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD32', info: JSON.parse(Info2) },
                conn3:{ type: 'WSN', bnName: conn_id_prefix + '000E40ABCD33', info: JSON.parse(Info3) }
               }; 
-  
+  */
   var msg='{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"Ethernet\":{\"Ethernet\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\
             \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"Ethernet\",\"asm\":\"r\"},\
             {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
@@ -315,11 +315,41 @@ module.exports = {
     var mac='000E4CABCD77';
     var dev_type='IoTGW';
     var ver = '3.1.23';
+  var Info1 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},\
+                       {\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
+                       {\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
+                       {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},\
+                       {\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
+                       {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\
+               \"bn\":\"Info\"}';
+  
+  var Info2 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},\
+                       {\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
+                       {\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
+                       {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},\
+                       {\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
+                       {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\
+               \"bn\":\"Info\"}';
+  
+  var Info3 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},\
+                       {\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
+                       {\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
+                       {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},\
+                       {\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
+                       {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\
+               \"bn\":\"Info\"}';
+   
+  var preConnObj={conn1:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD31', info: JSON.parse(Info1)},
+               conn2:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD32', info: JSON.parse(Info2) },
+               conn3:{ type: 'WSN', bnName: conn_id_prefix + '000E40ABCD33', info: JSON.parse(Info3) }
+              };     
+    
+    //-----------------------------------------------
     vgw_connect(dev_type, ver, mac, true);
     vgw_send_os_info(dev_type, ver,  mac, false);   
     var connectivityObj;
     var connectivityObjInfo;
-    create_connObj(mac, function( connObj ){
+    create_connObj(mac, preConnObj, function( connObj ){
       console.log('create connectivity object'); 
       console.log('================================================');
       connectivityObj = connObj;
