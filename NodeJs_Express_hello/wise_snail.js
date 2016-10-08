@@ -245,7 +245,7 @@ module.exports = {
     var mac='000E4CABCD77';
     var dev_type='IoTGW';
     var ver = '3.1.23';
-    var InfoSpec1 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},\
+    var infoSpec1 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},\
                        {\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
                        {\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
                        {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},\
@@ -253,7 +253,7 @@ module.exports = {
                        {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\
                \"bn\":\"Info\"}';
   
-    var InfoSpec2 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},\
+    var infoSpec2 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},\
                        {\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
                        {\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
                        {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},\
@@ -261,7 +261,7 @@ module.exports = {
                        {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\
                \"bn\":\"Info\"}';
   
-    var InfoSpec3 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},\
+    var infoSpec3 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},\
                        {\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
                        {\"n\":\"Name\",\"sv\":\"WSN\",\"asm\":\"r\"},\
                        {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},\
@@ -269,12 +269,12 @@ module.exports = {
                        {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\
                \"bn\":\"Info\"}';
    
-    var InfoSpecObj={conn1:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD31', info: JSON.parse(InfoSpec1)},
-               conn2:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD32', info: JSON.parse(InfoSpec2) },
-               conn3:{ type: 'WSN', bnName: conn_id_prefix + '000E40ABCD33', info: JSON.parse(InfoSpec3) }
+    var infoSpecObj={conn1:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD31', info: JSON.parse(infoSpec1)},
+               conn2:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD32', info: JSON.parse(infoSpec2) },
+               conn3:{ type: 'WSN', bnName: conn_id_prefix + '000E40ABCD33', info: JSON.parse(infoSpec3) }
               }; 
     
-    var Info1 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"0017000E40000000,0017000E40000001\"},\
+    var info1 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"0017000E40000000,0017000E40000001\"},\
                        {\"n\":\"Neighbor\",\"sv\":\"0017000E40000000,0017000E40000001\"},\
                        {\"n\":\"Name\",\"sv\":\"BLE\"},\
                        {\"n\":\"Health\",\"v\":\"100.000000\"},\
@@ -282,7 +282,7 @@ module.exports = {
                        {\"n\":\"reset\",\"bv\":\"0\"}],\
                \"bn\":\"Info\"}';
   
-    var Info2 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\"},\
+    var info2 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\"},\
                        {\"n\":\"Neighbor\",\"sv\":\"\"},\
                        {\"n\":\"Name\",\"sv\":\"BLE\"},\
                        {\"n\":\"Health\",\"v\":\"100.000000\"},\
@@ -290,7 +290,7 @@ module.exports = {
                        {\"n\":\"reset\",\"bv\":\"0\"}],\
                \"bn\":\"Info\"}';
   
-    var Info3 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\"},\
+    var info3 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\"},\
                        {\"n\":\"Neighbor\",\"sv\":\"\"},\
                        {\"n\":\"Name\",\"sv\":\"WSN\"},\
                        {\"n\":\"Health\",\"v\":\"100.000000\"},\
@@ -298,9 +298,9 @@ module.exports = {
                        {\"n\":\"reset\",\"bv\":\"0\"}],\
                \"bn\":\"Info\"}';
    
-    var InfoObj={conn1:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD31', info: JSON.parse(Info1)},
-               conn2:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD32', info: JSON.parse(Info2) },
-               conn3:{ type: 'WSN', bnName: conn_id_prefix + '000E40ABCD33', info: JSON.parse(Info3) }
+    var infoObj={conn1:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD31', info: JSON.parse(info1)},
+               conn2:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD32', info: JSON.parse(info2) },
+               conn3:{ type: 'WSN', bnName: conn_id_prefix + '000E40ABCD33', info: JSON.parse(info3) }
               };    
     
     //-----------------------------------------------
@@ -308,7 +308,7 @@ module.exports = {
     vgw_send_os_info(dev_type, ver,  mac, false);   
     var infoSpecMsgObj;
     var infoMsgObj;
-    create_connMsg(mac, InfoSpecObj, function( msgObj ){
+    create_connMsg(mac, infoSpecObj, function( msgObj ){
       console.log('create connectivity InfoSpec message object'); 
       console.log('================================================');
       infoSpecMsgObj = msgObj;
@@ -316,7 +316,7 @@ module.exports = {
     });
     vgw_send_info_spec(mac, infoSpecMsgObj);
     //
-    create_connMsg(mac, InfoObj, function( msgObj ){
+    create_connMsg(mac, infoObj, function( msgObj ){
       console.log('create connectivity Info message object'); 
       console.log('================================================');
       infoMsgObj = msgObj;
