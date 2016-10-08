@@ -344,28 +344,28 @@ module.exports = {
                conn3:{ type: 'WSN', bnName: conn_id_prefix + '000E40ABCD33', info: JSON.parse(InfoSpec3) }
               }; 
     
-    var Info1 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},\
-                       {\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
-                       {\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
-                       {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},\
-                       {\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
-                       {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\
+    var Info1 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"123,456\"},\
+                       {\"n\":\"Neighbor\",\"sv\":\"\"},\
+                       {\"n\":\"Name\",\"sv\":\"BLE\"},\
+                       {\"n\":\"Health\",\"v\":\"100.000000\"},\
+                       {\"n\":\"sw\",\"sv\":\"1.2.1.12\"},\
+                       {\"n\":\"reset\",\"bv\":\"0\"}],\
                \"bn\":\"Info\"}';
   
-    var Info2 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},\
-                       {\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
-                       {\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
-                       {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},\
-                       {\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
-                       {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\
+    var Info2 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\"},\
+                       {\"n\":\"Neighbor\",\"sv\":\"\"},\
+                       {\"n\":\"Name\",\"sv\":\"BLE\"},\
+                       {\"n\":\"Health\",\"v\":\"100.000000\"},\
+                       {\"n\":\"sw\",\"sv\":\"1.2.1.12\"},\
+                       {\"n\":\"reset\",\"bv\":\"0\"}],\
                \"bn\":\"Info\"}';
   
-    var Info3 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},\
-                       {\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
-                       {\"n\":\"Name\",\"sv\":\"WSN\",\"asm\":\"r\"},\
-                       {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},\
-                       {\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
-                       {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\
+    var Info3 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\"},\
+                       {\"n\":\"Neighbor\",\"sv\":\"\"},\
+                       {\"n\":\"Name\",\"sv\":\"WSN\"},\
+                       {\"n\":\"Health\",\"v\":\"100.000000\"},\
+                       {\"n\":\"sw\",\"sv\":\"1.2.1.12\"},\
+                       {\"n\":\"reset\",\"bv\":\"0\"}],\
                \"bn\":\"Info\"}';
    
     var InfoObj={conn1:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD31', info: JSON.parse(Info1)},
