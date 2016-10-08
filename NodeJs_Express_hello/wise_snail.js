@@ -236,7 +236,7 @@ function create_connObj( callback ){
   callback( connObj );
 }
 
-function create_connObj_info( connObjInfo, callback ){
+function create_connObj_info( connectivityObj, callback ){
   
   var connObjInfo;
   
@@ -258,12 +258,12 @@ module.exports = {
       connectivityObj = connObj;
     });
     vgw_send_info_spec(mac, connectivityObj);
-    /*
+    
     vgw_send_info(connectivityObj, function( connObjInfo){
       console.log('create connectivity object Info');  
       connectivityObjInfo = connObjInfo;
     });
-    */
+    
     return;
   },
 };
