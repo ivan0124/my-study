@@ -1,5 +1,6 @@
 var express = require('express');
 var greetings = require("./greetings.js");
+var ws = require('./wise_snail.js');
 var ws_data = require('./wise_snail_data.js');
 var HashMap = require('hashmap').HashMap;
 var map = new HashMap();
@@ -8,6 +9,7 @@ var app = express();
 var mqtt = require('mqtt');
 //var client  = mqtt.connect('mqtt://test.mosquitto.org');
 var client  = mqtt.connect('mqtt://127.0.0.1');
+client.queueQoSZero = false;
 
 client.on('connect', function () {
   console.log('hello.js mqtt connect !!!!');
@@ -23,12 +25,8 @@ client.on('message', function (topic, message) {
 
 
 app.get('/', function (req, res) {
-  // "Hello"
-  greetings.sayHelloInEnglish();
-  console.log('~~~~~~~~!!!!');
-  // "Hola"  
-  greetings.sayHelloInSpanish();  
-  res.send('Hello World!');
+  ws.test();
+  res.send('test');
 });
 
 app.get('/show_all_vgw_map', function (req, res) {
@@ -81,6 +79,98 @@ app.get('/ip_valid', function (req, res) {
   res.send('is_ip_valid!');
 });
 
+
+app.get('/case1_test_add_connectivity', function (req, res) {
+  
+  /*send vgw connect*/
+  client.publish('/cagent/admin/0000000E4CABCD99/agentinfoack', '{\"susiCommData\":{\"devID\":\"0000000E4CABCD99\",\"parentID\":\"\",\
+\"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCD99\",\"mac\":\"000E4CABCD99\",\"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
+\"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":1,\"commCmd\":1,\"requestID\":21,\"agentID\":\"0000000E4CABCD99\",\
+\"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}');
+  //
+  client.publish('/cagent/admin/0000000E4CABCDEF/agentinfoack', '{\"susiCommData\":{\"devID\":\"0000000E4CABCDEF\",\"parentID\":\"\",\
+\"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCDEF\",\"mac\":\"000E4CABCDEF\",\"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
+\"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":1,\"commCmd\":1,\"requestID\":21,\"agentID\":\"0000000E4CABCDEF\",\
+\"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}');
+  
+  /*send vgw os info*/
+  client.publish('/cagent/admin/0000000E4CABCD99/agentactionreq', '{\"susiCommData\":{\"osInfo\":{\"cagentVersion\":\"3.1.23\",\
+  \"cagentType\":\"IoTGW\",\"osVersion\":\"SnailOS\",\"biosVersion\":\"\",\"platformName\":\"\",\"processorName\":\"SnailGW\",\
+  \"osArch\":\"SnailX86\",\"totalPhysMemKB\":123,\"macs":"000E40ABCD99\",\"IP\":\"192.168.1.1\"},\"commCmd\":116,\"requestID\":109,\
+  \"agentID\":\"0000000E40ABCD99\",\"handlerName\":\"general\",\"sendTS\":1466730390}}');
+  
+  client.publish('/cagent/admin/0000000E4CABCDEF/agentactionreq', '{\"susiCommData\":{\"osInfo\":{\"cagentVersion\":\"3.1.23\",\
+  \"cagentType\":\"IoTGW\",\"osVersion\":\"SnailOS\",\"biosVersion\":\"\",\"platformName\":\"\",\"processorName\":\"SnailGW\",\
+  \"osArch\":\"SnailX86\",\"totalPhysMemKB\":123,\"macs":"000E40ABCDEF\",\"IP\":\"192.168.1.1\"},\"commCmd\":116,\"requestID\":109,\
+  \"agentID\":\"0000000E40ABCDEF\",\"handlerName\":\"general\",\"sendTS\":1466730390}}');  
+  
+  /*send vgw info_spec*/
+  //1 device
+  client.publish('/cagent/admin/0000000E4CABCD99/agentactionreq', '{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"WSN\":\
+  {\"WSN0\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
+  {\"n\":\"Name\",\"sv\":\"WSN0\",\"asm\":\"r\"},{\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
+  {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCD99\",\"ver\":1},\"bn\":\"WSN\",\"ver\":1},\"ver\":1}},\
+  \"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCD99\",\"handlerName\":\"general\",\"sendTS\":160081020}}');
+  
+  
+  //4 device
+  client.publish('/cagent/admin/0000000E4CABCDEF/agentactionreq', '{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":\
+  {\"WSN\":{\"WSN0\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
+  {\"n\":\"Name\",\"sv\":\"WSN0\",\"asm\":\"r\"},{\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
+  {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCD01\",\"ver\":1},\
+  \"WSN1\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
+  {\"n\":\"Name\",\"sv\":\"WSN0\",\"asm\":\"r\"},{\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
+  {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCD02\",\"ver\":1},\"bn\":\"WSN\",\"ver\":1},\
+  \"BLE\":{\"BLE0\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
+  {\"n\":\"Name\",\"sv\":\"WSN0\",\"asm\":\"r\"},{\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
+  {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCD05\",\"ver\":1},\
+  \"BLE1\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
+  {\"n\":\"Name\",\"sv\":\"WSN0\",\"asm\":\"r\"},{\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
+  {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCD06\",\"ver\":1},\"bn\":\"BLE\",\"ver\":1},\"ver\":1}},\
+  \"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\"handlerName\":\"general\",\"sendTS\":160081020}}');  
+
+  //send vgw info
+  client.publish('/cagent/admin/0000000E4CABCD99/deviceinfo', '{\"susiCommData\":{\"data\":{\"IoTGW\":{\"WSN\":{\"WSN0\":{\"Info\":\
+  {\"e\":[{\"n\":\"SenHubList\",\"sv\":\"0017000E40000000,0017000E40000001\"},{\"n\":\"Neighbor\",\"sv\":\"0017000E40000000,0017000E40000001\"},\
+  {\"n\":\"Name\",\"sv\":\"WSN0\"},{\"n\":\"Health\",\"v\":\"100.000000\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\"},{\"n\":\"reset\",\"bv\":\"0\"}],\
+  \"bn\":\"Info\"},\"bn\":\"0007000E40ABCD99\",\"ver\":1},\"bn\":\"WSN\"},\"ver\":1}},\"commCmd\":2055,\
+  \"requestID\":2001,\"agentID\":\"0000000E40ABCD99\",\"handlerName\":\"general\",\"sendTS\":160081025}}'); 
+  
+  //send sensor hub connect
+  client.publish('/cagent/admin/0017000E40000001/agentinfoack', '{\"susiCommData\":{\"devID\":\"0017000E40000001\",\
+    \"hostname\":\"AAA\",\"sn\":\"0017000E40000001\",\"mac\":\"0017000E40000001\",\"version\":\"3.1.23\",\"type\":\"SenHub\",\
+    \"product\":\"WISE-1020\",\"manufacture\":\"\",\"status\":\"1\",\"commCmd\":1,\"requestID\":30002,\"agentID\":\"0017000E40000001\",\
+    \"handlerName\":\"general\",\"sendTS\":160081026}}');
+  
+  // send sensor hub disconnect
+  /*
+  client.publish('/cagent/admin/0017000E40000001/agentinfoack', '{\"susiCommData\":{\"devID\":\"0017000E40000001\",\
+    \"hostname\":\"AAA\",\"sn\":\"0017000E40000001\",\"mac\":\"0017000E40000001\",\"version\":\"3.1.23\",\"type\":\"SenHub\",\
+    \"product\":\"WISE-1020\",\"manufacture\":\"\",\"status\":\"0\",\"commCmd\":1,\"requestID\":30002,\"agentID\":\"0017000E40000001\",\
+    \"handlerName\":\"general\",\"sendTS\":160081026}}');  
+  */
+  // send sensor hub info_spec
+    client.publish('/cagent/admin/0017000E40000001/agentactionreq', '{\"susiCommData\":{\"infoSpec\":{\"SenHub\":{\"SenData\":{\"e\":[{\"n\":\"Temperature\",\
+    \"u\":\"Cel\",\"v\":0,\"min\":-100,\"max\":200,\"asm\":\"r\",\"type\":\"d\",\"rt\":\"ucum.Cel\",\"st\":\"ipso\",\"exten\":\"\"},\
+    {\"n\":\"Humidity\",\"u\":\"%\",\"v\":0,\"min\":0,\"max\":100,\"asm\":\"r\",\"type\":\"d\",\"rt\":\"ucum.%\",\"st\":\"ipso\",\"exten\":\"\"},\
+    {\"n\":\"GPIO1\",\"u\":\"\",\"bv\":0,\"min\":0,\"max\":1,\"asm\":\"r\",\"type\":\"b\",\"rt\":\"\",\"st\":\"ipso\",\"exten\":\"\"},\
+    {\"n\":\"GPIO2\",\"u\":\"\",\"bv\":0,\"min\":0,\"max\":1,\"asm\":\"r\",\"type\":\"b\",\"rt\":\"\",\"st\":\"ipso\",\"exten\":\"\"}],\
+    \"bn\":\"SenData\"},\"Info\":{\"e\":[{\"n\":\"Name\",\"sv\":\"SenHub1\",\"asm\":\"rw\"},{\"n\":\"sw\",\"sv\":\"1.0.00\",\"asm\":\"r\"}],\
+    \"bn\":\"Info\"},\"Net\":{\"e\":[{\"n\":\"sw\",\"sv\":\"1.0.00\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
+    {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"}],\"bn\":\"Net\"}}},\"commCmd\":2052,\"requestID\":2001,\
+    \"agentID\":\"0017000E40000000\",\"handlerName\":\"general\",\"sendTS\":160081024}}');
+  // send sensor hub info
+    client.publish('/cagent/admin/0017000E40000001/deviceinfo', '{\"susiCommData\":{\"data\":{\"SenHub\":{\"SenData\":{\"e\":[{\"n\":\"Temperature\",\
+    \"v\":1},{\"n\":\"Humidity\",\"v\":57},{\"n\":\"GPIO1\",\"bv\":0},{\"n\":\"GPIO2\",\"bv\":0}],\"bn\":\"SenData\"},\"Info\":{\"e\":[],\"bn\":\"Info\"},\
+    \"Net\":{\"e\":[],\"bn\":\"Net\"},\"Action\":{\"e\":[],\"bn\":\"Action\"},\"ver\":1}},\"commCmd\":2055,\"requestID\":2001,\
+    \"agentID\":\"0017000E40000001\",\"handlerName\":\"general\",\"sendTS\":160081031}}');
+  
+  setTimeout(ws_data.show_all_vgw_map, 2000);
+  
+  res.send('case1_test_add_connectivity');
+});
+
+
 app.get('/sen_agentinfoack', function (req, res) {
   client.publish('/cagent/admin/0017000E40000001/agentinfoack', '{\"susiCommData\":{\"devID\":\"0017000E40000001\",\
     \"hostname\":\"AAA\",\"sn\":\"0017000E40000001\",\"mac\":\"0017000E40000001\",\"version\":\"3.1.23\",\"type\":\"SenHub\",\
@@ -111,14 +201,15 @@ app.get('/vgw_info', function (req, res) {
 app.get('/vgw_info_spec', function (req, res) {
   
   //one device
-  client.publish('/cagent/admin/0000000E4CABCDEF/agentactionreq', '{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"WSN\":\
+  client.publish('/cagent/admin/0000000E4CABCD99/agentactionreq', '{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"WSN\":\
   {\"WSN0\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
   {\"n\":\"Name\",\"sv\":\"WSN0\",\"asm\":\"r\"},{\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
-  {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCDEF\",\"ver\":1},\"bn\":\"WSN\",\"ver\":1},\"ver\":1}},\
-  \"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\"handlerName\":\"general\",\"sendTS\":160081020}}');
+  {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCD99\",\"ver\":1},\"bn\":\"WSN\",\"ver\":1},\"ver\":1}},\
+  \"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCD99\",\"handlerName\":\"general\",\"sendTS\":160081020}}');
+  
   
   //2 device
-  /*
+  
   client.publish('/cagent/admin/0000000E4CABCDEF/agentactionreq', '{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":\
   {\"WSN\":{\"WSN0\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
   {\"n\":\"Name\",\"sv\":\"WSN0\",\"asm\":\"r\"},{\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
@@ -133,16 +224,23 @@ app.get('/vgw_info_spec', function (req, res) {
   {\"n\":\"Name\",\"sv\":\"WSN0\",\"asm\":\"r\"},{\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
   {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCD06\",\"ver\":1},\"bn\":\"BLE\",\"ver\":1},\"ver\":1}},\
   \"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\"handlerName\":\"general\",\"sendTS\":160081020}}'); 
-  */
+  
   res.send('vgw_info_spec');
 });
 
 app.get('/vgw_agentinfoack', function (req, res) {
+  client.publish('/cagent/admin/0000000E4CABCD99/agentinfoack', '{\"susiCommData\":{\"devID\":\"0000000E4CABCD99\",\"parentID\":\"\",\
+\"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCD99\",\"mac\":\"000E4CABCD99\",\"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
+\"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":1,\"commCmd\":1,\"requestID\":21,\"agentID\":\"0000000E4CABCD99\",\
+\"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}');
+  /*
   client.publish('/cagent/admin/0000000E4CABCDEF/agentinfoack', '{\"susiCommData\":{\"devID\":\"0000000E4CABCDEF\",\"parentID\":\"\",\
 \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCDEF\",\"mac\":\"000E4CABCDEF\",\"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
 \"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":1,\"commCmd\":1,\"requestID\":21,\"agentID\":\"0000000E4CABCDEF\",\
 \"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}');
+  */
   res.send('vgw_agentinfoack');
+
 });
 
 app.get('/vgw_disconnect', function (req, res) {
@@ -229,6 +327,24 @@ function listObj( i, keyStr, jsonObj ){
    }
    */
 }
+
+app.get('/add_json', function (req, res) {
+ var susiString = "{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"WSN\":{\"WSN0\":{\"Info\":\
+                    {\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
+                    {\"n\":\"Name\",\"sv\":\"WSN0\",\"asm\":\"r\"},{\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},\
+                    {\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},{\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\
+                    \"bn\":\"Info\"},\"bn\":\"0007000E40ABCDEF\",\"ver\":1},\"bn\":\"WSN\",\"ver\":1},\"ver\":1}},\
+                    \"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\"handlerName\":\"general\",\
+                    \"sendTS\":160081020}}";
+  var susiObj = JSON.parse(susiString);
+  
+  var Name1='ttt';
+  susiObj.susiCommData.infoSpec.IoTGW[Name1] = {"ZigBee":{"bn":20}};
+  susiObj.susiCommData.infoSpec.IoTGW['WSN'].test2 = {"ZigBee":{"bn":20}};
+  var string = JSON.stringify(susiObj);
+  console.log("string="+string);
+  res.send('add_json');
+});
 
 app.get('/restapi/susiCommData/infoSpec/IoTGW', function (req, res) { 
   
