@@ -165,7 +165,7 @@ function ttt(){
   }
 }
 
-function create_connObj( vgw_mac, connObj, callback ){
+function create_connMsg( vgw_mac, connObj, callback ){
 
   var msg='{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"Ethernet\":{\"Ethernet\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\
             \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"Ethernet\",\"asm\":\"r\"},\
@@ -308,7 +308,7 @@ module.exports = {
     vgw_send_os_info(dev_type, ver,  mac, false);   
     var connectivityObj;
     var connectivityObjInfo;
-    create_connObj(mac, InfoSpecObj, function( connObj ){
+    create_connMsg(mac, InfoSpecObj, function( connObj ){
       console.log('create connectivity InfoSpec object'); 
       console.log('================================================');
       connectivityObj = connObj;
@@ -316,7 +316,7 @@ module.exports = {
     });
     vgw_send_info_spec(mac, connectivityObj);
     //
-    create_connObj(mac, InfoObj, function( connObj ){
+    create_connMsg(mac, InfoObj, function( connObj ){
       console.log('create connectivity Info object'); 
       console.log('================================================');
       connectivityObjInfo = connObj;
