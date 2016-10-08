@@ -339,7 +339,7 @@ module.exports = {
                        {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\
                \"bn\":\"Info\"}';
    
-    var preConnObj={conn1:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD31', info: JSON.parse(InfoSpec1)},
+    var InfoSpecObj={conn1:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD31', info: JSON.parse(InfoSpec1)},
                conn2:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD32', info: JSON.parse(InfoSpec2) },
                conn3:{ type: 'WSN', bnName: conn_id_prefix + '000E40ABCD33', info: JSON.parse(InfoSpec3) }
               };     
@@ -349,7 +349,7 @@ module.exports = {
     vgw_send_os_info(dev_type, ver,  mac, false);   
     var connectivityObj;
     var connectivityObjInfo;
-    create_connObj(mac, preConnObj, function( connObj ){
+    create_connObj(mac, InfoSpecObj, function( connObj ){
       console.log('create connectivity object'); 
       console.log('================================================');
       connectivityObj = connObj;
