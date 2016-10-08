@@ -31,7 +31,7 @@ client.on('message', function (topic, message) {
 
 
 function vgw_connect(dev_type, ver, vgw_mac, connected ){
-  
+  /*
   var msg='{\"susiCommData\":{\"devID\":\"0000000E4CABCD99\",\"parentID\":\"\",\
             \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCD99\",\"mac\":\"000E4CABCD99\",\
             \"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
@@ -60,6 +60,7 @@ function vgw_connect(dev_type, ver, vgw_mac, connected ){
   var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentinfoack';
   var message = JSON.stringify(msgObj);
   client.publish(topic, message);
+  */
 }
 
 function vgw_send_os_info( dev_type, ver, vgw_mac, is_ip_base ){
