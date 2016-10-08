@@ -1,8 +1,10 @@
 var mqtt = require('mqtt');
 
-var VGW_ID_PREFIX = '0000';
-var CONN_ID_PREFIX = '0007';
-var SENHUB_ID_PREFIX = '0017';
+const VGW_ID_PREFIX = '0000';
+const CONN_ID_PREFIX = '0007';
+const SENHUB_ID_PREFIX = '0017';
+
+VGW_ID_PREFIX = 11
 
 client  = mqtt.connect('mqtt://127.0.0.1');
 client.queueQoSZero = false;
