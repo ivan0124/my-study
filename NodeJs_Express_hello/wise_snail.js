@@ -307,7 +307,7 @@ module.exports = {
     vgw_connect(dev_type, ver, mac, true);
     vgw_send_os_info(dev_type, ver,  mac, false);   
     var infoSpecMsgObj;
-    var connectivityObjInfo;
+    var infoMsgObj;
     create_connMsg(mac, InfoSpecObj, function( msgObj ){
       console.log('create connectivity InfoSpec message object'); 
       console.log('================================================');
@@ -316,11 +316,11 @@ module.exports = {
     });
     vgw_send_info_spec(mac, infoSpecMsgObj);
     //
-    create_connMsg(mac, InfoObj, function( connObj ){
-      console.log('create connectivity Info object'); 
+    create_connMsg(mac, InfoObj, function( msgObj ){
+      console.log('create connectivity Info message object'); 
       console.log('================================================');
-      connectivityObjInfo = connObj;
-      console.log(JSON.stringify(connectivityObjInfo));
+      infoMsgObj = msgObj;
+      console.log(JSON.stringify(infoMsgObj));
     });    
     /*
     create_connObj_info(connectivityObj, function( connObjInfo){
