@@ -178,16 +178,16 @@ function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
              \"bn\":\"Ethernet\",\"ver\":1},\"ver\":1}},\"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\
              \"handlerName\":\"general\",\"sendTS\":160081020}}';
   }
-  //else{
-    /*
+  else{
+    
     var msg='{\"susiCommData\":{\"data\":{\"IoTGW\":{\"Ethernet\":{\"Ethernet\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\
              \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"Ethernet\",\"asm\":\"r\"},\
              {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
              {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCDEF\",\"ver\":1},\
              \"bn\":\"Ethernet\",\"ver\":1},\"ver\":1}},\"commCmd\":2055,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\
              \"handlerName\":\"general\",\"sendTS\":160081020}}';
-             */
-  //}
+            
+  }
 
   var msgObj = JSON.parse(msg);
 
@@ -331,7 +331,7 @@ module.exports = {
     });
     vgw_send_info_spec(mac, infoSpecMsgObj);
     //
-    create_connMsg(true, mac, infoObj, function( msgObj ){
+    create_connMsg(false, mac, infoObj, function( msgObj ){
       console.log('create connectivity Info message object'); 
       console.log('================================================');
       infoMsgObj = msgObj;
