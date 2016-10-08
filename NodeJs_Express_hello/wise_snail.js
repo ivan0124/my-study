@@ -31,7 +31,7 @@ client.on('message', function (topic, message) {
 
 
 function vgw_connect(dev_type, ver, vgw_mac, connected ){
-  /*
+  
   var msg='{\"susiCommData\":{\"devID\":\"0000000E4CABCD99\",\"parentID\":\"\",\
             \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCD99\",\"mac\":\"000E4CABCD99\",\
             \"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
@@ -60,7 +60,7 @@ function vgw_connect(dev_type, ver, vgw_mac, connected ){
   var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentinfoack';
   var message = JSON.stringify(msgObj);
   client.publish(topic, message);
-  */
+  
 }
 
 function vgw_send_os_info( dev_type, ver, vgw_mac, is_ip_base ){
@@ -139,6 +139,7 @@ function vgw_send_info_spec( vgw_mac, connObj ){
 
 function vgw_send_info( vgw_mac, connObj ){
   
+  /*
   var msg='{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"Ethernet\":{\"Ethernet\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\
             \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"Ethernet\",\"asm\":\"r\"},\
             {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
@@ -182,6 +183,7 @@ function vgw_send_info( vgw_mac, connObj ){
   var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
   var message = JSON.stringify(msgObj);
   client.publish(topic, message);
+  */
 }
 
 function ttt(){
