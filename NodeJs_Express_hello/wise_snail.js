@@ -283,7 +283,8 @@ function create_connObj( vgw_mac, callback ){
 function create_connObj_info( connObj, callback ){
   
   //var connObjInfo;
-  console.log('=====================================================');
+  console.log('*****************************************');
+   console.log(JSON.stringify(connObj));
   
   for (key in connObj) {
       if (connObj.hasOwnProperty(key)) {
@@ -308,13 +309,15 @@ module.exports = {
     var connectivityObj;
     var connectivityObjInfo;
     create_connObj(mac, function( connObj ){
-      console.log('create connectivity object');  
+      console.log('create connectivity object'); 
+      console.log('================================================');
       connectivityObj = connObj;
     });
     vgw_send_info_spec(mac, connectivityObj);
     //
     create_connObj_info(connectivityObj, function( connObjInfo){
-      console.log('create connectivity object Info');  
+      console.log('create connectivity object Info'); 
+      console.log('================================================');
       connectivityObjInfo = connObjInfo;
     });
     
