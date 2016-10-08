@@ -412,14 +412,14 @@ function conn_map_add_connectivity( vgw_id, layer, connType, infoObj ){
   layer++;
   for (key in infoObj) {
       if (infoObj.hasOwnProperty(key)) {
-          console.log('layer=' + layer + 'key =====================' + key);
+          //console.log('layer=' + layer + 'key =====================' + key);
           if ( key === 'bn' ){
               if ( layer === 2 ){
                 connType = infoObj[key];
-                console.log('layer=' + layer + 'connType =====================' + connType);
+                //console.log('layer=' + layer + 'connType =====================' + connType);
               }
               if ( layer === 3 ){
-                 console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
+                 //console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
                  var device_id=infoObj[key];
                 
                  if ( conn_map.has(device_id) === false ) {
