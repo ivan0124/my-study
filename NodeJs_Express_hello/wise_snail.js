@@ -4,8 +4,6 @@ const VGW_ID_PREFIX = '0000';
 const CONN_ID_PREFIX = '0007';
 const SENHUB_ID_PREFIX = '0017';
 
-VGW_ID_PREFIX = 11
-
 client  = mqtt.connect('mqtt://127.0.0.1');
 client.queueQoSZero = false;
 
@@ -101,6 +99,9 @@ function vgw_send_info_spec( vgw_mac, msgObj ){
 
 function vgw_send_info( vgw_mac, connObj ){
   
+  var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/deviceinfo';
+  var message = JSON.stringify(msgObj);
+  client.publish(topic, message);  
   /*
   var msg='{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"Ethernet\":{\"Ethernet\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\
             \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"Ethernet\",\"asm\":\"r\"},\
@@ -211,7 +212,7 @@ function create_connMsg( vgw_mac, connObj, callback ){
   
   callback( msgObj );
 }
-
+/*
 function create_connObj_info( connObj, callback ){
   
   //var connObjInfo;
@@ -240,7 +241,7 @@ function create_connObj_info( connObj, callback ){
     callback( connObj );
   }
 }
-
+*/
 module.exports = {
   test: function() {
     console.log('[wise_snail] test');
@@ -324,14 +325,7 @@ module.exports = {
       infoMsgObj = msgObj;
       console.log(JSON.stringify(infoMsgObj));
     });    
-    /*
-    create_connObj_info(connectivityObj, function( connObjInfo){
-      console.log('create connectivity object Info'); 
-      console.log('================================================');
-      connectivityObjInfo = connObjInfo;
-      //console.log(JSON.stringify(connectivityObjInfo));
-    });
-    */
+    vgw_send_info(mac, infoMsgObj);
     
     return;
   },
