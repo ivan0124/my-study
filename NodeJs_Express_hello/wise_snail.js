@@ -242,8 +242,9 @@ function create_connObj( callback ){
 function create_connObj_info( connObj, callback ){
   
   //var connObjInfo;
+  console.log('=====================================================');
   console.log(JSON.stringify(connObj));
-  
+  /*
   for (key in connObj) {
       if (connObj.hasOwnProperty(key)) {
         if ( key === 'asm'){ 
@@ -251,7 +252,7 @@ function create_connObj_info( connObj, callback ){
         }
       }
    }    
- 
+ */
   //console.log(JSON.stringify(connObj));
   //callback( connObjInfo );
 }
