@@ -194,7 +194,7 @@ function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
   msgObj.susiCommData.agentID = VGW_ID_PREFIX + vgw_mac;
   msgObj.susiCommData.sendTS = new Date().getTime();
   //create connectivity and assigne InfoMsg
-  msgObj.susiCommData.infoSpec.IoTGW = {};
+  msgObj['susiCommData']['infoSpec']['IoTGW'] = {};
   for (key in connObj) {
       if (connObj.hasOwnProperty(key)) {
         //console.log( key + ', keyVal=======>' + connObj[key]);
@@ -331,7 +331,7 @@ module.exports = {
     });
     vgw_send_info_spec(mac, infoSpecMsgObj);
     //
-    create_connMsg(false, mac, infoObj, function( msgObj ){
+    create_connMsg(true, mac, infoObj, function( msgObj ){
       console.log('create connectivity Info message object'); 
       console.log('================================================');
       infoMsgObj = msgObj;
