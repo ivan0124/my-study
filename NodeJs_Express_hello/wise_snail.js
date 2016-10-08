@@ -270,13 +270,16 @@ module.exports = {
     create_connObj(function( connObj ){
       console.log('create connectivity object');  
       connectivityObj = connObj;
+      console.log(JSON.stringify(connectivityObj));
     });
     vgw_send_info_spec(mac, connectivityObj);
     
+    /*
     create_connObj_info(connectivityObj, function( connObjInfo){
       console.log('create connectivity object Info');  
       connectivityObjInfo = connObjInfo;
     });
+    */
     
     return;
   },
