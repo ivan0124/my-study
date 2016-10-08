@@ -206,7 +206,7 @@ function ttt(){
   }
 }
 
-function create_connObj( vgw_mac, callback ){
+function create_connObj( vgw_mac, callbacks ){
   
   var Info1 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},\
                        {\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
@@ -277,7 +277,7 @@ function create_connObj( vgw_mac, callback ){
       }
    }    
   
-  callback( msgObj );
+  callbacks( msgObj );
 }
 
 function create_connObj_info( connObj, callback ){
