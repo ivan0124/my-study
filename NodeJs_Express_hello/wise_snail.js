@@ -1,8 +1,8 @@
 var mqtt = require('mqtt');
 
-var vgw_id_prefix = '0000';
-var conn_id_prefix = '0007';
-var senhub_id_prefix = '0017';
+var VGW_ID_PREFIX = '0000';
+var CONN_ID_PREFIX = '0007';
+var SENHUB_ID_PREFIX = '0017';
 
 client  = mqtt.connect('mqtt://127.0.0.1');
 client.queueQoSZero = false;
@@ -46,8 +46,8 @@ function vgw_connect(dev_type, ver, vgw_mac, connected ){
   msgObj.susiCommData.mac = vgw_mac;
   msgObj.susiCommData.sn = vgw_mac;
   msgObj.susiCommData.hostname = dev_type + '('+ vgw_mac.substr(8,4) + ')';
-  msgObj.susiCommData.devID = vgw_id_prefix + vgw_mac;
-  msgObj.susiCommData.agentID = vgw_id_prefix + vgw_mac;
+  msgObj.susiCommData.devID = VGW_ID_PREFIX + vgw_mac;
+  msgObj.susiCommData.agentID = VGW_ID_PREFIX + vgw_mac;
   msgObj.susiCommData.sendTS.$date = new Date().getTime();
   
   if ( connected === true ){
@@ -75,7 +75,7 @@ function vgw_send_os_info( dev_type, ver, vgw_mac, is_ip_base ){
   msgObj.susiCommData.osInfo.cagentType = dev_type;
   msgObj.susiCommData.osInfo.cagentVersion = ver;
   msgObj.susiCommData.osInfo.macs= vgw_mac;
-  msgObj.susiCommData.agentID = vgw_id_prefix + vgw_mac;
+  msgObj.susiCommData.agentID = VGW_ID_PREFIX + vgw_mac;
   msgObj.susiCommData.sendTS = new Date().getTime();
   
   if ( is_ip_base === true ){
@@ -176,7 +176,7 @@ function create_connMsg( vgw_mac, connObj, callback ){
 
   var msgObj = JSON.parse(msg);
 
-  msgObj.susiCommData.agentID = vgw_id_prefix + vgw_mac;
+  msgObj.susiCommData.agentID = VGW_ID_PREFIX + vgw_mac;
   msgObj.susiCommData.sendTS = new Date().getTime();
   //create connectivity and assigne InfoMsg
   msgObj.susiCommData.infoSpec.IoTGW = {};
@@ -269,9 +269,9 @@ module.exports = {
                        {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\
                \"bn\":\"Info\"}';
    
-    var infoSpecObj={conn1:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD31', info: JSON.parse(infoSpec1)},
-               conn2:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD32', info: JSON.parse(infoSpec2) },
-               conn3:{ type: 'WSN', bnName: conn_id_prefix + '000E40ABCD33', info: JSON.parse(infoSpec3) }
+    var infoSpecObj={conn1:{ type: 'BLE', bnName: CONN_ID_PREFIX + '000E40ABCD31', info: JSON.parse(infoSpec1)},
+               conn2:{ type: 'BLE', bnName: CONN_ID_PREFIX + '000E40ABCD32', info: JSON.parse(infoSpec2) },
+               conn3:{ type: 'WSN', bnName: CONN_ID_PREFIX + '000E40ABCD33', info: JSON.parse(infoSpec3) }
               }; 
     
     var info1 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"0017000E40000000,0017000E40000001\"},\
@@ -298,9 +298,9 @@ module.exports = {
                        {\"n\":\"reset\",\"bv\":\"0\"}],\
                \"bn\":\"Info\"}';
    
-    var infoObj={conn1:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD31', info: JSON.parse(info1)},
-               conn2:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD32', info: JSON.parse(info2) },
-               conn3:{ type: 'WSN', bnName: conn_id_prefix + '000E40ABCD33', info: JSON.parse(info3) }
+    var infoObj={conn1:{ type: 'BLE', bnName: CONN_ID_PREFIX + '000E40ABCD31', info: JSON.parse(info1)},
+               conn2:{ type: 'BLE', bnName: CONN_ID_PREFIX + '000E40ABCD32', info: JSON.parse(info2) },
+               conn3:{ type: 'WSN', bnName: CONN_ID_PREFIX + '000E40ABCD33', info: JSON.parse(info3) }
               };    
     
     //-----------------------------------------------
