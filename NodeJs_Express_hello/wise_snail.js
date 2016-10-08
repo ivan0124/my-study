@@ -344,8 +344,8 @@ module.exports = {
                conn3:{ type: 'WSN', bnName: conn_id_prefix + '000E40ABCD33', info: JSON.parse(InfoSpec3) }
               }; 
     
-    var Info1 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"123,456\"},\
-                       {\"n\":\"Neighbor\",\"sv\":\"\"},\
+    var Info1 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"0017000E40000000,0017000E40000001\"},\
+                       {\"n\":\"Neighbor\",\"sv\":\"0017000E40000000,0017000E40000001\"},\
                        {\"n\":\"Name\",\"sv\":\"BLE\"},\
                        {\"n\":\"Health\",\"v\":\"100.000000\"},\
                        {\"n\":\"sw\",\"sv\":\"1.2.1.12\"},\
