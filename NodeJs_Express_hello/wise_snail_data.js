@@ -460,7 +460,7 @@ function is_ip_valid( ip ){
   if (ip_arr.length !== 4 ){
       return false;
   }
-  
+  /*
   if ( ip === '0.0.0.0'){
     return false;
   }
@@ -468,6 +468,7 @@ function is_ip_valid( ip ){
       ip_arr[2] === 0 && ip_arr[3] === 0){
       return false;
   }
+  */
   
   if ( (ip_arr[0] >= 0 && ip_arr[0] < 256) &&
        (ip_arr[1] >= 0 && ip_arr[1] < 256) &&
