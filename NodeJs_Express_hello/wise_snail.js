@@ -136,6 +136,53 @@ function vgw_send_info_spec( vgw_mac, connObj ){
   client.publish(topic, message);
 }
 
+function vgw_send_info( vgw_mac, connObj ){
+  
+  var msg='{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"Ethernet\":{\"Ethernet\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\
+            \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"Ethernet\",\"asm\":\"r\"},\
+            {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
+            {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCDEF\",\"ver\":1},\
+            \"bn\":\"Ethernet\",\"ver\":1},\"ver\":1}},\"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\
+            \"handlerName\":\"general\",\"sendTS\":160081020}}';
+
+  var msgObj = JSON.parse(msg);
+
+  msgObj.susiCommData.agentID = vgw_id_prefix + vgw_mac;
+  msgObj.susiCommData.sendTS = new Date().getTime();
+  //create connectivity and assigne InfoMsg
+  msgObj.susiCommData.infoSpec.IoTGW = {};
+  for (key in connObj) {
+      if (connObj.hasOwnProperty(key)) {
+        //console.log( key + ', keyVal=======>' + connObj[key]);
+        //console.log( 'type=======>' + connObj[key]['type']);
+        //console.log( 'bnName=======>' + connObj[key]['bnName']);
+        var conn_type= connObj[key]['type'];
+        var conn_bnName = connObj[key]['bnName'];
+        var conn_info = connObj[key]['info'];
+        
+        if ( msgObj.susiCommData.infoSpec.IoTGW.hasOwnProperty(conn_type) === false ){
+          //console.log( 'create type ========: ' + conn_type);
+          msgObj.susiCommData.infoSpec.IoTGW[conn_type]={};
+        }
+        if ( msgObj.susiCommData.infoSpec.IoTGW.hasOwnProperty(conn_bnName) === false ){
+          //console.log( 'create conn_bnName ========: ' + conn_bnName);
+          msgObj.susiCommData.infoSpec.IoTGW[conn_type][conn_bnName]={};
+        }
+        //assign value
+        msgObj.susiCommData.infoSpec.IoTGW['ver'] = 1;
+        msgObj.susiCommData.infoSpec.IoTGW[conn_type]['bn'] = conn_type;
+        msgObj.susiCommData.infoSpec.IoTGW[conn_type]['ver'] = 1;
+        msgObj.susiCommData.infoSpec.IoTGW[conn_type][conn_bnName]['Info'] = conn_info;
+        msgObj.susiCommData.infoSpec.IoTGW[conn_type][conn_bnName]['bn'] = conn_bnName;
+        msgObj.susiCommData.infoSpec.IoTGW[conn_type][conn_bnName]['ver'] = 1;
+      }
+   }  
+  //
+  var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
+  var message = JSON.stringify(msgObj);
+  client.publish(topic, message);
+}
+
 function ttt(){
   
   console.log('tttttttttttttttttttttttttttttttttttttttttt');
@@ -194,6 +241,7 @@ module.exports = {
       connectivityObj = connObj;
     });
     vgw_send_info_spec(mac, connectivityObj);
+    vgw_send_info(mac, connectivityObj);
     return;
   },
 };
