@@ -295,7 +295,7 @@ function create_connObj_info( connObj, callback ){
       }
    }    
  
-  console.log(JSON.stringify(connObj));
+  console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<' + JSON.stringify(connObj));
   //callback( connObjInfo );
 }
 
