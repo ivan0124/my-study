@@ -236,6 +236,13 @@ function create_connObj( callback ){
   callback( connObj );
 }
 
+function create_connObj_info( connObj, callback ){
+  
+  var connObj_info;
+  
+  callback( connObj_info );
+}
+
 module.exports = {
   test: function() {
     console.log('[wise_snail] test');
@@ -245,12 +252,17 @@ module.exports = {
     vgw_connect(dev_type, ver, mac, true);
     vgw_send_os_info(dev_type, ver,  mac, false);   
     var connectivityObj;
+    var connectivityObjInfo;
     create_connObj(function( connObj ){
       console.log('create connectivity object');  
       connectivityObj = connObj;
     });
     vgw_send_info_spec(mac, connectivityObj);
-    vgw_send_info(mac, connectivityObj);
+    vgw_send_info(connectivityObj, function( connObjInfo){
+      console.log('create connectivity object Info');  
+      connectivityObjInfo = connObjInfo;
+    });
+    
     return;
   },
 };
