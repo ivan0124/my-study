@@ -290,7 +290,7 @@ function create_connObj_info( connObj, callback ){
       if (connObj.hasOwnProperty(key)) {
         console.log('***************************************** key=' + key);
         if ( key === 'asm'){ 
-          delete connObj.key;
+          delete connObj['asm'];
         }
       }
    }
@@ -300,10 +300,6 @@ function create_connObj_info( connObj, callback ){
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
           if (typeof connObj[key] === 'object' ){
               create_connObj_info( connObj[key], callback);
-          }
-          else{
-              //console.log( 'listObj return -------------------------------------------------key=' + key);
-              //return;
           }
       }
    }   
