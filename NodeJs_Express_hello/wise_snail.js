@@ -333,7 +333,7 @@ module.exports = {
     });
     vgw_send_info_spec(mac, infoSpecMsgObj);
     //
-    create_connMsg(true, mac, infoObj, function( msgObj ){
+    create_connMsg(false, mac, infoObj, function( msgObj ){
       console.log('create connectivity Info message object'); 
       console.log('================================================');
       infoMsgObj = msgObj;
