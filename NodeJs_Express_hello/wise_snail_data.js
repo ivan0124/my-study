@@ -415,6 +415,7 @@ function conn_map_add_connectivity( vgw_id, layer, connType, infoObj ){
           if ( key === 'bn' ){
               if ( layer === 2 ){
                 connType = infoObj[key];
+                console.log('connType=====================' + connType);
               }
               if ( layer === 3 ){
                  console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
