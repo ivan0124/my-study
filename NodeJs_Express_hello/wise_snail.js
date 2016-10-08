@@ -104,27 +104,6 @@ function vgw_send_info( vgw_mac, msgObj ){
   client.publish(topic, message);  
 }
 
-/*
-function ttt(){
-  
-  console.log('tttttttttttttttttttttttttttttttttttttttttt');
-  
-  var msg = '{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"Ethernet\":{\"Ethernet\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\
-            \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"Ethernet\",\"asm\":\"r\"},\
-            {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
-            {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCDEF\",\"ver\":1},\
-            \"bn\":\"Ethernet\",\"ver\":1},\"ver\":1}},\"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\
-            \"handlerName\":\"general\",\"sendTS\":160081020}}';
-   try {
-      var jsonObj = JSON.parse(msg.toString());
-  } catch (e) {
-      console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-      console.error(e);
-      return;
-  }
-}
-*/
-
 function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
 
   if ( isInfoSpec === true ){
@@ -183,36 +162,7 @@ function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
   
   callback( msgObj );
 }
-/*
-function create_connObj_info( connObj, callback ){
-  
-  //var connObjInfo;
-  //console.log('*****************************************');
-  //console.log(JSON.stringify(connObj));
-  
-  for (key in connObj) {
-      if (connObj.hasOwnProperty(key)) {
-        //console.log('***************************************** key=' + key);
-        if ( key === 'asm'){ 
-          delete connObj['asm'];
-        }
-      }
-   }
-  
-  for (key in connObj) {
-      if (connObj.hasOwnProperty(key)) {
-          //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
-          if (typeof connObj[key] === 'object' ){
-              create_connObj_info( connObj[key], '' );
-          }
-      }
-   }   
- 
-  if ( typeof callback === 'function'){
-    callback( connObj );
-  }
-}
-*/
+
 module.exports = {
   test: function() {
     console.log('[wise_snail] test');
