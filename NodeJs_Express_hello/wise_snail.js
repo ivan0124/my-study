@@ -81,7 +81,7 @@ function vgw_send_os_info( dev_type, ver, vgw_mac, is_ip_base ){
     msgObj.susiCommData.osInfo.IP = '127.0.0.1';
   }
   else{
-    msgObj.susiCommData.status = '0.0.0.0';
+    msgObj.susiCommData.status = '';
   }
   
   var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
@@ -187,7 +187,7 @@ module.exports = {
     var dev_type='IoTGW';
     var ver = '3.1.23';
     vgw_connect(dev_type, ver, mac, true);
-    vgw_send_os_info(dev_type, ver,  mac, true);   
+    vgw_send_os_info(dev_type, ver,  mac, false);   
     var connectivityObj;
     create_connObj(function( connObj ){
       console.log('create connectivity object');  
