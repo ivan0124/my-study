@@ -122,6 +122,7 @@ function vgw_send_info_spec( vgw_mac, connObj ){
           msgObj.susiCommData.infoSpec.IoTGW[conn_type][conn_bnName]={};
         }
         //assign value
+        msgObj.susiCommData.infoSpec.IoTGW['ver'] = 1;
         msgObj.susiCommData.infoSpec.IoTGW[conn_type]['bn'] = conn_type;
         msgObj.susiCommData.infoSpec.IoTGW[conn_type]['ver'] = 1;
         msgObj.susiCommData.infoSpec.IoTGW[conn_type][conn_bnName]['Info'] = conn_info;
