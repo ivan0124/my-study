@@ -236,38 +236,11 @@ function create_connObj( callback ){
   callback( connObj );
 }
 
-function create_connObj_info( callback ){
+function create_connObj_info( connObj, callback ){
   
-  var Info1 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},\
-                       {\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
-                       {\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
-                       {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},\
-                       {\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
-                       {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\
-               \"bn\":\"Info\"}';
+  var connObj_info;
   
-  var Info2 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},\
-                       {\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
-                       {\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
-                       {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},\
-                       {\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
-                       {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\
-               \"bn\":\"Info\"}';
-  
-  var Info3 = '{\"e\":[{\"n\":\"SenHubList\",\"sv\":\"\",\"asm\":\"r\"},\
-                       {\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},\
-                       {\"n\":\"Name\",\"sv\":\"BLE\",\"asm\":\"r\"},\
-                       {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},\
-                       {\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
-                       {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\
-               \"bn\":\"Info\"}';
-   
-  var connObj={conn1:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD31', info: JSON.parse(Info1)},
-               conn2:{ type: 'BLE', bnName: conn_id_prefix + '000E40ABCD32', info: JSON.parse(Info2) },
-               conn3:{ type: 'WSN', bnName: conn_id_prefix + '000E40ABCD33', info: JSON.parse(Info3) }
-              }; 
-  
-  callback( connObj );
+  callback( connObj_info );
 }
 
 module.exports = {
@@ -279,12 +252,17 @@ module.exports = {
     vgw_connect(dev_type, ver, mac, true);
     vgw_send_os_info(dev_type, ver,  mac, false);   
     var connectivityObj;
+    var connectivityObjInfo;
     create_connObj(function( connObj ){
       console.log('create connectivity object');  
       connectivityObj = connObj;
     });
     vgw_send_info_spec(mac, connectivityObj);
-    vgw_send_info(mac, connectivityObj);
+    vgw_send_info(connectivityObj, function( connObjInfo){
+      console.log('create connectivity object Info');  
+      connectivityObjInfo = connObjInfo;
+    });
+    
     return;
   },
 };
