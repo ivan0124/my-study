@@ -306,15 +306,15 @@ module.exports = {
     //-----------------------------------------------
     vgw_connect(dev_type, ver, mac, true);
     vgw_send_os_info(dev_type, ver,  mac, false);   
-    var connectivityObj;
+    var infoSpecMsgObj;
     var connectivityObjInfo;
-    create_connMsg(mac, InfoSpecObj, function( connObj ){
-      console.log('create connectivity InfoSpec object'); 
+    create_connMsg(mac, InfoSpecObj, function( msgObj ){
+      console.log('create connectivity InfoSpec message object'); 
       console.log('================================================');
-      connectivityObj = connObj;
-      console.log(JSON.stringify(connectivityObj));
+      infoSpecMsgObj = msgObj;
+      console.log(JSON.stringify(infoSpecMsgObj));
     });
-    vgw_send_info_spec(mac, connectivityObj);
+    vgw_send_info_spec(mac, infoSpecMsgObj);
     //
     create_connMsg(mac, InfoObj, function( connObj ){
       console.log('create connectivity Info object'); 
