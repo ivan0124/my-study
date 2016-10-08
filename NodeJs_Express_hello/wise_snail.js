@@ -299,12 +299,12 @@ function create_connObj_info( connObj, callback ){
       if (connObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
           if (typeof connObj[key] === 'object' ){
-              create_connObj_info( connObj[key], callback);
+              create_connObj_info( connObj[key], '' );
           }
       }
    }   
  
-  console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<' + JSON.stringify(connObj));
+  console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< typeof callback' + typeof callback);
   //callback( connObjInfo );
 }
 
