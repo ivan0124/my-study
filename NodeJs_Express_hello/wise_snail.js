@@ -187,7 +187,7 @@ module.exports = {
     var dev_type='IoTGW';
     var ver = '3.1.23';
     vgw_connect(dev_type, ver, mac, true);
-    vgw_send_os_info(dev_type, ver,  mac, false);   
+    vgw_send_os_info(dev_type, ver,  mac, true);   
     var connectivityObj;
     create_connObj(function( connObj ){
       console.log('create connectivity object');  
