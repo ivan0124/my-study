@@ -78,10 +78,10 @@ function vgw_send_os_info( dev_type, ver, vgw_mac, is_ip_base ){
   msgObj.susiCommData.sendTS = new Date().getTime();
   
   if ( is_ip_base === true ){
-    msgObj.susiCommData.osInfo.IP = '127.0.0.1';
+    msgObj.susiCommData.osInfo.IP = '0.0.0.0';
   }
   else{
-    msgObj.susiCommData.status = '';
+    msgObj.susiCommData.osInfo.IP = '';
   }
   
   var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
