@@ -206,19 +206,19 @@ function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
         
         if ( msgObj['susiCommData']['infoSpec']['IoTGW'].hasOwnProperty(conn_type) === false ){
           //console.log( 'create type ========: ' + conn_type);
-          msgObj.susiCommData.infoSpec.IoTGW[conn_type]={};
+          msgObj['susiCommData']['infoSpec']['IoTGW'][conn_type]={};
         }
-        if ( msgObj.susiCommData.infoSpec.IoTGW.hasOwnProperty(conn_bnName) === false ){
+        if ( msgObj['susiCommData']['infoSpec']['IoTGW'].hasOwnProperty(conn_bnName) === false ){
           //console.log( 'create conn_bnName ========: ' + conn_bnName);
-          msgObj.susiCommData.infoSpec.IoTGW[conn_type][conn_bnName]={};
+          msgObj['susiCommData']['infoSpec']['IoTGW'][conn_type][conn_bnName]={};
         }
         //assign value
-        msgObj.susiCommData.infoSpec.IoTGW['ver'] = 1;
-        msgObj.susiCommData.infoSpec.IoTGW[conn_type]['bn'] = conn_type;
-        msgObj.susiCommData.infoSpec.IoTGW[conn_type]['ver'] = 1;
-        msgObj.susiCommData.infoSpec.IoTGW[conn_type][conn_bnName]['Info'] = conn_info;
-        msgObj.susiCommData.infoSpec.IoTGW[conn_type][conn_bnName]['bn'] = conn_bnName;
-        msgObj.susiCommData.infoSpec.IoTGW[conn_type][conn_bnName]['ver'] = 1;
+        msgObj['susiCommData']['infoSpec']['IoTGW']['ver'] = 1;
+        msgObj['susiCommData']['infoSpec']['IoTGW'][conn_type]['bn'] = conn_type;
+        msgObj['susiCommData']['infoSpec']['IoTGW'][conn_type]['ver'] = 1;
+        msgObj['susiCommData']['infoSpec']['IoTGW'][conn_type][conn_bnName]['Info'] = conn_info;
+        msgObj['susiCommData']['infoSpec']['IoTGW'][conn_type][conn_bnName]['bn'] = conn_bnName;
+        msgObj['susiCommData']['infoSpec']['IoTGW'][conn_type][conn_bnName]['ver'] = 1;
       }
    }    
   
