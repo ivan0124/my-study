@@ -168,14 +168,24 @@ function ttt(){
   }
 }
 
-function create_connMsg( vgw_mac, connObj, callback ){
+function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
 
-  var msg='{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"Ethernet\":{\"Ethernet\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\
-            \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"Ethernet\",\"asm\":\"r\"},\
-            {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
-            {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCDEF\",\"ver\":1},\
-            \"bn\":\"Ethernet\",\"ver\":1},\"ver\":1}},\"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\
-            \"handlerName\":\"general\",\"sendTS\":160081020}}';
+  if ( isInfoSpec === true ){
+    var msg='{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"Ethernet\":{\"Ethernet\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\
+             \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"Ethernet\",\"asm\":\"r\"},\
+             {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
+             {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCDEF\",\"ver\":1},\
+             \"bn\":\"Ethernet\",\"ver\":1},\"ver\":1}},\"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\
+             \"handlerName\":\"general\",\"sendTS\":160081020}}';
+  }
+  else{
+    var msg='{\"susiCommData\":{\"data\":{\"IoTGW\":{\"Ethernet\":{\"Ethernet\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\
+             \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"Ethernet\",\"asm\":\"r\"},\
+             {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
+             {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCDEF\",\"ver\":1},\
+             \"bn\":\"Ethernet\",\"ver\":1},\"ver\":1}},\"commCmd\":2055,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\
+             \"handlerName\":\"general\",\"sendTS\":160081020}}';
+  }
 
   var msgObj = JSON.parse(msg);
 
@@ -311,7 +321,7 @@ module.exports = {
     vgw_send_os_info(dev_type, ver,  mac, false);   
     var infoSpecMsgObj;
     var infoMsgObj;
-    create_connMsg(mac, infoSpecObj, function( msgObj ){
+    create_connMsg(true, mac, infoSpecObj, function( msgObj ){
       console.log('create connectivity InfoSpec message object'); 
       console.log('================================================');
       infoSpecMsgObj = msgObj;
@@ -319,15 +329,15 @@ module.exports = {
     });
     vgw_send_info_spec(mac, infoSpecMsgObj);
     //
-    create_connMsg(mac, infoObj, function( msgObj ){
+    create_connMsg(false, mac, infoObj, function( msgObj ){
       console.log('create connectivity Info message object'); 
       console.log('================================================');
       infoMsgObj = msgObj;
       //infoMsgObj.susiCommData = {};
-      infoMsgObj.susiCommData.data = {};
-      infoMsgObj.susiCommData.data = msgObj.susiCommData.infoSpec;
-      infoMsgObj.susiCommData.commCmd = 2055;
-      delete infoMsgObj['susiCommData']['infoSpec'];
+      //infoMsgObj.susiCommData.data = {};
+      //infoMsgObj.susiCommData.data = msgObj.susiCommData.infoSpec;
+      //infoMsgObj.susiCommData.commCmd = 2055;
+      //delete infoMsgObj['susiCommData']['infoSpec'];
       console.log(JSON.stringify(infoMsgObj));
     });    
     vgw_send_info(mac, infoMsgObj);
