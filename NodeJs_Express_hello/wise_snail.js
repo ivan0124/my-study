@@ -335,11 +335,6 @@ module.exports = {
       console.log('create connectivity Info message object'); 
       console.log('================================================');
       infoMsgObj = msgObj;
-      //infoMsgObj.susiCommData = {};
-      //infoMsgObj.susiCommData.data = {};
-      //infoMsgObj.susiCommData.data = msgObj.susiCommData.infoSpec;
-      //infoMsgObj.susiCommData.commCmd = 2055;
-      //delete infoMsgObj['susiCommData']['infoSpec'];
       console.log(JSON.stringify(infoMsgObj));
     });    
     vgw_send_info(mac, infoMsgObj);
