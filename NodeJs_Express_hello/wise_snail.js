@@ -288,6 +288,7 @@ function create_connObj_info( connObj, callback ){
   
   for (key in connObj) {
       if (connObj.hasOwnProperty(key)) {
+        console.log('***************************************** key=' + key);
         if ( key === 'asm'){ 
           delete connObj.key;
         }
