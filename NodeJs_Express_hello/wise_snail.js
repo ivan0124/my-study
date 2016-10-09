@@ -153,7 +153,7 @@ function assignSensorHubInfo(sensorInfoObj){
   
   for (key in sensorInfoObj) {
     if (sensorInfoObj.hasOwnProperty(key)) {
-      if ( key === 'n' )
+      if ( key === 'n' ){
         console.log( 'key=======>' + key + ', keyVal=======>' + sensorInfoObj[key]);
       }
     }
