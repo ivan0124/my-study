@@ -237,6 +237,13 @@ function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
   callback( msgObj );
 }
 
+time = 1;
+
+function timeout(){
+  console.log('timeout....' + time);
+  time++;
+}
+
 module.exports = {
   test: function() {
     console.log('[wise_snail] test');
@@ -331,13 +338,16 @@ module.exports = {
     snehubSendInfoSpec(mac);
     snehubSendInfo(mac);
     //
+    setTimeout( timeout, 1000)
+    //
     var senfiles = fs.readdirSync('./');
     console.log('senfiles.length = ' + senfiles.length);
     for (var i=0 ; i< senfiles.length ; i++){
       console.log('name = ' + senfiles[i]);
     }
     //
-   
+    
+/*   
     var temp = fs.readFileSync('Temperature.dat', 'utf8');
     //remove /r/n
     var temp = temp.toString().replace(/(?:\\[rn])+/g,'');
@@ -347,7 +357,8 @@ module.exports = {
     console.log('temp_array.length = ' + temp_array.length);
     for (var i=0 ; i< temp_array.length ; i++){
       console.log('temp_array value = ' + temp_array[i]);
-    }    
+    }
+*/    
     return;
   },
 };
