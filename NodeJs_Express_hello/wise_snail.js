@@ -30,7 +30,7 @@ client.on('message', function (topic, message) {
 
 
 
-function sendConnectMsg(dev_type, ver, mac, connected ){
+function sendConnectMsg(dev_type, ver, mac, product, connected ){
   
   var msg='{\"susiCommData\":{\"devID\":\"0000000E4CABCD99\",\"parentID\":\"\",\
             \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCD99\",\"mac\":\"000E4CABCD99\",\
@@ -62,7 +62,7 @@ function sendConnectMsg(dev_type, ver, mac, connected ){
   if ( dev_type === 'SenHub' ){
     msgObj.susiCommData.devID = SENHUB_ID_PREFIX + mac;
     msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + mac;    
-    msgObj.susiCommData.product = 'WISE-1520';
+    msgObj.susiCommData.product = product;
   }  
   
   if ( connected === true ){
@@ -258,12 +258,12 @@ module.exports = {
       console.log(JSON.stringify(infoMsgObj));
     });      
     //-----------------------------------------------
-    sendConnectMsg(dev_type, ver, mac, true);
+    sendConnectMsg(dev_type, ver, mac, '', true);
     vgw_send_os_info(dev_type, ver,  mac, false);   
     vgw_send_info_spec(mac, infoSpecMsgObj);
     vgw_send_info(mac, infoMsgObj);
     
-    sendConnectMsg('SenHub', ver, '000E40000001', true);
+    sendConnectMsg('SenHub', ver, '000E40000001', 'WISE-1520', true);
     
     
     return;
