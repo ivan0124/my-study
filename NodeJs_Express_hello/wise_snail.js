@@ -179,7 +179,9 @@ function getSensorHubInfo(sensorInfoObj){
         catch(e){
           console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!');
           console.error(e);
+          continue;
         }
+        console.log('ggggggggggggggggggggg');
       }
     }
   }
