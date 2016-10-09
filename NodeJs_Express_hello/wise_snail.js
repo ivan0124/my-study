@@ -149,7 +149,15 @@ function snehubSendInfoSpec( mac ){
   
 }
 
-function assignSensorHubInfo(sensorInfoObj){
+time = 1;
+
+function timeout(){
+  console.log('timeout....' + time);
+  time++;
+  setTimeout( timeout, 1000);
+}
+
+function getSensorHubInfo(sensorInfoObj){
   
   for (key in sensorInfoObj) {
     if (sensorInfoObj.hasOwnProperty(key)) {
@@ -179,7 +187,7 @@ function assignSensorHubInfo(sensorInfoObj){
     if (sensorInfoObj.hasOwnProperty(key)) {
       //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
       if (typeof sensorInfoObj[key] === 'object' ){
-        assignSensorHubInfo(sensorInfoObj[key]);
+        getSensorHubInfo(sensorInfoObj[key]);
       }
     }
   }    
@@ -196,7 +204,7 @@ function snehubSendInfo( mac ){
     return;
   }
   
-  assignSensorHubInfo(sensorInfoObj);
+  getSensorHubInfo(sensorInfoObj);
   //
   var msgObj={};
   msgObj.susiCommData = {};
@@ -289,13 +297,6 @@ function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
   callback( msgObj );
 }
 
-time = 1;
-
-function timeout(){
-  console.log('timeout....' + time);
-  time++;
-  setTimeout( timeout, 1000);
-}
 
 module.exports = {
   test: function() {
@@ -391,7 +392,8 @@ module.exports = {
     snehubSendInfoSpec(mac);
     snehubSendInfo(mac);
     //
-    //setTimeout( timeout, 1000);
+    time = 1;
+    setTimeout( timeout, 1000);
     //
     var senfiles = fs.readdirSync('./');
     console.log('senfiles.length = ' + senfiles.length);
