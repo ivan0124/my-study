@@ -4,6 +4,14 @@ var fs = require('fs');
 const VGW_ID_PREFIX = '0000';
 const CONN_ID_PREFIX = '0007';
 const SENHUB_ID_PREFIX = '0017';
+timerknock;
+time = 1;
+
+function timeout(){
+  console.log('timeout....' + time);
+  time++;
+  timerknock = setTimeout( timeout, 1000);
+}
 
 client  = mqtt.connect('mqtt://127.0.0.1');
 client.queueQoSZero = false;
@@ -149,13 +157,6 @@ function snehubSendInfoSpec( mac ){
   
 }
 
-time = 1;
-
-function timeout(){
-  console.log('timeout....' + time);
-  time++;
-  setTimeout( timeout, 1000);
-}
 
 function getSensorHubInfo(sensorInfoObj){
   
@@ -393,7 +394,10 @@ module.exports = {
     snehubSendInfo(mac);
     //
     time = 1;
-    setTimeout( timeout, 1000);
+    if ( typeof timerknock !== 'undefined'){
+      clearTimeout(timerknock);
+    }
+    timerknock = setTimeout( timeout, 1000);
     //
     var senfiles = fs.readdirSync('./');
     console.log('senfiles.length = ' + senfiles.length);
