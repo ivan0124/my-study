@@ -105,7 +105,7 @@ function vgw_send_os_info( dev_type, ver, vgw_mac, is_ip_base ){
   client.publish(topic, message);
 }
 
-function vgw_send_info_spec( vgw_mac, msgObj ){
+function vgw_send_info_spec( msgObj ){
   //
   var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
   var message = JSON.stringify(msgObj);
@@ -260,7 +260,7 @@ module.exports = {
     //VGW-----------------------------------------------
     sendConnectMsg(dev_type, ver, mac, '', true);
     vgw_send_os_info(dev_type, ver,  mac, false);   
-    vgw_send_info_spec(mac, infoSpecMsgObj);
+    vgw_send_info_spec(infoSpecMsgObj);
     vgw_send_info(mac, infoMsgObj);
     
     //SensorHub-----------------------------------------------
