@@ -263,7 +263,7 @@ module.exports = {
     vgw_send_info_spec(mac, infoSpecMsgObj);
     vgw_send_info(mac, infoMsgObj);
     
-    sendConnectMsg('SenHub', ver, '000E40000001', 'WISE-1520', true);
+    sendConnectMsg('SenHub', ver, '000E40000001', 'WISE-1020', true);
     
     
     return;
