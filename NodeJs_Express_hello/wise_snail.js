@@ -302,6 +302,7 @@ module.exports = {
     snehubSendInfoSpec();
     //
     var senfiles = fs.readdirSync('./');
+    console.log('senfiles.length = ' + senfiles.length;
     for (var i=0 ; i< senfiles.length ; i++){
       console.log('name = ' + senfiles[i]);
     }
