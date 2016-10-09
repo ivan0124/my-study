@@ -4,8 +4,8 @@ var fs = require('fs');
 const VGW_ID_PREFIX = '0000';
 const CONN_ID_PREFIX = '0007';
 const SENHUB_ID_PREFIX = '0017';
-timerknock;
-time = 1;
+var timerknock;
+var time = 1;
 
 function timeout(){
   console.log('timeout....' + time);
