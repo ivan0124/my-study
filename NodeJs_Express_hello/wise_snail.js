@@ -172,6 +172,20 @@ function snehubSendInfo( mac ){
   msgObj.susiCommData.sendTS = new Date().getTime();
   
   //
+  console.log( 'msgObj.susiCommData.data.SenHub.SenData.e.length = ' + msgObj.susiCommData.data.SenHub.SenData.e.length )
+  /*
+    var temp = fs.readFileSync('Temperature.dat', 'utf8');
+    //remove /r/n
+    var temp = temp.toString().replace(/(?:\\[rn])+/g,'');
+    //remove space
+    var temp = temp.toString().replace(/\s+/g,'');
+    var temp_array = temp.split(',');
+    console.log('temp_array.length = ' + temp_array.length);
+    for (var i=0 ; i< temp_array.length ; i++){
+      console.log('temp_array value = ' + temp_array[i]);
+    }
+  */ 
+  //
   var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/deviceinfo';
   var message = JSON.stringify(msgObj);
   client.publish(topic, message);
