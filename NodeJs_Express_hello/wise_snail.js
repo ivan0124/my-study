@@ -122,7 +122,8 @@ function vgw_send_info( msgObj ){
 function snehubSendInfoSpec(){
   
   //
-  var sensorInfoSpecObj = {};
+  //var sensorInfoSpecObj;
+  /*
   sensorInfoSpecObj.n = 'Temperature';
   sensorInfoSpecObj.u = 'Cel';
   sensorInfoSpecObj.v = 0;
@@ -133,9 +134,10 @@ function snehubSendInfoSpec(){
   sensorInfoSpecObj.rt = 'ucum.Cel';
   sensorInfoSpecObj.st = 'ipso';
   sensorInfoSpecObj.exten = '';
+  */
   
   try{
-    JSON.parse({"n":"Temperature","u":"Cel","v":0.000000,"min":-100.000000,"max":200.000000,"asm":"r","type":"d","rt":"ucum.Cel","st":"ipso","exten":""});
+    var sensorInfoSpecObj = JSON.parse({"n":"Temperature","u":"Cel","v":0.000000,"min":-100.000000,"max":200.000000,"asm":"r","type":"d","rt":"ucum.Cel","st":"ipso","exten":""});
   }
   catch (e){
     console.error(e);
