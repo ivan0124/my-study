@@ -149,6 +149,35 @@ function snehubSendInfoSpec( mac ){
   
 }
 
+function snehubSendInfo( mac ){
+  
+  try{
+    var sensorInfoObj = JSON.parse(fs.readFileSync('sensorHub.info', 'utf8'));
+  }
+  catch (e){
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+    console.error(e);
+    return;
+  }
+  
+  //
+  var msgObj={};
+  msgObj.susiCommData = {};
+  msgObj.susiCommData.data = {};
+  msgObj.susiCommData.data.SenHub = sensorInfoObj;  
+  msgObj.susiCommData.commCmd = 2055;
+  msgObj.susiCommData.requestID = 2001;
+  msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + mac;
+  msgObj.susiCommData.handlerName = 'general';
+  msgObj.susiCommData.sendTS = new Date().getTime();
+  
+  //
+  var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/deviceinfo';
+  var message = JSON.stringify(msgObj);
+  client.publish(topic, message);
+  
+}
+
 function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
 
   if ( isInfoSpec === true ){
@@ -300,6 +329,7 @@ module.exports = {
     var product = 'WISE-1020';
     sendConnectMsg(dev_type, ver, mac, product, true);
     snehubSendInfoSpec(mac);
+    snehubSendInfo(mac);
     //
     var senfiles = fs.readdirSync('./');
     console.log('senfiles.length = ' + senfiles.length);
