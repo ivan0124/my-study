@@ -172,16 +172,19 @@ function getSensorHubInfo(sensorInfoObj){
           var temp = temp.toString().replace(/\s+/g,'');
           var temp_array = temp.split(',');
           console.log('('+ sensorInfoObj[key] +')temp_array.length = ' + temp_array.length);
+          console.log('('+ sensorInfoObj[key] + ')temp_array value = ' + temp_array[time]);
+          /*
           for (var i=0 ; i< temp_array.length ; i++){
             console.log('('+ sensorInfoObj[key] + ')temp_array value = ' + temp_array[i]);
-          }        
+          } 
+          */
         }
         catch(e){
           console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!');
           console.error(e);
           continue;
         }
-        console.log('ggggggggggggggggggggg');
+        //file exist, assign value here
       }
     }
   }
