@@ -257,13 +257,18 @@ module.exports = {
       infoMsgObj = msgObj;
       console.log(JSON.stringify(infoMsgObj));
     });      
-    //-----------------------------------------------
+    //VGW-----------------------------------------------
     sendConnectMsg(dev_type, ver, mac, '', true);
     vgw_send_os_info(dev_type, ver,  mac, false);   
     vgw_send_info_spec(mac, infoSpecMsgObj);
     vgw_send_info(mac, infoMsgObj);
     
-    sendConnectMsg('SenHub', ver, '000E40000001', 'WISE-1020', true);
+    //SensorHub-----------------------------------------------
+    var mac='000E40000001';
+    var dev_type='SenHub';
+    var ver = '3.1.23';
+    var product = 'WISE-1020';
+    sendConnectMsg(dev_type, ver, mac, product, true);
     
     
     return;
