@@ -263,6 +263,9 @@ module.exports = {
     vgw_send_info_spec(mac, infoSpecMsgObj);
     vgw_send_info(mac, infoMsgObj);
     
+    vgw_connect('SenHub', ver, 000E40000001, true);
+    
+    
     return;
   },
 };
