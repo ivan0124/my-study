@@ -137,11 +137,13 @@ function snehubSendInfoSpec(){
   */
   
   try{
-    var sensorInfoSpecObj = JSON.parse({"n":"Temperature","u":"Cel"});
+    var sensorInfoSpecObj = JSON.parse({\"n\":\"Temperature\",\"u\":\"Cel\"});
   }
   catch (e){
     console.error(e);
   }
+  
+  //console.log. sensorInfoSpecObj
   //
   var msgObj={};
   msgObj.susiCommData = {};
