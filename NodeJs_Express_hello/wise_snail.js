@@ -340,8 +340,8 @@ module.exports = {
    
     var temp = fs.readFileSync('Temperature.dat', 'utf8');
     //var re = /\r\n/g
-    temp.toString().replace(/[\n\r]+/g,'');
-    temp.toString().replace(/\s+/g,'');
+    var temp = temp.toString().replace(/(?:\\[rn])+/g,'');
+    var temp = temp.toString().replace(/\s+/g,'');
     var temp_array = temp.split(',');
     console.log('temp_array.length = ' + temp_array.length);
     for (var i=0 ; i< temp_array.length ; i++){
