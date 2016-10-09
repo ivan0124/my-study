@@ -149,6 +149,26 @@ function snehubSendInfoSpec( mac ){
   
 }
 
+function assignSensorHubInfo(sensorInfoObj){
+  
+  for (key in sensorInfoObj) {
+    if (sensorInfoObj.hasOwnProperty(key)) {
+      if ( key === 'n' )
+        console.log( 'key=======>' + key + ', keyVal=======>' + sensorInfoObj[key]);
+      }
+    }
+  }
+ //
+  for (key in sensorInfoObj) {
+    if (sensorInfoObj.hasOwnProperty(key)) {
+      //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
+      if (typeof sensorInfoObj[key] === 'object' ){
+        assignSensorHubInfo(sensorInfoObj[key]);
+      }
+    }
+  }    
+}
+
 function snehubSendInfo( mac ){
   
   try{
@@ -160,6 +180,7 @@ function snehubSendInfo( mac ){
     return;
   }
   
+  assignSensorHubInof(sensorInfoObj);
   //
   var msgObj={};
   msgObj.susiCommData = {};
@@ -172,7 +193,8 @@ function snehubSendInfo( mac ){
   msgObj.susiCommData.sendTS = new Date().getTime();
   
   //
-  console.log( '---------------------------msgObj.susiCommData.data.SenHub.SenData.e.length = ' + msgObj.susiCommData.data.SenHub.SenData.e.length )
+  //console.log( '---------------------------msgObj.susiCommData.data.SenHub.SenData.e.length = ' + msgObj.susiCommData.data.SenHub.SenData.e.length )
+
   /*
     var temp = fs.readFileSync('Temperature.dat', 'utf8');
     //remove /r/n
@@ -353,7 +375,7 @@ module.exports = {
     snehubSendInfoSpec(mac);
     snehubSendInfo(mac);
     //
-    setTimeout( timeout, 1000);
+    //setTimeout( timeout, 1000);
     //
     var senfiles = fs.readdirSync('./');
     console.log('senfiles.length = ' + senfiles.length);
