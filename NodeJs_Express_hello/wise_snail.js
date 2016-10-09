@@ -123,7 +123,7 @@ function vgw_send_info( msgObj ){
 function snehubSendInfoSpec( mac ){
   
   try{
-    var sensorInfoSpecObj = JSON.parse(fs.readFileSync('sensorHub.dat', 'utf8'));
+    var sensorInfoSpecObj = JSON.parse(fs.readFileSync('sensorHub.infoSpec', 'utf8'));
   }
   catch (e){
     console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
