@@ -38,9 +38,21 @@ function vgw_connect(dev_type, ver, vgw_mac, connected ){
             \"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":1,\"commCmd\":1,\
             \"requestID\":21,\"agentID\":\"0000000E4CABCD99\",\
             \"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}';
+  
+  if ( dev_type === 'SenHub' ){
+    var msg='{\"susiCommData\":{\"devID\":\"0017000E40000001\",\
+              \"hostname\":\"AAA\",\"sn\":\"0017000E40000001\",\"mac\":\"0017000E40000001\",\
+              \"version\":\"3.1.23\",\"type\":\"SenHub\",\"product\":\"WISE-1520\",\
+              \"manufacture\":\"\",\"status\":\"1\",\"commCmd\":1,\"requestID\":30002,\
+              \"agentID\":\"0017000E40000001\",\"handlerName\":\"general\",\"sendTS\":160081026}}';
+  }  
    
   var msgObj = JSON.parse(msg);
  
+  if ( dev_type === 'SenHub' ){
+    msgObj.susiCommData.hostname = 'SenHub';
+    msgObj.susiCommData.product = 'WISE-1520';
+  }
   msgObj.susiCommData.type = dev_type;
   msgObj.susiCommData.version = ver;
   msgObj.susiCommData.mac = vgw_mac;
