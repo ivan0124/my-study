@@ -176,7 +176,12 @@ function getSensorHubInfo(sensorInfoObj){
           var temp_array = temp.split(',');
           //console.log('('+ sensorInfoObj[key] +')temp_array.length = ' + temp_array.length);
           console.log('('+ sensorInfoObj[key] + ')temp_array value = ' + temp_array[time]);
-          sensorInfoObj['v'] = temp_array[time];
+          if ( typeof temp_array[time] === 'undefined' ){
+            sensorInfoObj['v'] = 0;
+          }
+          else{
+            sensorInfoObj['v'] = temp_array[time];
+          }
           /*
           for (var i=0 ; i< temp_array.length ; i++){
             console.log('('+ sensorInfoObj[key] + ')temp_array value = ' + temp_array[i]);
@@ -412,11 +417,13 @@ module.exports = {
     timerknock = setTimeout( timeout, 2000);
     
     //
+    /*
     var senfiles = fs.readdirSync('./');
     console.log('senfiles.length = ' + senfiles.length);
     for (var i=0 ; i< senfiles.length ; i++){
       console.log('name = ' + senfiles[i]);
     }
+    */
     //
     
 /*   
