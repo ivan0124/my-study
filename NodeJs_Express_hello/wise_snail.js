@@ -120,7 +120,7 @@ function vgw_send_info( msgObj ){
   client.publish(topic, message);  
 }
 
-function snehubSendInfoSpec(){
+function snehubSendInfoSpec( mac ){
   
   try{
     var sensorInfoSpecObj = JSON.parse(fs.readFileSync('sensorHub.dat', 'utf8'));
@@ -138,7 +138,7 @@ function snehubSendInfoSpec(){
   msgObj.susiCommData.infoSpec.SenHub = sensorInfoSpecObj;  
   msgObj.susiCommData.commCmd = 2052;
   msgObj.susiCommData.requestID = 2001;
-  msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + '000E40000001';
+  msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + mac;
   msgObj.susiCommData.handlerName = 'general';
   msgObj.susiCommData.sendTS = new Date().getTime();
   
@@ -299,7 +299,7 @@ module.exports = {
     var ver = '3.1.23';
     var product = 'WISE-1020';
     sendConnectMsg(dev_type, ver, mac, product, true);
-    snehubSendInfoSpec();
+    snehubSendInfoSpec(mac);
     //
     var senfiles = fs.readdirSync('./');
     console.log('senfiles.length = ' + senfiles.length);
