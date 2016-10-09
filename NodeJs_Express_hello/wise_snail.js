@@ -336,6 +336,14 @@ module.exports = {
     for (var i=0 ; i< senfiles.length ; i++){
       console.log('name = ' + senfiles[i]);
     }
+    //
+   
+    var temp = fs.readFileSync('Temperature.dat', 'utf8');
+    var temp_array = temp.split(',');
+    console.log('temp_array.length = ' + temp_array.length);
+    for (var i=0 ; i< temp_array.length ; i++){
+      console.log('temp_array value = ' + temp_array[i]);
+    }    
     return;
   },
 };
