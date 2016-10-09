@@ -49,18 +49,21 @@ function vgw_connect(dev_type, ver, vgw_mac, connected ){
    
   var msgObj = JSON.parse(msg);
  
-  if ( dev_type === 'SenHub' ){
-    msgObj.susiCommData.hostname = 'SenHub';
-    msgObj.susiCommData.product = 'WISE-1520';
-  }
+
   msgObj.susiCommData.type = dev_type;
   msgObj.susiCommData.version = ver;
   msgObj.susiCommData.mac = vgw_mac;
   msgObj.susiCommData.sn = vgw_mac;
+  msgObj.susiCommData.sendTS.$date = new Date().getTime();
   msgObj.susiCommData.hostname = dev_type + '('+ vgw_mac.substr(8,4) + ')';
   msgObj.susiCommData.devID = VGW_ID_PREFIX + vgw_mac;
-  msgObj.susiCommData.agentID = VGW_ID_PREFIX + vgw_mac;
-  msgObj.susiCommData.sendTS.$date = new Date().getTime();
+  msgObj.susiCommData.agentID = VGW_ID_PREFIX + vgw_mac;  
+  
+  if ( dev_type === 'SenHub' ){
+    msgObj.susiCommData.devID = SENHUB_ID_PREFIX + vgw_mac;
+    msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + vgw_mac;    
+    msgObj.susiCommData.product = 'WISE-1520';
+  }  
   
   if ( connected === true ){
     msgObj.susiCommData.status = 1;
