@@ -136,14 +136,15 @@ function snehubSendInfoSpec(){
   sensorInfoSpecObj.st = 'ipso';
   sensorInfoSpecObj.exten = '';
   */
-  /*
+  
   try{
-    var sensorInfoSpecObj = JSON.parse('{\"n\":\"Temperature\",\"u\":\"Cel\"}');
+    var sensorInfoSpecObj = JSON.parse(fs.readFileSync('file', 'utf8'));
   }
   catch (e){
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
     console.error(e);
   }
-  */
+  
   
   var sensorInfoSpecObj = JSON.parse(fs.readFileSync('file', 'utf8'));
   //console.log. sensorInfoSpecObj
@@ -151,13 +152,7 @@ function snehubSendInfoSpec(){
   var msgObj={};
   msgObj.susiCommData = {};
   msgObj.susiCommData.infoSpec = {};
-  msgObj.susiCommData.infoSpec.SenHub = sensorInfoSpecObj;
-  //msgObj.susiCommData.infoSpec.SenHub.SenData = {};
-  //msgObj.susiCommData.infoSpec.SenHub.SenData.e = [];
-  //msgObj.susiCommData.infoSpec.SenHub.SenData.e.push(sensorInfoSpecObj);
-  //msgObj.susiCommData.infoSpec.SenHub.SenData.e.push('2222');
-  //msgObj.susiCommData.infoSpec.SenHub.SenData.bn = 'SenData';
-  
+  msgObj.susiCommData.infoSpec.SenHub = sensorInfoSpecObj;  
   msgObj.susiCommData.commCmd = 2052;
   msgObj.susiCommData.requestID = 2001;
   msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + '000E40000001';
