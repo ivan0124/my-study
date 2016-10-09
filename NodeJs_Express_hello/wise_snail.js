@@ -183,15 +183,7 @@ function getSensorHubInfo(sensorInfoObj){
           }
           else{
             val = temp_array[time];                 
-          }
-          
-          if ( sensorInfoObj.hasOwnProperty('v')){
-            sensorInfoObj['v'] = val;
-          }
-            
-          if ( sensorInfoObj.hasOwnProperty('bv')){
-            sensorInfoObj['bv'] = val;
-          }            
+          }          
           /*
           for (var i=0 ; i< temp_array.length ; i++){
             console.log('('+ sensorInfoObj[key] + ')temp_array value = ' + temp_array[i]);
@@ -204,6 +196,13 @@ function getSensorHubInfo(sensorInfoObj){
           continue;
         }
         //file exist, assign value here
+        if ( sensorInfoObj.hasOwnProperty('v')){
+          sensorInfoObj['v'] = val;
+        }
+            
+        if ( sensorInfoObj.hasOwnProperty('bv')){
+          sensorInfoObj['bv'] = val;
+        }          
       }
     }
   }
