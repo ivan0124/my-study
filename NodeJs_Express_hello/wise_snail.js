@@ -1,4 +1,5 @@
 var mqtt = require('mqtt');
+var fs = require('fs');
 
 const VGW_ID_PREFIX = '0000';
 const CONN_ID_PREFIX = '0007';
@@ -135,14 +136,16 @@ function snehubSendInfoSpec(){
   sensorInfoSpecObj.st = 'ipso';
   sensorInfoSpecObj.exten = '';
   */
-  
+  /*
   try{
     var sensorInfoSpecObj = JSON.parse('{\"n\":\"Temperature\",\"u\":\"Cel\"}');
   }
   catch (e){
     console.error(e);
   }
+  */
   
+  var sensorInfoSpecObj = JSON.parse(fs.readFileSync('file', 'utf8'));
   //console.log. sensorInfoSpecObj
   //
   var msgObj={};
