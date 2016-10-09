@@ -122,21 +122,6 @@ function vgw_send_info( msgObj ){
 
 function snehubSendInfoSpec(){
   
-  //
-  //var sensorInfoSpecObj;
-  /*
-  sensorInfoSpecObj.n = 'Temperature';
-  sensorInfoSpecObj.u = 'Cel';
-  sensorInfoSpecObj.v = 0;
-  sensorInfoSpecObj.min = -100;
-  sensorInfoSpecObj.max = 200;
-  sensorInfoSpecObj.asm = 'r';
-  sensorInfoSpecObj.type = 'd';
-  sensorInfoSpecObj.rt = 'ucum.Cel';
-  sensorInfoSpecObj.st = 'ipso';
-  sensorInfoSpecObj.exten = '';
-  */
-  
   try{
     var sensorInfoSpecObj = JSON.parse(fs.readFileSync('sensorHub.dat', 'utf8'));
   }
@@ -146,7 +131,6 @@ function snehubSendInfoSpec(){
     return;
   }
   
-  //console.log. sensorInfoSpecObj
   //
   var msgObj={};
   msgObj.susiCommData = {};
