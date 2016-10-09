@@ -37,7 +37,7 @@ function sendConnectMsg(dev_type, ver, mac, product, connected ){
             \"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
             \"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":1,\"commCmd\":1,\
             \"requestID\":21,\"agentID\":\"0000000E4CABCD99\",\
-            \"handlerName\":\"general\",\"sendTS\":{\"$date\":1469512074}}}';
+            \"handlerName\":\"general\",\"sendTS\":1469512074}}';
   
   if ( dev_type === 'SenHub' ){
     var msg='{\"susiCommData\":{\"devID\":\"0017000E40000001\",\
@@ -54,7 +54,7 @@ function sendConnectMsg(dev_type, ver, mac, product, connected ){
   msgObj.susiCommData.version = ver;
   msgObj.susiCommData.mac = mac;
   msgObj.susiCommData.sn = mac;
-  msgObj.susiCommData.sendTS.$date = new Date().getTime();
+  msgObj.susiCommData.sendTS = new Date().getTime();
   msgObj.susiCommData.hostname = dev_type + '('+ mac.substr(8,4) + ')';
   msgObj.susiCommData.devID = VGW_ID_PREFIX + mac;
   msgObj.susiCommData.agentID = VGW_ID_PREFIX + mac;  
