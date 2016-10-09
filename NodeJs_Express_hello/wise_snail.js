@@ -5,7 +5,8 @@ const VGW_ID_PREFIX = '0000';
 const CONN_ID_PREFIX = '0007';
 const SENHUB_ID_PREFIX = '0017';
 var timerknock;
-var time = 1;
+var time = 0;
+var max_time = 0;
 
 function timeout(){
   
@@ -13,7 +14,9 @@ function timeout(){
   var mac='000E40000001';
   snehubSendInfo(mac);
   time++;
-  timerknock = setTimeout( timeout, 2000);
+  if ( time < max_time ){
+    timerknock = setTimeout( timeout, 2000);
+  }
 }
 
 client  = mqtt.connect('mqtt://127.0.0.1');
@@ -177,6 +180,7 @@ function getSensorHubInfo(sensorInfoObj){
           //console.log('('+ sensorInfoObj[key] +')temp_array.length = ' + temp_array.length);
           console.log('('+ sensorInfoObj[key] + ')temp_array value = ' + temp_array[time]);
           
+          var data_max_time = temp_array.length;
           var val;
           if ( typeof temp_array[time] === 'undefined' ){
             val = temp_array[temp_array.length - 1];
@@ -196,6 +200,10 @@ function getSensorHubInfo(sensorInfoObj){
           continue;
         }
         //file exist, assign value here
+        if ( data_max_time > max_time ){
+          max_time = data_max_time;
+        }
+        
         if ( sensorInfoObj.hasOwnProperty('v')){
           sensorInfoObj['v'] = val;
         }
@@ -414,12 +422,13 @@ module.exports = {
     var product = 'WISE-1020';
     sendConnectMsg(dev_type, ver, mac, product, true);
     snehubSendInfoSpec(mac);
-    time=0;
+    
     //var mac='000E40000001';
     //snehubSendInfo(mac);
     //
     
-    //time = 1;
+    time = 0;
+    max_time = 0;
     if ( typeof timerknock !== 'undefined'){
       clearTimeout(timerknock);
     }
