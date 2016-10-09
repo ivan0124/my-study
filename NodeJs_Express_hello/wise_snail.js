@@ -300,7 +300,11 @@ module.exports = {
     var product = 'WISE-1020';
     sendConnectMsg(dev_type, ver, mac, product, true);
     snehubSendInfoSpec();
-    
+    //
+    var senfiles = fs.readdirSync('./');
+    for (var i=0 ; i< senfiles.length ; i++){
+      console.log('name = ' + senfiles[i]);
+    }
     return;
   },
 };
