@@ -173,6 +173,7 @@ function getSensorHubInfo(sensorInfoObj){
           var temp_array = temp.split(',');
           //console.log('('+ sensorInfoObj[key] +')temp_array.length = ' + temp_array.length);
           console.log('('+ sensorInfoObj[key] + ')temp_array value = ' + temp_array[time]);
+          sensorInfoObj['v'] = temp_array[time];
           /*
           for (var i=0 ; i< temp_array.length ; i++){
             console.log('('+ sensorInfoObj[key] + ')temp_array value = ' + temp_array[i]);
