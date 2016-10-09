@@ -339,7 +339,7 @@ module.exports = {
     //
    
     var temp = fs.readFileSync('Temperature.dat', 'utf8');
-    temp.replace(/\r\n|\n/g,'');
+    temp.replace(/\r\n/g,'');
     temp.replace(/\s+/g,'');
     var temp_array = temp.split(',');
     console.log('temp_array.length = ' + temp_array.length);
