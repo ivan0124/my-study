@@ -151,12 +151,12 @@ function snehubSendInfoSpec(){
   var msgObj={};
   msgObj.susiCommData = {};
   msgObj.susiCommData.infoSpec = {};
-  msgObj.susiCommData.infoSpec.SenHub = {};
-  msgObj.susiCommData.infoSpec.SenHub.SenData = {};
-  msgObj.susiCommData.infoSpec.SenHub.SenData.e = [];
-  msgObj.susiCommData.infoSpec.SenHub.SenData.e.push(sensorInfoSpecObj);
-  msgObj.susiCommData.infoSpec.SenHub.SenData.e.push('2222');
-  msgObj.susiCommData.infoSpec.SenHub.SenData.bn = 'SenData';
+  msgObj.susiCommData.infoSpec.SenHub = sensorInfoSpecObj;
+  //msgObj.susiCommData.infoSpec.SenHub.SenData = {};
+  //msgObj.susiCommData.infoSpec.SenHub.SenData.e = [];
+  //msgObj.susiCommData.infoSpec.SenHub.SenData.e.push(sensorInfoSpecObj);
+  //msgObj.susiCommData.infoSpec.SenHub.SenData.e.push('2222');
+  //msgObj.susiCommData.infoSpec.SenHub.SenData.bn = 'SenData';
   
   msgObj.susiCommData.commCmd = 2052;
   msgObj.susiCommData.requestID = 2001;
