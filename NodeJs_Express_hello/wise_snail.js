@@ -180,7 +180,7 @@ function snehubSendInfo( mac ){
     return;
   }
   
-  assignSensorHubInof(sensorInfoObj);
+  assignSensorHubInfo(sensorInfoObj);
   //
   var msgObj={};
   msgObj.susiCommData = {};
