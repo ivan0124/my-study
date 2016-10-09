@@ -155,6 +155,16 @@ function assignSensorHubInfo(sensorInfoObj){
     if (sensorInfoObj.hasOwnProperty(key)) {
       if ( key === 'n' ){
         console.log( 'key=======>' + key + ', keyVal=======>' + sensorInfoObj[key]);
+        var temp = fs.readFileSync( key + '.dat', 'utf8');
+        //remove /r/n
+        var temp = temp.toString().replace(/(?:\\[rn])+/g,'');
+        //remove space
+        var temp = temp.toString().replace(/\s+/g,'');
+        var temp_array = temp.split(',');
+        console.log('('+ key +')temp_array.length = ' + temp_array.length);
+        for (var i=0 ; i< temp_array.length ; i++){
+          console.log('('+ key + ')temp_array value = ' + temp_array[i]);
+        }        
       }
     }
   }
