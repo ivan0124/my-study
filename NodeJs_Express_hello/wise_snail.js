@@ -172,7 +172,7 @@ function snehubSendInfo( mac ){
   msgObj.susiCommData.sendTS = new Date().getTime();
   
   //
-  console.log( 'msgObj.susiCommData.data.SenHub.SenData.e.length = ' + msgObj.susiCommData.data.SenHub.SenData.e.length )
+  console.log( '---------------------------msgObj.susiCommData.data.SenHub.SenData.e.length = ' + msgObj.susiCommData.data.SenHub.SenData.e.length )
   /*
     var temp = fs.readFileSync('Temperature.dat', 'utf8');
     //remove /r/n
