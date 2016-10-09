@@ -8,9 +8,12 @@ var timerknock;
 var time = 1;
 
 function timeout(){
+  
   console.log('timeout....' + time);
+  var mac='000E40000001';
+  snehubSendInfo(mac);
   time++;
-  timerknock = setTimeout( timeout, 1000);
+  timerknock = setTimeout( timeout, 2000);
 }
 
 client  = mqtt.connect('mqtt://127.0.0.1');
@@ -243,9 +246,6 @@ function snehubSendInfo( mac ){
   var message = JSON.stringify(msgObj);
   client.publish(topic, message);
   
-  //time++;
-  //timerknock = setTimeout( snehubSendInfo('000E40000001'), 3000);  
-  
 }
 
 function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
@@ -401,15 +401,16 @@ module.exports = {
     sendConnectMsg(dev_type, ver, mac, product, true);
     snehubSendInfoSpec(mac);
     time=0;
-    snehubSendInfo(mac);
+    //var mac='000E40000001';
+    //snehubSendInfo(mac);
     //
-    /*
-    time = 1;
+    
+    //time = 1;
     if ( typeof timerknock !== 'undefined'){
       clearTimeout(timerknock);
     }
-    timerknock = setTimeout( timeout, 1000);
-    */
+    timerknock = setTimeout( timeout, 2000);
+    
     //
     var senfiles = fs.readdirSync('./');
     console.log('senfiles.length = ' + senfiles.length);
