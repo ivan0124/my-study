@@ -78,7 +78,7 @@ function sendConnectMsg(dev_type, ver, mac, product, connected ){
   
 }
 
-function vgw_send_os_info( dev_type, ver, vgw_mac, is_ip_base ){
+function sendOSInfo( dev_type, ver, vgw_mac, is_ip_base ){
   
   var msg='{\"susiCommData\":{\"osInfo\":{\"cagentVersion\":\"3.1.23\",\
   \"cagentType\":\"IoTGW\",\"osVersion\":\"SnailOS\",\"biosVersion\":\"\",\"platformName\":\"\",\"processorName\":\"SnailGW\",\
@@ -266,7 +266,7 @@ module.exports = {
     });      
     //VGW-----------------------------------------------
     sendConnectMsg(dev_type, ver, mac, '', true);
-    vgw_send_os_info(dev_type, ver,  mac, false);   
+    sendOSInfo(dev_type, ver,  mac, false);   
     vgw_send_info_spec(infoSpecMsgObj);
     vgw_send_info(infoMsgObj);
     
