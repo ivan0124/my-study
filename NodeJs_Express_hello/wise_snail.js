@@ -122,13 +122,21 @@ function vgw_send_info( msgObj ){
 function snehubSendInfoSpec(){
   
   //
-  var msgObj;
+  var msgObj={};
+  msgObj.susiCommData = {};
+  msgObj.susiCommData.infoSpec = {};
+  
+  msgObj.susiCommData.commCmd = 2052;
+  msgObj.susiCommData.requestID = 2001;
+  msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + '000E40000001';
+  msgObj.susiCommData.handlerName = 'general';
+  msgObj.susiCommData.sendTS = new Date().getTime();
+  
   //
-  /*
   var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
   var message = JSON.stringify(msgObj);
   client.publish(topic, message);
-  */
+  
 }
 
 function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
