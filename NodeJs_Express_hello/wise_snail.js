@@ -176,12 +176,22 @@ function getSensorHubInfo(sensorInfoObj){
           var temp_array = temp.split(',');
           //console.log('('+ sensorInfoObj[key] +')temp_array.length = ' + temp_array.length);
           console.log('('+ sensorInfoObj[key] + ')temp_array value = ' + temp_array[time]);
+          
+          var val;
           if ( typeof temp_array[time] === 'undefined' ){
-            sensorInfoObj['v'] = 0;
+            val = temp_array[temp_array.length - 1];
           }
           else{
-            sensorInfoObj['v'] = temp_array[time];
+            val = temp_array[time];                 
           }
+          
+          if ( sensorInfoObj.hasOwnProperty('v')){
+            sensorInfoObj['v'] = val;
+          }
+            
+          if ( sensorInfoObj.hasOwnProperty('bv')){
+            sensorInfoObj['bv'] = val;
+          }            
           /*
           for (var i=0 ; i< temp_array.length ; i++){
             console.log('('+ sensorInfoObj[key] + ')temp_array value = ' + temp_array[i]);
