@@ -125,6 +125,8 @@ function snehubSendInfoSpec(){
   var msgObj={};
   msgObj.susiCommData = {};
   msgObj.susiCommData.infoSpec = {};
+  msgObj.susiCommData.infoSpec.SenHub = {};
+  msgObj.susiCommData.infoSpec.SenHub.SenData = {};
   
   msgObj.susiCommData.commCmd = 2052;
   msgObj.susiCommData.requestID = 2001;
