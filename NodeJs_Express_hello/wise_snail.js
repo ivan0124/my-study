@@ -242,8 +242,8 @@ function snehubSendInfo( mac ){
   var message = JSON.stringify(msgObj);
   client.publish(topic, message);
   
-  time++;
-  timerknock = setTimeout( snehubSendInfo('000E40000001'), 3000);  
+  //time++;
+  //timerknock = setTimeout( snehubSendInfo('000E40000001'), 3000);  
   
 }
 
