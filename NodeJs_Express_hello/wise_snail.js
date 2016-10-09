@@ -30,7 +30,7 @@ client.on('message', function (topic, message) {
 
 
 
-function vgw_connect(dev_type, ver, vgw_mac, connected ){
+function sendConnectMsg(dev_type, ver, vgw_mac, connected ){
   
   var msg='{\"susiCommData\":{\"devID\":\"0000000E4CABCD99\",\"parentID\":\"\",\
             \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCD99\",\"mac\":\"000E4CABCD99\",\
@@ -258,12 +258,12 @@ module.exports = {
       console.log(JSON.stringify(infoMsgObj));
     });      
     //-----------------------------------------------
-    vgw_connect(dev_type, ver, mac, true);
+    sendConnectMsg(dev_type, ver, mac, true);
     vgw_send_os_info(dev_type, ver,  mac, false);   
     vgw_send_info_spec(mac, infoSpecMsgObj);
     vgw_send_info(mac, infoMsgObj);
     
-    vgw_connect('SenHub', ver, '000E40000001', true);
+    sendConnectMsg('SenHub', ver, '000E40000001', true);
     
     
     return;
