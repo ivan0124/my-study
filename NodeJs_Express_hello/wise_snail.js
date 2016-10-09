@@ -125,6 +125,14 @@ function snehubSendInfoSpec(){
   var sensorInfoSpecObj = {};
   sensorInfoSpecObj.n = 'Temperature';
   sensorInfoSpecObj.u = 'Cel';
+  sensorInfoSpecObj.v = 0;
+  sensorInfoSpecObj.min = -100;
+  sensorInfoSpecObj.max = 200;
+  sensorInfoSpecObj.asm = 'r';
+  sensorInfoSpecObj.type = 'd';
+  sensorInfoSpecObj.rt = 'ucum.Cel';
+  sensorInfoSpecObj.st = 'ipso';
+  sensorInfoSpecObj.exten = '';
   //
   var msgObj={};
   msgObj.susiCommData = {};
@@ -132,7 +140,7 @@ function snehubSendInfoSpec(){
   msgObj.susiCommData.infoSpec.SenHub = {};
   msgObj.susiCommData.infoSpec.SenHub.SenData = {};
   msgObj.susiCommData.infoSpec.SenHub.SenData.e = [];
-  msgObj.susiCommData.infoSpec.SenHub.SenData.e.push(sensorInfoSpecObj);
+  msgObj.susiCommData.infoSpec.SenHub.SenData.e.push(JSON.parse({"n":"Temperature","u":"Cel","v":0.000000,"min":-100.000000,"max":200.000000,"asm":"r","type":"d","rt":"ucum.Cel","st":"ipso","exten":""}));
   msgObj.susiCommData.infoSpec.SenHub.SenData.e.push('2222');
   msgObj.susiCommData.infoSpec.SenHub.SenData.bn = 'SenData';
   
