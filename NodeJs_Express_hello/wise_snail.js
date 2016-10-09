@@ -119,11 +119,16 @@ function vgw_send_info( msgObj ){
   client.publish(topic, message);  
 }
 
-function snehubSendInfoSpec( msgObj ){
+function snehubSendInfoSpec(){
+  
   //
+  var msgObj;
+  //
+  /*
   var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
   var message = JSON.stringify(msgObj);
   client.publish(topic, message);
+  */
 }
 
 function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
