@@ -242,6 +242,7 @@ time = 1;
 function timeout(){
   console.log('timeout....' + time);
   time++;
+  setTimeout( timeout, 1000);
 }
 
 module.exports = {
@@ -338,7 +339,7 @@ module.exports = {
     snehubSendInfoSpec(mac);
     snehubSendInfo(mac);
     //
-    setTimeout( timeout, 1000)
+    setTimeout( timeout, 1000);
     //
     var senfiles = fs.readdirSync('./');
     console.log('senfiles.length = ' + senfiles.length);
