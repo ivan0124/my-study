@@ -112,7 +112,7 @@ function vgw_send_info_spec( msgObj ){
   client.publish(topic, message);
 }
 
-function vgw_send_info( vgw_mac, msgObj ){
+function vgw_send_info( msgObj ){
   
   var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/deviceinfo';
   var message = JSON.stringify(msgObj);
@@ -261,7 +261,7 @@ module.exports = {
     sendConnectMsg(dev_type, ver, mac, '', true);
     vgw_send_os_info(dev_type, ver,  mac, false);   
     vgw_send_info_spec(infoSpecMsgObj);
-    vgw_send_info(mac, infoMsgObj);
+    vgw_send_info(infoMsgObj);
     
     //SensorHub-----------------------------------------------
     var mac='000E40000001';
