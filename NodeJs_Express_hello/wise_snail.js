@@ -171,7 +171,7 @@ function getSensorHubInfo(sensorInfoObj){
           //remove space
           var temp = temp.toString().replace(/\s+/g,'');
           var temp_array = temp.split(',');
-          console.log('('+ sensorInfoObj[key] +')temp_array.length = ' + temp_array.length);
+          //console.log('('+ sensorInfoObj[key] +')temp_array.length = ' + temp_array.length);
           console.log('('+ sensorInfoObj[key] + ')temp_array value = ' + temp_array[time]);
           /*
           for (var i=0 ; i< temp_array.length ; i++){
@@ -241,6 +241,9 @@ function snehubSendInfo( mac ){
   var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/deviceinfo';
   var message = JSON.stringify(msgObj);
   client.publish(topic, message);
+  
+  time++;
+  timerknock = setTimeout( snehubSendInfo('000E40000001'), 3000);  
   
 }
 
@@ -396,13 +399,16 @@ module.exports = {
     var product = 'WISE-1020';
     sendConnectMsg(dev_type, ver, mac, product, true);
     snehubSendInfoSpec(mac);
+    time=0;
     snehubSendInfo(mac);
     //
+    /*
     time = 1;
     if ( typeof timerknock !== 'undefined'){
       clearTimeout(timerknock);
     }
     timerknock = setTimeout( timeout, 1000);
+    */
     //
     var senfiles = fs.readdirSync('./');
     console.log('senfiles.length = ' + senfiles.length);
