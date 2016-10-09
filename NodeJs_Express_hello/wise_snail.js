@@ -138,15 +138,14 @@ function snehubSendInfoSpec(){
   */
   
   try{
-    var sensorInfoSpecObj = JSON.parse(fs.readFileSync('file', 'utf8'));
+    var sensorInfoSpecObj = JSON.parse(fs.readFileSync('sensorHub.dat', 'utf8'));
   }
   catch (e){
     console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
     console.error(e);
+    return;
   }
   
-  
-  var sensorInfoSpecObj = JSON.parse(fs.readFileSync('file', 'utf8'));
   //console.log. sensorInfoSpecObj
   //
   var msgObj={};
