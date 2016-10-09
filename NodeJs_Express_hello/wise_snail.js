@@ -122,13 +122,17 @@ function vgw_send_info( msgObj ){
 function snehubSendInfoSpec(){
   
   //
+  var sensorInfoSpecObj = {};
+  sensorInfoSpecObj.n = 'Temperature';
+  sensorInfoSpecObj.u = 'Cel';
+  //
   var msgObj={};
   msgObj.susiCommData = {};
   msgObj.susiCommData.infoSpec = {};
   msgObj.susiCommData.infoSpec.SenHub = {};
   msgObj.susiCommData.infoSpec.SenHub.SenData = {};
   msgObj.susiCommData.infoSpec.SenHub.SenData.e = [];
-  msgObj.susiCommData.infoSpec.SenHub.SenData.e.push('1111');
+  msgObj.susiCommData.infoSpec.SenHub.SenData.e.push(sensorInfoSpecObj);
   msgObj.susiCommData.infoSpec.SenHub.SenData.e.push('2222');
   msgObj.susiCommData.infoSpec.SenHub.SenData.bn = 'SenData';
   
