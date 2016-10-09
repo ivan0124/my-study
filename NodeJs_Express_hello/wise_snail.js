@@ -269,8 +269,6 @@ module.exports = {
     var ver = '3.1.23';
     var product = 'WISE-1020';
     sendConnectMsg(dev_type, ver, mac, product, true);
-    sendConnectMsg(dev_type, ver, mac, product, false);
-    
     
     return;
   },
