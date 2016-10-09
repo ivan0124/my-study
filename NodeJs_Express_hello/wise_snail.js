@@ -30,7 +30,7 @@ client.on('message', function (topic, message) {
 
 
 
-function sendConnectMsg(dev_type, ver, vgw_mac, connected ){
+function sendConnectMsg(dev_type, ver, mac, connected ){
   
   var msg='{\"susiCommData\":{\"devID\":\"0000000E4CABCD99\",\"parentID\":\"\",\
             \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCD99\",\"mac\":\"000E4CABCD99\",\
@@ -52,16 +52,16 @@ function sendConnectMsg(dev_type, ver, vgw_mac, connected ){
 
   msgObj.susiCommData.type = dev_type;
   msgObj.susiCommData.version = ver;
-  msgObj.susiCommData.mac = vgw_mac;
-  msgObj.susiCommData.sn = vgw_mac;
+  msgObj.susiCommData.mac = mac;
+  msgObj.susiCommData.sn = mac;
   msgObj.susiCommData.sendTS.$date = new Date().getTime();
-  msgObj.susiCommData.hostname = dev_type + '('+ vgw_mac.substr(8,4) + ')';
-  msgObj.susiCommData.devID = VGW_ID_PREFIX + vgw_mac;
-  msgObj.susiCommData.agentID = VGW_ID_PREFIX + vgw_mac;  
+  msgObj.susiCommData.hostname = dev_type + '('+ mac.substr(8,4) + ')';
+  msgObj.susiCommData.devID = VGW_ID_PREFIX + mac;
+  msgObj.susiCommData.agentID = VGW_ID_PREFIX + mac;  
   
   if ( dev_type === 'SenHub' ){
-    msgObj.susiCommData.devID = SENHUB_ID_PREFIX + vgw_mac;
-    msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + vgw_mac;    
+    msgObj.susiCommData.devID = SENHUB_ID_PREFIX + mac;
+    msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + mac;    
     msgObj.susiCommData.product = 'WISE-1520';
   }  
   
