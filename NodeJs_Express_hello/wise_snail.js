@@ -443,47 +443,39 @@ function sendSensorHubInfoSpecMsg( ConnFilePath, SensorHubFileName ){
 
 function sendSensorHubMessage(){
   
-  console.log('sendSENSORHUB...........................');
+  console.log('sendSensorHubMessage...........................');
   var regex = new RegExp("^VGW");
   var connRegex = new RegExp("^CONN");
   var sensorhubRegex = new RegExp("^SENSORHUB");
-  
+  //
   var vgwFiles = fs.readdirSync(WISESNAIL_DATAFOLDER);
   console.log('vgwFiles.length = ' + vgwFiles.length);
   for (var i=0 ; i< vgwFiles.length ; i++){
- 
-  }  
-  
-/*  
-    // send SENSORHUB connect,infoSpec message
-    var vgwFiles = fs.readdirSync(WISESNAIL_DATAFOLDER);
-    console.log('vgwFiles.length = ' + vgwFiles.length);
-    for (var i=0 ; i< vgwFiles.length ; i++){
       
-      if( regex.test(vgwFiles[i]) ){
-        console.log('VGW name = ' + vgwFiles[i]);
-        var vgw_mac = vgwFiles[i].split('_')[1];
-        var VGW_path = WISESNAIL_DATAFOLDER + '/VGW_' + vgw_mac + '/' ;
-        var connFiles = fs.readdirSync(VGW_path);
-        for (var j=0 ; j< connFiles.length ; j++){
+    if( regex.test(vgwFiles[i]) ){
+      console.log('VGW name = ' + vgwFiles[i]);
+      var vgw_mac = vgwFiles[i].split('_')[1];
+      var VGW_path = WISESNAIL_DATAFOLDER + '/VGW_' + vgw_mac + '/' ;
+      var connFiles = fs.readdirSync(VGW_path);
+      for (var j=0 ; j< connFiles.length ; j++){
           
-          if( connRegex.test(connFiles[j]) ){
-            console.log('CONN name = ' + connFiles[j]);
-            var CONN_path = VGW_path + connFiles[j];
-            var sensorFiles = fs.readdirSync(CONN_path);
-            for (var k=0 ; k< sensorFiles.length ; k++){
+        if( connRegex.test(connFiles[j]) ){
+          console.log('CONN name = ' + connFiles[j]);
+          var CONN_path = VGW_path + connFiles[j];
+          var sensorFiles = fs.readdirSync(CONN_path);
+          for (var k=0 ; k< sensorFiles.length ; k++){
               
-              if( sensorhubRegex.test(sensorFiles[k]) ){
-                console.log('SENSORHUB name = ' + sensorFiles[k]);
-                sendSensorHubConnectMsg(CONN_path, sensorFiles[k]);
-                sendSensorHubInfoSpecMsg(CONN_path, sensorFiles[k]);
-              }
+            if( sensorhubRegex.test(sensorFiles[k]) ){
+              console.log('SENSORHUB name = ' + sensorFiles[k]);
+              sendSensorHubConnectMsg(CONN_path, sensorFiles[k]);
+              sendSensorHubInfoSpecMsg(CONN_path, sensorFiles[k]);
             }
           }
         }
       }
     }
- */
+  }
+ 
 }
 
 module.exports = {
