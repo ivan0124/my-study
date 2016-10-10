@@ -467,32 +467,6 @@ function sendSensorHubMessage(){
                 console.log('SENSORHUB name = ' + sensorFiles[k]);
                 sendSensorHubConnectMsg(CONN_path, sensorFiles[k]);
                 sendSensorHubInfoSpecMsg(CONN_path, sensorFiles[k]);
-                //
-                /*
-                var sensorhub_mac = sensorFiles[k].split('_')[1];
-                var SENSORHUB_path = CONN_path + '/' +sensorFiles[k] + '/';
-                
-                var msgObj = JSON.parse(fs.readFileSync( SENSORHUB_path + 'connect.msg', 'utf8'));
-                //send sensorhub message
-                msgObj.susiCommData.hostname = msgObj.susiCommData.type + '('+ sensorhub_mac.substr(8,4) + ')';
-                msgObj.susiCommData.devID = SENHUB_ID_PREFIX + sensorhub_mac;
-                msgObj.susiCommData.sn = SENHUB_ID_PREFIX + sensorhub_mac;
-                msgObj.susiCommData.mac = SENHUB_ID_PREFIX + sensorhub_mac;
-                msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + sensorhub_mac;
-                msgObj.susiCommData.sendTS = new Date().getTime();
-                var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentinfoack';
-                var message = JSON.stringify(msgObj);
-                client.publish(topic, message);
-                */
-                //send sensorhub infoSpec
-                /*
-                var msgObj = JSON.parse(fs.readFileSync( SENSORHUB_path + 'infoSpec.msg', 'utf8'));
-                msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + sensorhub_mac;
-                msgObj.susiCommData.sendTS = new Date().getTime();
-                var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
-                var message = JSON.stringify(msgObj);
-                client.publish(topic, message);
-                */
               }
             }
           }
