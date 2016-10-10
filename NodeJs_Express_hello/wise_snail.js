@@ -403,7 +403,7 @@ function sendVGW( mac ){
  
 }
 
-function sendSENSORHUB(){
+function sendSensorHubMessage(){
   
   console.log('sendSENSORHUB...........................');
     // send SENSORHUB connect,infoSpec message
@@ -469,7 +469,7 @@ module.exports = {
       }
     } 
     //
-    sendSENSORHUB();
+    sendSensorHubMessage();
   },
   test: function() {
     console.log('[wise_snail] test');
