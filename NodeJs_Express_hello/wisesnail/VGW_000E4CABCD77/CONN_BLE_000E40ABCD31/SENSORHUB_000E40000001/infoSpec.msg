@@ -29,7 +29,7 @@
     },
 "commCmd":2052,
 "requestID":2001,
-"agentID":"0017000E40000000",
+"agentID":"",
 "handlerName":"general",
 "sendTS":160081024
 }
