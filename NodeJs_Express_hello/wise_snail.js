@@ -434,7 +434,7 @@ module.exports = {
         var connFiles = fs.readdirSync(VGW_path);
         for (var j=0 ; j< connFiles.length ; j++){
           var connRegex = new RegExp("^CONN");
-          if( connRegex.test(connFiles[i]) ){
+          if( connRegex.test(connFiles[j]) ){
             console.log('CONN name = ' + connFiles[j]);
           }
         }
