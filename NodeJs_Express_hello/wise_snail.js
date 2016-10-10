@@ -8,6 +8,7 @@ const WISESNAIL_DATAFOLDER = './wisesnail';
 var timerknock;
 var time = 0;
 var max_time = 0;
+var timer_interval = 2000;
 
 function timeout(){
   
@@ -16,7 +17,7 @@ function timeout(){
   sendSensorHubMessage(false, false, true);
   time++;
   if ( time < max_time ){
-    timerknock = setTimeout( timeout, 3000);
+    timerknock = setTimeout( timeout, timer_interval);
   }
 }
 
@@ -383,7 +384,7 @@ module.exports = {
     if ( typeof timerknock !== 'undefined'){
       clearTimeout(timerknock);
     }
-    timerknock = setTimeout( timeout, 3000);    
+    timerknock = setTimeout( timeout, timer_interval);    
     
   },
   /*
