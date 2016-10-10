@@ -176,6 +176,12 @@ function sendVGW( mac ){
   
   // send VGW connect message
   var msgObj = JSON.parse(fs.readFileSync( VGW_path + 'connect.msg', 'utf8'));
+  
+  msgObj.susiCommData.devID = VGW_ID_PREFIX + mac;
+  msgObj.susiCommData.type + '('+ mac.substr(8,4) + ')';
+  msgObj.susiCommData.agentID = msgObj.susiCommData.devID;
+  msgObj.susiCommData.sn = mac;
+  msgObj.susiCommData.mac = mac;
   msgObj.susiCommData.sendTS = new Date().getTime();
   var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentinfoack';
   var message = JSON.stringify(msgObj);
@@ -378,13 +384,15 @@ module.exports = {
       }
     } 
     //
+    /*
     sendSensorHubMessage(true, true, true);
     time = 0;
     max_time = 0;
     if ( typeof timerknock !== 'undefined'){
       clearTimeout(timerknock);
     }
-    timerknock = setTimeout( timeout, timer_interval);    
+    timerknock = setTimeout( timeout, timer_interval);
+    */
     
   },
 
