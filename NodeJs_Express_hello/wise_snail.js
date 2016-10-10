@@ -316,18 +316,17 @@ function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
 
 function sendVGW(){
   console.log('sendVGW...........................');
-  
-  var senfiles = fs.readdirSync('./wisesnail');
-  console.log('senfiles.length = ' + senfiles.length);
-  for (var i=0 ; i< senfiles.length ; i++){
-    console.log('name = ' + senfiles[i]);
-  }
-    
 }
 
 module.exports = {
   start: function() {
     console.log('[wise_snail] start');
+    var senfiles = fs.readdirSync('./wisesnail');
+    console.log('senfiles.length = ' + senfiles.length);
+    for (var i=0 ; i< senfiles.length ; i++){
+      console.log('name = ' + senfiles[i]);
+    }    
+    sendVGW();
   },
   test: function() {
     console.log('[wise_snail] test');
