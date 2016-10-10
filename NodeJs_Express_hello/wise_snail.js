@@ -342,6 +342,7 @@ function createConnMsg( msgObj, infoKeyName, connObj ){
 
   var msgObj = JSON.parse(msg);
   */
+  msgObj.susiCommData ={};
   msgObj.susiCommData[infoKeyName] = {};
   
   msgObj.susiCommData.commCmd = 2052;
