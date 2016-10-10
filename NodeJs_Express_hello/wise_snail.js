@@ -436,6 +436,14 @@ module.exports = {
           var connRegex = new RegExp("^CONN");
           if( connRegex.test(connFiles[j]) ){
             console.log('CONN name = ' + connFiles[j]);
+            var CONN_path = VGW_path + connFiles[j];
+            var sensorFiles = fs.readdirSync(CONN_path);
+            for (var k=0 ; k< sensorFiles.length ; k++){
+              var sensorhubRegex = new RegExp("^SENSORHUB");
+              if( sensorhubRegex.test(sensorFiles[k]) ){
+                console.log('SENSORHUB name = ' + sensorFiles[k]);
+              }
+            }
           }
         }
       }
