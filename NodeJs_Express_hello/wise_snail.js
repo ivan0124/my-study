@@ -421,7 +421,25 @@ module.exports = {
       }
     } 
     //
-    // send SENSORHUB connect message
+    // send SENSORHUB connect,infoSpec message
+    var vgwFiles = fs.readdirSync(WISESNAIL_DATAFOLDER);
+    console.log('vgwFiles.length = ' + vgwFiles.length);
+    for (var i=0 ; i< vgwFiles.length ; i++){
+      var regex = new RegExp("^VGW");
+      if( regex.test(vgwFiles[i]) ){
+        //sendVGW(vgwFiles[i].split('_')[1]);
+        console.log('VGW name = ' + vgwFiles[i]);
+        var vgw_mac = vgwFiles[i].split('_')[1];
+        var VGW_path = WISESNAIL_DATAFOLDER + '/VGW_' + vgw_mac + '/' ;
+        var connFiles = fs.readdirSync(VGW_path);
+        for (var j=0 ; j< connFiles.length ; j++){
+          var connRegex = new RegExp("^CONN");
+          if( connRegex.test(connFiles[i]) ){
+            console.log('CONN name = ' + connFiles[j]);
+          }
+        }
+      }
+    }    
     /*
     var senfiles = fs.readdirSync(WISESNAIL_DATAFOLDER);
     console.log('senfiles.length = ' + senfiles.length);
