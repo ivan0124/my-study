@@ -364,6 +364,7 @@ function sendVGW( mac ){
         var senhubRegex = new RegExp("^SENSORHUB");
         if( senhubRegex.test(senhubfiles[j]) ){
           console.log('SendorHub name = ' + senhubfiles[j]);
+          /*
           if ( infoObj.e[0].sv.length === 0 ){
             infoObj.e[0].sv = senhubfiles[j].split('_')[1];
           }
@@ -371,9 +372,10 @@ function sendVGW( mac ){
             infoObj.e[0].sv = infoObj.e[0].sv + ',';
             infoObj.e[0].sv = infoObj.e[0].sv + senhubfiles[j].split('_')[1];
           }
+          */
         }
       }
-      infoObj[connObj].info = infoObj;
+      //infoObj[connObj].info = infoObj;
       //
     }
   }
