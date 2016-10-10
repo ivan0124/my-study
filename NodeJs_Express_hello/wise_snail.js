@@ -316,6 +316,13 @@ function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
 
 function sendVGW(){
   console.log('sendVGW...........................');
+  
+  var senfiles = fs.readdirSync('./wisesnail');
+  console.log('senfiles.length = ' + senfiles.length);
+  for (var i=0 ; i< senfiles.length ; i++){
+    console.log('name = ' + senfiles[i]);
+  }
+    
 }
 
 module.exports = {
@@ -426,13 +433,6 @@ module.exports = {
     timerknock = setTimeout( timeout, 2000);
     
     //
-    /*
-    var senfiles = fs.readdirSync('./');
-    console.log('senfiles.length = ' + senfiles.length);
-    for (var i=0 ; i< senfiles.length ; i++){
-      console.log('name = ' + senfiles[i]);
-    }
-    */
     //   
     return;
   }
