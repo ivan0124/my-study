@@ -409,20 +409,18 @@ function sendSensorHubConnectMsg( ConnFilePath, SensorHubFileName ){
   var sensorHubPath = ConnFilePath + '/' + SensorHubFileName + '/';
   var msgObj = JSON.parse(fs.readFileSync( sensorHubPath + 'connect.msg', 'utf8'));
                 
-  if ( msgObj.susiCommData.status === 1 || msgObj.susiCommData.status === '1' ){
-    //assign value
-    msgObj.susiCommData.hostname = msgObj.susiCommData.type + '('+ sensorHubMAC.substr(8,4) + ')';
-    msgObj.susiCommData.devID = SENHUB_ID_PREFIX + sensorHubMAC;
-    msgObj.susiCommData.sn = msgObj.susiCommData.devID;
-    msgObj.susiCommData.mac = msgObj.susiCommData.devID;
-    msgObj.susiCommData.agentID = msgObj.susiCommData.devID;
-    msgObj.susiCommData.sendTS = new Date().getTime();
+  //assign value
+  msgObj.susiCommData.hostname = msgObj.susiCommData.type + '('+ sensorHubMAC.substr(8,4) + ')';
+  msgObj.susiCommData.devID = SENHUB_ID_PREFIX + sensorHubMAC;
+  msgObj.susiCommData.sn = msgObj.susiCommData.devID;
+  msgObj.susiCommData.mac = msgObj.susiCommData.devID;
+  msgObj.susiCommData.agentID = msgObj.susiCommData.devID;
+  msgObj.susiCommData.sendTS = new Date().getTime();
 
-    //send connect message
-    var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentinfoack';
-    var message = JSON.stringify(msgObj);
-    client.publish(topic, message);  
-  }
+  //send connect message
+  var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentinfoack';
+  var message = JSON.stringify(msgObj);
+  client.publish(topic, message);  
   
 }
 
