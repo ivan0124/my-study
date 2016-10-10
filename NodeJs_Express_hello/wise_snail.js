@@ -352,7 +352,7 @@ function sendVGW( mac ){
   create_connMsg(true, mac, infoSpecObj, function( msgObj ){
     console.log('create connectivity InfoSpec message object'); 
     console.log('================================================');
-    var infoSpecMsgObj = msgObj;
+    infoSpecMsgObj = msgObj;
     console.log(JSON.stringify(infoSpecMsgObj));
   });   
   vgw_send_info_spec(infoSpecMsgObj);
