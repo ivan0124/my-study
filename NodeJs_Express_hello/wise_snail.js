@@ -45,7 +45,7 @@ client.on('message', function (topic, message) {
 })
 
 
-
+/*
 function sendConnectMsg(dev_type, ver, mac, product, connected ){
   
   var msg='{\"susiCommData\":{\"devID\":\"0000000E4CABCD99\",\"parentID\":\"\",\
@@ -93,6 +93,7 @@ function sendConnectMsg(dev_type, ver, mac, product, connected ){
   client.publish(topic, message);
   
 }
+*/
 
 function sendOSInfo( dev_type, ver, vgw_mac, is_ip_base ){
   
