@@ -342,6 +342,7 @@ function sendVGW( mac ){
     var regex = new RegExp("^CONN");
     if( regex.test(connfiles[i]) ){
       var connObj = 'conn' + i;
+      infoSpecObj[connObj] = {};
       infoSpecObj[connObj].type = connfiles[i].split('_')[1];
       infoSpecObj[connObj].bnName = connfiles[i].split('_')[2];   
       infoSpecObj[connObj].info = JSON.parse(fs.readFileSync( VGW_path + '/' + connfiles[i] + '/' + 'infoSpec.msg', 'utf8'));
