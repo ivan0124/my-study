@@ -344,7 +344,7 @@ function sendVGW( mac ){
       var connObj = 'conn' + i;
       infoSpecObj[connObj] = {};
       infoSpecObj[connObj].type = connfiles[i].split('_')[1];
-      infoSpecObj[connObj].bnName = connfiles[i].split('_')[2];   
+      infoSpecObj[connObj].bnName = CONN_ID_PREFIX + connfiles[i].split('_')[2];   
       infoSpecObj[connObj].info = JSON.parse(fs.readFileSync( VGW_path + '/' + connfiles[i] + '/' + 'infoSpec.msg', 'utf8'));
     }
   }
@@ -352,10 +352,10 @@ function sendVGW( mac ){
   create_connMsg(true, mac, infoSpecObj, function( msgObj ){
     console.log('create connectivity InfoSpec message object'); 
     console.log('================================================');
-    infoSpecMsgObj = msgObj;
+    var infoSpecMsgObj = msgObj;
     console.log(JSON.stringify(infoSpecMsgObj));
   });   
-  //vgw_send_info_spec(infoSpecObj);
+  vgw_send_info_spec(infoSpecMsgObj);
   //
 }
 
