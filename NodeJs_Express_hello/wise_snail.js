@@ -314,8 +314,8 @@ function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
   callback( msgObj );
 }
 
-function sendVGW(){
-  console.log('sendVGW...........................');
+function sendVGW( mac ){
+  console.log('sendVGW(' + mac + ')...........................');
 }
 
 module.exports = {
@@ -325,8 +325,12 @@ module.exports = {
     console.log('senfiles.length = ' + senfiles.length);
     for (var i=0 ; i< senfiles.length ; i++){
       console.log('name = ' + senfiles[i]);
+      var regex = new RegExp("^VGW");
+      if( regex.test(senfiles[i]) ){
+        sendVGW(senfiles[i].split('_')[1]);
+      }
     }    
-    sendVGW();
+    
   },
   test: function() {
     console.log('[wise_snail] test');
