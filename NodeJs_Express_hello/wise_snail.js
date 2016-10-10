@@ -343,16 +343,28 @@ function sendVGW( mac ){
     var regex = new RegExp("^CONN");
     if( regex.test(connfiles[i]) ){
       var connObj = 'conn' + i;
+      var CONN_path = VGW_path + '/' + connfiles[i] + '/';
       //
       infoSpecObj[connObj] = {};
       infoSpecObj[connObj].type = connfiles[i].split('_')[1];
       infoSpecObj[connObj].bnName = CONN_ID_PREFIX + connfiles[i].split('_')[2];   
-      infoSpecObj[connObj].info = JSON.parse(fs.readFileSync( VGW_path + '/' + connfiles[i] + '/' + 'infoSpec.msg', 'utf8'));
+      infoSpecObj[connObj].info = JSON.parse(fs.readFileSync( CONN_path + 'infoSpec.msg', 'utf8'));
       //
       infoObj[connObj] = {};
       infoObj[connObj].type = connfiles[i].split('_')[1];
       infoObj[connObj].bnName = CONN_ID_PREFIX + connfiles[i].split('_')[2];
-      infoObj[connObj].info = JSON.parse(fs.readFileSync( VGW_path + '/' + connfiles[i] + '/' + 'info.msg', 'utf8'));
+      infoObj[connObj].info = JSON.parse(fs.readFileSync( CONN_path + 'info.msg', 'utf8'));
+      //
+      
+      var senhubfiles = fs.readdirSync(CONN_path);
+      console.log('senhubfiles.length = ' + senhubfiles.length);
+      for (var j=0 ; j< senhubfiles.length ; j++){
+        console.log('name = ' + senhubfiles[j]);
+        var senhubRegex = new RegExp("^SENSORHUB");
+        if( regex.test(senhubfiles[j]) ){
+          console.log('SendorHub name = ' + senhubfiles[j]);
+        }
+      }
     }
   }
   
