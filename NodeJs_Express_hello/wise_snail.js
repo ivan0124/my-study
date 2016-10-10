@@ -316,32 +316,9 @@ function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
 }
 
 
-function createConnMsg( msgObj, vgw_mac, infoKeyName, connObj ){
-  console.log('createConnMsg...........................');
-  /*
-  if ( isInfoSpec === true ){
-    var msg='{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"Ethernet\":{\"Ethernet\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\
-             \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"Ethernet\",\"asm\":\"r\"},\
-             {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
-             {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCDEF\",\"ver\":1},\
-             \"bn\":\"Ethernet\",\"ver\":1},\"ver\":1}},\"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\
-             \"handlerName\":\"general\",\"sendTS\":160081020}}';
-    var infoKeyName = 'infoSpec';
-  }
-  else{
-    
-    var msg='{\"susiCommData\":{\"data\":{\"IoTGW\":{\"Ethernet\":{\"Ethernet\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\
-             \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"Ethernet\",\"asm\":\"r\"},\
-             {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
-             {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCDEF\",\"ver\":1},\
-             \"bn\":\"Ethernet\",\"ver\":1},\"ver\":1}},\"commCmd\":2055,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\
-             \"handlerName\":\"general\",\"sendTS\":160081020}}';
-    var infoKeyName = 'data';
-            
-  }
+function createConnectivityMsg( msgObj, vgw_mac, infoKeyName, connObj ){
+  console.log('createConnectivityMsg...........................');
 
-  var msgObj = JSON.parse(msg);
-  */
   msgObj.susiCommData ={};
   msgObj.susiCommData[infoKeyName] = {};
   
@@ -458,7 +435,7 @@ function sendVGW( mac ){
   });
   */
   var infoSpecMsgObj={};
-  createConnMsg(infoSpecMsgObj, mac, 'infoSpec', infoSpecObj);  
+  createConnectivityMsg(infoSpecMsgObj, mac, 'infoSpec', infoSpecObj);  
   vgw_send_info_spec(infoSpecMsgObj);
   
   //send VGW info
