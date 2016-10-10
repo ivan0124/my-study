@@ -455,7 +455,7 @@ function sendSensorHubMessage(){
     if( regex.test(vgwFiles[i]) ){
       console.log('VGW name = ' + vgwFiles[i]);
       var vgw_mac = vgwFiles[i].split('_')[1];
-      var VGW_path = WISESNAIL_DATAFOLDER + '/VGW_' + vgw_mac + '/' ;
+      var VGW_path = WISESNAIL_DATAFOLDER + '/' + vgwFiles[i] + '/' ;
       var connFiles = fs.readdirSync(VGW_path);
       for (var j=0 ; j< connFiles.length ; j++){
           
