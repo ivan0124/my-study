@@ -1,10 +1,10 @@
 {
 	"susiCommData": {
-		"devID": "0000000E4CABCD77",
+		"devID": "",
 		"parentID": "",
-		"hostname": "IoTGW(CD77)",
-		"sn": "000E4CABCD77",
-		"mac": "000E4CABCD77",
+		"hostname": "",
+		"sn": "",
+		"mac": "",
 		"version": "3.1.23",
 		"type": "IoTGW",
 		"product": "",
@@ -14,7 +14,7 @@
 		"status": 1,
 		"commCmd": 1,
 		"requestID": 21,
-		"agentID": "0000000E4CABCD77",
+		"agentID": "",
 		"handlerName": "general",
 		"sendTS": 1476067275606
 	}
