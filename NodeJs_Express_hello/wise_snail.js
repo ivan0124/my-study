@@ -44,57 +44,7 @@ client.on('message', function (topic, message) {
   
 })
 
-
 /*
-function sendConnectMsg(dev_type, ver, mac, product, connected ){
-  
-  var msg='{\"susiCommData\":{\"devID\":\"0000000E4CABCD99\",\"parentID\":\"\",\
-            \"hostname\":\"IotGW(CDEF)\",\"sn\":\"000E4CABCD99\",\"mac\":\"000E4CABCD99\",\
-            \"version\":\"3.1.23\",\"type\":\"IoTGW\",\"product\":\"\",\
-            \"manufacture\":\"\",\"account\":\"\",\"passwd\":\"\",\"status\":1,\"commCmd\":1,\
-            \"requestID\":21,\"agentID\":\"0000000E4CABCD99\",\
-            \"handlerName\":\"general\",\"sendTS\":1469512074}}';
-  
-  if ( dev_type === 'SenHub' ){
-    var msg='{\"susiCommData\":{\"devID\":\"0017000E40000001\",\
-              \"hostname\":\"AAA\",\"sn\":\"0017000E40000001\",\"mac\":\"0017000E40000001\",\
-              \"version\":\"3.1.23\",\"type\":\"SenHub\",\"product\":\"WISE-1520\",\
-              \"manufacture\":\"\",\"status\":\"1\",\"commCmd\":1,\"requestID\":30002,\
-              \"agentID\":\"0017000E40000001\",\"handlerName\":\"general\",\"sendTS\":160081026}}';
-  }  
-   
-  var msgObj = JSON.parse(msg);
- 
-
-  msgObj.susiCommData.type = dev_type;
-  msgObj.susiCommData.version = ver;
-  msgObj.susiCommData.mac = mac;
-  msgObj.susiCommData.sn = mac;
-  msgObj.susiCommData.sendTS = new Date().getTime();
-  msgObj.susiCommData.hostname = dev_type + '('+ mac.substr(8,4) + ')';
-  msgObj.susiCommData.devID = VGW_ID_PREFIX + mac;
-  msgObj.susiCommData.agentID = VGW_ID_PREFIX + mac;  
-  
-  if ( dev_type === 'SenHub' ){
-    msgObj.susiCommData.devID = SENHUB_ID_PREFIX + mac;
-    msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + mac;    
-    msgObj.susiCommData.product = product;
-  }  
-  
-  if ( connected === true ){
-    msgObj.susiCommData.status = 1;
-  }
-  else{
-    msgObj.susiCommData.status = 0;
-  }
-  
-  var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentinfoack';
-  var message = JSON.stringify(msgObj);
-  client.publish(topic, message);
-  
-}
-*/
-
 function sendOSInfo( dev_type, ver, vgw_mac, is_ip_base ){
   
   var msg='{\"susiCommData\":{\"osInfo\":{\"cagentVersion\":\"3.1.23\",\
@@ -121,6 +71,7 @@ function sendOSInfo( dev_type, ver, vgw_mac, is_ip_base ){
   var message = JSON.stringify(msgObj);
   client.publish(topic, message);
 }
+*/
 
 function vgw_send_info_spec( msgObj ){
   //
