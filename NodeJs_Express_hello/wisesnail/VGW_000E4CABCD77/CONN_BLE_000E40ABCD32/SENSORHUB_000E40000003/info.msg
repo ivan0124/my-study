@@ -1,1 +1,21 @@
-123
+{"SenData":
+     {"e":[
+             {"n":"Temperature","v":1.000000},
+             {"n":"Humidity","v":57.000000},
+             {"n":"GPIO1","bv":0},
+             {"n":"GPIO2","bv":0}],
+      "bn":"SenData"
+     },
+ "Info":
+     {"e":[],
+      "bn":"Info"
+     },
+ "Net":
+     {"e":[],
+      "bn":"Net"
+     },
+ "Action":
+     {"e":[],
+      "bn":"Action"
+     },"ver":1
+}
