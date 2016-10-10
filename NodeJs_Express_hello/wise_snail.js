@@ -323,6 +323,14 @@ function createConnectivityMsg( msgObj, vgw_mac, infoKeyName, connObj ){
   msgObj.susiCommData[infoKeyName] = {};
   
   msgObj.susiCommData.commCmd = 2052;
+  if ( infoKeyName === 'infoSpec'){
+    msgObj.susiCommData.commCmd = 2052;
+  }
+  if ( infoKeyName === 'data'){
+    msgObj.susiCommData.commCmd = 2055;
+  }  
+  
+  
   msgObj.susiCommData.requestID = 2001;
   msgObj.susiCommData.handlerName = 'general';
   msgObj.susiCommData.agentID = VGW_ID_PREFIX + vgw_mac;
