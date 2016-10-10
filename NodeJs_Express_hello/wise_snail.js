@@ -316,9 +316,67 @@ function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
 }
 
 
-function createConnMsg( msgObj ){
+function createConnMsg( msgObj, infoKeyName, connObj ){
   console.log('createConnMsg...........................');
-  msgObj.test = '10000000000000000';
+  /*
+  if ( isInfoSpec === true ){
+    var msg='{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"Ethernet\":{\"Ethernet\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\
+             \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"Ethernet\",\"asm\":\"r\"},\
+             {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
+             {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCDEF\",\"ver\":1},\
+             \"bn\":\"Ethernet\",\"ver\":1},\"ver\":1}},\"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\
+             \"handlerName\":\"general\",\"sendTS\":160081020}}';
+    var infoKeyName = 'infoSpec';
+  }
+  else{
+    
+    var msg='{\"susiCommData\":{\"data\":{\"IoTGW\":{\"Ethernet\":{\"Ethernet\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\
+             \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"Ethernet\",\"asm\":\"r\"},\
+             {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
+             {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCDEF\",\"ver\":1},\
+             \"bn\":\"Ethernet\",\"ver\":1},\"ver\":1}},\"commCmd\":2055,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\
+             \"handlerName\":\"general\",\"sendTS\":160081020}}';
+    var infoKeyName = 'data';
+            
+  }
+
+  var msgObj = JSON.parse(msg);
+  */
+  msgObj.susiCommData[infoKeyName] = {};
+  
+  msgObj.susiCommData.commCmd = 2052;
+  msgObj.susiCommData.requestID = 2001;
+  msgObj.susiCommData.handlerName = 'general';
+  msgObj.susiCommData.agentID = VGW_ID_PREFIX + vgw_mac;
+  msgObj.susiCommData.sendTS = new Date().getTime();
+  //create connectivity and assigne InfoMsg
+  msgObj['susiCommData'][infoKeyName]['IoTGW'] = {};
+  for (key in connObj) {
+      if (connObj.hasOwnProperty(key)) {
+        //console.log( key + ', keyVal=======>' + connObj[key]);
+        //console.log( 'type=======>' + connObj[key]['type']);
+        //console.log( 'bnName=======>' + connObj[key]['bnName']);
+        var conn_type= connObj[key]['type'];
+        var conn_bnName = connObj[key]['bnName'];
+        var conn_info = connObj[key]['info'];
+        
+        if ( msgObj['susiCommData'][infoKeyName]['IoTGW'].hasOwnProperty(conn_type) === false ){
+          //console.log( 'create type ========: ' + conn_type);
+          msgObj['susiCommData'][infoKeyName]['IoTGW'][conn_type]={};
+        }
+        if ( msgObj['susiCommData'][infoKeyName]['IoTGW'].hasOwnProperty(conn_bnName) === false ){
+          //console.log( 'create conn_bnName ========: ' + conn_bnName);
+          msgObj['susiCommData'][infoKeyName]['IoTGW'][conn_type][conn_bnName]={};
+        }
+        //assign value
+        msgObj['susiCommData'][infoKeyName]['IoTGW']['ver'] = 1;
+        msgObj['susiCommData'][infoKeyName]['IoTGW'][conn_type]['bn'] = conn_type;
+        msgObj['susiCommData'][infoKeyName]['IoTGW'][conn_type]['ver'] = 1;
+        msgObj['susiCommData'][infoKeyName]['IoTGW'][conn_type][conn_bnName]['Info'] = conn_info;
+        msgObj['susiCommData'][infoKeyName]['IoTGW'][conn_type][conn_bnName]['bn'] = conn_bnName;
+        msgObj['susiCommData'][infoKeyName]['IoTGW'][conn_type][conn_bnName]['ver'] = 1;
+      }
+   }    
 }
 
 function sendVGW( mac ){
@@ -390,12 +448,16 @@ function sendVGW( mac ){
     }
   }
   
+  /*
   create_connMsg(true, mac, infoSpecObj, function( msgObj ){
     console.log('create connectivity InfoSpec message object'); 
     console.log('================================================');
     infoSpecMsgObj = msgObj;
     console.log(JSON.stringify(infoSpecMsgObj));
-  });   
+  });
+  */
+  var infoSpecMsgObj={};
+  createConnMsg(infoSpecMsgObj, 'infoSpec', infoSpecObj);  
   vgw_send_info_spec(infoSpecMsgObj);
   
   //send VGW info
@@ -507,9 +569,11 @@ module.exports = {
     //
     sendSensorHubMessage(true, true, false);
     
+    /*
     var msgObj={};
-    createConnMsg(msgObj);
+    createConnMsg(msgObj, 'infoSpec');
     console.log('msgObj.test = ' + msgObj.test);
+    */
     
   },
   test: function() {
