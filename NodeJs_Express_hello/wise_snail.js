@@ -87,6 +87,7 @@ function vgw_send_info( msgObj ){
   client.publish(topic, message);  
 }
 
+/*
 function snehubSendInfoSpec( mac ){
   
   try{
@@ -115,7 +116,7 @@ function snehubSendInfoSpec( mac ){
   client.publish(topic, message);
   
 }
-
+*/
 
 function getSensorHubInfo(sensorInfoObj){
   
@@ -177,7 +178,7 @@ function getSensorHubInfo(sensorInfoObj){
     }
   }    
 }
-
+/*
 function snehubSendInfo( mac ){
   
   try{
@@ -207,7 +208,8 @@ function snehubSendInfo( mac ){
   client.publish(topic, message);
   
 }
-
+*/
+/*
 function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
 
   if ( isInfoSpec === true ){
@@ -266,7 +268,7 @@ function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
   
   callback( msgObj );
 }
-
+*/
 
 function createConnectivityMsg( msgObj, vgw_mac, infoKeyName, connObj ){
   console.log('createConnectivityMsg...........................');
