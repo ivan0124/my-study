@@ -448,6 +448,13 @@ function sendSensorHubMessage(){
   var connRegex = new RegExp("^CONN");
   var sensorhubRegex = new RegExp("^SENSORHUB");
   
+  var vgwFiles = fs.readdirSync(WISESNAIL_DATAFOLDER);
+  console.log('vgwFiles.length = ' + vgwFiles.length);
+  for (var i=0 ; i< vgwFiles.length ; i++){
+ 
+  }  
+  
+/*  
     // send SENSORHUB connect,infoSpec message
     var vgwFiles = fs.readdirSync(WISESNAIL_DATAFOLDER);
     console.log('vgwFiles.length = ' + vgwFiles.length);
@@ -475,7 +482,8 @@ function sendSensorHubMessage(){
           }
         }
       }
-    }  
+    }
+ */
 }
 
 module.exports = {
