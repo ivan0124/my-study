@@ -434,25 +434,21 @@ function sendVGW( mac ){
     }
   }
   
-  /*
-  create_connMsg(true, mac, infoSpecObj, function( msgObj ){
-    console.log('create connectivity InfoSpec message object'); 
-    console.log('================================================');
-    infoSpecMsgObj = msgObj;
-    console.log(JSON.stringify(infoSpecMsgObj));
-  });
-  */
   var infoSpecMsgObj={};
   createConnectivityMsg(infoSpecMsgObj, mac, 'infoSpec', infoSpecObj);  
   vgw_send_info_spec(infoSpecMsgObj);
   
   //send VGW info
+  /*
   create_connMsg(false, mac, infoObj, function( msgObj ){
     console.log('create connectivity Info message object'); 
     console.log('================================================');
     infoMsgObj = msgObj;
     console.log(JSON.stringify(infoMsgObj));
-  });  
+  });
+  */
+  var infoMsgObj={};
+  createConnectivityMsg(infoMsgObj, mac, 'data', infoObj);
   vgw_send_info(infoMsgObj);
  
 }
