@@ -403,6 +403,27 @@ function sendVGW( mac ){
  
 }
 
+function sendSensorHubConnectMsg( ConnFilePath, SensorHubFileName ){
+  
+  var sensorHubMAC = SensorHubFileName.split('_')[1];
+  var sensorHubPath = ConnFilePath + '/' + SensorHubFileName + '/';
+  var msgObj = JSON.parse(fs.readFileSync( sensorHubPath + 'connect.msg', 'utf8'));
+                
+  //assign value
+  msgObj.susiCommData.hostname = msgObj.susiCommData.type + '('+ sensorHubMAC.substr(8,4) + ')';
+  msgObj.susiCommData.devID = SENHUB_ID_PREFIX + sensorhub_mac;
+  msgObj.susiCommData.sn = SENHUB_ID_PREFIX + sensorhub_mac;
+  msgObj.susiCommData.mac = SENHUB_ID_PREFIX + sensorhub_mac;
+  msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + sensorhub_mac;
+  msgObj.susiCommData.sendTS = new Date().getTime();
+  
+  //send connect message
+  var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentinfoack';
+  var message = JSON.stringify(msgObj);
+  client.publish(topic, message);  
+  
+}
+
 function sendSensorHubMessage(){
   
   console.log('sendSENSORHUB...........................');
@@ -427,6 +448,9 @@ function sendSensorHubMessage(){
               var sensorhubRegex = new RegExp("^SENSORHUB");
               if( sensorhubRegex.test(sensorFiles[k]) ){
                 console.log('SENSORHUB name = ' + sensorFiles[k]);
+                sendSensorHubConnectMsg(CONN_path, sensorFiles[k]);
+                //
+                /*
                 var sensorhub_mac = sensorFiles[k].split('_')[1];
                 var SENSORHUB_path = CONN_path + '/' +sensorFiles[k] + '/';
                 var msgObj = JSON.parse(fs.readFileSync( SENSORHUB_path + 'connect.msg', 'utf8'));
@@ -439,7 +463,8 @@ function sendSensorHubMessage(){
                 msgObj.susiCommData.sendTS = new Date().getTime();
                 var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentinfoack';
                 var message = JSON.stringify(msgObj);
-                client.publish(topic, message); 
+                client.publish(topic, message);
+                */
                 //send sensorhub infoSpec
                 var msgObj = JSON.parse(fs.readFileSync( SENSORHUB_path + 'infoSpec.msg', 'utf8'));
                 msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + sensorhub_mac;
