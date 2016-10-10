@@ -355,7 +355,7 @@ function sendVGW( mac ){
     infoSpecMsgObj = msgObj;
     console.log(JSON.stringify(infoSpecMsgObj));
   });   
-  vgw_send_info_spec(infoSpecObj);
+  //vgw_send_info_spec(infoSpecObj);
   //
 }
 
