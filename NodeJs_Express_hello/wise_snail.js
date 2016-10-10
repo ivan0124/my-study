@@ -4,6 +4,7 @@ var fs = require('fs');
 const VGW_ID_PREFIX = '0000';
 const CONN_ID_PREFIX = '0007';
 const SENHUB_ID_PREFIX = '0017';
+const WISESNAIL_DATAFOLDER = './wisesnail';
 var timerknock;
 var time = 0;
 var max_time = 0;
@@ -316,12 +317,16 @@ function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
 
 function sendVGW( mac ){
   console.log('sendVGW(' + mac + ')...........................');
+  var msgObj = JSON.parse(fs.readFileSync(WISESNAIL_DATAFOLDER + '/VGW_' + mac + ,'/connect.msg', 'utf8'));
+  var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentinfoack';
+  var message = JSON.stringify(msgObj);
+  client.publish(topic, message);  
 }
 
 module.exports = {
   start: function() {
     console.log('[wise_snail] start');
-    var senfiles = fs.readdirSync('./wisesnail');
+    var senfiles = fs.readdirSync(WISESNAIL_DATAFOLDER);
     console.log('senfiles.length = ' + senfiles.length);
     for (var i=0 ; i< senfiles.length ; i++){
       console.log('name = ' + senfiles[i]);
