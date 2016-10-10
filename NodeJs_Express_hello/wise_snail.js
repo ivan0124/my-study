@@ -11,12 +11,12 @@ var max_time = 0;
 
 function timeout(){
   
-  console.log('timeout....' + time);
-  var mac='000E40000001';
-  snehubSendInfo(mac);
+  //console.log('timeout....' + time);
+  //var mac='000E40000001';
+  sendSensorHubMessage(false, false, true);
   time++;
   if ( time < max_time ){
-    timerknock = setTimeout( timeout, 2000);
+    timerknock = setTimeout( timeout, 3000);
   }
 }
 
@@ -378,6 +378,12 @@ module.exports = {
     } 
     //
     sendSensorHubMessage(true, true, true);
+    time = 0;
+    max_time = 0;
+    if ( typeof timerknock !== 'undefined'){
+      clearTimeout(timerknock);
+    }
+    timerknock = setTimeout( timeout, 3000);    
     
   },
   /*
