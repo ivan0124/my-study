@@ -386,7 +386,6 @@ module.exports = {
       }
     } 
     //
-    /*
     sendSensorHubMessage(true, true, true);
     time = 0;
     max_time = 0;
@@ -394,7 +393,6 @@ module.exports = {
       clearTimeout(timerknock);
     }
     timerknock = setTimeout( timeout, timer_interval);
-    */
     
   },
 
