@@ -316,7 +316,7 @@ function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
 }
 
 
-function createConnMsg( msgObj, infoKeyName, connObj ){
+function createConnMsg( msgObj, vgw_mac, infoKeyName, connObj ){
   console.log('createConnMsg...........................');
   /*
   if ( isInfoSpec === true ){
@@ -458,7 +458,7 @@ function sendVGW( mac ){
   });
   */
   var infoSpecMsgObj={};
-  createConnMsg(infoSpecMsgObj, 'infoSpec', infoSpecObj);  
+  createConnMsg(infoSpecMsgObj, mac, 'infoSpec', infoSpecObj);  
   vgw_send_info_spec(infoSpecMsgObj);
   
   //send VGW info
