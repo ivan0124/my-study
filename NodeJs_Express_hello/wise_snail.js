@@ -544,6 +544,7 @@ module.exports = {
     sendSensorHubMessage(true, true, false);
     
   },
+  /*
   test: function() {
     console.log('[wise_snail] test');
     var mac='000E4CABCD77';
@@ -651,4 +652,5 @@ module.exports = {
     //   
     return;
   }
+  */
 };
