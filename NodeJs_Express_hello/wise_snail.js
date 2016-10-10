@@ -332,6 +332,23 @@ function sendVGW( mac ){
   var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
   var message = JSON.stringify(msgObj);
   client.publish(topic, message);    
+  
+  // send VGW infoSpec message
+  var infoSpecObj = {};
+  var connfiles = fs.readdirSync(VGW_path);
+  console.log('connfiles.length = ' + connfiles.length);
+  for (var i=0 ; i< connfiles.length ; i++){
+    console.log('name = ' + connfiles[i]);
+    var regex = new RegExp("^CONN");
+    if( regex.test(connfiles[i]) ){
+      var connObj = 'conn' + i;
+      infoSpecObj[connObj].type = connfiles[i].split('_')[1];
+      infoSpecObj[connObj].bnName = connfiles[i].split('_')[2];   
+      infoSpecObj[connObj].info = JSON.parse(fs.readFileSync( VGW_path + '/' + connfiles[i] + '/' + 'infoSpec.msg', 'utf8'));
+    }
+  }
+  vgw_send_info_spec(infoSpecObj);
+  //
 }
 
 module.exports = {
