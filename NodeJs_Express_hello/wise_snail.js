@@ -452,21 +452,20 @@ function sendSensorHubMessage(){
     var vgwFiles = fs.readdirSync(WISESNAIL_DATAFOLDER);
     console.log('vgwFiles.length = ' + vgwFiles.length);
     for (var i=0 ; i< vgwFiles.length ; i++){
-      //var regex = new RegExp("^VGW");
+      
       if( regex.test(vgwFiles[i]) ){
-        //sendVGW(vgwFiles[i].split('_')[1]);
         console.log('VGW name = ' + vgwFiles[i]);
         var vgw_mac = vgwFiles[i].split('_')[1];
         var VGW_path = WISESNAIL_DATAFOLDER + '/VGW_' + vgw_mac + '/' ;
         var connFiles = fs.readdirSync(VGW_path);
         for (var j=0 ; j< connFiles.length ; j++){
-          //var connRegex = new RegExp("^CONN");
+          
           if( connRegex.test(connFiles[j]) ){
             console.log('CONN name = ' + connFiles[j]);
             var CONN_path = VGW_path + connFiles[j];
             var sensorFiles = fs.readdirSync(CONN_path);
             for (var k=0 ; k< sensorFiles.length ; k++){
-              //var sensorhubRegex = new RegExp("^SENSORHUB");
+              
               if( sensorhubRegex.test(sensorFiles[k]) ){
                 console.log('SENSORHUB name = ' + sensorFiles[k]);
                 sendSensorHubConnectMsg(CONN_path, sensorFiles[k]);
