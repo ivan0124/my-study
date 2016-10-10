@@ -543,12 +543,6 @@ module.exports = {
     //
     sendSensorHubMessage(true, true, false);
     
-    /*
-    var msgObj={};
-    createConnMsg(msgObj, 'infoSpec');
-    console.log('msgObj.test = ' + msgObj.test);
-    */
-    
   },
   test: function() {
     console.log('[wise_snail] test');
