@@ -424,6 +424,23 @@ function sendSensorHubConnectMsg( ConnFilePath, SensorHubFileName ){
   
 }
 
+function sendSensorHubInfoSpecMsg( ConnFilePath, SensorHubFileName ){
+  
+  var sensorHubMAC = SensorHubFileName.split('_')[1];
+  var sensorHubPath = ConnFilePath + '/' + SensorHubFileName + '/';
+  var msgObj = JSON.parse(fs.readFileSync( sensorHubPath + 'infoSpec.msg', 'utf8'));
+                
+  //assign value
+  msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + sensorHubMAC;
+  msgObj.susiCommData.sendTS = new Date().getTime();
+  
+  //send infoSpec message
+  var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
+  var message = JSON.stringify(msgObj);
+  client.publish(topic, message);    
+  
+}
+
 function sendSensorHubMessage(){
   
   console.log('sendSENSORHUB...........................');
@@ -449,11 +466,12 @@ function sendSensorHubMessage(){
               if( sensorhubRegex.test(sensorFiles[k]) ){
                 console.log('SENSORHUB name = ' + sensorFiles[k]);
                 sendSensorHubConnectMsg(CONN_path, sensorFiles[k]);
+                sendSensorHubInfoSpecMsg(CONN_path, sensorFiles[k]);
                 //
-                
+                /*
                 var sensorhub_mac = sensorFiles[k].split('_')[1];
                 var SENSORHUB_path = CONN_path + '/' +sensorFiles[k] + '/';
-                /*
+                
                 var msgObj = JSON.parse(fs.readFileSync( SENSORHUB_path + 'connect.msg', 'utf8'));
                 //send sensorhub message
                 msgObj.susiCommData.hostname = msgObj.susiCommData.type + '('+ sensorhub_mac.substr(8,4) + ')';
@@ -467,12 +485,14 @@ function sendSensorHubMessage(){
                 client.publish(topic, message);
                 */
                 //send sensorhub infoSpec
+                /*
                 var msgObj = JSON.parse(fs.readFileSync( SENSORHUB_path + 'infoSpec.msg', 'utf8'));
                 msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + sensorhub_mac;
                 msgObj.susiCommData.sendTS = new Date().getTime();
                 var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
                 var message = JSON.stringify(msgObj);
-                client.publish(topic, message);              
+                client.publish(topic, message);
+                */
               }
             }
           }
