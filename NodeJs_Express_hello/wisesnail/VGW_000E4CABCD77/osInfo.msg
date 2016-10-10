@@ -9,12 +9,12 @@
 			"processorName": "SnailGW",
 			"osArch": "SnailX86",
 			"totalPhysMemKB": 123,
-			"macs": "000E4CABCD77",
+			"macs": "",
 			"IP": ""
 		},
 		"commCmd": 116,
 		"requestID": 109,
-		"agentID": "0000000E4CABCD77",
+		"agentID": "",
 		"handlerName": "general",
 		"sendTS": 1476067275607
 	}
