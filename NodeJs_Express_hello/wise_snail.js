@@ -314,8 +314,14 @@ function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
   callback( msgObj );
 }
 
+function sendVGW(){
+  console.log('sendVGW...........................');
+}
 
 module.exports = {
+  start: function() {
+    console.log('[wise_snail] start');
+  },
   test: function() {
     console.log('[wise_snail] test');
     var mac='000E4CABCD77';
@@ -429,5 +435,5 @@ module.exports = {
     */
     //   
     return;
-  },
+  }
 };
