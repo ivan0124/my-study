@@ -315,6 +315,12 @@ function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
   callback( msgObj );
 }
 
+
+function createConnMsg( msgObj ){
+  console.log('createConnMsg...........................');
+  msgObj.test = '10000000000000000';
+}
+
 function sendVGW( mac ){
   console.log('sendVGW(' + mac + ')...........................');
   var VGW_path = WISESNAIL_DATAFOLDER + '/VGW_' + mac + '/' ;
@@ -500,6 +506,11 @@ module.exports = {
     } 
     //
     sendSensorHubMessage(true, true, false);
+    
+    var msgObj={};
+    createConnMsg(msgObj);
+    console.log('msgObj.test = ' + msgObj.test);
+    
   },
   test: function() {
     console.log('[wise_snail] test');
