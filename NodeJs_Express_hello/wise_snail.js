@@ -442,6 +442,18 @@ module.exports = {
               var sensorhubRegex = new RegExp("^SENSORHUB");
               if( sensorhubRegex.test(sensorFiles[k]) ){
                 console.log('SENSORHUB name = ' + sensorFiles[k]);
+                var sensorhub_mac = sensorFiles[k].split('_')[1];
+                var SENSORHUB_path = CONN_path + '/' +sensorFiles[k] + '/';
+                var msgObj = JSON.parse(fs.readFileSync( SENSORHUB_path + 'connect.msg', 'utf8'));
+                //
+                msgObj.susiCommData.devID = SENHUB_ID_PREFIX + sensorhub_mac;
+                msgObj.susiCommData.sn = SENHUB_ID_PREFIX + sensorhub_mac;
+                msgObj.susiCommData.mac = SENHUB_ID_PREFIX + sensorhub_mac;
+                msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + sensorhub_mac;
+                msgObj.susiCommData.sendTS = new Date().getTime();
+                var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentinfoack';
+                var message = JSON.stringify(msgObj);
+                client.publish(topic, message); 
               }
             }
           }
