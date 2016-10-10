@@ -357,6 +357,9 @@ function sendVGW( mac ){
       //      
       var senhubfiles = fs.readdirSync(CONN_path);
       //var infoObj = JSON.parse(fs.readFileSync( CONN_path + 'info.msg', 'utf8'));
+      infoObj[connObj].info.e[0].sv = '';
+      infoObj[connObj].info.e[1].sv = '';
+      
       var eObj = infoObj[connObj].info.e[0];
       eObj.sv = '';
       console.log('senhubfiles.length = ' + senhubfiles.length);
