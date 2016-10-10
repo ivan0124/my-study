@@ -367,11 +367,11 @@ function sendVGW( mac ){
           console.log('SendorHub name = ' + senhubfiles[j]);
           
           if ( eObj.sv.length === 0 ){
-            eObj.sv = senhubfiles[j].split('_')[1];
+            eObj.sv = SENHUB_ID_PREFIX + senhubfiles[j].split('_')[1];
           }
           else{
             eObj.sv = eObj.sv + ',';
-            eObj.sv = eObj.sv + senhubfiles[j].split('_')[1];
+            eObj.sv = eObj.sv + SENHUB_ID_PREFIX + senhubfiles[j].split('_')[1];
           }
           
         }
