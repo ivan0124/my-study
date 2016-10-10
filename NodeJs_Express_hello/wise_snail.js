@@ -317,7 +317,7 @@ function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
 
 function sendVGW( mac ){
   console.log('sendVGW(' + mac + ')...........................');
-  var msgObj = JSON.parse(fs.readFileSync(WISESNAIL_DATAFOLDER + '/VGW_' + mac + ,'/connect.msg', 'utf8'));
+  var msgObj = JSON.parse(fs.readFileSync(WISESNAIL_DATAFOLDER + '/VGW_' + mac + '/connect.msg', 'utf8'));
   var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentinfoack';
   var message = JSON.stringify(msgObj);
   client.publish(topic, message);  
