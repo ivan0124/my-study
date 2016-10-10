@@ -79,7 +79,8 @@ function getSensorHubInfo(sensorInfoObj){
           var data_max_time = temp_array.length;
           var val;
           if ( typeof temp_array[time] === 'undefined' ){
-            val = temp_array[temp_array.length - 1];
+            //val = temp_array[temp_array.length - 1];
+            val = 0;
           }
           else{
             val = temp_array[time];                 
