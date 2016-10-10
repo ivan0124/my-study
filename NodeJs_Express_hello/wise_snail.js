@@ -327,7 +327,7 @@ function sendVGW( mac ){
   client.publish(topic, message);  
   
   // send VGW osInfo message
-  var msgObj = JSON.parse(fs.readFileSync( VGW_path + 'OsInfo.msg', 'utf8'));
+  var msgObj = JSON.parse(fs.readFileSync( VGW_path + 'osInfo.msg', 'utf8'));
   msgObj.susiCommData.sendTS = new Date().getTime();
   var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
   var message = JSON.stringify(msgObj);
