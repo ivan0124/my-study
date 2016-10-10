@@ -317,10 +317,21 @@ function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
 
 function sendVGW( mac ){
   console.log('sendVGW(' + mac + ')...........................');
-  var msgObj = JSON.parse(fs.readFileSync(WISESNAIL_DATAFOLDER + '/VGW_' + mac + '/connect.msg', 'utf8'));
+  var VGW_path = WISESNAIL_DATAFOLDER + '/VGW_' + mac + '/' ;
+  
+  // send VGW connect message
+  var msgObj = JSON.parse(fs.readFileSync( VGW_path + 'connect.msg', 'utf8'));
+  msgObj.susiCommData.sendTS = new Date().getTime();
   var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentinfoack';
   var message = JSON.stringify(msgObj);
   client.publish(topic, message);  
+  
+  // send VGW osInfo message
+  var msgObj = JSON.parse(fs.readFileSync( VGW_path + 'OsInfo.msg', 'utf8'));
+  msgObj.susiCommData.sendTS = new Date().getTime();
+  var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
+  var message = JSON.stringify(msgObj);
+  client.publish(topic, message);    
 }
 
 module.exports = {
