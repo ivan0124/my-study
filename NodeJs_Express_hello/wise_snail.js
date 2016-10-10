@@ -361,7 +361,7 @@ function sendVGW( mac ){
       for (var j=0 ; j< senhubfiles.length ; j++){
         console.log('name = ' + senhubfiles[j]);
         var senhubRegex = new RegExp("^SENSORHUB");
-        if( regex.test(senhubfiles[j]) ){
+        if( senhubRegex.test(senhubfiles[j]) ){
           console.log('SendorHub name = ' + senhubfiles[j]);
         }
       }
