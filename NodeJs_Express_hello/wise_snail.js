@@ -178,7 +178,7 @@ function sendVGW( mac ){
   var msgObj = JSON.parse(fs.readFileSync( VGW_path + 'connect.msg', 'utf8'));
   
   msgObj.susiCommData.devID = VGW_ID_PREFIX + mac;
-  msgObj.susiCommData.type + '('+ mac.substr(8,4) + ')';
+  msgObj.susiCommData.hostname = msgObj.susiCommData.type + '('+ mac.substr(8,4) + ')';
   msgObj.susiCommData.agentID = msgObj.susiCommData.devID;
   msgObj.susiCommData.sn = mac;
   msgObj.susiCommData.mac = mac;
