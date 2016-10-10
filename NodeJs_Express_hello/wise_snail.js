@@ -411,13 +411,13 @@ module.exports = {
   start: function() {
     console.log('[wise_snail] start');
     //
-    var senfiles = fs.readdirSync(WISESNAIL_DATAFOLDER);
-    console.log('senfiles.length = ' + senfiles.length);
-    for (var i=0 ; i< senfiles.length ; i++){
-      console.log('name = ' + senfiles[i]);
+    var vgwFiles = fs.readdirSync(WISESNAIL_DATAFOLDER);
+    console.log('vgwFiles.length = ' + vgwFiles.length);
+    for (var i=0 ; i< vgwFiles.length ; i++){
+      console.log('name = ' + vgwFiles[i]);
       var regex = new RegExp("^VGW");
-      if( regex.test(senfiles[i]) ){
-        sendVGW(senfiles[i].split('_')[1]);
+      if( regex.test(vgwFiles[i]) ){
+        sendVGW(vgwFiles[i].split('_')[1]);
       }
     } 
     //
