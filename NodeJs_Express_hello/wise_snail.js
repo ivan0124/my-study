@@ -348,6 +348,13 @@ function sendVGW( mac ){
       infoSpecObj[connObj].info = JSON.parse(fs.readFileSync( VGW_path + '/' + connfiles[i] + '/' + 'infoSpec.msg', 'utf8'));
     }
   }
+  
+  create_connMsg(true, mac, infoSpecObj, function( msgObj ){
+    console.log('create connectivity InfoSpec message object'); 
+    console.log('================================================');
+    infoSpecMsgObj = msgObj;
+    console.log(JSON.stringify(infoSpecMsgObj));
+  });   
   vgw_send_info_spec(infoSpecObj);
   //
 }
