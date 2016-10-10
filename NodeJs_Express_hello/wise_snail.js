@@ -354,17 +354,27 @@ function sendVGW( mac ){
       infoObj[connObj].type = connfiles[i].split('_')[1];
       infoObj[connObj].bnName = CONN_ID_PREFIX + connfiles[i].split('_')[2];
       infoObj[connObj].info = JSON.parse(fs.readFileSync( CONN_path + 'info.msg', 'utf8'));
-      //
-      
+      //      
       var senhubfiles = fs.readdirSync(CONN_path);
+      var infoObj = JSON.parse(fs.readFileSync( CONN_path + 'info.msg', 'utf8'));
+      infoObj.e.0.sv = '';
       console.log('senhubfiles.length = ' + senhubfiles.length);
       for (var j=0 ; j< senhubfiles.length ; j++){
         console.log('name = ' + senhubfiles[j]);
         var senhubRegex = new RegExp("^SENSORHUB");
         if( senhubRegex.test(senhubfiles[j]) ){
           console.log('SendorHub name = ' + senhubfiles[j]);
+          if ( infoObj.e.0.sv.length === 0 ){
+            infoObj.e.0.sv = senhubfiles[j].split('_')[1];
+          }
+          else{
+            infoObj.e.0.sv = infoObj.e.0.sv + ',';
+            infoObj.e.0.sv = infoObj.e.0.sv + senhubfiles[j].split('_')[1];
+          }
         }
       }
+      infoObj[connObj].info = infoObj;
+      //
     }
   }
   
