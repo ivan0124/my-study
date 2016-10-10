@@ -411,10 +411,10 @@ function sendSensorHubConnectMsg( ConnFilePath, SensorHubFileName ){
                 
   //assign value
   msgObj.susiCommData.hostname = msgObj.susiCommData.type + '('+ sensorHubMAC.substr(8,4) + ')';
-  msgObj.susiCommData.devID = SENHUB_ID_PREFIX + sensorhub_mac;
-  msgObj.susiCommData.sn = SENHUB_ID_PREFIX + sensorhub_mac;
-  msgObj.susiCommData.mac = SENHUB_ID_PREFIX + sensorhub_mac;
-  msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + sensorhub_mac;
+  msgObj.susiCommData.devID = SENHUB_ID_PREFIX + sensorHubMAC;
+  msgObj.susiCommData.sn = msgObj.susiCommData.devID;
+  msgObj.susiCommData.mac = msgObj.susiCommData.devID;
+  msgObj.susiCommData.agentID = msgObj.susiCommData.devID;
   msgObj.susiCommData.sendTS = new Date().getTime();
   
   //send connect message
