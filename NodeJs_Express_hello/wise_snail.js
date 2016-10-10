@@ -44,34 +44,6 @@ client.on('message', function (topic, message) {
   
 })
 
-/*
-function sendOSInfo( dev_type, ver, vgw_mac, is_ip_base ){
-  
-  var msg='{\"susiCommData\":{\"osInfo\":{\"cagentVersion\":\"3.1.23\",\
-  \"cagentType\":\"IoTGW\",\"osVersion\":\"SnailOS\",\"biosVersion\":\"\",\"platformName\":\"\",\"processorName\":\"SnailGW\",\
-  \"osArch\":\"SnailX86\",\"totalPhysMemKB\":123,\"macs":"000E40ABCD99\",\"IP\":\"0.0.0.0\"},\"commCmd\":116,\"requestID\":109,\
-  \"agentID\":\"0000000E40ABCD99\",\"handlerName\":\"general\",\"sendTS\":1466730390}}';
-   
-  var msgObj = JSON.parse(msg);
- 
-  msgObj.susiCommData.osInfo.cagentType = dev_type;
-  msgObj.susiCommData.osInfo.cagentVersion = ver;
-  msgObj.susiCommData.osInfo.macs= vgw_mac;
-  msgObj.susiCommData.agentID = VGW_ID_PREFIX + vgw_mac;
-  msgObj.susiCommData.sendTS = new Date().getTime();
-  
-  if ( is_ip_base === true ){
-    msgObj.susiCommData.osInfo.IP = '0.0.0.0';
-  }
-  else{
-    msgObj.susiCommData.osInfo.IP = '';
-  }
-  
-  var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
-  var message = JSON.stringify(msgObj);
-  client.publish(topic, message);
-}
-*/
 
 function vgw_send_info_spec( msgObj ){
   //
@@ -86,37 +58,6 @@ function vgw_send_info( msgObj ){
   var message = JSON.stringify(msgObj);
   client.publish(topic, message);  
 }
-
-/*
-function snehubSendInfoSpec( mac ){
-  
-  try{
-    var sensorInfoSpecObj = JSON.parse(fs.readFileSync('sensorHub.infoSpec', 'utf8'));
-  }
-  catch (e){
-    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-    console.error(e);
-    return;
-  }
-  
-  //
-  var msgObj={};
-  msgObj.susiCommData = {};
-  msgObj.susiCommData.infoSpec = {};
-  msgObj.susiCommData.infoSpec.SenHub = sensorInfoSpecObj;  
-  msgObj.susiCommData.commCmd = 2052;
-  msgObj.susiCommData.requestID = 2001;
-  msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + mac;
-  msgObj.susiCommData.handlerName = 'general';
-  msgObj.susiCommData.sendTS = new Date().getTime();
-  
-  //
-  var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
-  var message = JSON.stringify(msgObj);
-  client.publish(topic, message);
-  
-}
-*/
 
 function getSensorHubInfo(sensorInfoObj){
   
@@ -178,97 +119,6 @@ function getSensorHubInfo(sensorInfoObj){
     }
   }    
 }
-/*
-function snehubSendInfo( mac ){
-  
-  try{
-    var sensorInfoObj = JSON.parse(fs.readFileSync('sensorHub.info', 'utf8'));
-  }
-  catch (e){
-    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-    console.error(e);
-    return;
-  }
-  
-  getSensorHubInfo(sensorInfoObj);
-  //
-  var msgObj={};
-  msgObj.susiCommData = {};
-  msgObj.susiCommData.data = {};
-  msgObj.susiCommData.data.SenHub = sensorInfoObj;  
-  msgObj.susiCommData.commCmd = 2055;
-  msgObj.susiCommData.requestID = 2001;
-  msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + mac;
-  msgObj.susiCommData.handlerName = 'general';
-  msgObj.susiCommData.sendTS = new Date().getTime();
-  
-  //
-  var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/deviceinfo';
-  var message = JSON.stringify(msgObj);
-  client.publish(topic, message);
-  
-}
-*/
-/*
-function create_connMsg( isInfoSpec, vgw_mac, connObj, callback ){
-
-  if ( isInfoSpec === true ){
-    var msg='{\"susiCommData\":{\"infoSpec\":{\"IoTGW\":{\"Ethernet\":{\"Ethernet\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\
-             \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"Ethernet\",\"asm\":\"r\"},\
-             {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
-             {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCDEF\",\"ver\":1},\
-             \"bn\":\"Ethernet\",\"ver\":1},\"ver\":1}},\"commCmd\":2052,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\
-             \"handlerName\":\"general\",\"sendTS\":160081020}}';
-    var infoKeyName = 'infoSpec';
-  }
-  else{
-    
-    var msg='{\"susiCommData\":{\"data\":{\"IoTGW\":{\"Ethernet\":{\"Ethernet\":{\"Info\":{\"e\":[{\"n\":\"SenHubList\",\
-             \"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Neighbor\",\"sv\":\"\",\"asm\":\"r\"},{\"n\":\"Name\",\"sv\":\"Ethernet\",\"asm\":\"r\"},\
-             {\"n\":\"Health\",\"v\":\"100.000000\",\"asm\":\"r\"},{\"n\":\"sw\",\"sv\":\"1.2.1.12\",\"asm\":\"r\"},\
-             {\"n\":\"reset\",\"bv\":\"0\",\"asm\":\"rw\"}],\"bn\":\"Info\"},\"bn\":\"0007000E40ABCDEF\",\"ver\":1},\
-             \"bn\":\"Ethernet\",\"ver\":1},\"ver\":1}},\"commCmd\":2055,\"requestID\":2001,\"agentID\":\"0000000E40ABCDEF\",\
-             \"handlerName\":\"general\",\"sendTS\":160081020}}';
-    var infoKeyName = 'data';
-            
-  }
-
-  var msgObj = JSON.parse(msg);
-
-  msgObj.susiCommData.agentID = VGW_ID_PREFIX + vgw_mac;
-  msgObj.susiCommData.sendTS = new Date().getTime();
-  //create connectivity and assigne InfoMsg
-  msgObj['susiCommData'][infoKeyName]['IoTGW'] = {};
-  for (key in connObj) {
-      if (connObj.hasOwnProperty(key)) {
-        //console.log( key + ', keyVal=======>' + connObj[key]);
-        //console.log( 'type=======>' + connObj[key]['type']);
-        //console.log( 'bnName=======>' + connObj[key]['bnName']);
-        var conn_type= connObj[key]['type'];
-        var conn_bnName = connObj[key]['bnName'];
-        var conn_info = connObj[key]['info'];
-        
-        if ( msgObj['susiCommData'][infoKeyName]['IoTGW'].hasOwnProperty(conn_type) === false ){
-          //console.log( 'create type ========: ' + conn_type);
-          msgObj['susiCommData'][infoKeyName]['IoTGW'][conn_type]={};
-        }
-        if ( msgObj['susiCommData'][infoKeyName]['IoTGW'].hasOwnProperty(conn_bnName) === false ){
-          //console.log( 'create conn_bnName ========: ' + conn_bnName);
-          msgObj['susiCommData'][infoKeyName]['IoTGW'][conn_type][conn_bnName]={};
-        }
-        //assign value
-        msgObj['susiCommData'][infoKeyName]['IoTGW']['ver'] = 1;
-        msgObj['susiCommData'][infoKeyName]['IoTGW'][conn_type]['bn'] = conn_type;
-        msgObj['susiCommData'][infoKeyName]['IoTGW'][conn_type]['ver'] = 1;
-        msgObj['susiCommData'][infoKeyName]['IoTGW'][conn_type][conn_bnName]['Info'] = conn_info;
-        msgObj['susiCommData'][infoKeyName]['IoTGW'][conn_type][conn_bnName]['bn'] = conn_bnName;
-        msgObj['susiCommData'][infoKeyName]['IoTGW'][conn_type][conn_bnName]['ver'] = 1;
-      }
-   }    
-  
-  callback( msgObj );
-}
-*/
 
 function createConnectivityMsg( msgObj, vgw_mac, infoKeyName, connObj ){
   console.log('createConnectivityMsg...........................');
