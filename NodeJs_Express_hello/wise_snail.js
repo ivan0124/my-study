@@ -441,7 +441,7 @@ function sendSensorHubInfoSpecMsg( ConnFilePath, SensorHubFileName ){
   
 }
 
-function sendSensorHubMessage(){
+function sendSensorHubMessage( sendConnectMsg, sendInfoSpecMsg, sendInfoMsg){
   
   console.log('sendSensorHubMessage...........................');
   var regex = new RegExp("^VGW");
@@ -467,8 +467,15 @@ function sendSensorHubMessage(){
               
             if( sensorhubRegex.test(sensorFiles[k]) ){
               console.log('SENSORHUB name = ' + sensorFiles[k]);
-              sendSensorHubConnectMsg(CONN_path, sensorFiles[k]);
-              sendSensorHubInfoSpecMsg(CONN_path, sensorFiles[k]);
+              if ( sendConnectMsg === true){
+                sendSensorHubConnectMsg(CONN_path, sensorFiles[k]);
+              }
+              if ( sendInfoSpecMsg === true){
+                sendSensorHubInfoSpecMsg(CONN_path, sensorFiles[k]);
+              }
+              
+              if ( sendInfoMsg === true){
+              }
             }
           }
         }
@@ -492,7 +499,7 @@ module.exports = {
       }
     } 
     //
-    sendSensorHubMessage();
+    sendSensorHubMessage(true, true, false);
   },
   test: function() {
     console.log('[wise_snail] test');
