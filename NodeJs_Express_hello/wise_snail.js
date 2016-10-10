@@ -393,7 +393,6 @@ function sendVGW( mac ){
   vgw_send_info_spec(infoSpecMsgObj);
   
   //send VGW info
-  
   create_connMsg(false, mac, infoObj, function( msgObj ){
     console.log('create connectivity Info message object'); 
     console.log('================================================');
@@ -401,11 +400,17 @@ function sendVGW( mac ){
     console.log(JSON.stringify(infoMsgObj));
   });  
   vgw_send_info(infoMsgObj);
+ 
+}
+
+function sendSENSORHUB( mac ){
+  console.log('sendSENSORHUB(' + mac + ')...........................');
 }
 
 module.exports = {
   start: function() {
     console.log('[wise_snail] start');
+    //
     var senfiles = fs.readdirSync(WISESNAIL_DATAFOLDER);
     console.log('senfiles.length = ' + senfiles.length);
     for (var i=0 ; i< senfiles.length ; i++){
@@ -414,8 +419,20 @@ module.exports = {
       if( regex.test(senfiles[i]) ){
         sendVGW(senfiles[i].split('_')[1]);
       }
-    }    
-    
+    } 
+    //
+    // send SENSORHUB connect message
+    /*
+    var senfiles = fs.readdirSync(WISESNAIL_DATAFOLDER);
+    console.log('senfiles.length = ' + senfiles.length);
+    for (var i=0 ; i< senfiles.length ; i++){
+      console.log('name = ' + senfiles[i]);
+      var regex = new RegExp("^VGW");
+      if( regex.test(senfiles[i]) ){
+        sendVGW(senfiles[i].split('_')[1]);
+      }
+    } 
+    */
   },
   test: function() {
     console.log('[wise_snail] test');
