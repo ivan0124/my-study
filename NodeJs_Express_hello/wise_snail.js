@@ -321,6 +321,33 @@ function sendSensorHubMessage( sendConnectMsg, sendInfoSpecMsg, sendInfoMsg){
               }
               
               if ( sendInfoMsg === true){
+                 var sensorHubMAC = sensorFiles[k].split('_')[1];
+                 var sensorHubPath = CONN_path + '/' + sensorFiles[k] + '/';
+                try{
+                  var sensorInfoObj = JSON.parse(fs.readFileSync(sensorHubPath + 'info.msg', 'utf8'));
+                }
+                catch (e){
+                  console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+                  console.error(e);
+                  return;
+                }
+
+                getSensorHubInfo(sensorInfoObj);
+                //
+                var msgObj={};
+                msgObj.susiCommData = {};
+                msgObj.susiCommData.data = {};
+                msgObj.susiCommData.data.SenHub = sensorInfoObj;  
+                msgObj.susiCommData.commCmd = 2055;
+                msgObj.susiCommData.requestID = 2001;
+                msgObj.susiCommData.agentID = SENHUB_ID_PREFIX + sensorHubMAC;
+                msgObj.susiCommData.handlerName = 'general';
+                msgObj.susiCommData.sendTS = new Date().getTime();
+
+                //
+                var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/deviceinfo';
+                var message = JSON.stringify(msgObj);
+                client.publish(topic, message);                
               }
             }
           }
@@ -345,7 +372,7 @@ module.exports = {
       }
     } 
     //
-    sendSensorHubMessage(true, true, false);
+    sendSensorHubMessage(true, true, true);
     
   },
   /*
