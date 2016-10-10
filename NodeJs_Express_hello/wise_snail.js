@@ -450,9 +450,10 @@ function sendSensorHubMessage(){
                 console.log('SENSORHUB name = ' + sensorFiles[k]);
                 sendSensorHubConnectMsg(CONN_path, sensorFiles[k]);
                 //
-                /*
+                
                 var sensorhub_mac = sensorFiles[k].split('_')[1];
                 var SENSORHUB_path = CONN_path + '/' +sensorFiles[k] + '/';
+                /*
                 var msgObj = JSON.parse(fs.readFileSync( SENSORHUB_path + 'connect.msg', 'utf8'));
                 //send sensorhub message
                 msgObj.susiCommData.hostname = msgObj.susiCommData.type + '('+ sensorhub_mac.substr(8,4) + ')';
