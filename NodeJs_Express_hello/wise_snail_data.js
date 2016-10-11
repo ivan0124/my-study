@@ -5,7 +5,7 @@ var conn_map = new HashMap();
 var vgw_map = new HashMap();
 var sensor_hub_map = new HashMap();
 
-client  = mqtt.connect('mqtt://127.0.0.1');
+var client  = mqtt.connect('mqtt://127.0.0.1');
 client.queueQoSZero = false;
 
 const msgType = { error: -1, unknown: 0,
