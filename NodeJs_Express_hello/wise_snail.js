@@ -10,6 +10,14 @@ var time = 0;
 var max_time = 0;
 var timer_interval = 2000;
 
+var stdin = process.openStdin(); 
+//require('tty').setRawMode(true);    
+
+stdin.on('keypress', function (chunk, key) {
+  //process.stdout.write('Get Chunk: ' + chunk + '\n');
+  //if (key && key.ctrl && key.name == 'c') process.exit();
+  console.log('[wise_snail] keypress..............');
+});
 
 function timeout(){
   
@@ -66,7 +74,7 @@ function getSensorHubInfo(sensorInfoObj){
   for (key in sensorInfoObj) {
     if (sensorInfoObj.hasOwnProperty(key)) {
       if ( key === 'n' ){
-        console.log( 'key=======>' + key + ', keyVal=======>' + sensorInfoObj[key]);
+        //console.log( 'key=======>' + key + ', keyVal=======>' + sensorInfoObj[key]);
         try{
           var temp = fs.readFileSync( sensorInfoObj[key] + '.dat', 'utf8');
           //remove /r/n
