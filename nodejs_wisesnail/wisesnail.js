@@ -382,6 +382,7 @@ function sendSensorHubInfoMsg(ConnFilePath, SensorHubFileName){
   }
 
   console.log('sensorHubPath = ' + sensorHubPath);
+  console.log(JSON.stringify(sensorInfoObj));
   getSensorHubInfo(sensorHubPath, sensorInfoObj);
   //
   var msgObj={};
