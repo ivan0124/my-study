@@ -96,14 +96,14 @@ function sendVGWInfo( msgObj ){
    sendToMqttBroker(topic, message);  
 }
 
-function getSensorHubInfo(sensorInfoObj){
+function getSensorHubInfo(sensorHubPath, sensorInfoObj){
   
   for (key in sensorInfoObj) {
     if (sensorInfoObj.hasOwnProperty(key)) {
       if ( key === 'n' ){
         //console.log( 'key=======>' + key + ', keyVal=======>' + sensorInfoObj[key]);
         try{
-          var temp = fs.readFileSync( sensorInfoObj[key] + '.dat', 'utf8');
+          var temp = fs.readFileSync( sensorHubPath + sensorInfoObj[key] + '.dat', 'utf8');
           //remove /r/n
           var temp = temp.toString().replace(/(?:\\[rn])+/g,'');
           //remove space
@@ -377,7 +377,7 @@ function sendSensorHubInfoMsg(ConnFilePath, SensorHubFileName){
     return;
   }
 
-  getSensorHubInfo(sensorInfoObj);
+  getSensorHubInfo(sensorHubPath, sensorInfoObj);
   //
   var msgObj={};
   msgObj.susiCommData = {};
