@@ -104,7 +104,7 @@ function getSensorHubInfo(sensorHubPath, sensorInfoObj){
   for (key in sensorInfoObj) {
     if (sensorInfoObj.hasOwnProperty(key)) {
       if ( key === 'n' ){
-        console.log( 'key=======>' + key + ', keyVal=======>' + sensorInfoObj[key]);
+        //console.log( 'key=======>' + key + ', keyVal=======>' + sensorInfoObj[key]);
         try{
           var temp = fs.readFileSync( sensorHubPath + sensorInfoObj[key] + '.dat', 'utf8');
           //remove /r/n
@@ -112,8 +112,8 @@ function getSensorHubInfo(sensorHubPath, sensorInfoObj){
           //remove space
           var temp = temp.toString().replace(/\s+/g,'');
           var temp_array = temp.split(',');
-          console.log('('+ sensorInfoObj[key] +')temp_array.length = ' + temp_array.length);
-          console.log('('+ sensorInfoObj[key] + ')temp_array value = ' + temp_array[time]);
+          //console.log('('+ sensorInfoObj[key] +')temp_array.length = ' + temp_array.length);
+          //console.log('('+ sensorInfoObj[key] + ')temp_array value = ' + temp_array[time]);
           
           var data_max_time = temp_array.length;
           var val;
