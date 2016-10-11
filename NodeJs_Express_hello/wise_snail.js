@@ -399,4 +399,26 @@ module.exports = {
 
 };
 
-start;
+function main(){
+    console.log('[wise_snail] start');
+    //
+    var vgwFiles = fs.readdirSync(WISESNAIL_DATAFOLDER);
+    console.log('vgwFiles.length = ' + vgwFiles.length);
+    for (var i=0 ; i< vgwFiles.length ; i++){
+      console.log('name = ' + vgwFiles[i]);
+      var regex = new RegExp("^VGW");
+      if( regex.test(vgwFiles[i]) ){
+        sendVGW(vgwFiles[i].split('_')[1]);
+      }
+    } 
+    //
+    sendSensorHubMessage(true, true, true);
+    time = 0;
+    max_time = 0;
+    if ( typeof timerknock !== 'undefined'){
+      clearTimeout(timerknock);
+    }
+    timerknock = setTimeout( timeout, timer_interval);  
+}
+
+main();
