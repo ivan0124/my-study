@@ -15,6 +15,6 @@ $node wisesnail.js
 </pre>
 
 #Folder/File mapping introduction
-1.Folder/File naming rule is using prefix `VGW_` or `CONN_` or `SENSORHUB_` + device MAC address 
+1. Folder/File naming rule is using prefix `VGW_` or `CONN_` or `SENSORHUB_` + device MAC address 
 
 ![result link](https://github.com/ivan0124/my-study/blob/master/nodejs_wisesnail/images/20161011_nodejs_wisesnail_1.png)
