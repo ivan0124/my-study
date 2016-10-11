@@ -99,7 +99,7 @@ function sendVGWInfo( msgObj ){
 }
 
 function getSensorHubInfo(sensorHubPath, sensorInfoObj){
-  console.log('getSensorHubInfo...........................');
+  //console.log('getSensorHubInfo...........................');
   
   for (key in sensorInfoObj) {
     if (sensorInfoObj.hasOwnProperty(key)) {
@@ -381,6 +381,7 @@ function sendSensorHubInfoMsg(ConnFilePath, SensorHubFileName){
     return;
   }
 
+  console.log('sensorHubPath = ' + sensorHubPath);
   getSensorHubInfo(sensorHubPath, sensorInfoObj);
   //
   var msgObj={};
