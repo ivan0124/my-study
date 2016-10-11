@@ -187,6 +187,19 @@ function createConnectivityMsg( msgObj, vgw_mac, infoKeyName, connObj ){
    }    
 }
 
+function sendAllVGWMessage( connectStatus ){ 
+  
+  var vgwFiles = fs.readdirSync(WISESNAIL_DATAFOLDER);
+  console.log('vgwFiles.length = ' + vgwFiles.length);
+  for (var i=0 ; i< vgwFiles.length ; i++){
+    console.log('name = ' + vgwFiles[i]);
+    var regex = new RegExp("^VGW");
+    if( regex.test(vgwFiles[i]) ){
+      sendVGW(vgwFiles[i].split('_')[1], connectStatus);
+    }
+  }   
+}
+
 function sendVGW( mac, connectStatus ){
   console.log('sendVGW(' + mac + ')...........................');
   var VGW_path = WISESNAIL_DATAFOLDER + '/VGW_' + mac + '/' ;
@@ -400,6 +413,8 @@ module.exports = {
   start: function() {
     console.log('[wise_snail] start');
     //
+    sendAllVGWMessage('');
+    /*
     var vgwFiles = fs.readdirSync(WISESNAIL_DATAFOLDER);
     console.log('vgwFiles.length = ' + vgwFiles.length);
     for (var i=0 ; i< vgwFiles.length ; i++){
@@ -408,7 +423,8 @@ module.exports = {
       if( regex.test(vgwFiles[i]) ){
         sendVGW(vgwFiles[i].split('_')[1]);
       }
-    } 
+    }
+    */
     //
     sendSensorHubMessage(true, true, true);
     time = 0;
@@ -425,6 +441,8 @@ module.exports = {
 function main(){
     console.log('[wise_snail] start');
     //
+   sendAllVGWMessage('');
+  /*
     var vgwFiles = fs.readdirSync(WISESNAIL_DATAFOLDER);
     console.log('vgwFiles.length = ' + vgwFiles.length);
     for (var i=0 ; i< vgwFiles.length ; i++){
@@ -433,7 +451,8 @@ function main(){
       if( regex.test(vgwFiles[i]) ){
         sendVGW(vgwFiles[i].split('_')[1], '');
       }
-    } 
+    }
+    */
     //
     sendSensorHubMessage(true, true, true);
     time = 0;
