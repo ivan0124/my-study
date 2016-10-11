@@ -75,12 +75,11 @@ client.on('message', function (topic, message) {
 
 function sendToMqttBroker(topic, message){
   
-  /*
   console.log('--------------------------send mqtt message------------------------------');
   console.log('topic=' + topic.toString() );
   console.log('msg=' + message.toString());
   console.log('-------------------------------------------------------------------------');
-  */
+  
   client.publish(topic, message);
 }
 
@@ -369,7 +368,7 @@ function sendSensorHubInfoSpecMsg( ConnFilePath, SensorHubFileName ){
 
 function sendSensorHubInfoMsg(ConnFilePath, SensorHubFileName){
   
-  console.log('sendSensorHubMessage...........................');
+  //console.log('sendSensorHubMessage...........................');
   var sensorHubMAC = SensorHubFileName.split('_')[1];
   var sensorHubPath = ConnFilePath + '/' + SensorHubFileName + '/';
   try{
