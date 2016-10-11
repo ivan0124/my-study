@@ -59,6 +59,7 @@ client.on('connect', function () {
 client.on('message', function (topic, message) {
   // message is Buffer 
   console.log('--------------------------receive mqtt message------------------------------');
+  
   console.log('topic=' + topic.toString() );
   console.log('msg=' + message.toString());
   
@@ -68,10 +69,18 @@ client.on('message', function (topic, message) {
       console.error(e);
       return;
   }
-  console.log('-----------------------------------------------------------------------------');
+  console.log('----------------------------------------------------------------------------');
   
 })
 
+function sendToMqttBroker(topic, message){
+  
+  console.log('--------------------------send mqtt message------------------------------');
+  console.log('topic=' + topic.toString() );
+  console.log('msg=' + message.toString());
+  console.log('-------------------------------------------------------------------------');
+  client.publish(topic, message);
+}
 
 function vgw_send_info_spec( msgObj ){
   //
@@ -212,7 +221,7 @@ function sendAllVGWMessage( connectStatus ){
 }
 
 function sendVGW( mac, connectStatus ){
-  console.log('sendVGW(' + mac + ')...........................');
+  console.log('sendVGW(' + mac + '), status = ' + connectStatus + '...........................');
   var VGW_path = WISESNAIL_DATAFOLDER + '/VGW_' + mac + '/' ;
   
   // send VGW connect message
@@ -233,7 +242,8 @@ function sendVGW( mac, connectStatus ){
   msgObj.susiCommData.sendTS = new Date().getTime();
   var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentinfoack';
   var message = JSON.stringify(msgObj);
-  client.publish(topic, message);  
+  sendToMqttBroker(topic, message);
+  //client.publish(topic, message);  
   
   // send VGW osInfo message
   var msgObj = JSON.parse(fs.readFileSync( VGW_path + 'osInfo.msg', 'utf8'));
@@ -242,7 +252,8 @@ function sendVGW( mac, connectStatus ){
   msgObj.susiCommData.sendTS = new Date().getTime();
   var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
   var message = JSON.stringify(msgObj);
-  client.publish(topic, message);    
+  sendToMqttBroker(topic, message);
+  //client.publish(topic, message);    
   
   // send VGW infoSpec message
   var infoSpecObj = {};
@@ -297,12 +308,17 @@ function sendVGW( mac, connectStatus ){
   
   var infoSpecMsgObj={};
   createConnectivityMsg(infoSpecMsgObj, mac, 'infoSpec', infoSpecObj);  
-  vgw_send_info_spec(infoSpecMsgObj);
+  var topic = '/cagent/admin/' + infoSpecMsgObj.susiCommData.agentID + '/agentactionreq';
+  var message = JSON.stringify(infoSpecMsgObj);  
+  sendToMqttBroker(topic, message);
+  //vgw_send_info_spec(infoSpecMsgObj);
   
   //send VGW info
   var infoMsgObj={};
   createConnectivityMsg(infoMsgObj, mac, 'data', infoObj);
-  vgw_send_info(infoMsgObj);
+  var topic = '/cagent/admin/' + infoMsgObj.susiCommData.agentID + '/deviceinfo';
+  var message = JSON.stringify(infoMsgObj);  
+  //vgw_send_info(infoMsgObj);
  
 }
 
