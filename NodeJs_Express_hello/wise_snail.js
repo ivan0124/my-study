@@ -187,12 +187,19 @@ function createConnectivityMsg( msgObj, vgw_mac, infoKeyName, connObj ){
    }    
 }
 
-function sendVGW( mac ){
+function sendVGW( mac, connectStatus ){
   console.log('sendVGW(' + mac + ')...........................');
   var VGW_path = WISESNAIL_DATAFOLDER + '/VGW_' + mac + '/' ;
   
   // send VGW connect message
   var msgObj = JSON.parse(fs.readFileSync( VGW_path + 'connect.msg', 'utf8'));
+  
+  if ( connectStatus === 'connected' ){
+    msgObj.susiCommData.status = true;
+  }
+  if ( connectStatus === 'disconnected' ){
+    msgObj.susiCommData.status = false;
+  }  
   
   msgObj.susiCommData.devID = VGW_ID_PREFIX + mac;
   msgObj.susiCommData.hostname = msgObj.susiCommData.type + '('+ mac.substr(8,4) + ')';
@@ -424,7 +431,7 @@ function main(){
       console.log('name = ' + vgwFiles[i]);
       var regex = new RegExp("^VGW");
       if( regex.test(vgwFiles[i]) ){
-        sendVGW(vgwFiles[i].split('_')[1]);
+        sendVGW(vgwFiles[i].split('_')[1], '');
       }
     } 
     //
