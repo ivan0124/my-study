@@ -30,7 +30,7 @@ process.stdin.resume();
 
 function timeout(){
   
-  //console.log('timeout....' + time);
+  console.log('timeout....' + time);
   sendSensorHubMessage(false, false, true);
   //time++;
   //if ( time < max_time ){
