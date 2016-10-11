@@ -37,7 +37,7 @@ try{
 catch(e){
   console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!');
   console.error(e);
-  return;
+  process.exit();
 }
 
 var client  = mqtt.connect('mqtt://' + mqtt_server);
