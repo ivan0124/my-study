@@ -155,7 +155,7 @@ function getSensorHubInfo(sensorHubPath, sensorInfoObj){
     if (sensorInfoObj.hasOwnProperty(key)) {
       //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
       if (typeof sensorInfoObj[key] === 'object' ){
-        getSensorHubInfo(sensorInfoObj[key]);
+        getSensorHubInfo(sensorHubPath, sensorInfoObj[key]);
       }
     }
   }    
