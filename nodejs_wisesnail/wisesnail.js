@@ -30,7 +30,7 @@ process.stdin.resume();
 
 function timeout(){
   
-  console.log('timeout....' + time);
+  //console.log('timeout....' + time);
   sendSensorHubMessage(false, false, true);
   time++;
   if ( time < max_time ){
@@ -381,8 +381,8 @@ function sendSensorHubInfoMsg(ConnFilePath, SensorHubFileName){
     return;
   }
 
-  console.log('sensorHubPath = ' + sensorHubPath);
-  console.log(JSON.stringify(sensorInfoObj));
+  //console.log('sensorHubPath = ' + sensorHubPath);
+  //console.log(JSON.stringify(sensorInfoObj));
   getSensorHubInfo(sensorHubPath, sensorInfoObj);
   //
   var msgObj={};
