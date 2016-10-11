@@ -339,7 +339,8 @@ function sendSensorHubConnectMsg( ConnFilePath, SensorHubFileName ){
   //send connect message
   var topic = '/cagent/admin/' + msgObj.susiCommData.devID + '/agentinfoack';
   var message = JSON.stringify(msgObj);
-  client.publish(topic, message);  
+  sendToMqttBroker(topic, message); 
+  //client.publish(topic, message);  
   
 }
 
@@ -356,7 +357,8 @@ function sendSensorHubInfoSpecMsg( ConnFilePath, SensorHubFileName ){
   //send infoSpec message
   var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
   var message = JSON.stringify(msgObj);
-  client.publish(topic, message);    
+  sendToMqttBroker(topic, message);  
+  //client.publish(topic, message);    
   
 }
 
@@ -387,7 +389,8 @@ function sendSensorHubInfoMsg(ConnFilePath, SensorHubFileName){
   //
   var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/deviceinfo';
   var message = JSON.stringify(msgObj);
-  client.publish(topic, message);
+  sendToMqttBroker(topic, message); 
+  //client.publish(topic, message);
   
 }
 
