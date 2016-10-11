@@ -82,18 +82,18 @@ function sendToMqttBroker(topic, message){
   client.publish(topic, message);
 }
 
-function vgw_send_info_spec( msgObj ){
+function sendVGWInfoSpec( msgObj ){
   //
   var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
   var message = JSON.stringify(msgObj);
-  client.publish(topic, message);
+  sendToMqttBroker(topic, message);
 }
 
-function vgw_send_info( msgObj ){
+function sendVGWInfo( msgObj ){
   
   var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/deviceinfo';
   var message = JSON.stringify(msgObj);
-  client.publish(topic, message);  
+   sendToMqttBroker(topic, message);  
 }
 
 function getSensorHubInfo(sensorInfoObj){
@@ -308,16 +308,18 @@ function sendVGW( mac, connectStatus ){
   
   var infoSpecMsgObj={};
   createConnectivityMsg(infoSpecMsgObj, mac, 'infoSpec', infoSpecObj);  
-  var topic = '/cagent/admin/' + infoSpecMsgObj.susiCommData.agentID + '/agentactionreq';
-  var message = JSON.stringify(infoSpecMsgObj);  
-  sendToMqttBroker(topic, message);
+  //var topic = '/cagent/admin/' + infoSpecMsgObj.susiCommData.agentID + '/agentactionreq';
+  //var message = JSON.stringify(infoSpecMsgObj);  
+  //sendToMqttBroker(topic, message);
+  sendVGWInfoSpec(infoSpecMsgObj);
   //vgw_send_info_spec(infoSpecMsgObj);
   
   //send VGW info
   var infoMsgObj={};
   createConnectivityMsg(infoMsgObj, mac, 'data', infoObj);
-  var topic = '/cagent/admin/' + infoMsgObj.susiCommData.agentID + '/deviceinfo';
-  var message = JSON.stringify(infoMsgObj);  
+  //var topic = '/cagent/admin/' + infoMsgObj.susiCommData.agentID + '/deviceinfo';
+  //var message = JSON.stringify(infoMsgObj);
+  sendVGWInfo(infoMsgObj);
   //vgw_send_info(infoMsgObj);
  
 }
