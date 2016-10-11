@@ -38,18 +38,6 @@ function timeout(){
   }
 }
 
-        try{
-          var mqtt_server = fs.readFileSync( 'mqtt_server.conf', 'utf8');
-        }
-        catch(e){
-          console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-          console.error(e);
-          return;
-        }
-
-var client  = mqtt.connect('mqtt://' + mqtt_server);
-client.queueQoSZero = false;
-
 client.on('connect', function () {
   console.log('[wise_snail] mqtt connect to ' + mqtt_server );
   sendAllVGWMessage('');
@@ -472,4 +460,16 @@ module.exports = {
   },
 
 };
+
+try{
+  var mqtt_server = fs.readFileSync( 'mqtt_server.conf', 'utf8');
+}
+catch(e){
+  console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+  console.error(e);
+  return;
+}
+
+var client  = mqtt.connect('mqtt://' + mqtt_server);
+client.queueQoSZero = false;
 
