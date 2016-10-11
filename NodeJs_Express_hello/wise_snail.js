@@ -19,6 +19,7 @@ keypress(process.stdin);
 process.stdin.on('keypress', function (ch, key) {
   console.log('got "keypress"', key);
   if (key && key.ctrl && key.name == 'c') {
+    sendAllVGWMessage('disconnected');
     process.exit();
   }
 });
@@ -208,10 +209,10 @@ function sendVGW( mac, connectStatus ){
   var msgObj = JSON.parse(fs.readFileSync( VGW_path + 'connect.msg', 'utf8'));
   
   if ( connectStatus === 'connected' ){
-    msgObj.susiCommData.status = true;
+    msgObj.susiCommData.status = 1;
   }
   if ( connectStatus === 'disconnected' ){
-    msgObj.susiCommData.status = false;
+    msgObj.susiCommData.status = 0;
   }  
   
   msgObj.susiCommData.devID = VGW_ID_PREFIX + mac;
