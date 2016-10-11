@@ -99,11 +99,12 @@ function sendVGWInfo( msgObj ){
 }
 
 function getSensorHubInfo(sensorHubPath, sensorInfoObj){
+  console.log('getSensorHubInfo...........................');
   
   for (key in sensorInfoObj) {
     if (sensorInfoObj.hasOwnProperty(key)) {
       if ( key === 'n' ){
-        //console.log( 'key=======>' + key + ', keyVal=======>' + sensorInfoObj[key]);
+        console.log( 'key=======>' + key + ', keyVal=======>' + sensorInfoObj[key]);
         try{
           var temp = fs.readFileSync( sensorHubPath + sensorInfoObj[key] + '.dat', 'utf8');
           //remove /r/n
@@ -368,6 +369,7 @@ function sendSensorHubInfoSpecMsg( ConnFilePath, SensorHubFileName ){
 
 function sendSensorHubInfoMsg(ConnFilePath, SensorHubFileName){
   
+  console.log('sendSensorHubMessage...........................');
   var sensorHubMAC = SensorHubFileName.split('_')[1];
   var sensorHubPath = ConnFilePath + '/' + SensorHubFileName + '/';
   try{
