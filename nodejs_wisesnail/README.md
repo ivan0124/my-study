@@ -1,15 +1,18 @@
 #How to install Express
 
-1.Now install Express in the `NodeJs_Express_hello` directory and save it in the dependencies list. For example:
+1.Now install Express in the `nodejs_wisesnail` directory and save it in the dependencies list. For example:
 <pre>
-$ cd  ~NodeJs_Express_hello
+$ cd  ~nodejs_wisesnail
 $ npm install express --save
 $ npm install mqtt --save
 $ npm install hashmap --save
+$ npm install keypress -- save
 </pre>
 
 #How to test
+1. Launch MQTT broker
+2. Launch wisesnail
 <pre>
-$node hello.js
+$node wisesnail.js
 </pre>
 
