@@ -11,7 +11,7 @@ var max_time = 0;
 var timer_interval = 2000;
 
 var keypress = require('keypress');
-/*
+
 // make `process.stdin` begin emitting "keypress" events
 keypress(process.stdin);
 
@@ -26,16 +26,16 @@ process.stdin.on('keypress', function (ch, key) {
 
 process.stdin.setRawMode(true);
 process.stdin.resume();
-*/
+
 
 function timeout(){
   
   //console.log('timeout....' + time);
   sendSensorHubMessage(false, false, true);
-  time++;
-  if ( time < max_time ){
+  //time++;
+  //if ( time < max_time ){
     timerknock = setTimeout( timeout, timer_interval);
-  }
+  //}
 }
 
 var client  = mqtt.connect('mqtt://127.0.0.1');
