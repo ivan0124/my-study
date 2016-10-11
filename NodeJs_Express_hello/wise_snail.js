@@ -43,6 +43,16 @@ client.queueQoSZero = false;
 
 client.on('connect', function () {
   console.log('[wise_snail] mqtt connect !!!!');
+  sendAllVGWMessage('');
+  //
+  sendSensorHubMessage(true, true, true);
+  time = 0;
+  max_time = 0;
+  if ( typeof timerknock !== 'undefined'){
+    clearTimeout(timerknock);
+  }
+  timerknock = setTimeout( timeout, timer_interval);   
+  
 })
 
 
@@ -429,11 +439,11 @@ module.exports = {
 };
 
 function main(){
+  /*
     console.log('[wise_snail] start');
     //
-   sendAllVGWMessage('');
+    sendAllVGWMessage('');
     //
-  /*
     sendSensorHubMessage(true, true, true);
     time = 0;
     max_time = 0;
