@@ -27,6 +27,17 @@ process.stdin.on('keypress', function (ch, key) {
 process.stdin.setRawMode(true);
 process.stdin.resume();
 
+try{
+  var mqtt_server = fs.readFileSync( 'mqtt_server.conf', 'utf8');
+}
+catch(e){
+  console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+  console.error(e);
+  return;
+}
+
+var client  = mqtt.connect('mqtt://' + mqtt_server);
+client.queueQoSZero = false;
 
 function timeout(){
   
@@ -461,15 +472,4 @@ module.exports = {
 
 };
 
-try{
-  var mqtt_server = fs.readFileSync( 'mqtt_server.conf', 'utf8');
-}
-catch(e){
-  console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-  console.error(e);
-  return;
-}
-
-var client  = mqtt.connect('mqtt://' + mqtt_server);
-client.queueQoSZero = false;
 
