@@ -75,11 +75,12 @@ client.on('message', function (topic, message) {
 
 function sendToMqttBroker(topic, message){
   
+  /*
   console.log('--------------------------send mqtt message------------------------------');
   console.log('topic=' + topic.toString() );
   console.log('msg=' + message.toString());
   console.log('-------------------------------------------------------------------------');
-  
+  */
   client.publish(topic, message);
 }
 
