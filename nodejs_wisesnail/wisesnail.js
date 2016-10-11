@@ -29,6 +29,10 @@ process.stdin.resume();
 
 try{
   var mqtt_server = fs.readFileSync( 'mqtt_server.conf', 'utf8');
+  //remove /r/n
+  var mqtt_server = mqtt_server.toString().replace(/(?:\\[rn])+/g,'');
+  //remove space
+  var mqtt_server = mqtt_server.toString().replace(/\s+/g,'');  
 }
 catch(e){
   console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!');
