@@ -16,3 +16,4 @@ $node wisesnail.js
 
 #Folder/File mapping introduction
 1.
+![result link](https://github.com/ivan0124/my-study/blob/master/nodejs_wisesnail/images/20161011_nodejs_wisesnail_1.png)
