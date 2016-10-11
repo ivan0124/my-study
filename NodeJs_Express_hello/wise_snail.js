@@ -23,8 +23,8 @@ process.stdin.on('keypress', function (ch, key) {
   }
 });
 
-//process.stdin.setRawMode(true);
-//process.stdin.resume();
+process.stdin.setRawMode(true);
+process.stdin.resume();
 
 function timeout(){
   
