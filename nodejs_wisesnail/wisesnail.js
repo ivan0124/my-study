@@ -29,7 +29,7 @@ process.stdin.resume();
 
 function timeout(){
   
-  //console.log('timeout....' + time);
+  console.log('timeout....' + time);
   //var mac='000E40000001';
   sendSensorHubMessage(false, false, true);
   time++;
