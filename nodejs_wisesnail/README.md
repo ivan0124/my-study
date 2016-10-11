@@ -19,3 +19,4 @@ $ npm install keypress -- save
 <pre>
 $node wisesnail.js
 </pre>
+4. `Ctrl+C` to disconnect device from RMM server
