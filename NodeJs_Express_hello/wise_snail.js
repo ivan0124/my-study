@@ -21,7 +21,7 @@ function timeout(){
   }
 }
 
-client  = mqtt.connect('mqtt://127.0.0.1');
+var client  = mqtt.connect('mqtt://127.0.0.1');
 client.queueQoSZero = false;
 
 client.on('connect', function () {
