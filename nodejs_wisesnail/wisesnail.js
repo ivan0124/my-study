@@ -38,7 +38,16 @@ function timeout(){
   }
 }
 
-var client  = mqtt.connect('mqtt://127.0.0.1');
+        try{
+          var mqtt_server = fs.readFileSync( 'mqtt_server.conf', 'utf8');
+        }
+        catch(e){
+          console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+          console.error(e);
+          return;
+        }
+
+var client  = mqtt.connect('mqtt://' + mqtt_server);
 client.queueQoSZero = false;
 
 client.on('connect', function () {
