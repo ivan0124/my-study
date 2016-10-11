@@ -10,8 +10,6 @@ var time = 0;
 var max_time = 0;
 var timer_interval = 2000;
 
-start();
-
 function timeout(){
   
   //console.log('timeout....' + time);
@@ -400,3 +398,5 @@ module.exports = {
   },
 
 };
+
+start;
