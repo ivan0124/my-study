@@ -17,7 +17,7 @@ keypress(process.stdin);
 
 // listen for the "keypress" event
 process.stdin.on('keypress', function (ch, key) {
-  console.log('got "keypress"', key);
+  //console.log('got "keypress"', key);
   if (key && key.ctrl && key.name == 'c') {
     sendAllVGWMessage('disconnected');
     process.exit();
@@ -58,7 +58,7 @@ client.on('connect', function () {
 
 client.on('message', function (topic, message) {
   // message is Buffer 
-  console.log('--------------------------------------------------------------');
+  console.log('--------------------------receive mqtt message------------------------------');
   console.log('topic=' + topic.toString() );
   console.log('msg=' + message.toString());
   
@@ -68,7 +68,7 @@ client.on('message', function (topic, message) {
       console.error(e);
       return;
   }
-  console.log('--------------------------------------------------------------');
+  console.log('-----------------------------------------------------------------------------');
   
 })
 
@@ -150,7 +150,7 @@ function getSensorHubInfo(sensorInfoObj){
 }
 
 function createConnectivityMsg( msgObj, vgw_mac, infoKeyName, connObj ){
-  console.log('createConnectivityMsg...........................');
+  //console.log('createConnectivityMsg...........................');
 
   msgObj.susiCommData ={};
   msgObj.susiCommData[infoKeyName] = {};
@@ -201,9 +201,9 @@ function createConnectivityMsg( msgObj, vgw_mac, infoKeyName, connObj ){
 function sendAllVGWMessage( connectStatus ){ 
   
   var vgwFiles = fs.readdirSync(WISESNAIL_DATAFOLDER);
-  console.log('vgwFiles.length = ' + vgwFiles.length);
+  //console.log('vgwFiles.length = ' + vgwFiles.length);
   for (var i=0 ; i< vgwFiles.length ; i++){
-    console.log('name = ' + vgwFiles[i]);
+    //console.log('name = ' + vgwFiles[i]);
     var regex = new RegExp("^VGW");
     if( regex.test(vgwFiles[i]) ){
       sendVGW(vgwFiles[i].split('_')[1], connectStatus);
@@ -248,9 +248,9 @@ function sendVGW( mac, connectStatus ){
   var infoSpecObj = {};
   var infoObj = {};
   var connfiles = fs.readdirSync(VGW_path);
-  console.log('connfiles.length = ' + connfiles.length);
+  //console.log('connfiles.length = ' + connfiles.length);
   for (var i=0 ; i< connfiles.length ; i++){
-    console.log('name = ' + connfiles[i]);
+    //console.log('name = ' + connfiles[i]);
     var regex = new RegExp("^CONN");
     if( regex.test(connfiles[i]) ){
       var connObj = 'conn' + i;
@@ -273,12 +273,12 @@ function sendVGW( mac, connectStatus ){
       
       var eObj = infoObj[connObj].info.e[0];
       eObj.sv = '';
-      console.log('senhubfiles.length = ' + senhubfiles.length);
+      //console.log('senhubfiles.length = ' + senhubfiles.length);
       for (var j=0 ; j< senhubfiles.length ; j++){
-        console.log('name = ' + senhubfiles[j]);
+        //console.log('name = ' + senhubfiles[j]);
         var senhubRegex = new RegExp("^SENSORHUB");
         if( senhubRegex.test(senhubfiles[j]) ){
-          console.log('SendorHub name = ' + senhubfiles[j]);
+          //console.log('SendorHub name = ' + senhubfiles[j]);
           
           if ( eObj.sv.length === 0 ){
             eObj.sv = SENHUB_ID_PREFIX + senhubfiles[j].split('_')[1];
@@ -377,13 +377,13 @@ function sendSensorHubInfoMsg(ConnFilePath, SensorHubFileName){
 
 function sendSensorHubMessage( sendConnectMsg, sendInfoSpecMsg, sendInfoMsg){
   
-  console.log('sendSensorHubMessage...........................');
+  //console.log('sendSensorHubMessage...........................');
   var regex = new RegExp("^VGW");
   var connRegex = new RegExp("^CONN");
   var sensorhubRegex = new RegExp("^SENSORHUB");
   //
   var vgwFiles = fs.readdirSync(WISESNAIL_DATAFOLDER);
-  console.log('vgwFiles.length = ' + vgwFiles.length);
+  //console.log('vgwFiles.length = ' + vgwFiles.length);
   for (var i=0 ; i< vgwFiles.length ; i++){
       
     if( regex.test(vgwFiles[i]) ){
@@ -422,7 +422,7 @@ function sendSensorHubMessage( sendConnectMsg, sendInfoSpecMsg, sendInfoMsg){
 
 module.exports = {
   start: function() {
-    console.log('[wise_snail] start');
+    //console.log('[wise_snail] start');
     //
     sendAllVGWMessage('');
     //
