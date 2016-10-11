@@ -16,7 +16,8 @@ var stdin = process.openStdin();
 stdin.on('keypress', function (chunk, key) {
   //process.stdout.write('Get Chunk: ' + chunk + '\n');
   //if (key && key.ctrl && key.name == 'c') process.exit();
-  console.log('[wise_snail] keypress..............');
+  if (key && key.name == 'd') process.exit();
+  //console.log('[wise_snail] keypress..............');
 });
 
 function timeout(){
