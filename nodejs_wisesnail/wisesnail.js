@@ -32,10 +32,10 @@ function timeout(){
   
   console.log('timeout....' + time);
   sendSensorHubMessage(false, false, true);
-  //time++;
-  //if ( time < max_time ){
+  time++;
+  if ( time < max_time ){
     timerknock = setTimeout( timeout, timer_interval);
-  //}
+  }
 }
 
 var client  = mqtt.connect('mqtt://127.0.0.1');
