@@ -1,7 +1,7 @@
 var express = require('express');
 var greetings = require("./greetings.js");
 //var ws = require('./wise_snail.js');
-var ws_data = require('./wise_snail_data.js');
+var ws_data = require('./wisesnail_msgmgr.js');
 var HashMap = require('hashmap').HashMap;
 var map = new HashMap();
 var app = express();
