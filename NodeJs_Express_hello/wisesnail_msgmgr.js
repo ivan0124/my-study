@@ -212,8 +212,7 @@ client.on('message', function (topic, message) {
 })
 
 function getSensorHubInfo(device_id, resultObj){
-  
-  console.log('getSensorHubInfo XXXXXXXXXXXXXXXXXXXX');          
+          
   vgw_map.forEach(function(obj, key) {
     console.log('XXXXXXXXXXXXXXXX key = ' + key); 
     var infoObj = JSON.parse ( obj.dev_info );
