@@ -85,7 +85,7 @@ client.on('message', function (topic, message) {
       {
           console.log('[' + device_id + ']' + ': vgw_info_spec');
           if ( vgw_map.has(device_id) === true ) {
-                console.log('=====================================>');
+                console.log('****** =====================================>');
                 var vgw = vgw_map.get(device_id);
                 if (typeof vgw !== 'undefined') {
                   vgw.dev_info_spec = message.toString();
