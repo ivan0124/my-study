@@ -147,8 +147,8 @@ client.on('message', function (topic, message) {
               sensorhub.connect = message.toString();            
               console.log('[' + device_id + ']' + ': add sensorHubMap key pairs');
               //find gateway and connectivity
-              var resultObj={ vgw_id: '', conn_id: ''};
-              getSensorHubInfo(device_id, resultObj);
+              var outObj={ vgw_id: '', conn_id: ''};
+              getSensorHubInfo(device_id, outObj);
               //
               sensorHubMap.set(device_id, sensorhub );
           }
@@ -261,12 +261,13 @@ function getSensorHubInfo(device_id, resultObj){
     console.log('XXXXXXXXXXXXXXXX key = ' + key); 
     var infoObj = JSON.parse ( obj.dev_info );
     var outObj = {
-                  key:'Info', 
-                  is_n_sv_format: false, 
+                  key:'SenHubList', 
+                  is_n_sv_format: true, 
                   result:''
                  };
     getObjKeyValue(infoObj, outObj);
-    console.log('XXXXXXXXXXXXXXXX outObj = ' + outObj.result); 
+    console.log('XXXXXXXXXXXXXXXX outObj = ' + outObj.result);
+    //sensroList = outObj.result.split(',');
   });
                
 }
