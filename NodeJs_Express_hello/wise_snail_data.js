@@ -294,9 +294,9 @@ function remove_vgw( vgw_id ){
     
     console.log('Show all conn_map. count= ' + conn_map.count());
     //console.log('getStatusFromMsg=' + getStatusFromMsg(''));
-    conn_map.remove('0007000E40ABCD32');
-    conn_map.remove('0007000E40ABCD31');
-    conn_map.remove('0007000E40ABCD55');
+    console.log ( '0007000E40ABCD32 hash = ' +conn_map.hash('0007000E40ABCD32') );
+    console.log( '0007000E40ABCD31 hash =' + conn_map.hash('0007000E40ABCD31'));
+    console.log( '0007000E40ABCD55 hash =' + conn_map.hash('0007000E40ABCD55') );
     conn_map.forEach(function(obj, key) {
       console.log('key = ' + key); 
     });     
