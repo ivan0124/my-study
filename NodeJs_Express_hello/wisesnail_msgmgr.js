@@ -93,6 +93,7 @@ client.on('message', function (topic, message) {
                     //copy obj to infoObj
                     var infoObj = JSON.parse(JSON.stringify(jsonObj.susiCommData.infoSpec.IoTGW));
                     getConnectivity(device_id ,0, 'null', infoObj);
+                    console.log('conn_id = ' + vgw.conn_id);
                     //conn_map_add_connectivity(device_id ,0, 'null', infoObj);
                 }
           }
@@ -454,6 +455,16 @@ function getConnectivity( vgw_id, layer, connType, infoObj ){
               if ( layer === 3 ){
                  console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
                  var device_id=infoObj[key];
+                 if ( vgw_map.has(vgw_id) === ture ){
+                   var vgw = vgw_map.get(vgw_id);
+                   if ( vgw.conn_id === 'null'){
+                     vgw.conn_id = device_id;
+                   }
+                   else{
+                     vgw.conn_id += ',';
+                     vgw.conn_id += device_id;
+                   }
+                 }
                  /*
                  if ( conn_map.has(device_id) === false ) {
                      //console.log('[' + device_id + ']' + ': remove vgw_map');
