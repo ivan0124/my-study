@@ -218,7 +218,7 @@ function getObjKeyValue( jsonObj, Key, resultValue, isKey_n_sv_format ){
           if ( isKey_n_sv_format === true ){
             if ( jsonObj[key] === Key ){
               console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
-              resultValue = jsonObj[key];
+              resultValue = jsonObj['sv'];
             }
           }
           else {
