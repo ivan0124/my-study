@@ -6,6 +6,7 @@ var HashMap = require('hashmap').HashMap;
 var map = new HashMap();
 var app = express();
 //Mqtt
+/*
 var mqtt = require('mqtt');
 //var client  = mqtt.connect('mqtt://test.mosquitto.org');
 var client  = mqtt.connect('mqtt://127.0.0.1');
@@ -22,6 +23,7 @@ client.on('message', function (topic, message) {
   console.log(message.toString())
   //client.end()
 })
+*/
 
 /*
 app.get('/', function (req, res) {
