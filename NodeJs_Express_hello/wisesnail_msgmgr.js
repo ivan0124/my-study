@@ -88,6 +88,7 @@ client.on('message', function (topic, message) {
                 console.log('****** =====================================>');
                 var vgw = vgw_map.get(device_id);
                 if (typeof vgw !== 'undefined') {
+                  console.log('****** gggggggggggggggggggggggg>');
                   vgw.dev_info_spec = message.toString();
                   //add conn_map here
                     //var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
