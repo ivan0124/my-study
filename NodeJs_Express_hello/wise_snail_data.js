@@ -28,9 +28,9 @@ client.on('connect', function () {
 client.on('message', function (topic, message) {
   // message is Buffer 
 
-  console.log('--------------------------------------------------------------');
-  console.log('topic=' + topic.toString() );
-  console.log('msg=' + message.toString());
+  //console.log('--------------------------------------------------------------');
+  //console.log('topic=' + topic.toString() );
+  //console.log('msg=' + message.toString());
 
   try {
       var re = /\0/g;
@@ -168,7 +168,7 @@ client.on('message', function (topic, message) {
       console.log('default');
       break;
   }
-  console.log('--------------------------------------------------------------');
+  //console.log('--------------------------------------------------------------');
   
 })
 
