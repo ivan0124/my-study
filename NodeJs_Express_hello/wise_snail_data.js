@@ -291,25 +291,13 @@ function getOSType( vgw_id ){
 function remove_vgw( vgw_id ){
 
     console.log('--------------------------------------------------------------');
-    conn_map.remove('0007000E40ABCD31');
+    
     console.log('Show all conn_map. count= ' + conn_map.count());
     //console.log('getStatusFromMsg=' + getStatusFromMsg(''));
-    var tmp_vgw_id='';
     conn_map.forEach(function(obj, key) {
-      if (typeof obj !== 'undefined') {
-          if ( tmp_vgw_id !== obj.vgw_id){
-            console.log('(VGW):'+obj.vgw_id );
-            tmp_vgw_id = obj.vgw_id;
-          }
-          console.log(' |-(Connectivity)('+ obj.os_type +'):' + key );
-          obj.sensor_hub_list.forEach(function(senObj, senKey){
-             if (typeof senObj !== 'undefined'){
-               var status= getStatusFromMsg( senObj.connect );
-               console.log('    |--(SensorHub)('+ status + '):' + senKey);
-             }
-          });
-      }
+      conn_map.remove(key); 
     });     
+    console.log('Show all conn_map. count= ' + conn_map.count());
     console.log('--------------------------------------------------------------');    
 /*  
   console.log('vgw_map_remove_vgw =================');
