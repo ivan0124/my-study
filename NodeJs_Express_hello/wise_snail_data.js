@@ -154,7 +154,7 @@ client.on('message', function (topic, message) {
       }
     case msgType.sen_info:
       {
-          console.log('[' + device_id + ']' + ': sen_info');
+          //console.log('[' + device_id + ']' + ': sen_info');
           var res = sensor_hub_map_get_senhub( device_id, function ( senObj ){ 
             //console.log('[senObj]: ' + senObj );
             senObj.dev_info = message.toString();
