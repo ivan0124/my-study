@@ -1,6 +1,6 @@
 var express = require('express');
 var greetings = require("./greetings.js");
-var ws = require('./wise_snail.js');
+//var ws = require('./wise_snail.js');
 var ws_data = require('./wise_snail_data.js');
 var HashMap = require('hashmap').HashMap;
 var map = new HashMap();
@@ -23,7 +23,7 @@ client.on('message', function (topic, message) {
   //client.end()
 })
 
-
+/*
 app.get('/', function (req, res) {
   ws.test();
   res.send('test');
@@ -32,6 +32,7 @@ app.get('/start', function (req, res) {
   ws.start();
   res.send('start');
 });
+*/
 
 app.get('/show_all_vgw_map', function (req, res) {
   ws_data.show_all_vgw_map();
