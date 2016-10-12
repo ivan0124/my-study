@@ -292,20 +292,16 @@ function remove_vgw( vgw_id ){
 
     console.log('--------------------------------------------------------------');
     
-    console.log('Show all conn_map. count= ' + conn_map.count());
+    console.log('Show all vgw_map. count= ' + vgw_map.count());
     //console.log('getStatusFromMsg=' + getStatusFromMsg(''));
     //console.log ( '0007000E40ABCD32 hash = ' +conn_map.hash('0007000E40ABCD32') );
     //console.log( '0007000E40ABCD31 hash =' + conn_map.hash('0007000E40ABCD31'));
     //console.log( '0007000E40ABCD55 hash =' + conn_map.hash('0007000E40ABCD55') );
-    conn_map.get('0007000E40ABCD31').sensor_hub_list.clear();
-    conn_map.remove('0007000E40ABCD31');
-    conn_map.get('0007000E40ABCD32').sensor_hub_list.clear();
-    conn_map.remove('0007000E40ABCD32');  
   
-    conn_map.forEach(function(obj, key) {
+    vgw_map.forEach(function(obj, key) {
       console.log('key = ' + key); 
     });     
-    console.log('Show all conn_map. count= ' + conn_map.count());
+    console.log('Show all vgw_map. count= ' + vgw_map.count());
     console.log('--------------------------------------------------------------');    
 /*  
   console.log('vgw_map_remove_vgw =================');
