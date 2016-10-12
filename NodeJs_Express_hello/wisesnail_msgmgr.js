@@ -217,20 +217,20 @@ function getObjKeyValue( jsonObj, outObj){
       if (jsonObj.hasOwnProperty(key)) {
           if ( outObj.is_n_sv_format === true ){
             if ( jsonObj[key] === outObj.key ){
-              console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
-              console.log( 'key =======>' + 'sv' + ', keyVal=======>' + jsonObj['sv']);
-              //outObj.result = jsonObj['sv'];
+              //console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
+              //console.log( 'key =======>' + 'sv' + ', keyVal=======>' + jsonObj['sv']);
               if ( typeof jsonObj['sv'] === 'object'){ 
                 outObj.result = JSON.stringify(jsonObj['sv']);
               }
               else{
                 outObj.result = jsonObj['sv'];
-              }             
+              }
+              return;
             }
           }
           else {
             if ( key === outObj.key ){
-              console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
+              //console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
               if ( typeof jsonObj[key] === 'object'){ 
                 outObj.result = JSON.stringify(jsonObj[key]);
               }
@@ -261,8 +261,8 @@ function getSensorHubInfo(device_id, resultObj){
     console.log('XXXXXXXXXXXXXXXX key = ' + key); 
     var infoObj = JSON.parse ( obj.dev_info );
     var outObj = {
-                  key:'Info', 
-                  is_n_sv_format: false, 
+                  key:'SenHubList', 
+                  is_n_sv_format: true, 
                   result:''
                  };
     getObjKeyValue(infoObj, outObj);
