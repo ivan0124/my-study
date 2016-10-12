@@ -498,6 +498,7 @@ function getConnectivity( vgw_id, layer, connType, infoObj ){
    return;    
 }
 
+/*
 function conn_map_add_connectivity( vgw_id, layer, connType, infoObj ){
   
   //console.log( 'Start-------------------------------------------------');
@@ -543,6 +544,7 @@ function conn_map_add_connectivity( vgw_id, layer, connType, infoObj ){
    layer--;
    return;    
 }
+*/
 
 function is_ip_valid( ip ){
   
