@@ -255,7 +255,7 @@ function getStatusFromMsg( connectMsg ){
 
 
 function getOSType( vgw_id ){
-/*
+
   console.log('[getOSType]vgw_id=' + vgw_id);
   if ( vgw_map.has(vgw_id) === false ) {
     console.log('[getOSType] vgw_map.has(vgw_id) === false');
@@ -283,15 +283,15 @@ function getOSType( vgw_id ){
     console.log('[' + vgw_id + ']' + ':' + osType.none_ip_base);
     return osType.none_ip_base;
   }  
-  */
-  return 'none_ip_base';
+  
+  return 'null';
   
 }
 
 function remove_vgw( vgw_id ){
 
     console.log('--------------------------------------------------------------');
-  /*
+  
     console.log('Show all vgw_map. count= ' + vgw_map.count());
     vgw_map.forEach(function(obj, key) {
       console.log('key = ' + key); 
@@ -300,7 +300,6 @@ function remove_vgw( vgw_id ){
       }
     });     
     console.log('Show all vgw_map. count= ' + vgw_map.count());
-    */
     console.log('--------------------------------------------------------------');    
     console.log('Show all conn_map. count= ' + conn_map.count());
     conn_map.forEach(function(obj, key) {
