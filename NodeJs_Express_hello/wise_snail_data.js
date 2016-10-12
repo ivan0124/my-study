@@ -297,7 +297,7 @@ function remove_vgw( vgw_id ){
     //console.log ( '0007000E40ABCD32 hash = ' +conn_map.hash('0007000E40ABCD32') );
     //console.log( '0007000E40ABCD31 hash =' + conn_map.hash('0007000E40ABCD31'));
     //console.log( '0007000E40ABCD55 hash =' + conn_map.hash('0007000E40ABCD55') );
-  
+    vgw_map.remove('0000000E4CABCD77');
     vgw_map.forEach(function(obj, key) {
       console.log('key = ' + key); 
     });     
