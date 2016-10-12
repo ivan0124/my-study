@@ -538,7 +538,7 @@ module.exports = {
     });
     */
     console.log('--------------------------------------------------------------');
-    console.log('Show all conn_map');
+    console.log('Show all conn_map. count= ' + conn_map.count());
     //console.log('getStatusFromMsg=' + getStatusFromMsg(''));
     var tmp_vgw_id='';
     conn_map.forEach(function(obj, key) {
