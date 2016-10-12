@@ -289,7 +289,7 @@ function getOSType( vgw_id ){
 }
 
 function remove_vgw( vgw_id ){
-
+/*
     console.log('--------------------------------------------------------------');
     console.log('Show all vgw_map. count= ' + vgw_map.count());
     vgw_map.forEach(function(obj, key) {
@@ -299,6 +299,7 @@ function remove_vgw( vgw_id ){
       }
     });     
     console.log('Show all vgw_map. count= ' + vgw_map.count());
+*/    
     console.log('--------------------------------------------------------------');    
     console.log('Show all conn_map. count= ' + conn_map.count());
     conn_map.forEach(function(obj, key) {
