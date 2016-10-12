@@ -291,6 +291,7 @@ function getOSType( vgw_id ){
 function remove_vgw( vgw_id ){
 
     console.log('--------------------------------------------------------------');
+    conn_map.remove('0007000E40ABCD31');
     console.log('Show all conn_map. count= ' + conn_map.count());
     //console.log('getStatusFromMsg=' + getStatusFromMsg(''));
     var tmp_vgw_id='';
