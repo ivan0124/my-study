@@ -219,7 +219,7 @@ function getObjKeyValue( jsonObj, Key, resultValue, isKey_n_sv_format ){
             if ( jsonObj[key] === Key ){
               console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
               console.log( 'key =======>' + 'sv' + ', keyVal=======>' + jsonObj['sv']);
-              resultValue = jsonObj['sv'];
+              resultValue.res = jsonObj['sv'];
             }
           }
           else {
@@ -249,9 +249,9 @@ function getSensorHubInfo(device_id, resultObj){
   vgw_map.forEach(function(obj, key) {
     console.log('XXXXXXXXXXXXXXXX key = ' + key); 
     var infoObj = JSON.parse ( obj.dev_info );
-    var resultValue='';
+    var resultValue = {};
     getObjKeyValue(infoObj, 'SenHubList', resultValue, true);
-    console.log('XXXXXXXXXXXXXXXX resultValue = ' + resultValue); 
+    console.log('XXXXXXXXXXXXXXXX resultValue = ' + resultValue.res); 
   });
                
 }
