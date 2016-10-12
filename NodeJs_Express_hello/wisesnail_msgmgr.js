@@ -211,21 +211,21 @@ client.on('message', function (topic, message) {
   
 })
 
-function getObjKeyValue( jsonObj, Key, resultValue, isKey_n_sv_format ){
+function getObjKeyValue( jsonObj, outObj){
   //console.log( 'listObj Start-------------------------------------------------');
   for (key in jsonObj) {
       if (jsonObj.hasOwnProperty(key)) {
-          if ( isKey_n_sv_format === true ){
+          if ( outObj.is_n_sv_format === true ){
             if ( jsonObj[key] === Key ){
               console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
               console.log( 'key =======>' + 'sv' + ', keyVal=======>' + jsonObj['sv']);
-              resultValue.res = jsonObj['sv'];
+              outObj.result = jsonObj['sv'];
             }
           }
           else {
             if ( key === Key ){
               console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
-              resultValue = jsonObj[key];
+              outObj = jsonObj[key];
               return;
             }
           }
@@ -236,7 +236,7 @@ function getObjKeyValue( jsonObj, Key, resultValue, isKey_n_sv_format ){
       if (jsonObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
           if (typeof jsonObj[key] === 'object' ){
-              getObjKeyValue( jsonObj[key], Key, resultValue, isKey_n_sv_format);
+              getObjKeyValue( jsonObj[key], outObj);
           }
       }
    }  
@@ -249,9 +249,13 @@ function getSensorHubInfo(device_id, resultObj){
   vgw_map.forEach(function(obj, key) {
     console.log('XXXXXXXXXXXXXXXX key = ' + key); 
     var infoObj = JSON.parse ( obj.dev_info );
-    var resultValue = {};
-    getObjKeyValue(infoObj, 'SenHubList', resultValue, true);
-    console.log('XXXXXXXXXXXXXXXX resultValue = ' + resultValue.res); 
+    var outObj = {
+                  key:'SenHubList', 
+                  is_n_sv_format: true, 
+                  result:''
+                 };
+    getObjKeyValue(infoObj, outObj);
+    console.log('XXXXXXXXXXXXXXXX outObj = ' + outObj.result); 
   });
                
 }
