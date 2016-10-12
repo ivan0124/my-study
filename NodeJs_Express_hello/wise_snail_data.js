@@ -310,18 +310,7 @@ function remove_vgw( vgw_id ){
       }
     });     
     console.log('Show all conn_map. count= ' + conn_map.count());
-    console.log('--------------------------------------------------------------'); 
-    var sensor_hub_list = conn_map.get('0007000E40ABCD31');
-    console.log('Show all sensor_hub_list. count= ' + sensor_hub_list.count());
-    sensor_hub_list.forEach(function(obj, key) {
-      console.log('key = ' + key); 
-      if ( vgw_id === obj.vgw_id ){
-         console.log('sensor_hub_list.remove() key = ' + key);
-         sensor_hub_list.remove(key);
-      }
-    });     
-    console.log('Show all sensor_hub_list. count= ' + conn_map.count());
-    console.log('--------------------------------------------------------------');    
+    console.log('--------------------------------------------------------------');   
   
 /*  
   console.log('vgw_map_remove_vgw =================');
