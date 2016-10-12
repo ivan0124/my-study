@@ -295,6 +295,7 @@ function remove_vgw( vgw_id ){
     console.log('Show all conn_map. count= ' + conn_map.count());
     //console.log('getStatusFromMsg=' + getStatusFromMsg(''));
     conn_map.forEach(function(obj, key) {
+      console.log('key = ' + key);
       conn_map.remove(key); 
     });     
     console.log('Show all conn_map. count= ' + conn_map.count());
