@@ -88,13 +88,13 @@ client.on('message', function (topic, message) {
                 console.log('****** =====================================>');
                 var vgw = vgw_map.get(device_id);
                 if (typeof vgw !== 'undefined') {
-                  console.log('****** gggggggggggggggggggggggg>');
                   vgw.dev_info_spec = message.toString();
                   //add conn_map here
                     //var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
                     //copy obj to infoObj
                     var infoObj = JSON.parse(JSON.stringify(jsonObj.susiCommData.infoSpec.IoTGW));
                     getConnectivity(device_id ,0, 'null', infoObj);
+                    var vgw = vgw_map.get(device_id);
                     console.log('conn_id = ' + vgw.conn_id);
                     //conn_map_add_connectivity(device_id ,0, 'null', infoObj);
                 }
