@@ -216,14 +216,14 @@ function getObjKeyValue( jsonObj, outObj){
   for (key in jsonObj) {
       if (jsonObj.hasOwnProperty(key)) {
           if ( outObj.is_n_sv_format === true ){
-            if ( jsonObj[key] === Key ){
+            if ( jsonObj[key] === outObj.key ){
               console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
               console.log( 'key =======>' + 'sv' + ', keyVal=======>' + jsonObj['sv']);
               outObj.result = jsonObj['sv'];
             }
           }
           else {
-            if ( key === Key ){
+            if ( key === outObj.key ){
               console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
               outObj = jsonObj[key];
               return;
