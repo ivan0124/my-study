@@ -211,11 +211,36 @@ client.on('message', function (topic, message) {
   
 })
 
+function getObjKeyValue( jsonObj, Key, resultValue ){
+  console.log( 'listObj Start-------------------------------------------------');
+  for (key in jsonObj) {
+      if (jsonObj.hasOwnProperty(key)) {
+          if ( key === Key ){
+            console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
+          }
+      }
+   }
+ //
+  for (key in jsonObj) {
+      if (jsonObj.hasOwnProperty(key)) {
+          //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
+          if (typeof jsonObj[key] === 'object' ){
+              getObjKeyValue( jsonObj[key], Key, resultValue);
+          }
+      }
+   }  
+   console.log( 'listObj return -------------------------------------------------key=' + key);
+   return;  
+}
+
 function getSensorHubInfo(device_id, resultObj){
           
   vgw_map.forEach(function(obj, key) {
     console.log('XXXXXXXXXXXXXXXX key = ' + key); 
     var infoObj = JSON.parse ( obj.dev_info );
+    var resultValue;
+    getObjKeyValue(infoObj, 'Info', resultValue);
+    console.log('XXXXXXXXXXXXXXXX resultValue = ' + resultValue); 
   });
                
 }
