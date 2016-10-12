@@ -91,8 +91,8 @@ client.on('message', function (topic, message) {
                   //add conn_map here
                     //var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
                     //copy obj to infoObj
-                    //var infoObj = JSON.parse(JSON.stringify(jsonObj.susiCommData.infoSpec.IoTGW));
-                    //connectivityMap_add
+                    var infoObj = JSON.parse(JSON.stringify(jsonObj.susiCommData.infoSpec.IoTGW));
+                    getConnectivity(device_id ,0, 'null', infoObj);
                     //conn_map_add_connectivity(device_id ,0, 'null', infoObj);
                 }
           }
@@ -439,7 +439,7 @@ function sensor_hub_map_remove_senhub( sensor_hub_id ){
     return res;
 }
 
-function connectivityMap_add( vgw_id, layer, connType, infoObj ){
+function getConnectivity( vgw_id, layer, connType, infoObj ){
   
   //console.log( 'Start-------------------------------------------------');
   layer++;
@@ -454,7 +454,7 @@ function connectivityMap_add( vgw_id, layer, connType, infoObj ){
               if ( layer === 3 ){
                  console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
                  var device_id=infoObj[key];
-                
+                 /*
                  if ( conn_map.has(device_id) === false ) {
                      //console.log('[' + device_id + ']' + ': remove vgw_map');
                      //console.log('getOSType(vgw_id) =========== ' + getOSType(vgw_id));                                      
@@ -466,6 +466,7 @@ function connectivityMap_add( vgw_id, layer, connType, infoObj ){
                      //var conn = conn_map.get(device_id);
                       //conn.vgw_id = vgw_id;            
                  }
+                 */
                  return;
               }
           }
