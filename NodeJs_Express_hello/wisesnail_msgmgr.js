@@ -5,6 +5,9 @@ var conn_map = new HashMap();
 var vgw_map = new HashMap();
 var sensor_hub_map = new HashMap();
 
+//
+var sensorHubMap = new HashMap();
+
 var client  = mqtt.connect('mqtt://127.0.0.1');
 client.queueQoSZero = false;
 
@@ -50,11 +53,12 @@ client.on('message', function (topic, message) {
     case msgType.vgw_connect:
       {
           console.log('[' + device_id + ']' + ': vgw_connect');
-          //copy devObj object as vgw objcect
+         
           if ( vgw_map.has(device_id) === false ) {
+              //copy devObj object as vgw objcect
               var vgw = JSON.parse(JSON.stringify(devObj));
               vgw.connect = message.toString();            
-              console.log('[' + device_id + ']' + ': create vgw_map');
+              console.log('[' + device_id + ']' + ': add vgw_map key pairs');
               vgw.vgw_id = device_id.toString();
               vgw_map.set(device_id, vgw );
           }
@@ -137,7 +141,23 @@ client.on('message', function (topic, message) {
     case msgType.sen_connect:
       {
           console.log('[' + device_id + ']' + ': sen_connect');
-          var vgw = JSON.parse(JSON.stringify(devObj));    
+          if ( sensorHubMap.has(device_id) === false ) {
+              //copy devObj object as vgw objcect
+              var sensorhub = JSON.parse(JSON.stringify(devObj));
+              sensorhub.connect = message.toString();            
+              console.log('[' + device_id + ']' + ': add sensorHubMap key pairs');
+              //find gateway and connectivity
+              updateSensorHubInfo(device_id, sensorhub);
+              //
+              sensorHubMap.set(device_id, sensorhub );
+          }
+          else{
+             var sensorhub = sensorHubMap.get(device_id);
+             if ( sensorhub !== 'undefined'){
+               sensorhub.connect = message.toString(); 
+               console.log('[' + device_id + ']' + ': update sensorHubMap');
+             }
+          } 
           /*
           var res = sensor_hub_map_get_senhub( device_id, function ( senObj ){ 
             //console.log('[senObj]: ' + senObj );
@@ -189,6 +209,15 @@ client.on('message', function (topic, message) {
   //console.log('--------------------------------------------------------------');
   
 })
+
+function updateSensorHubInfo(device_id, sensorhub){
+            
+  vgw_map.forEach(function(obj, key) {
+    console.log('key = ' + key); 
+    var infoObj = JSON.parse ( obj.dev_info );
+  });
+               
+}
 
 function getMsgType(topic, jsonObj){
   
