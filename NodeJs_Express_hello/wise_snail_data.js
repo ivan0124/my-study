@@ -304,13 +304,14 @@ function remove_vgw( vgw_id ){
           console.log('remove conn_id == ' + conn_id + ', vgw_id=' + obj.vgw_id);
           //remove all sensor hub
           obj.sensor_hub_list.clear();
+          conn_map.remove(conn_id);
           return;
         }
       }
     }); 
     
     //remove connectivity
-    console.log('remove conn_id == ' + conn_id );
+    console.log('XXXXXXXXXXXXXXXXXXXXXXXX remove conn_id == ' + conn_id );
     conn_map.remove(conn_id);
   }
   
