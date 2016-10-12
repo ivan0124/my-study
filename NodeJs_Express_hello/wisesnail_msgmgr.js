@@ -211,14 +211,21 @@ client.on('message', function (topic, message) {
   
 })
 
-function getObjKeyValue( jsonObj, Key, resultValue ){
+function getObjKeyValue( jsonObj, Key, resultValue, isKey_n_sv_format ){
   //console.log( 'listObj Start-------------------------------------------------');
   for (key in jsonObj) {
       if (jsonObj.hasOwnProperty(key)) {
-          if ( key === Key ){
-            console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
-            resultValue = jsonObj[key];
-            return;
+          if ( isKey_n_sv_format === true ){
+            if ( jsonObj[key] === Key ){
+              resultValue = jsonObj['sv'];
+            }
+          }
+          else {
+            if ( key === Key ){
+              console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
+              resultValue = jsonObj[key];
+              return;
+            }
           }
       }
    }
@@ -227,7 +234,7 @@ function getObjKeyValue( jsonObj, Key, resultValue ){
       if (jsonObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
           if (typeof jsonObj[key] === 'object' ){
-              getObjKeyValue( jsonObj[key], Key, resultValue);
+              getObjKeyValue( jsonObj[key], Key, resultValue, isKey_n_sv_format);
           }
       }
    }  
@@ -241,7 +248,7 @@ function getSensorHubInfo(device_id, resultObj){
     console.log('XXXXXXXXXXXXXXXX key = ' + key); 
     var infoObj = JSON.parse ( obj.dev_info );
     var resultValue;
-    getObjKeyValue(infoObj, 'Info', resultValue);
+    getObjKeyValue(infoObj, 'SenHubList', resultValue);
     console.log('XXXXXXXXXXXXXXXX resultValue = ' + resultValue); 
   });
                
