@@ -128,7 +128,7 @@ client.on('message', function (topic, message) {
       {
           console.log('[' + device_id + ']' + ': sen_connect');
           var res = sensor_hub_map_get_senhub( device_id, function ( senObj ){ 
-            console.log('[senObj]: ' + senObj );
+            //console.log('[senObj]: ' + senObj );
             senObj.connect = message.toString();
           } );
           
@@ -146,7 +146,7 @@ client.on('message', function (topic, message) {
       {
           console.log('[' + device_id + ']' + ': sen_info_spec');
           var res = sensor_hub_map_get_senhub( device_id, function ( senObj ){ 
-            console.log('[senObj]: ' + senObj );
+            //console.log('[senObj]: ' + senObj );
             senObj.dev_info_spec = message.toString();
           } );
           //console.log("result = " + res);
@@ -156,7 +156,7 @@ client.on('message', function (topic, message) {
       {
           console.log('[' + device_id + ']' + ': sen_info');
           var res = sensor_hub_map_get_senhub( device_id, function ( senObj ){ 
-            console.log('[senObj]: ' + senObj );
+            //console.log('[senObj]: ' + senObj );
             senObj.dev_info = message.toString();
           } );        
           break;
