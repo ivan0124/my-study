@@ -12,6 +12,11 @@ $ npm install keypress -- save
 
 ![result link](https://github.com/ivan0124/my-study/blob/master/nodejs_wisesnail/images/20161011_nodejs_wisesnail_1.png)
 
+2.Read data files in sensor hub folder to show sensor data.
+
+![result link](https://github.com/ivan0124/my-study/blob/master/nodejs_wisesnail/images/20161012_nodejs_wisesnail_1.png)
+
+
 #How to test
 1. add device by adding folder and files.(or you can use default folder `wisesnail`)  
 2. modify MQTT broker address in `mqtt_server.conf`
