@@ -289,7 +289,28 @@ function getOSType( vgw_id ){
 }
 
 function remove_vgw( vgw_id ){
-  
+
+    console.log('--------------------------------------------------------------');
+    console.log('Show all conn_map. count= ' + conn_map.count());
+    //console.log('getStatusFromMsg=' + getStatusFromMsg(''));
+    var tmp_vgw_id='';
+    conn_map.forEach(function(obj, key) {
+      if (typeof obj !== 'undefined') {
+          if ( tmp_vgw_id !== obj.vgw_id){
+            console.log('(VGW):'+obj.vgw_id );
+            tmp_vgw_id = obj.vgw_id;
+          }
+          console.log(' |-(Connectivity)('+ obj.os_type +'):' + key );
+          obj.sensor_hub_list.forEach(function(senObj, senKey){
+             if (typeof senObj !== 'undefined'){
+               var status= getStatusFromMsg( senObj.connect );
+               console.log('    |--(SensorHub)('+ status + '):' + senKey);
+             }
+          });
+      }
+    });     
+    console.log('--------------------------------------------------------------');    
+/*  
   console.log('vgw_map_remove_vgw =================');
   var vgw_type = getOSType( vgw_id );
   var conn_id;
@@ -317,7 +338,8 @@ function remove_vgw( vgw_id ){
   
   if ( vgw_type === osType.ip_base ){
     console.log('[' + vgw_id + ']=====' + ':' + osType.ip_base);
-  }  
+  }
+*/  
 }
 
 function sensor_hub_map_add_senhub( vgw_id, conn_id, layer, infoObj ){
