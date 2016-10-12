@@ -225,7 +225,12 @@ function getObjKeyValue( jsonObj, outObj){
           else {
             if ( key === outObj.key ){
               console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
-              outObj = jsonObj[key];
+              if ( typeof jsonObj[key] === 'object'){ 
+                outObj.result = JSON.stringify(jsonObj[key]);
+              }
+              else{
+                outObj.result = jsonObj[key];
+              }
               return;
             }
           }
