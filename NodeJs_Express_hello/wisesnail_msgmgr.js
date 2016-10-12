@@ -212,11 +212,13 @@ client.on('message', function (topic, message) {
 })
 
 function getObjKeyValue( jsonObj, Key, resultValue ){
-  console.log( 'listObj Start-------------------------------------------------');
+  //console.log( 'listObj Start-------------------------------------------------');
   for (key in jsonObj) {
       if (jsonObj.hasOwnProperty(key)) {
           if ( key === Key ){
             console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
+            resultValue = jsonObj[key];
+            return;
           }
       }
    }
@@ -229,7 +231,7 @@ function getObjKeyValue( jsonObj, Key, resultValue ){
           }
       }
    }  
-   console.log( 'listObj return -------------------------------------------------key=' + key);
+   //console.log( 'listObj return -------------------------------------------------key=' + key);
    return;  
 }
 
