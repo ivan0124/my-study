@@ -94,7 +94,6 @@ client.on('message', function (topic, message) {
                     //copy obj to infoObj
                     var infoObj = JSON.parse(JSON.stringify(jsonObj.susiCommData.infoSpec.IoTGW));
                     getConnectivity(device_id ,0, 'null', infoObj);
-                    var vgw = vgw_map.get(device_id);
                     console.log('conn_id = ' + vgw.conn_id);
                     //conn_map_add_connectivity(device_id ,0, 'null', infoObj);
                 }
@@ -490,7 +489,7 @@ function getConnectivity( vgw_id, layer, connType, infoObj ){
       if (infoObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
           if (typeof infoObj[key] === 'object' ){
-              conn_map_add_connectivity(vgw_id, layer, connType, infoObj[key]);
+              getConnectivity(vgw_id, layer, connType, infoObj[key]);
           }
       }
    }  
