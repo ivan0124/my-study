@@ -456,7 +456,7 @@ function getConnectivity( vgw_id, layer, connType, infoObj ){
               if ( layer === 3 ){
                  console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
                  var device_id=infoObj[key];
-                 if ( vgw_map.has(vgw_id) === ture ){
+                 if ( vgw_map.has(vgw_id) === true ){
                    var vgw = vgw_map.get(vgw_id);
                    if ( vgw.conn_id === 'null'){
                      vgw.conn_id = device_id;
