@@ -51,12 +51,19 @@ client.on('message', function (topic, message) {
       {
           console.log('[' + device_id + ']' + ': vgw_connect');
           //copy devObj object as vgw objcect
-          var vgw = JSON.parse(JSON.stringify(devObj));
-          vgw.connect = message.toString();
           if ( vgw_map.has(device_id) === false ) {
+              var vgw = JSON.parse(JSON.stringify(devObj));
+              vgw.connect = message.toString();            
               console.log('[' + device_id + ']' + ': create vgw_map');
               vgw.vgw_id = device_id.toString();
               vgw_map.set(device_id, vgw );
+          }
+          else{
+             var vgw = vgw_map.get(device_id);
+             if ( vgw !== 'undefined'){
+               vgw.connect = message.toString(); 
+               console.log('[' + device_id + ']' + ': update vgw_map');
+             }
           }
           break;
       }
@@ -124,12 +131,13 @@ client.on('message', function (topic, message) {
     case msgType.vgw_willmessage:
       {
           console.log('[' + device_id + ']' + ': vgw_willmessage');
-          //remove_vgw( device_id );
+          remove_vgw( device_id );
           break;
       }
     case msgType.sen_connect:
       {
           console.log('[' + device_id + ']' + ': sen_connect');
+          var vgw = JSON.parse(JSON.stringify(devObj));    
           /*
           var res = sensor_hub_map_get_senhub( device_id, function ( senObj ){ 
             //console.log('[senObj]: ' + senObj );
