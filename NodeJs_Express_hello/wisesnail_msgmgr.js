@@ -249,7 +249,7 @@ function getSensorHubInfo(device_id, resultObj){
   vgw_map.forEach(function(obj, key) {
     console.log('XXXXXXXXXXXXXXXX key = ' + key); 
     var infoObj = JSON.parse ( obj.dev_info );
-    var resultValue;
+    var resultValue='';
     getObjKeyValue(infoObj, 'SenHubList', resultValue, true);
     console.log('XXXXXXXXXXXXXXXX resultValue = ' + resultValue); 
   });
