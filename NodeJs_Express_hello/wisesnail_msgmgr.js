@@ -13,7 +13,7 @@ const msgType = { error: -1, unknown: 0,
                   vgw_disconnect: 5, vgw_info: 6,
                   sen_connect: 7, sen_disconnect: 8, sen_info_spec: 9, sen_info: 10 };
 const osType = { none_ip_base: 'none_ip_base', ip_base: 'ip_base'};
-var devObj = { vgw_id: 'null', connect: 'null', os_info: 'null', dev_info_spec: 'null',  dev_info: 'null'};
+var devObj = { vgw_id: 'null', conn_id: 'null',connect: 'null', os_info: 'null', dev_info_spec: 'null',  dev_info: 'null'};
 
 
 client.on('connect', function () {
