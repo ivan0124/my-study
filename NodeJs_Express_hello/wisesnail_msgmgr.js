@@ -261,7 +261,7 @@ function getSensorHubInfo(device_id, resultObj){
     console.log('XXXXXXXXXXXXXXXX key = ' + key); 
     var infoObj = JSON.parse ( obj.dev_info );
     var outObj = {
-                  key:'SenHubList', 
+                  key:'Info', 
                   is_n_sv_format: true, 
                   result:''
                  };
