@@ -368,6 +368,13 @@ function getSensorHubInfo(device_id, resultObj){
                  };
     getObjKeyValue(infoObj, outObj);
     console.log('XXXXXXXXXXXXXXXX SenHubList = ' + outObj.result);
+    var sensorHubList = outObj.result.split(',');
+    for (var i=0 ; i < sensorHubList.length ; i++){
+      if(sensorHubList[i] === device_id){
+        console.log('sensorHub(' + device_id + '): conn_id=' + obj.conn_id + ', vgw_id=' + obj.vgw_id  );
+        return;
+      }
+    }
   });
                
 }
