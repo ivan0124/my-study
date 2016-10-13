@@ -261,7 +261,7 @@ function getSensorHubInfo(device_id, resultObj){
           
   vgw_map.forEach(function(obj, key) {
     console.log('XXXXXXXXXXXXXXXX key = ' + key); 
-    /*
+    
     var infoObj = JSON.parse ( obj.dev_info );
     var outObj = {
                   key:'SenHubList',
@@ -270,7 +270,7 @@ function getSensorHubInfo(device_id, resultObj){
                  };
     getObjKeyValue(infoObj, outObj);
     console.log('XXXXXXXXXXXXXXXX SenHubList = ' + outObj.result);
-    */
+    
   });
                
 }
