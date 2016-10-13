@@ -161,6 +161,7 @@ client.on('message', function (topic, message) {
       }
     case msgType.sen_info_spec:
       {
+          sensorHubMapUpdate(msgType.sen_info_spec, device_id, message.toString());
           //console.log('[' + device_id + ']' + ': sen_info_spec');
           /*
           var res = sensor_hub_map_get_senhub( device_id, function ( senObj ){ 
@@ -172,7 +173,8 @@ client.on('message', function (topic, message) {
           break;
       }
     case msgType.sen_info:
-      {
+      {    
+        sensorHubMapUpdate(msgType.sen_info, device_id, message.toString());
           //console.log('[' + device_id + ']' + ': sen_info');
           /*
           var res = sensor_hub_map_get_senhub( device_id, function ( senObj ){ 
@@ -350,6 +352,13 @@ function sensorHubMapUpdate(messageType, device_id, message){
         if ( msgType.sen_connect === messageType){
           sensorhub.connect = message;
         }
+        if ( msgType.sen_info_spec === messageType){
+          sensorhub.dev_info_spec = message;
+        }        
+        if ( msgType.sen_info === messageType){
+          sensorhub.dev_info = message;
+        }            
+        
         sensorHubMap.set(device_id, sensorhub );        
         return;
       }
