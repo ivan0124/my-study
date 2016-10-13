@@ -283,13 +283,13 @@ function connectivityMapUpdate( msgType, vgw_id, osInfo, layer, connType, infoOb
                  if ( connectivityMap.has(device_id) === false ) {
                    //copy devObj object as vgw objcect
                    var connectivity = JSON.parse(JSON.stringify(devObj));
-                   if ( msgType === msgType.vgw_info_spec ){ 
+                   //if ( msgType === msgType.vgw_info_spec ){ 
                      connectivity.vgw_id = vgw_id;
                      connectivity.os_info = osInfo;
                      connectivity.conn_id = device_id; 
                      connectivity.conn_type = connType;
                      connectivity.dev_info_spec = JSON.stringify(infoObj['Info']);
-                   }
+                   //}
                    console.log('[' + device_id + ']' + ': add connectivityMap key pairs');
                    //console.log(JSON.stringify(infoObj['Info']));
                   
@@ -298,13 +298,13 @@ function connectivityMapUpdate( msgType, vgw_id, osInfo, layer, connType, infoOb
                  else{
                    var connectivity = connectivityMap.get(device_id);
                    if ( connectivity !== 'undefined'){
-                     if ( msgType === msgType.vgw_info_spec ){ 
+                     //if ( msgType === msgType.vgw_info_spec ){ 
                        connectivity.vgw_id = vgw_id;
                        connectivity.os_info = osInfo;
                        connectivity.conn_id = device_id; 
                        connectivity.conn_type = connType;
                        connectivity.dev_info_spec = JSON.stringify(infoObj['Info']);
-                     }
+                    // }
                      console.log('[' + device_id + ']' + ': update connectivityMap');
                  }
                }                
