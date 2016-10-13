@@ -1,11 +1,7 @@
 //Mqtt
 var mqtt = require('mqtt');
 var HashMap = require('hashmap').HashMap;
-//var conn_map = new HashMap();
 var vgw_map = new HashMap();
-//var sensor_hub_map = new HashMap();
-
-//
 var sensorHubMap = new HashMap();
 var connectivityMap = new HashMap();
 
