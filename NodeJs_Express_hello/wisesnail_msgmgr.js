@@ -265,7 +265,7 @@ function getObjKeyValue( jsonObj, outObj){
    return;  
 }
 
-function connectivityMapUpdate( msgType, vgw_id, osInfo, layer, connType, infoObj){
+function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, infoObj){
   
   //console.log( 'Start-------------------------------------------------');
   layer++;
@@ -278,14 +278,14 @@ function connectivityMapUpdate( msgType, vgw_id, osInfo, layer, connType, infoOb
                 //console.log('layer=' + layer + 'connType =====================' + connType);
               }
               if ( layer === 3 ){
-                 console.log( 'msgType =' + msgType + ', [layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
+                 console.log( 'messageType =' + messageType + ', [layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
                  var device_id=infoObj[key];
                  if ( connectivityMap.has(device_id) === false ) {
                    //copy devObj object as vgw objcect
                    var connectivity = JSON.parse(JSON.stringify(devObj));
-                   console.log('typeof msgType = ' + typeof msgType);
+                   console.log('typeof messageType = ' + typeof messageType);
                    console.log('msgType.vgw_info_spec = ' + msgType.vgw_info_spec + ', typeof msgType.vgw_info_spec =' + typeof msgType.vgw_info_spec);
-                   if ( msgType === msgType.vgw_info_spec ){ 
+                   if ( messageType === msgType.vgw_info_spec ){ 
                      connectivity.vgw_id = vgw_id;
                      connectivity.os_info = osInfo;
                      connectivity.conn_id = device_id; 
@@ -300,7 +300,7 @@ function connectivityMapUpdate( msgType, vgw_id, osInfo, layer, connType, infoOb
                  else{
                    var connectivity = connectivityMap.get(device_id);
                    if ( connectivity !== 'undefined'){
-                     //if ( msgType === msgType.vgw_info_spec ){ 
+                     //if ( messageType === msgType.vgw_info_spec ){ 
                        connectivity.vgw_id = vgw_id;
                        connectivity.os_info = osInfo;
                        connectivity.conn_id = device_id; 
@@ -320,7 +320,7 @@ function connectivityMapUpdate( msgType, vgw_id, osInfo, layer, connType, infoOb
       if (infoObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
           if (typeof infoObj[key] === 'object' ){
-              connectivityMapUpdate(msgType, vgw_id, osInfo, layer, connType, infoObj[key]);
+              connectivityMapUpdate(messageType, vgw_id, osInfo, layer, connType, infoObj[key]);
           }
       }
    }  
