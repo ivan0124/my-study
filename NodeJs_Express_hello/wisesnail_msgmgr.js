@@ -300,10 +300,10 @@ function getConnectivityObj( vgw_id, layer, connType, infoObj){
                      connectivity.conn_id = device_id; 
                      connectivity.conn_type = connType;
                      console.log('[' + device_id + ']' + ': update connectivityMap');
-                   }
-                 }                
-                 return;
-              }
+                 }
+               }                
+               return;
+             }
           }
       }
    }
