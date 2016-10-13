@@ -221,7 +221,7 @@ function getObjKeyValue( jsonObj, outObj){
               //console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
               //console.log( 'key =======>' + 'sv' + ', keyVal=======>' + jsonObj['sv']);
               if ( outObj.matchLayer !== -1 && outObj.matchLayer !== outObj.layer ){
-                return;
+                //return;
               }              
               if ( typeof jsonObj['sv'] === 'object'){ 
                 outObj.result = JSON.stringify(jsonObj['sv']);
@@ -237,16 +237,18 @@ function getObjKeyValue( jsonObj, outObj){
               console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
               //
               if ( outObj.matchLayer !== -1 && outObj.matchLayer !== outObj.layer ){
-                return;
-              }
-              if ( typeof jsonObj[key] === 'object'){ 
-                outObj.result = JSON.stringify(jsonObj[key]);
+                //return;
               }
               else{
-                outObj.result = jsonObj[key];
+                if ( typeof jsonObj[key] === 'object'){ 
+                  outObj.result = JSON.stringify(jsonObj[key]);
+                }
+                else{
+                  outObj.result = jsonObj[key];
+                }
+                return;
               }
-              //}
-              return;
+              //}     
             }
           }
       }
