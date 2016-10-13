@@ -539,24 +539,6 @@ function remove_vgw( vgw_id ){
   
 }
 
-/*
-function sensor_hub_map_remove_senhub( sensor_hub_id ){
-  
-    var res=-1;
-  
-    conn_map.forEach(function(obj, key) {
-      if (typeof obj !== 'undefined') {
-          if ( obj.sensor_hub_list.has ( sensor_hub_id ) === true ){
-            //console.log('obj.sensor_hub_list.has ( sensor_hub_id ) === true');
-            obj.sensor_hub_list.remove ( sensor_hub_id );
-            res = 0;
-          }
-      }
-    }); 
-   
-    return res;
-}
-*/
 function getConnectivity( vgw_id, layer, connType, infoObj ){
   
   //console.log( 'Start-------------------------------------------------');
