@@ -304,7 +304,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
 
 function sensorHubMapUpdate(messageType, device_id, message){
           
-  console.log('message ===== ' + message);
+  //console.log('message ===== ' + message);
   connectivityMap.forEach(function(obj, key) {
     //console.log('obj.dev_info = ' + obj.dev_info);
     var infoObj = JSON.parse ( obj.dev_info );
@@ -317,7 +317,7 @@ function sensorHubMapUpdate(messageType, device_id, message){
     var sensorHubList = outObj.result.split(',');
     for (var i=0 ; i < sensorHubList.length ; i++){
       if(sensorHubList[i] === device_id){
-        console.log('sensorHub(' + device_id + '): conn_id=' + obj.conn_id + ', vgw_id=' + obj.vgw_id  );
+        //console.log('sensorHub(' + device_id + '): conn_id=' + obj.conn_id + ', vgw_id=' + obj.vgw_id  );
         if ( sensorHubMap.has(device_id) === false ) {
           var sensorhub = JSON.parse(JSON.stringify(devObj));
         }
