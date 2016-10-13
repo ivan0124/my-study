@@ -155,7 +155,7 @@ client.on('message', function (topic, message) {
               //find gateway and connectivity
               var outObj={};
               getSensorHubInfo(device_id, outObj);
-              console.log('**** sensorHub(' + device_id + '): conn_id=' + obj.conn_id + ', vgw_id=' + obj.vgw_id  );
+              console.log('**** sensorHub(' + device_id + '): conn_id=' + outObj.conn_id + ', vgw_id=' + outObj.vgw_id  );
               //
               sensorHubMap.set(device_id, sensorhub );
           }
