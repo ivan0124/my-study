@@ -379,6 +379,8 @@ function getSensorHubInfo(device_id, resultObj){
     for (var i=0 ; i < sensorHubList.length ; i++){
       if(sensorHubList[i] === device_id){
         console.log('sensorHub(' + device_id + '): conn_id=' + obj.conn_id + ', vgw_id=' + obj.vgw_id  );
+        getDeviceMapObj( 'sensorHubMap', device_id, outObj );
+        console.log('outObj.conn_id = ' + outObj.conn_id);
         return;
       }
     }
