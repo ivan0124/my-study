@@ -264,9 +264,10 @@ function getObjKeyValue( jsonObj, outObj){
 }
 
 
-function getDeviceMapObj( type, deviceID, outObj ){
+function getDeviceMapObj( deviceType, deviceID, outObj ){
   
-  if ( type === 'connectivityMap' ){
+  console.log("===================>getDeviceMapObj deviceType =" + deviceType + ', typeof deviceType = ' + typeof deviceType);
+  if ( deviceType === 'connectivityMap' ){
     if ( connectivityMap.has(deviceID) === false ) {
       console.log("===================>getDeviceMapObj(false)");
       outObj = JSON.parse(JSON.stringify(devObj));
