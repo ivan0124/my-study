@@ -263,6 +263,7 @@ function getObjKeyValue( jsonObj, outObj){
    return;  
 }
 
+/*
 function getDeviceMapObj( type, deviceID, outObj ){
   
   if ( type === 'connectivityMap' ){
@@ -273,7 +274,9 @@ function getDeviceMapObj( type, deviceID, outObj ){
       outObj = connectivityMap.get(deviceID);
     }  
   }
+  
 }
+*/
 
 function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, infoObj){
   
