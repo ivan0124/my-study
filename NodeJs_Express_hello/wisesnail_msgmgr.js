@@ -220,7 +220,7 @@ function getObjKeyValue( jsonObj, outObj){
             if ( jsonObj[key] === outObj.key ){
               //console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
               //console.log( 'key =======>' + 'sv' + ', keyVal=======>' + jsonObj['sv']);
-              if ( outObj.matchLayer !=== -1 && outObj.matchLayer !== outObj.layer ){
+              if ( outObj.matchLayer !== -1 && outObj.matchLayer !== outObj.layer ){
                 return;
               }              
               if ( typeof jsonObj['sv'] === 'object'){ 
