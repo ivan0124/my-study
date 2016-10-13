@@ -311,7 +311,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                    //console.log(JSON.stringify(infoObj['Info']));
                   
                    //connectivityMap.set(device_id, connectivity );
-                 }
+                 }/*
                  else{
                    var connectivity = connectivityMap.get(device_id);
                    if ( connectivity !== 'undefined'){
@@ -327,7 +327,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                        connectivity.dev_info = JSON.stringify(infoObj['Info']);
                      }                     
                      console.log('[' + device_id + ']' + ': update connectivityMap');
-                 }
+                 }*/
                  
                }                
                return;
