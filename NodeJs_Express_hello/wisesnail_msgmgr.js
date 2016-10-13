@@ -110,9 +110,9 @@ client.on('message', function (topic, message) {
                   vgw.dev_info_spec = message.toString();
                   //add conn_map here
                     var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
-                    console.log( '[connectivityMap_add] Start-------------------------------------------------');
-                    connectivityMap_add(device_id ,0, 'null', infoObj); 
-                    console.log( '[connectivityMap_add] End---------------------------------------------------');                  
+                    console.log( '[connectivityMapUpdate] Start-------------------------------------------------');
+                    connectivityMapUpdate(device_id ,0, 'null', infoObj); 
+                    console.log( '[connectivityMapUpdate] End---------------------------------------------------');                  
                 }
           }
           else{
@@ -265,7 +265,7 @@ function getObjKeyValue( jsonObj, outObj){
    return;  
 }
 
-function connectivityMap_add( vgw_id, layer, connType, infoObj){
+function connectivityMapUpdate( vgw_id, layer, connType, infoObj){
   
   //console.log( 'Start-------------------------------------------------');
   layer++;
@@ -312,7 +312,7 @@ function connectivityMap_add( vgw_id, layer, connType, infoObj){
       if (infoObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
           if (typeof infoObj[key] === 'object' ){
-              connectivityMap_add(vgw_id, layer, connType, infoObj[key]);
+              connectivityMapUpdate(vgw_id, layer, connType, infoObj[key]);
           }
       }
    }  
