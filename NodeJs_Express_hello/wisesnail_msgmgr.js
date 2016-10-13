@@ -109,9 +109,9 @@ client.on('message', function (topic, message) {
                   vgw.dev_info_spec = message.toString();
                   //add connectivityMap here
                     var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
-                    console.log( '[connectivityMapUpdate] Start-------------------------------------------------');
+                    //console.log( '[connectivityMapUpdate] Start-------------------------------------------------');
                     connectivityMapUpdate(msgType.vgw_info_spec, device_id , vgw.os_info, 0, 'null', infoObj); 
-                    console.log( '[connectivityMapUpdate] End---------------------------------------------------');                  
+                    //console.log( '[connectivityMapUpdate] End---------------------------------------------------');                  
                 }
           }
           else{
