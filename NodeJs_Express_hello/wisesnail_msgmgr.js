@@ -538,7 +538,7 @@ function remove_vgw( vgw_id ){
     console.log('--------------------------------------------------------------');  
   
 }
-
+/*
 function sensor_hub_map_get_senhub( sensor_hub_id, callback ){
   
     var res=-1;
@@ -555,6 +555,7 @@ function sensor_hub_map_get_senhub( sensor_hub_id, callback ){
   
     return res;
 }
+*/
 
 function sensor_hub_map_remove_senhub( sensor_hub_id ){
   
