@@ -291,7 +291,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                    }
                    
                    if ( messageType === msgType.vgw_info ){
-                     connectivity.dev_info_spec = JSON.stringify(infoObj['Info']);
+                     connectivity.dev_info = JSON.stringify(infoObj['Info']);
                    }
                    console.log('[' + device_id + ']' + ': add connectivityMap key pairs');
                    //console.log(JSON.stringify(infoObj['Info']));
@@ -310,7 +310,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                      }
                      
                      if ( messageType === msgType.vgw_info ){
-                       connectivity.dev_info_spec = JSON.stringify(infoObj['Info']);
+                       connectivity.dev_info = JSON.stringify(infoObj['Info']);
                      }                     
                      console.log('[' + device_id + ']' + ': update connectivityMap');
                  }
