@@ -150,7 +150,8 @@ client.on('message', function (topic, message) {
           if ( sensorHubMap.has(device_id) === false ) {
               //copy devObj object as vgw objcect
               var sensorhub = JSON.parse(JSON.stringify(devObj));
-              sensorhub.connect = message.toString();            
+              sensorhub.connect = message.toString();  
+              sensorHubMap.set(device_id, sensorhub );
               //console.log('[' + device_id + ']' + ': add sensorHubMap key pairs');
               //find gateway and connectivity
               //var outObj={};
@@ -380,10 +381,15 @@ function getSensorHubInfo(device_id){
       if(sensorHubList[i] === device_id){
         console.log('sensorHub(' + device_id + '): conn_id=' + obj.conn_id + ', vgw_id=' + obj.vgw_id  );
         if ( sensorHubMap.has(device_id) === false ) {
-          var outObj = JSON.parse(JSON.stringify(devObj));
+          var sensorhub = JSON.parse(JSON.stringify(devObj));
+          sensorhub.vgw_id = obj.vgw_id;
+          sensorhub.conn_id = obj.conn_id;
+          sensorHubMap.set(device_id, sensorhub );
         }
         else{
-          var outObj = sensorHubMap.get(device_id);
+          var sensorhub = sensorHubMap.get(device_id);
+          sensorhub.vgw_id = obj.vgw_id;
+          sensorhub.conn_id = obj.conn_id;          
         }  
         return;
       }
