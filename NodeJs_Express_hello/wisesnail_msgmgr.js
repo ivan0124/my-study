@@ -154,21 +154,7 @@ var mqttMessageCallback = function (topic, message){
   }
   //console.log('--------------------------------------------------------------');  
 }
-/*
-var client  = mqtt.connect('mqtt://127.0.0.1');
-client.queueQoSZero = false;
 
-client.on('connect', function () {
-  console.log('[wise_snail_data] mqtt connect !!!!');
-  client.subscribe('/cagent/admin/+/agentinfoack');
-  client.subscribe('/cagent/admin/+/willmessage');
-  client.subscribe('/cagent/admin/+/agentactionreq');
-  client.subscribe('/cagent/admin/+/deviceinfo'); 
-   
-})
-
-client.on('message', mqttMessageCallback);
-*/
 function getObjKeyValue( jsonObj, outObj){
   //console.log( 'listObj Start-------------------------------------------------');
   //outObj.layer++;
