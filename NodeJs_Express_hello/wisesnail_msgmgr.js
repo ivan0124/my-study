@@ -538,59 +538,7 @@ function remove_vgw( vgw_id ){
     console.log('--------------------------------------------------------------');  
   
 }
-/*
-function sensor_hub_map_add_senhub( vgw_id, conn_id, layer, infoObj ){
-  
-  //console.log( 'Start-------------------------------------------------');
-  layer++;
-  for (key in infoObj) {
-      if (infoObj.hasOwnProperty(key)) {
-          if ( infoObj[key] === 'SenHubList' ){
-             console.log( 'SenHubList :' + infoObj['sv'] );
-             console.log( 'SenHubList length :' + infoObj['sv'].toString().length ); 
-            
-             if ( typeof infoObj['sv'] !== 'undefined' && infoObj['sv'].toString().length !== 0 ){
-               var conn = conn_map.get(conn_id);
-               if ( typeof conn !== 'undefined' && typeof conn.sensor_hub_list !== 'undefined'){
-                 var sen_arr = infoObj['sv'].split(',');
-                 for (var i=0 ; i < sen_arr.length ; i++){
-                   console.log('=== sen_arr['+i+'] = ' + sen_arr[i]);
-                   var device_id = sen_arr[i];
-                   if ( conn.sensor_hub_list.has( device_id ) === false ){
-                       console.log('=====================device_id=' + device_id);
-                       var senObj = JSON.parse(JSON.stringify(devObj));
-                       senObj.vgw_id = conn.vgw_id;
-                       conn.sensor_hub_list.set(device_id, senObj);
-                   }
-                 }
-               }
-               else{
-                 console.log( conn_id + ' does not exist or conn.sensor_hub_list is undefined');
-               }
-             }
-          }
-        
-          if ( key === 'bn' ){
-              if ( layer === 3 ){
-                 conn_id = infoObj[key];
-              }
-          }
-          
-      }
-   }
- //
-  for (key in infoObj) {
-      if (infoObj.hasOwnProperty(key)) {
-          //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
-          if (typeof infoObj[key] === 'object' ){
-              sensor_hub_map_add_senhub(vgw_id, conn_id, layer, infoObj[key]);
-          }
-      }
-   }  
-  
-   layer--;  
-}
-*/
+
 function sensor_hub_map_get_senhub( sensor_hub_id, callback ){
   
     var res=-1;
