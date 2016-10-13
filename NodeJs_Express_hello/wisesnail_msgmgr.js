@@ -210,7 +210,7 @@ client.on('message', function (topic, message) {
   //console.log('--------------------------------------------------------------');
   
 })
-
+/*
 function getObjKeyValue( jsonObj, outObj){
   //console.log( 'listObj Start-------------------------------------------------');
   //outObj.layer++;
@@ -256,11 +256,12 @@ function getObjKeyValue( jsonObj, outObj){
    //console.log( 'listObj return -------------------------------------------------key=' + key);
    return;  
 }
-
+*/
 function getSensorHubInfo(device_id, resultObj){
           
   vgw_map.forEach(function(obj, key) {
     console.log('XXXXXXXXXXXXXXXX key = ' + key); 
+    /*
     var infoObj = JSON.parse ( obj.dev_info );
     var outObj = {
                   key:'SenHubList',
@@ -269,19 +270,7 @@ function getSensorHubInfo(device_id, resultObj){
                  };
     getObjKeyValue(infoObj, outObj);
     console.log('XXXXXXXXXXXXXXXX SenHubList = ' + outObj.result);
-    //var infoObj = JSON.parse(JSON.stringify(infoObj.susiCommData.data.IoTGW));
-    /*
-    var outObj = {
-                  key:'bn',
-                  layer: 0,
-                  matchLayer: 3, 
-                  is_n_sv_format: false, 
-                  result:''
-                 };    
-    getObjKeyValue(infoObj.susiCommData.data.IoTGW, outObj);
-    console.log('XXXXXXXXXXXXXXXX conn_id = ' + outObj.result);
     */
-    //sensroList = outObj.result.split(',');
   });
                
 }
