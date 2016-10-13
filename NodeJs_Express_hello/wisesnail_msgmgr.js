@@ -149,9 +149,11 @@ client.on('message', function (topic, message) {
           //console.log('[' + device_id + ']' + ': sen_connect');
           if ( sensorHubMap.has(device_id) === false ) {
               //copy devObj object as vgw objcect
+            /*
               var sensorhub = JSON.parse(JSON.stringify(devObj));
               sensorhub.connect = message.toString();  
               sensorHubMap.set(device_id, sensorhub );
+              */
               //console.log('[' + device_id + ']' + ': add sensorHubMap key pairs');
               //find gateway and connectivity
               //var outObj={};
@@ -380,6 +382,7 @@ function getSensorHubInfo(device_id, connect_msg){
         }
         sensorhub.vgw_id = obj.vgw_id;
         sensorhub.conn_id = obj.conn_id;
+        sensorhub.connect = connect_msg;
         sensorHubMap.set(device_id, sensorhub );        
         return;
       }
