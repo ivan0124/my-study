@@ -539,51 +539,6 @@ function remove_vgw( vgw_id ){
     console.log('--------------------------------------------------------------');  
   
 }
-/*
-function getConnectivity( vgw_id, layer, connType, infoObj ){
-  
-  //console.log( 'Start-------------------------------------------------');
-  layer++;
-  for (key in infoObj) {
-      if (infoObj.hasOwnProperty(key)) {
-          //console.log('layer=' + layer + 'key =====================' + key);
-          if ( key === 'bn' ){
-              if ( layer === 2 ){
-                connType = infoObj[key];
-                //console.log('layer=' + layer + 'connType =====================' + connType);
-              }
-              if ( layer === 3 ){
-                 console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
-                 var device_id=infoObj[key];
-                 if ( vgw_map.has(vgw_id) === true ){
-                   var vgw = vgw_map.get(vgw_id);
-                   if ( vgw.conn_id === 'null'){
-                     vgw.conn_id = device_id;
-                   }
-                   else{
-                     vgw.conn_id += ',';
-                     vgw.conn_id += device_id;
-                   }
-                 }
-                 return;
-              }
-          }
-      }
-   }
- //
-  for (key in infoObj) {
-      if (infoObj.hasOwnProperty(key)) {
-          //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
-          if (typeof infoObj[key] === 'object' ){
-              getConnectivity(vgw_id, layer, connType, infoObj[key]);
-          }
-      }
-   }  
-  
-   layer--;
-   return;    
-}
-*/
 
 function is_ip_valid( ip ){
   
