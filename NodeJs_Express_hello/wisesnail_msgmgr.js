@@ -127,7 +127,7 @@ client.on('message', function (topic, message) {
                 var vgw=vgw_map.get(device_id);
                 if (typeof vgw !== 'undefined') {
                   vgw.dev_info = message.toString();
-                  var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
+                  var infoObj=jsonObj.susiCommData.data.IoTGW;
                   console.log( '[connectivityMapUpdate] Start-------------------------------------------------');
                   connectivityMapUpdate(msgType.vgw_info, device_id , vgw.os_info, 0, 'null', infoObj); 
                   console.log( '[connectivityMapUpdate] End---------------------------------------------------');   
