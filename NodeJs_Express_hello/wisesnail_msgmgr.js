@@ -267,7 +267,7 @@ function getObjKeyValue( jsonObj, outObj){
    return;  
 }
 
-function getConnectivityObj( vgw_id, layer, connType, infoObj ){
+function getConnectivityObj( vgw_id, layer, connType, infoObj){
   
   //console.log( 'Start-------------------------------------------------');
   layer++;
