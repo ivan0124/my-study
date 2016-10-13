@@ -292,6 +292,24 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
               if ( layer === 3 ){
                  console.log( 'messageType =' + messageType + ', [layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
                  var device_id=infoObj[key];
+                   var connectivity = {};
+                   getDeviceMapObj('connectivityMap', device_id, connectivity);
+
+                   if ( messageType === msgType.vgw_info_spec ){ 
+                     connectivity.vgw_id = vgw_id;
+                     connectivity.os_info = osInfo;
+                     connectivity.conn_id = device_id; 
+                     connectivity.conn_type = connType;
+                     connectivity.dev_info_spec = JSON.stringify(infoObj['Info']);
+                   }
+                   
+                   if ( messageType === msgType.vgw_info ){
+                     connectivity.dev_info = JSON.stringify(infoObj['Info']);
+                   }
+                   console.log('[' + device_id + ']' + ': add connectivityMap key pairs');
+                   //console.log(JSON.stringify(infoObj['Info']));
+                  
+                   connectivityMap.set(device_id, connectivity );                
                }                
                return;
           }
