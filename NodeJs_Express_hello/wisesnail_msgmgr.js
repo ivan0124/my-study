@@ -288,8 +288,9 @@ function getConnectivityObj( vgw_id, layer, connType, infoObj){
                    connectivity.vgw_id = vgw_id;
                    connectivity.conn_id = device_id; 
                    connectivity.conn_type = connType;
+                   connectivity.dev_info = JSON.stringify(infoObj['Info']);
                    console.log('[' + device_id + ']' + ': add connectivityMap key pairs');
-                   console.log(JSON.stringify(infoObj['Info']));
+                   //console.log(JSON.stringify(infoObj['Info']));
                   
                    connectivityMap.set(device_id, connectivity );
                  }
@@ -299,6 +300,7 @@ function getConnectivityObj( vgw_id, layer, connType, infoObj){
                      connectivity.vgw_id = vgw_id;
                      connectivity.conn_id = device_id; 
                      connectivity.conn_type = connType;
+                     connectivity.dev_info = JSON.stringify(infoObj['Info']);
                      console.log('[' + device_id + ']' + ': update connectivityMap');
                  }
                }                
