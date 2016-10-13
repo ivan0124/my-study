@@ -65,25 +65,12 @@ client.on('message', function (topic, message) {
           if ( vgw_map.has(device_id) === false ) {
               //copy devObj object as vgw objcect
               var vgw = JSON.parse(JSON.stringify(devObj));
-              /*
-              vgw.connect = message.toString();            
-              //console.log('[' + device_id + ']' + ': add vgw_map key pairs');
-              vgw.vgw_id = device_id.toString();
-              vgw_map.set(device_id, vgw );
-              */
           }
           else{
              var vgw = vgw_map.get(device_id);
-            /*
-             if ( vgw !== 'undefined'){
-               vgw.connect = message.toString(); 
-               //console.log('[' + device_id + ']' + ': update vgw_map');
-             }
-             */
           }
               
           vgw.connect = message.toString();            
-          //console.log('[' + device_id + ']' + ': add vgw_map key pairs');
           vgw.vgw_id = device_id.toString();
           vgw_map.set(device_id, vgw );        
           break;
