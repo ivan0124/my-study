@@ -150,7 +150,7 @@ client.on('message', function (topic, message) {
               console.log('[' + device_id + ']' + ': add sensorHubMap key pairs');
               //find gateway and connectivity
               var outObj={ vgw_id: '', conn_id: ''};
-              getSensorHubInfo(device_id, outObj);
+              //getSensorHubInfo(device_id, outObj);
               //
               sensorHubMap.set(device_id, sensorhub );
           }
