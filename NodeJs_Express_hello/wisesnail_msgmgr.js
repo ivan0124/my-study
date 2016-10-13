@@ -487,11 +487,12 @@ function remove_vgw( vgw_id ){
       if ( vgw_id === obj.vgw_id ){
          console.log('connectivityMap.remove() key = ' + key);
          console.log('----');
+         console.log('vgw_id = ' + obj.vgw);
          console.log('conn_id = ' + obj.conn_id);
          console.log('conn_type = ' + obj.conn_type);
-        console.log('os info = ' + obj.os_info);
+         console.log('os info = ' + obj.os_info);
          console.log('conn dev_info_spec = ' + obj.dev_info_spec);
-        console.log('conn dev_info = ' + obj.dev_info);
+         console.log('conn dev_info = ' + obj.dev_info);
          //console.log('conn_type = ' + obj.conn_type);
          console.log('----');
          connectivityMap.remove(key);
