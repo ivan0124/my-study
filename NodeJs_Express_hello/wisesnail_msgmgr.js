@@ -344,6 +344,7 @@ function sensorHubMapUpdate(device_id, connect_msg){
           var sensorhub = sensorHubMap.get(device_id);
         }
         sensorhub.vgw_id = obj.vgw_id;
+        sensorhub.os_info = obj.os_info;
         sensorhub.conn_id = obj.conn_id;
         sensorhub.conn_type = obj.conn_type;
         sensorhub.connect = connect_msg;
