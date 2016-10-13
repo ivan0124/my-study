@@ -210,7 +210,7 @@ client.on('message', function (topic, message) {
   //console.log('--------------------------------------------------------------');
   
 })
-/*
+
 function getObjKeyValue( jsonObj, outObj){
   //console.log( 'listObj Start-------------------------------------------------');
   //outObj.layer++;
@@ -256,7 +256,7 @@ function getObjKeyValue( jsonObj, outObj){
    //console.log( 'listObj return -------------------------------------------------key=' + key);
    return;  
 }
-*/
+
 function getSensorHubInfo(device_id, resultObj){
           
   vgw_map.forEach(function(obj, key) {
