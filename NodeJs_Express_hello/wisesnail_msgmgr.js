@@ -547,6 +547,25 @@ function remove_vgw( vgw_id ){
     });     
     console.log('Show all connectivityMap. count= ' + connectivityMap.count());
     console.log('--------------------------------------------------------------');
+    console.log('Show all sensorHubMap. count= ' + sensorHubMap.count());
+    sensorHubMap.forEach(function(obj, key) {
+      console.log('key = ' + key); 
+      if ( vgw_id === obj.vgw_id ){
+         console.log('sensorHubMap.remove() key = ' + key);
+         console.log('----');
+         console.log('vgw_id = ' + obj.vgw_id);
+         console.log('conn_id = ' + obj.conn_id);
+         console.log('conn_type = ' + obj.conn_type);
+         console.log('os info = ' + obj.os_info);
+         console.log('conn dev_info_spec = ' + obj.dev_info_spec);
+         console.log('conn dev_info = ' + obj.dev_info);
+         //console.log('conn_type = ' + obj.conn_type);
+         console.log('----');
+         sensorHubMap.remove(key);
+      }
+    });     
+    console.log('Show all sensorHubMap. count= ' + sensorHubMap.count());
+    console.log('--------------------------------------------------------------');  
   
   
 /*  
