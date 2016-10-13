@@ -282,6 +282,26 @@ function getConnectivityObj( vgw_id, layer, connType, infoObj){
               if ( layer === 3 ){
                  console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
                  var device_id=infoObj[key];
+                 if ( connectivityMap.has(device_id) === false ) {
+                   //copy devObj object as vgw objcect
+                   var connectivity = JSON.parse(JSON.stringify(devObj));
+                   connectivity.vgw_id = vgw_id;
+                   connectivity.conn_id = device_id; 
+                   connectivity.conn_type = connType;
+                   console.log('[' + device_id + ']' + ': add connectivityMap key pairs');
+                   console.log(JSON.stringify(infoObj[key]['Info']));
+                  
+                   connectivityMap.set(device_id, connectivity );
+                 }
+                 else{
+                   var connectivity = connectivityMap.get(device_id);
+                   if ( connectivity !== 'undefined'){
+                     connectivity.vgw_id = vgw_id;
+                     connectivity.conn_id = device_id; 
+                     connectivity.conn_type = connType;
+                     console.log('[' + device_id + ']' + ': update connectivityMap');
+                   }
+                 }                
                  return;
               }
           }
