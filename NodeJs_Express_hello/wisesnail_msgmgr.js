@@ -353,6 +353,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
    return;    
 }
 
+/*
 function getSensorHubInfo(device_id, resultObj){
           
   vgw_map.forEach(function(obj, key) {
@@ -370,6 +371,7 @@ function getSensorHubInfo(device_id, resultObj){
   });
                
 }
+*/
 
 function getMsgType(topic, jsonObj){
   
