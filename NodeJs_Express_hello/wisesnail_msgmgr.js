@@ -227,11 +227,11 @@ function getObjKeyValue( jsonObj, outObj){
                 outObj.result = jsonObj['sv'];
               }
               return;
+            }
           }
           else {
             if ( key === outObj.key ){
               //console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
-              //
               if ( typeof jsonObj[key] === 'object'){ 
                 outObj.result = JSON.stringify(jsonObj[key]);
               }
