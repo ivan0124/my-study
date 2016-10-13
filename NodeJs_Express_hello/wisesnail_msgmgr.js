@@ -310,7 +310,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                      connectivity.dev_info = JSON.stringify(infoObj['Info']);
                    }
                    console.log('[' + device_id + ']' + ': add connectivityMap key pairs');
-                   //console.log(JSON.stringify(infoObj['Info']));
+                   console.log('DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD  connectivity.conn_id = ' +  connectivity.conn_id);
                   
                    connectivityMap.set(device_id, connectivity );   
                  return;
