@@ -278,7 +278,7 @@ function connectivityMapUpdate( msgType, vgw_id, osInfo, layer, connType, infoOb
                 //console.log('layer=' + layer + 'connType =====================' + connType);
               }
               if ( layer === 3 ){
-                 console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
+                 console.log( 'msgType =' + msgType + ', [layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
                  var device_id=infoObj[key];
                  if ( connectivityMap.has(device_id) === false ) {
                    //copy devObj object as vgw objcect
