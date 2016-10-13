@@ -471,6 +471,7 @@ function remove_vgw( vgw_id ){
     vgw_map.forEach(function(obj, key) {
       console.log('key = ' + key); 
       if ( vgw_id === key ){
+        console.log('vgw_map.remove() key = ' + key);
         vgw_map.remove(key);
       }
     });     
