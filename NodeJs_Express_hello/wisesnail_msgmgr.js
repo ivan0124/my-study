@@ -332,6 +332,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                        connectivity.dev_info = JSON.stringify(infoObj['Info']);
                      }                     
                      console.log('[' + device_id + ']' + ': update connectivityMap');
+                   }
                  }                
                  return;
               }
