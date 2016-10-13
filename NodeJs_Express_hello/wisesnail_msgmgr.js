@@ -268,9 +268,11 @@ function getDeviceMapObj( type, deviceID, outObj ){
   
   if ( type === 'connectivityMap' ){
     if ( connectivityMap.has(deviceID) === false ) {
+      console.log("===================>getDeviceMapObj(false)");
       outObj = JSON.parse(JSON.stringify(devObj));
     }
     else{
+      console.log("===================>getDeviceMapObj(true)");
       outObj = connectivityMap.get(deviceID);
     }  
   }
