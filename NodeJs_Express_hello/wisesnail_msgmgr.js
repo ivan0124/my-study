@@ -147,35 +147,7 @@ client.on('message', function (topic, message) {
     case msgType.sen_connect:
       {
           //console.log('[' + device_id + ']' + ': sen_connect');
-          if ( sensorHubMap.has(device_id) === false ) {
-              //copy devObj object as vgw objcect
-            /*
-              var sensorhub = JSON.parse(JSON.stringify(devObj));
-              sensorhub.connect = message.toString();  
-              sensorHubMap.set(device_id, sensorhub );
-              */
-              //console.log('[' + device_id + ']' + ': add sensorHubMap key pairs');
-              //find gateway and connectivity
-              //var outObj={};
-              getSensorHubInfo(device_id, message.toString());
-              //console.log('**** sensorHub(' + device_id + '): conn_id=' + outObj.conn_id + ', vgw_id=' + outObj.vgw_id  );
-              //
-              //sensorHubMap.set(device_id, sensorhub );
-          }
-          else{
-             var sensorhub = sensorHubMap.get(device_id);
-             if ( sensorhub !== 'undefined'){
-               sensorhub.connect = message.toString(); 
-               console.log('[' + device_id + ']' + ': update sensorHubMap');
-             }
-          } 
-          /*
-          var res = sensor_hub_map_get_senhub( device_id, function ( senObj ){ 
-            //console.log('[senObj]: ' + senObj );
-            senObj.connect = message.toString();
-          } );
-          */
-          //console.log("result = " + res);
+          getSensorHubInfo(device_id, message.toString());
           break;
       }
     case msgType.sen_disconnect:
