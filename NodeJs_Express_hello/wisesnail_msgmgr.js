@@ -110,14 +110,9 @@ client.on('message', function (topic, message) {
                   vgw.dev_info_spec = message.toString();
                   //add conn_map here
                     var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
-                    console.log( '[getConnectivityObj] Start-------------------------------------------------');
+                    console.log( '[connectivityMap_add] Start-------------------------------------------------');
                     connectivityMap_add(device_id ,0, 'null', infoObj); 
-                    console.log( '[getConnectivityObj] End---------------------------------------------------');                  
-                    //copy obj to infoObj
-                    //var infoObj = JSON.parse(JSON.stringify(jsonObj.susiCommData.infoSpec.IoTGW));
-                    //getConnectivity(device_id ,0, 'null', infoObj);
-                    //console.log('conn_id = ' + vgw.conn_id);
-                    //conn_map_add_connectivity(device_id ,0, 'null', infoObj);
+                    console.log( '[connectivityMap_add] End---------------------------------------------------');                  
                 }
           }
           else{
