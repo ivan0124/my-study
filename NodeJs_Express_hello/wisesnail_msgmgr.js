@@ -293,8 +293,9 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                 //console.log('layer=' + layer + 'connType =====================' + connType);
               }
               if ( layer === 3 ){
-                 console.log( 'messageType =' + messageType + ', [layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
+                 console.log( 'messageType =' + messageType + ', [layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] );
                  var device_id=infoObj[key];
+                 console.log('device_id = ' + infoObj[key]);
                    var connectivity = {};
                    getDeviceMapObj('connectivityMap', device_id, connectivity);
 
