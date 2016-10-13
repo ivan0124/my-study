@@ -153,8 +153,9 @@ client.on('message', function (topic, message) {
               sensorhub.connect = message.toString();            
               //console.log('[' + device_id + ']' + ': add sensorHubMap key pairs');
               //find gateway and connectivity
-              var outObj={ vgw_id: '', conn_id: ''};
+              var outObj={};
               getSensorHubInfo(device_id, outObj);
+              console.log('**** sensorHub(' + device_id + '): conn_id=' + obj.conn_id + ', vgw_id=' + obj.vgw_id  );
               //
               sensorHubMap.set(device_id, sensorhub );
           }
@@ -371,7 +372,8 @@ function getSensorHubInfo(device_id, resultObj){
     var sensorHubList = outObj.result.split(',');
     for (var i=0 ; i < sensorHubList.length ; i++){
       if(sensorHubList[i] === device_id){
-        console.log('sensorHub(' + device_id + '): conn_id=' + obj.conn_id + ', vgw_id=' + obj.vgw_id  );
+        //console.log('sensorHub(' + device_id + '): conn_id=' + obj.conn_id + ', vgw_id=' + obj.vgw_id  );
+        resultObj = obj;
         return;
       }
     }
