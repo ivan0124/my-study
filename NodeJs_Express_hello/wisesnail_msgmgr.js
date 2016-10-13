@@ -147,7 +147,7 @@ client.on('message', function (topic, message) {
               //copy devObj object as vgw objcect
               var sensorhub = JSON.parse(JSON.stringify(devObj));
               sensorhub.connect = message.toString();            
-              console.log('[' + device_id + ']' + ': add sensorHubMap key pairs');
+              //console.log('[' + device_id + ']' + ': add sensorHubMap key pairs');
               //find gateway and connectivity
               var outObj={ vgw_id: '', conn_id: ''};
               //getSensorHubInfo(device_id, outObj);
