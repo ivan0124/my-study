@@ -142,7 +142,7 @@ client.on('message', function (topic, message) {
       }
     case msgType.sen_connect:
       {
-          console.log('[' + device_id + ']' + ': sen_connect');
+          //console.log('[' + device_id + ']' + ': sen_connect');
           if ( sensorHubMap.has(device_id) === false ) {
               //copy devObj object as vgw objcect
               var sensorhub = JSON.parse(JSON.stringify(devObj));
@@ -181,7 +181,7 @@ client.on('message', function (topic, message) {
       }
     case msgType.sen_info_spec:
       {
-          console.log('[' + device_id + ']' + ': sen_info_spec');
+          //console.log('[' + device_id + ']' + ': sen_info_spec');
           /*
           var res = sensor_hub_map_get_senhub( device_id, function ( senObj ){ 
             //console.log('[senObj]: ' + senObj );
@@ -296,7 +296,7 @@ function getConnectivityObj( vgw_id, layer, connType, infoObj ){
 function getSensorHubInfo(device_id, resultObj){
           
   vgw_map.forEach(function(obj, key) {
-    console.log('XXXXXXXXXXXXXXXX key = ' + key); 
+    //console.log('XXXXXXXXXXXXXXXX key = ' + key); 
     
     var infoObj = JSON.parse ( obj.dev_info );
     var outObj = {
@@ -305,7 +305,7 @@ function getSensorHubInfo(device_id, resultObj){
                   result:''
                  };
     getObjKeyValue(infoObj, outObj);
-    console.log('XXXXXXXXXXXXXXXX SenHubList = ' + outObj.result);
+    //console.log('XXXXXXXXXXXXXXXX SenHubList = ' + outObj.result);
     
   });
                
