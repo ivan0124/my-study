@@ -382,15 +382,22 @@ function getSensorHubInfo(device_id){
         console.log('sensorHub(' + device_id + '): conn_id=' + obj.conn_id + ', vgw_id=' + obj.vgw_id  );
         if ( sensorHubMap.has(device_id) === false ) {
           var sensorhub = JSON.parse(JSON.stringify(devObj));
+          /*
           sensorhub.vgw_id = obj.vgw_id;
           sensorhub.conn_id = obj.conn_id;
           sensorHubMap.set(device_id, sensorhub );
+          */
         }
         else{
           var sensorhub = sensorHubMap.get(device_id);
+          /*
           sensorhub.vgw_id = obj.vgw_id;
-          sensorhub.conn_id = obj.conn_id;          
-        }  
+          sensorhub.conn_id = obj.conn_id;
+          */
+        }
+        sensorhub.vgw_id = obj.vgw_id;
+        sensorhub.conn_id = obj.conn_id;
+        sensorHubMap.set(device_id, sensorhub );        
         return;
       }
     }
