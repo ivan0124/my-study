@@ -213,7 +213,7 @@ client.on('message', function (topic, message) {
 
 function getObjKeyValue( jsonObj, outObj){
   //console.log( 'listObj Start-------------------------------------------------');
-  outObj.layer++;
+  //outObj.layer++;
   for (key in jsonObj) {
       if (jsonObj.hasOwnProperty(key)) {
           if ( outObj.is_n_sv_format === true ){
