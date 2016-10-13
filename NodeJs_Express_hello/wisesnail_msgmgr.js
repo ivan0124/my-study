@@ -281,7 +281,7 @@ function getSensorHubInfo(device_id, resultObj){
     console.log('XXXXXXXXXXXXXXXX SenHubList = ' + outObj.result);
     //var infoObj = JSON.parse(JSON.stringify(infoObj.susiCommData.data.IoTGW));
     var outObj = {
-                  key:'SenHubList',
+                  key:'bn',
                   layer: 0,
                   matchLayer: 3, 
                   is_n_sv_format: false, 
