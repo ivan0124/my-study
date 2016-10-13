@@ -109,9 +109,12 @@ client.on('message', function (topic, message) {
                 if (typeof vgw !== 'undefined') {
                   vgw.dev_info_spec = message.toString();
                   //add conn_map here
-                    //var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
+                    var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
+                    console.log( '[getConnectivityObj] Start-------------------------------------------------');
+                    connectivityMap_add(device_id ,0, 'null', infoObj); 
+                    console.log( '[getConnectivityObj] End---------------------------------------------------');                  
                     //copy obj to infoObj
-                    var infoObj = JSON.parse(JSON.stringify(jsonObj.susiCommData.infoSpec.IoTGW));
+                    //var infoObj = JSON.parse(JSON.stringify(jsonObj.susiCommData.infoSpec.IoTGW));
                     //getConnectivity(device_id ,0, 'null', infoObj);
                     //console.log('conn_id = ' + vgw.conn_id);
                     //conn_map_add_connectivity(device_id ,0, 'null', infoObj);
@@ -130,11 +133,11 @@ client.on('message', function (topic, message) {
                 if (typeof vgw !== 'undefined') {
                   vgw.dev_info = message.toString();
                   //add sensorhub list here
-                  var infoObj=jsonObj.susiCommData.data.IoTGW;
+                  //var infoObj=jsonObj.susiCommData.data.IoTGW;
                   //var infoObj = JSON.parse(JSON.stringify(jsonObj.susiCommData.data.IoTGW));
-                  console.log( '[getConnectivityObj] Start-------------------------------------------------');
-                  connectivityMap_add(device_id ,0, 'null', infoObj); 
-                  console.log( '[getConnectivityObj] End-------------------------------------------------');
+                  //console.log( '[getConnectivityObj] Start-------------------------------------------------');
+                  //connectivityMap_add(device_id ,0, 'null', infoObj); 
+                  //console.log( '[getConnectivityObj] End-------------------------------------------------');
                 }
           }
           else{
@@ -288,7 +291,7 @@ function connectivityMap_add( vgw_id, layer, connType, infoObj){
                    connectivity.vgw_id = vgw_id;
                    connectivity.conn_id = device_id; 
                    connectivity.conn_type = connType;
-                   connectivity.dev_info = JSON.stringify(infoObj['Info']);
+                   connectivity.dev_info_spec = JSON.stringify(infoObj['Info']);
                    console.log('[' + device_id + ']' + ': add connectivityMap key pairs');
                    //console.log(JSON.stringify(infoObj['Info']));
                   
@@ -300,7 +303,7 @@ function connectivityMap_add( vgw_id, layer, connType, infoObj){
                      connectivity.vgw_id = vgw_id;
                      connectivity.conn_id = device_id; 
                      connectivity.conn_type = connType;
-                     connectivity.dev_info = JSON.stringify(infoObj['Info']);
+                     connectivity.dev_info_spec = JSON.stringify(infoObj['Info']);
                      console.log('[' + device_id + ']' + ': update connectivityMap');
                  }
                }                
@@ -478,7 +481,8 @@ function remove_vgw( vgw_id ){
          console.log('----');
          console.log('conn_id = ' + obj.conn_id);
          console.log('conn_type = ' + obj.conn_type);
-         console.log('conn dev_info = ' + obj.dev_info);
+         console.log('conn dev_info_spec = ' + obj.dev_info_spec);
+        console.log('conn dev_info = ' + obj.dev_info);
          //console.log('conn_type = ' + obj.conn_type);
          console.log('----');
          connectivityMap.remove(key);
