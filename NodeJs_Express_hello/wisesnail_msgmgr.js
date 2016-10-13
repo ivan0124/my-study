@@ -127,9 +127,9 @@ client.on('message', function (topic, message) {
                 if (typeof vgw !== 'undefined') {
                   vgw.dev_info = message.toString();
                   var infoObj=jsonObj.susiCommData.data.IoTGW;
-                  console.log( '[connectivityMapUpdate] Start-------------------------------------------------');
+                  //console.log( '[connectivityMapUpdate] Start-------------------------------------------------');
                   connectivityMapUpdate(msgType.vgw_info, device_id , vgw.os_info, 0, 'null', infoObj); 
-                  console.log( '[connectivityMapUpdate] End---------------------------------------------------');   
+                  //console.log( '[connectivityMapUpdate] End---------------------------------------------------');   
                 }
           }
           else{
@@ -258,7 +258,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                 //console.log('layer=' + layer + 'connType =====================' + connType);
               }
               if ( layer === 3 ){
-                 console.log( 'messageType =' + messageType + ', [layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] );
+                 //console.log( 'messageType =' + messageType + ', [layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] );
                  var device_id=infoObj[key];
                  if ( connectivityMap.has(device_id) === false ) {
                    //copy devObj object as vgw objcect
@@ -279,7 +279,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                  if ( messageType === msgType.vgw_info ){
                    connectivity.dev_info = JSON.stringify(infoObj['Info']);
                  }
-                 console.log('[' + device_id + ']' + ': update connectivityMap key pairs');
+                 //console.log('[' + device_id + ']' + ': update connectivityMap key pairs');
                  connectivityMap.set(device_id, connectivity );                
                  return;
               }
