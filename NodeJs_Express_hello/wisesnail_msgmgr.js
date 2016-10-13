@@ -358,8 +358,8 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
 function getSensorHubInfo(device_id, resultObj){
           
   connectivityMap.forEach(function(obj, key) {
-    console.log('getSensorHubInfo XXXXXXXXXXXXXXXX conn key = ' + key); 
-    console.log('obj.dev_info = ' + obj.dev_info);
+    //console.log('getSensorHubInfo XXXXXXXXXXXXXXXX conn key = ' + key); 
+    //console.log('obj.dev_info = ' + obj.dev_info);
     var infoObj = JSON.parse ( obj.dev_info );
     var outObj = {
                   key:'SenHubList',
@@ -367,7 +367,7 @@ function getSensorHubInfo(device_id, resultObj){
                   result:''
                  };
     getObjKeyValue(infoObj, outObj);
-    console.log('XXXXXXXXXXXXXXXX SenHubList = ' + outObj.result);
+    //console.log('XXXXXXXXXXXXXXXX SenHubList = ' + outObj.result);
     var sensorHubList = outObj.result.split(',');
     for (var i=0 ; i < sensorHubList.length ; i++){
       if(sensorHubList[i] === device_id){
