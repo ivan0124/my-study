@@ -473,6 +473,11 @@ function remove_vgw( vgw_id ){
       console.log('key = ' + key); 
       if ( vgw_id === obj.vgw_id ){
          console.log('connectivityMap.remove() key = ' + key);
+         console.log('----');
+         console.log('conn_id = ' + obj.conn_id);
+         console.log('conn_type = ' + obj.conn_type);
+         //console.log('conn_type = ' + obj.conn_type);
+         console.log('----');
          connectivityMap.remove(key);
       }
     });     
