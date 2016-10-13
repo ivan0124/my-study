@@ -155,7 +155,7 @@ client.on('message', function (topic, message) {
               //console.log('[' + device_id + ']' + ': add sensorHubMap key pairs');
               //find gateway and connectivity
               //var outObj={};
-              //getSensorHubInfo(device_id);
+              getSensorHubInfo(device_id, message.toString());
               //console.log('**** sensorHub(' + device_id + '): conn_id=' + outObj.conn_id + ', vgw_id=' + outObj.vgw_id  );
               //
               //sensorHubMap.set(device_id, sensorhub );
@@ -345,8 +345,9 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
 }
 
 
-function getSensorHubInfo(device_id){
+function getSensorHubInfo(device_id, connect_msg){
           
+  console.log('connect msg ===== ' + connect_msg);
   connectivityMap.forEach(function(obj, key) {
     //console.log('getSensorHubInfo XXXXXXXXXXXXXXXX conn key = ' + key); 
     //console.log('obj.dev_info = ' + obj.dev_info);
