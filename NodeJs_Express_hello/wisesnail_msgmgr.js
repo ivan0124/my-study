@@ -234,7 +234,7 @@ function getObjKeyValue( jsonObj, outObj){
           }
           else {
             if ( key === outObj.key ){
-              //console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
+              console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
               //
               if ( outObj.matchLayer !== -1 && outObj.matchLayer !== outObj.layer ){
                 return;
