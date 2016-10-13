@@ -257,6 +257,63 @@ function getObjKeyValue( jsonObj, outObj){
    return;  
 }
 
+function getConnectivityObj( vgw_id, layer, connType, infoObj ){
+  
+  //console.log( 'Start-------------------------------------------------');
+  layer++;
+  for (key in infoObj) {
+      if (infoObj.hasOwnProperty(key)) {
+          //console.log('layer=' + layer + 'key =====================' + key);
+          if ( key === 'bn' ){
+              if ( layer === 2 ){
+                connType = infoObj[key];
+                //console.log('layer=' + layer + 'connType =====================' + connType);
+              }
+              if ( layer === 3 ){
+                 console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
+                 var device_id=infoObj[key];
+                 if ( vgw_map.has(vgw_id) === true ){
+                   var vgw = vgw_map.get(vgw_id);
+                   if ( vgw.conn_id === 'null'){
+                     vgw.conn_id = device_id;
+                   }
+                   else{
+                     vgw.conn_id += ',';
+                     vgw.conn_id += device_id;
+                   }
+                 }
+                 /*
+                 if ( conn_map.has(device_id) === false ) {
+                     //console.log('[' + device_id + ']' + ': remove vgw_map');
+                     //console.log('getOSType(vgw_id) =========== ' + getOSType(vgw_id));                                      
+                     var sen_hub_map = new HashMap();
+                     var connObj = { vgw_id: vgw_id,  os_type: getOSType(vgw_id), sensor_hub_list: sen_hub_map };           
+                     conn_map.set(device_id, connObj);                   
+                 }
+                 else{
+                     //var conn = conn_map.get(device_id);
+                      //conn.vgw_id = vgw_id;            
+                 }
+                 */
+                 return;
+              }
+          }
+      }
+   }
+ //
+  for (key in infoObj) {
+      if (infoObj.hasOwnProperty(key)) {
+          //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
+          if (typeof infoObj[key] === 'object' ){
+              getConnectivity(vgw_id, layer, connType, infoObj[key]);
+          }
+      }
+   }  
+  
+   layer--;
+   return;    
+}
+
 function getSensorHubInfo(device_id, resultObj){
           
   vgw_map.forEach(function(obj, key) {
