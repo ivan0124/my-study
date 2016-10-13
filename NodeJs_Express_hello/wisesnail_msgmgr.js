@@ -481,6 +481,7 @@ function remove_vgw( vgw_id ){
       console.log('key = ' + key); 
       if ( vgw_id === obj.vgw_id ){
          console.log('connectivityMap.remove() key = ' + key);
+        /*
          console.log('----');
          console.log('vgw_id = ' + obj.vgw_id);
          console.log('conn_id = ' + obj.conn_id);
@@ -490,6 +491,7 @@ function remove_vgw( vgw_id ){
          console.log('conn dev_info = \n' + obj.dev_info);
          //console.log('conn_type = ' + obj.conn_type);
          console.log('----');
+         */
          connectivityMap.remove(key);
       }
     });     
@@ -500,6 +502,7 @@ function remove_vgw( vgw_id ){
       console.log('key = ' + key); 
       if ( vgw_id === obj.vgw_id ){
          console.log('sensorHubMap.remove() key = ' + key);
+        /*
          console.log('----');
          console.log('vgw_id = ' + obj.vgw_id);
          console.log('conn_id = ' + obj.conn_id);
@@ -510,6 +513,7 @@ function remove_vgw( vgw_id ){
          console.log('sensorhub dev_info = \n' + obj.dev_info);
          //console.log('conn_type = ' + obj.conn_type);
          console.log('----');
+         */
          sensorHubMap.remove(key);
       }
     });     
