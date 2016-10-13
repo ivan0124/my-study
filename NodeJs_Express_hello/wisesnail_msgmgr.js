@@ -108,7 +108,7 @@ client.on('message', function (topic, message) {
                 var vgw = vgw_map.get(device_id);
                 if (typeof vgw !== 'undefined') {
                   vgw.dev_info_spec = message.toString();
-                  //add conn_map here
+                  //add connectivityMap here
                     var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
                     console.log( '[connectivityMapUpdate] Start-------------------------------------------------');
                     connectivityMapUpdate(msgType.vgw_info_spec, device_id , vgw.os_info, 0, 'null', infoObj); 
@@ -127,12 +127,10 @@ client.on('message', function (topic, message) {
                 var vgw=vgw_map.get(device_id);
                 if (typeof vgw !== 'undefined') {
                   vgw.dev_info = message.toString();
-                  //add sensorhub list here
-                  //var infoObj=jsonObj.susiCommData.data.IoTGW;
-                  //var infoObj = JSON.parse(JSON.stringify(jsonObj.susiCommData.data.IoTGW));
-                  //console.log( '[getConnectivityObj] Start-------------------------------------------------');
-                  //connectivityMap_add(device_id ,0, 'null', infoObj); 
-                  //console.log( '[getConnectivityObj] End-------------------------------------------------');
+                  var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
+                  console.log( '[connectivityMapUpdate] Start-------------------------------------------------');
+                  connectivityMapUpdate(msgType.vgw_info, device_id , vgw.os_info, 0, 'null', infoObj); 
+                  console.log( '[connectivityMapUpdate] End---------------------------------------------------');   
                 }
           }
           else{
@@ -291,6 +289,10 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                      connectivity.conn_type = connType;
                      connectivity.dev_info_spec = JSON.stringify(infoObj['Info']);
                    }
+                   
+                   if ( messageType === msgType.vgw_info ){
+                     connectivity.dev_info_spec = JSON.stringify(infoObj['Info']);
+                   }
                    console.log('[' + device_id + ']' + ': add connectivityMap key pairs');
                    //console.log(JSON.stringify(infoObj['Info']));
                   
@@ -306,6 +308,10 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                        connectivity.conn_type = connType;
                        connectivity.dev_info_spec = JSON.stringify(infoObj['Info']);
                      }
+                     
+                     if ( messageType === msgType.vgw_info ){
+                       connectivity.dev_info_spec = JSON.stringify(infoObj['Info']);
+                     }                     
                      console.log('[' + device_id + ']' + ': update connectivityMap');
                  }
                }                
