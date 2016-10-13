@@ -321,7 +321,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
 
 function sensorHubMapUpdate(messageType, device_id, message){
           
-  console.log('connect msg ===== ' + connect_msg);
+  console.log('message ===== ' + message);
   connectivityMap.forEach(function(obj, key) {
     //console.log('sensorHubMapUpdate XXXXXXXXXXXXXXXX conn key = ' + key); 
     //console.log('obj.dev_info = ' + obj.dev_info);
