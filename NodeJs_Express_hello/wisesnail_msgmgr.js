@@ -582,6 +582,17 @@ module.exports = {
 var client  = mqtt.connect('mqtt://127.0.0.1');
 client.queueQoSZero = false;
 
+var mqttConnectCallback =  function () {
+  console.log('[wise_snail_data] mqtt connect !!!!');
+  client.subscribe('/cagent/admin/+/agentinfoack');
+  client.subscribe('/cagent/admin/+/willmessage');
+  client.subscribe('/cagent/admin/+/agentactionreq');
+  client.subscribe('/cagent/admin/+/deviceinfo'); 
+   
+}
+
+client.on('connect', mqttConnectCallback );
+/*
 client.on('connect', function () {
   console.log('[wise_snail_data] mqtt connect !!!!');
   client.subscribe('/cagent/admin/+/agentinfoack');
@@ -590,6 +601,7 @@ client.on('connect', function () {
   client.subscribe('/cagent/admin/+/deviceinfo'); 
    
 })
+*/
 
 client.on('message', mqttMessageCallback);
 
