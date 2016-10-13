@@ -214,30 +214,6 @@ function getObjKeyValue( jsonObj, outObj){
    return;  
 }
 
-/*
-function getDeviceMapObj( deviceType, deviceID, outObj ){
-  
-  if ( deviceType === 'connectivityMap' ){
-    if ( connectivityMap.has(deviceID) === false ) {
-      outObj = JSON.parse(JSON.stringify(devObj));
-    }
-    else{
-      outObj = connectivityMap.get(deviceID);
-    }  
-  }
-  
-  if ( deviceType === 'sensorHubMap' ){
-    if ( sensorHubMap.has(deviceID) === false ) {
-      outObj = JSON.parse(JSON.stringify(devObj));
-    }
-    else{
-      outObj = sensorHubMap.get(deviceID);
-    }  
-  }
-  
-}
-*/
-
 function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, infoObj){
   
   //console.log( 'Start-------------------------------------------------');
