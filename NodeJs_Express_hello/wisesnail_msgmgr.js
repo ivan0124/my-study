@@ -104,7 +104,6 @@ client.on('message', function (topic, message) {
       {
           console.log('[' + device_id + ']' + ': vgw_info_spec');
           if ( vgw_map.has(device_id) === true ) {
-                console.log('****** =====================================>');
                 var vgw = vgw_map.get(device_id);
                 if (typeof vgw !== 'undefined') {
                   vgw.dev_info_spec = message.toString();
@@ -146,43 +145,25 @@ client.on('message', function (topic, message) {
       }
     case msgType.sen_connect:
       {
-          //console.log('[' + device_id + ']' + ': sen_connect');
+          console.log('[' + device_id + ']' + ': sen_connect');
           sensorHubMapUpdate(msgType.sen_connect, device_id, message.toString());
           break;
       }
     case msgType.sen_disconnect:
       {
           console.log('[' + device_id + ']' + ': sen_disconnect');
-          /*
-          var res = sensor_hub_map_remove_senhub( device_id );
-          //console.log("result = " + res);
-          break;
-          */
       }
     case msgType.sen_info_spec:
       {
-          sensorHubMapUpdate(msgType.sen_info_spec, device_id, message.toString());
-          //console.log('[' + device_id + ']' + ': sen_info_spec');
-          /*
-          var res = sensor_hub_map_get_senhub( device_id, function ( senObj ){ 
-            //console.log('[senObj]: ' + senObj );
-            senObj.dev_info_spec = message.toString();
-          } );
-          */
-          //console.log("result = " + res);
-          break;
+         console.log('[' + device_id + ']' + ': sen_info_spec');
+         sensorHubMapUpdate(msgType.sen_info_spec, device_id, message.toString());
+         break;
       }
     case msgType.sen_info:
       {    
+        console.log('[' + device_id + ']' + ': sen_info');
         sensorHubMapUpdate(msgType.sen_info, device_id, message.toString());
-          //console.log('[' + device_id + ']' + ': sen_info');
-          /*
-          var res = sensor_hub_map_get_senhub( device_id, function ( senObj ){ 
-            //console.log('[senObj]: ' + senObj );
-            senObj.dev_info = message.toString();
-          } );
-          */
-          break;
+        break;
       }
     case msgType.unknown:
       console.log('msgType.unknown');
@@ -264,7 +245,6 @@ function getDeviceMapObj( deviceType, deviceID, outObj ){
   
 }
 
-
 function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, infoObj){
   
   //console.log( 'Start-------------------------------------------------');
@@ -326,7 +306,6 @@ function sensorHubMapUpdate(messageType, device_id, message){
           
   console.log('message ===== ' + message);
   connectivityMap.forEach(function(obj, key) {
-    //console.log('sensorHubMapUpdate XXXXXXXXXXXXXXXX conn key = ' + key); 
     //console.log('obj.dev_info = ' + obj.dev_info);
     var infoObj = JSON.parse ( obj.dev_info );
     var outObj = {
@@ -335,7 +314,6 @@ function sensorHubMapUpdate(messageType, device_id, message){
                   result:''
                  };
     getObjKeyValue(infoObj, outObj);
-    //console.log('XXXXXXXXXXXXXXXX SenHubList = ' + outObj.result);
     var sensorHubList = outObj.result.split(',');
     for (var i=0 ; i < sensorHubList.length ; i++){
       if(sensorHubList[i] === device_id){
