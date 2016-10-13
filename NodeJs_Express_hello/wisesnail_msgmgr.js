@@ -283,7 +283,7 @@ function connectivityMapUpdate( msgType, vgw_id, osInfo, layer, connType, infoOb
                  if ( connectivityMap.has(device_id) === false ) {
                    //copy devObj object as vgw objcect
                    var connectivity = JSON.parse(JSON.stringify(devObj));
-                   if ( msgType === msgType.vgw_info_spec ){ 
+                   if ( msgType.toString() === msgType.vgw_info_spec.toString() ){ 
                      console.log('YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
                      connectivity.vgw_id = vgw_id;
                      connectivity.os_info = osInfo;
