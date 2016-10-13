@@ -104,8 +104,8 @@ client.on('message', function (topic, message) {
                     //var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
                     //copy obj to infoObj
                     var infoObj = JSON.parse(JSON.stringify(jsonObj.susiCommData.infoSpec.IoTGW));
-                    getConnectivity(device_id ,0, 'null', infoObj);
-                    console.log('conn_id = ' + vgw.conn_id);
+                    //getConnectivity(device_id ,0, 'null', infoObj);
+                    //console.log('conn_id = ' + vgw.conn_id);
                     //conn_map_add_connectivity(device_id ,0, 'null', infoObj);
                 }
           }
