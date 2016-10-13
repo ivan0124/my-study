@@ -168,7 +168,7 @@ var mqttMessageCallback = function (topic, message){
   }
   //console.log('--------------------------------------------------------------');  
 }
-
+client.on('message', mqttMessageCallback);
 /*
 client.on('message', function (topic, message) {
   // message is Buffer 
