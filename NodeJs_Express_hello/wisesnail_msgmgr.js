@@ -32,7 +32,7 @@ client.on('connect', function () {
    
 })
 
-client.on('message', mqttMessageCallback(topic, message));
+//client.on('message', mqttMessageCallback);
  
 var mqttMessageCallback = function (topic, message){
   // message is Buffer 
