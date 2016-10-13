@@ -122,9 +122,11 @@ client.on('message', function (topic, message) {
                 if (typeof vgw !== 'undefined') {
                   vgw.dev_info = message.toString();
                   //add sensorhub list here
-                  //var infoObj=jsonObj.susiCommData.data.IoTGW;
+                  var infoObj=jsonObj.susiCommData.data.IoTGW;
                   //var infoObj = JSON.parse(JSON.stringify(jsonObj.susiCommData.data.IoTGW));
-                  //sensor_hub_map_add_senhub(device_id , 'null', 0, infoObj);                  
+                  console.log( '[getConnectivityObj] Start-------------------------------------------------');
+                  getConnectivityObj(device_id ,0, 'null', infoObj); 
+                  console.log( '[getConnectivityObj] End-------------------------------------------------');
                 }
           }
           else{
@@ -272,29 +274,6 @@ function getConnectivityObj( vgw_id, layer, connType, infoObj ){
               if ( layer === 3 ){
                  console.log( '[layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] ); 
                  var device_id=infoObj[key];
-                 if ( vgw_map.has(vgw_id) === true ){
-                   var vgw = vgw_map.get(vgw_id);
-                   if ( vgw.conn_id === 'null'){
-                     vgw.conn_id = device_id;
-                   }
-                   else{
-                     vgw.conn_id += ',';
-                     vgw.conn_id += device_id;
-                   }
-                 }
-                 /*
-                 if ( conn_map.has(device_id) === false ) {
-                     //console.log('[' + device_id + ']' + ': remove vgw_map');
-                     //console.log('getOSType(vgw_id) =========== ' + getOSType(vgw_id));                                      
-                     var sen_hub_map = new HashMap();
-                     var connObj = { vgw_id: vgw_id,  os_type: getOSType(vgw_id), sensor_hub_list: sen_hub_map };           
-                     conn_map.set(device_id, connObj);                   
-                 }
-                 else{
-                     //var conn = conn_map.get(device_id);
-                      //conn.vgw_id = vgw_id;            
-                 }
-                 */
                  return;
               }
           }
@@ -305,7 +284,7 @@ function getConnectivityObj( vgw_id, layer, connType, infoObj ){
       if (infoObj.hasOwnProperty(key)) {
           //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
           if (typeof infoObj[key] === 'object' ){
-              getConnectivity(vgw_id, layer, connType, infoObj[key]);
+              getConnectivityObj(vgw_id, layer, connType, infoObj[key]);
           }
       }
    }  
