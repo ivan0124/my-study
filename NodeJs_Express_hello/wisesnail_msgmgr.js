@@ -147,7 +147,7 @@ client.on('message', function (topic, message) {
     case msgType.sen_connect:
       {
           //console.log('[' + device_id + ']' + ': sen_connect');
-          sensorHubMapUpdate(device_id, message.toString());
+          sensorHubMapUpdate(msgType.sen_connect, device_id, message.toString());
           break;
       }
     case msgType.sen_disconnect:
@@ -319,7 +319,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
 }
 
 
-function sensorHubMapUpdate(device_id, connect_msg){
+function sensorHubMapUpdate(messageType, device_id, message){
           
   console.log('connect msg ===== ' + connect_msg);
   connectivityMap.forEach(function(obj, key) {
@@ -347,7 +347,9 @@ function sensorHubMapUpdate(device_id, connect_msg){
         sensorhub.os_info = obj.os_info;
         sensorhub.conn_id = obj.conn_id;
         sensorhub.conn_type = obj.conn_type;
-        sensorhub.connect = connect_msg;
+        if ( msgType.sen_connect === messageType){
+          sensorhub.connect = message;
+        }
         sensorHubMap.set(device_id, sensorhub );        
         return;
       }
