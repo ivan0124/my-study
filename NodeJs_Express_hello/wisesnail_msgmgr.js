@@ -478,6 +478,7 @@ function remove_vgw( vgw_id ){
          console.log('----');
          console.log('conn_id = ' + obj.conn_id);
          console.log('conn_type = ' + obj.conn_type);
+         console.log('conn dev_info = ' + obj.dev_info);
          //console.log('conn_type = ' + obj.conn_type);
          console.log('----');
          connectivityMap.remove(key);
