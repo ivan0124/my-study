@@ -264,17 +264,17 @@ function getObjKeyValue( jsonObj, outObj){
 }
 
 
-function getDeviceMapObj( deviceType, deviceID, outObj ){
+function getDeviceMapObj( deviceType, deviceID, outtObj ){
   
   console.log("===================>getDeviceMapObj deviceType =" + deviceType + ', typeof deviceType = ' + typeof deviceType);
   if ( deviceType === 'connectivityMap' ){
     if ( connectivityMap.has(deviceID) === false ) {
       console.log("===================>getDeviceMapObj(false)");
-      outObj = JSON.parse(JSON.stringify(devObj));
+      outtObj = JSON.parse(JSON.stringify(devObj));
     }
     else{
       console.log("===================>getDeviceMapObj(true)");
-      outObj = connectivityMap.get(deviceID);
+      outtObj = connectivityMap.get(deviceID);
     }  
   }
   
