@@ -5,9 +5,6 @@ var vgw_map = new HashMap();
 var sensorHubMap = new HashMap();
 var connectivityMap = new HashMap();
 
-var client  = mqtt.connect('mqtt://127.0.0.1');
-client.queueQoSZero = false;
-
 const msgType = { error: -1, unknown: 0,
                   vgw_connect: 1, vgw_os_info: 2, vgw_info_spec: 3, vgw_willmessage: 4,
                   vgw_disconnect: 5, vgw_info: 6,
@@ -21,7 +18,9 @@ var devObj = { vgw_id: 'null',
                dev_info_spec: 'null',  
                dev_info: 'null'
              };
-
+/*
+var client  = mqtt.connect('mqtt://127.0.0.1');
+client.queueQoSZero = false;
 
 client.on('connect', function () {
   console.log('[wise_snail_data] mqtt connect !!!!');
@@ -31,6 +30,7 @@ client.on('connect', function () {
   client.subscribe('/cagent/admin/+/deviceinfo'); 
    
 })
+*/
 
 //client.on('message', mqttMessageCallback);
  
@@ -168,6 +168,19 @@ var mqttMessageCallback = function (topic, message){
   }
   //console.log('--------------------------------------------------------------');  
 }
+
+var client  = mqtt.connect('mqtt://127.0.0.1');
+client.queueQoSZero = false;
+
+client.on('connect', function () {
+  console.log('[wise_snail_data] mqtt connect !!!!');
+  client.subscribe('/cagent/admin/+/agentinfoack');
+  client.subscribe('/cagent/admin/+/willmessage');
+  client.subscribe('/cagent/admin/+/agentactionreq');
+  client.subscribe('/cagent/admin/+/deviceinfo'); 
+   
+})
+
 client.on('message', mqttMessageCallback);
 /*
 client.on('message', function (topic, message) {
