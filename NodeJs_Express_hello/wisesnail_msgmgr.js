@@ -219,10 +219,7 @@ function getObjKeyValue( jsonObj, outObj){
           if ( outObj.is_n_sv_format === true ){
             if ( jsonObj[key] === outObj.key ){
               //console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
-              //console.log( 'key =======>' + 'sv' + ', keyVal=======>' + jsonObj['sv']);
-              if ( outObj.matchLayer !== -1 && outObj.matchLayer !== outObj.layer ){
-                //return;
-              }              
+              //console.log( 'key =======>' + 'sv' + ', keyVal=======>' + jsonObj['sv']);     
               if ( typeof jsonObj['sv'] === 'object'){ 
                 outObj.result = JSON.stringify(jsonObj['sv']);
               }
@@ -230,26 +227,18 @@ function getObjKeyValue( jsonObj, outObj){
                 outObj.result = jsonObj['sv'];
               }
               return;
-            }
           }
           else {
             if ( key === outObj.key ){
               //console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
               //
-              if ( outObj.matchLayer !== -1 && outObj.matchLayer !== outObj.layer ){
-                //return;
+              if ( typeof jsonObj[key] === 'object'){ 
+                outObj.result = JSON.stringify(jsonObj[key]);
               }
               else{
-                console.log( 'key =======>' + key + ', keyVal=======>' + jsonObj[key]);
-                if ( typeof jsonObj[key] === 'object'){ 
-                  outObj.result = JSON.stringify(jsonObj[key]);
-                }
-                else{
-                  outObj.result = jsonObj[key];
-                }
-                return;
+                outObj.result = jsonObj[key];
               }
-              //}     
+              return;
             }
           }
       }
@@ -263,7 +252,7 @@ function getObjKeyValue( jsonObj, outObj){
           }
       }
    }
-   outObj.layer--;
+   //outObj.layer--;
    //console.log( 'listObj return -------------------------------------------------key=' + key);
    return;  
 }
@@ -275,14 +264,13 @@ function getSensorHubInfo(device_id, resultObj){
     var infoObj = JSON.parse ( obj.dev_info );
     var outObj = {
                   key:'SenHubList',
-                  layer: 0,
-                  matchLayer: -1, 
                   is_n_sv_format: true, 
                   result:''
                  };
     getObjKeyValue(infoObj, outObj);
     console.log('XXXXXXXXXXXXXXXX SenHubList = ' + outObj.result);
     //var infoObj = JSON.parse(JSON.stringify(infoObj.susiCommData.data.IoTGW));
+    /*
     var outObj = {
                   key:'bn',
                   layer: 0,
@@ -292,6 +280,7 @@ function getSensorHubInfo(device_id, resultObj){
                  };    
     getObjKeyValue(infoObj.susiCommData.data.IoTGW, outObj);
     console.log('XXXXXXXXXXXXXXXX conn_id = ' + outObj.result);
+    */
     //sensroList = outObj.result.split(',');
   });
                
