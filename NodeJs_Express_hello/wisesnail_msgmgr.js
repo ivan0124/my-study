@@ -359,8 +359,7 @@ function getSensorHubInfo(device_id, resultObj){
           
   connectivityMap.forEach(function(obj, key) {
     console.log('getSensorHubInfo XXXXXXXXXXXXXXXX conn key = ' + key); 
-    console.log('obj.info = ' + obj.dev_info);
-    /*
+    console.log('obj.dev_info = ' + obj.dev_info);
     var infoObj = JSON.parse ( obj.dev_info );
     var outObj = {
                   key:'SenHubList',
@@ -368,8 +367,7 @@ function getSensorHubInfo(device_id, resultObj){
                   result:''
                  };
     getObjKeyValue(infoObj, outObj);
-    //console.log('XXXXXXXXXXXXXXXX SenHubList = ' + outObj.result);
-    */
+    console.log('XXXXXXXXXXXXXXXX SenHubList = ' + outObj.result);
   });
                
 }
