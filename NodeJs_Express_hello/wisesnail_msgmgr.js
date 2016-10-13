@@ -312,8 +312,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                    console.log('[' + device_id + ']' + ': add connectivityMap key pairs');
                    //console.log(JSON.stringify(infoObj['Info']));
                   
-                   connectivityMap.set(device_id, connectivity );                
-               }                
+                   connectivityMap.set(device_id, connectivity );                              
                return;
           }
       }
