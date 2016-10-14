@@ -561,9 +561,9 @@ function getTotalConnectivityCapability(){
            console.log('conn dev_capability = \n' + obj.dev_capability);
            var connectivityName = obj.conn_id;
            var connectivityType = obj.conn_type;
-           if ( IoTGWCapability.IoTGW['123'] === 'undefined' ){
+           //if ( IoTGWCapability.IoTGW['123'] === 'undefined' ){
              IoTGWCapability.IoTGW['123'] = {};
-           }
+          // }
            /*
            if ( IoTGWCapability.IoTGW[connectivityType][connectivityName] === 'undefined' ){
              IoTGWCapability.IoTGW[connectivityType][connectivityName] = {};
