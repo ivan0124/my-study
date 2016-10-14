@@ -603,7 +603,7 @@ function getTotalConnectivityCapability(){
   });       
 
   //console.log('IoTGWCapability = \n' + JSON.stringify(IoTGWCapability) );
-  const path = '/IoTGW/BLE/0007000E40ABCD35';
+  const path = '/IoTGW/BLE/0007000E40ABCD31';
   var keyStr = '' ;
   listObj(path, keyStr, IoTGWCapability);
   return JSON.stringify(IoTGWCapability);
