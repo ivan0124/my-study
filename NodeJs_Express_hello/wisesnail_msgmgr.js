@@ -217,20 +217,20 @@ function getDeviceCapability( devInfoSpecObj, devInfoObj ){
                   for ( var i=0 ; i < devInfoSpecObj['Info']['e'].length ; i++){
                      if ( typeof devInfoSpecObj['Info']['e'][i].v !== 'undefined' && devInfoObj['Info']['e'][i].v !== 'undefined' ){
                        devInfoSpecObj['Info']['e'][i].v =  devInfoObj['Info']['e'][i].v;
-                       //console.log('v..tmpInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]['n']));
+                       console.log('v..devInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(devInfoSpecObj['Info']['e'][i]['n']));
                      }
                      
                      if ( typeof devInfoSpecObj['Info']['e'][i].sv !== 'undefined' && devInfoObj['Info']['e'][i].sv !== 'undefined' ){
                        devInfoSpecObj['Info']['e'][i].sv =  devInfoObj['Info']['e'][i].sv;
-                       //console.log('sv..tmpInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]['n']));
+                       console.log('sv..devInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(devInfoSpecObj['Info']['e'][i]['n']));
                      } 
                      
                      if ( typeof devInfoSpecObj['Info']['e'][i].bv !== 'undefined' && devInfoObj['Info']['e'][i].bv !== 'undefined' ){
                        devInfoSpecObj['Info']['e'][i].bv =  devInfoObj['Info']['e'][i].bv;
-                       //console.log('bv..tmpInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]['n']));
+                       console.log('bv..devInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(devInfoSpecObj['Info']['e'][i]['n']));
                      }                        
                       
-                     console.log('tmpInfoSpecObj.e['+ i +'] = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]));
+                     console.log('tmpInfoSpecObj.e['+ i +'] = ' +  JSON.stringify(devInfoSpecObj['Info']['e'][i]));
                    }  
 }
 
