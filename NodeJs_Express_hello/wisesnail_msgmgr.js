@@ -252,11 +252,11 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                        tmpInfoSpecObj['Info']['e'][i].v =  infoObj['Info']['e'][i].v;
                      }
                      
-                     if ( typeof tmpInfoSpecObj['e'][i].sv !== 'undefined' && infoObj['Info']['e'][i].sv !== 'undefined' ){
+                     if ( typeof tmpInfoSpecObj['Info']['e'][i].sv !== 'undefined' && infoObj['Info']['e'][i].sv !== 'undefined' ){
                        tmpInfoSpecObj['Info']['e'][i].sv =  infoObj['Info']['e'][i].sv;
                      } 
                      
-                     if ( typeof tmpInfoSpecObj['e'][i].bv !== 'undefined' && infoObj['Info']['e'][i].bv !== 'undefined' ){
+                     if ( typeof tmpInfoSpecObj['Info']['e'][i].bv !== 'undefined' && infoObj['Info']['e'][i].bv !== 'undefined' ){
                        tmpInfoSpecObj['Info']['e'][i].bv =  infoObj['Info']['e'][i].bv;
                      }                        
                       
