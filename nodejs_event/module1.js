@@ -25,8 +25,9 @@ var someData = 'this event test';
 // other code in the module that does something to trigger events
 // this is just one example using a timer
 setInterval(function() {
-    obj.emit("someEvent", someData);
-}, 3000);
+    obj.emit(EVENT.eConnectivity_Capability, someData);
+}, 10 * 1000);
+
 
 var client  = mqtt.connect('mqtt://172.22.214.60');
 client.queueQoSZero = false;
