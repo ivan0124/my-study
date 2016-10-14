@@ -1,7 +1,7 @@
 //Mqtt
 var mqtt = require('mqtt');
 var HashMap = require('hashmap').HashMap;
-var vgw_map = new HashMap();
+var VgwMap = new HashMap();
 var sensorHubMap = new HashMap();
 var connectivityMap = new HashMap();
 
@@ -57,17 +57,17 @@ var mqttMessageCallback = function (topic, message){
       {
           console.log('[' + device_id + ']' + ': vgw_connect');
          
-          if ( vgw_map.has(device_id) === false ) {
+          if ( VgwMap.has(device_id) === false ) {
               //copy devObj object as vgw objcect
               var vgw = JSON.parse(JSON.stringify(devObj));
           }
           else{
-             var vgw = vgw_map.get(device_id);
+             var vgw = VgwMap.get(device_id);
           }
               
           vgw.connect = message.toString();            
           vgw.vgw_id = device_id.toString();
-          vgw_map.set(device_id, vgw );        
+          VgwMap.set(device_id, vgw );        
           break;
       }
     case msgType.vgw_disconnect:
@@ -79,14 +79,14 @@ var mqttMessageCallback = function (topic, message){
     case msgType.vgw_os_info:
       {
           console.log('[' + device_id + ']' + ': vgw_os_info, IP=' + jsonObj.susiCommData.osInfo.IP);
-          if ( vgw_map.has(device_id) === true ) {
-                var vgw=vgw_map.get(device_id);
+          if ( VgwMap.has(device_id) === true ) {
+                var vgw=VgwMap.get(device_id);
                 if (typeof vgw !== 'undefined') {
                   vgw.os_info = message.toString();
                 }
           }
           else{
-               console.log('[msgType.vgw_os_info]: vgw_map does not exist !!');
+               console.log('[msgType.vgw_os_info]: VgwMap does not exist !!');
           }
           
           break;
@@ -94,8 +94,8 @@ var mqttMessageCallback = function (topic, message){
     case msgType.vgw_info_spec:
       {
           console.log('[' + device_id + ']' + ': vgw_info_spec');
-          if ( vgw_map.has(device_id) === true ) {
-                var vgw = vgw_map.get(device_id);
+          if ( VgwMap.has(device_id) === true ) {
+                var vgw = VgwMap.get(device_id);
                 if (typeof vgw !== 'undefined') {
                   vgw.dev_info_spec = message.toString();
                   //add connectivityMap here
@@ -106,15 +106,15 @@ var mqttMessageCallback = function (topic, message){
                 }
           }
           else{
-               console.log('[msgType.vgw_info_spec]: vgw_map does not exist !!');
+               console.log('[msgType.vgw_info_spec]: VgwMap does not exist !!');
           }        
           break;
       }
     case msgType.vgw_info:
       {
           console.log('[' + device_id + ']' + ': vgw_info');
-          if ( vgw_map.has(device_id) === true ) {
-                var vgw=vgw_map.get(device_id);
+          if ( VgwMap.has(device_id) === true ) {
+                var vgw=VgwMap.get(device_id);
                 if (typeof vgw !== 'undefined') {
                   vgw.dev_info = message.toString();
                   var infoObj=jsonObj.susiCommData.data.IoTGW;
@@ -124,7 +124,7 @@ var mqttMessageCallback = function (topic, message){
                 }
           }
           else{
-               console.log('[msgType.vgw_info]: vgw_map does not exist !!');
+               console.log('[msgType.vgw_info]: VgwMap does not exist !!');
           }         
           break;
       }
@@ -399,14 +399,14 @@ function getStatusFromMsg( connectMsg ){
 function getOSType( vgw_id ){
 
   console.log('[getOSType]vgw_id=' + vgw_id);
-  if ( vgw_map.has(vgw_id) === false ) {
-    console.log('[getOSType] vgw_map.has(vgw_id) === false');
+  if ( VgwMap.has(vgw_id) === false ) {
+    console.log('[getOSType] VgwMap.has(vgw_id) === false');
     return 'null';
   }
     
-  var vgw=vgw_map.get(vgw_id);
+  var vgw=VgwMap.get(vgw_id);
   if (typeof vgw === 'undefined') {
-    console.log('[getOSType] vgw_map.has(vgw_id) === false');
+    console.log('[getOSType] VgwMap.has(vgw_id) === false');
     return 'null';                 
   }
   
@@ -434,15 +434,15 @@ function remove_vgw( vgw_id ){
 
     console.log('--------------------------------------------------------------');
   
-    console.log('Show all vgw_map. count= ' + vgw_map.count());
-    vgw_map.forEach(function(obj, key) {
+    console.log('Show all VgwMap. count= ' + VgwMap.count());
+    VgwMap.forEach(function(obj, key) {
       console.log('key = ' + key); 
       if ( vgw_id === key ){
-        console.log('vgw_map.remove() key = ' + key);
-        vgw_map.remove(key);
+        console.log('VgwMap.remove() key = ' + key);
+        VgwMap.remove(key);
       }
     });     
-    console.log('Show all vgw_map. count= ' + vgw_map.count());
+    console.log('Show all VgwMap. count= ' + VgwMap.count());
     console.log('--------------------------------------------------------------');    
     console.log('Show all connectivityMap. count= ' + connectivityMap.count());
     connectivityMap.forEach(function(obj, key) {
@@ -543,11 +543,11 @@ module.exports = {
     return;
   },
   
-  show_all_vgw_map: function() {
+  show_all_VgwMap: function() {
     /*
     console.log('--------------------------------------------------------------');
-    console.log('Show all vgw_map');
-    vgw_map.forEach(function(obj, key) {
+    console.log('Show all VgwMap');
+    VgwMap.forEach(function(obj, key) {
       if (typeof obj !== 'undefined') {
           console.log('['+key+']'+'[connect]' + ' : ' + obj.connect);
           console.log('['+key+']'+'[os_info]' + ' : ' + obj.os_info);
