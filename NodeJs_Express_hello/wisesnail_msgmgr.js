@@ -555,7 +555,7 @@ function listObj( apiPath, keyStr, jsonObj, outputStr ){
     if (jsonObj.hasOwnProperty(key)) {
       var jsonKeyStr = keyStr + '/' + key ; 
       if ( apiPath === jsonKeyStr ){
-        //console.log( 'jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
+        console.log( 'jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
         outputStr = JSON.stringify(jsonObj[key]);
       }
     }
