@@ -472,7 +472,7 @@ function remove_vgw( vgw_id ){
       console.log('key = ' + key); 
       if ( vgw_id === obj.vgw_id ){
          console.log('ConnectivityMap.remove() key = ' + key);
-        /*
+        
          console.log('----');
          console.log('vgw_id = ' + obj.vgw_id);
          console.log('conn_id = ' + obj.conn_id);
@@ -480,9 +480,10 @@ function remove_vgw( vgw_id ){
          console.log('os info = \n' + obj.os_info);
          console.log('conn dev_info_spec = \n' + obj.dev_info_spec);
          console.log('conn dev_info = \n' + obj.dev_info);
+         console.log('conn dev_capability = \n' + obj.dev_capability);
          //console.log('conn_type = ' + obj.conn_type);
          console.log('----');
-         */
+         
          ConnectivityMap.remove(key);
       }
     });     
