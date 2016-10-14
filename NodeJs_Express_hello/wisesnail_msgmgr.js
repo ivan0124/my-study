@@ -464,7 +464,7 @@ function remove_vgw( vgw_id ){
 
     console.log('--------------------------------------------------------------');
   
-    if ( getOSType(vgw_id) == osType.none_ip_base){
+    if ( getOSType(vgw_id) == osType.ip_base){
       console.log('Show all VgwMap. count= ' + VgwMap.count());
       VgwMap.forEach(function(obj, key) {
         console.log('key = ' + key); 
