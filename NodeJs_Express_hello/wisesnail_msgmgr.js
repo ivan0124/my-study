@@ -609,7 +609,7 @@ function getTotalConnectivityCapability(){
   var outStr = {} ; 
   listObj(path, keyStr, IoTGWCapability, outStr);
   console.log('-----------------------------------------');
-  console.log( JSON.stringify(outStr.resultStr));
+  console.log(outStr.resultStr);
   console.log('-----------------------------------------');
   
   
