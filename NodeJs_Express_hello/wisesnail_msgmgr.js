@@ -559,16 +559,17 @@ function getTotalConnectivityCapability(){
            console.log('----');
            console.log('key = ' + key); 
            console.log('conn dev_capability = \n' + obj.dev_capability);
+           var connectivityName = obj.conn_id;
            var connectivityType = obj.conn_type;
            if ( IoTGWCapability.IoTGW[connectivityType] === 'undefined' ){
              IoTGWCapability.IoTGW[connectivityType] = {};
            }
         
-           if ( IoTGWCapability.IoTGW[connectivityType][key] === 'undefined' ){
-             IoTGWCapability.IoTGW[connectivityType][key] = {};
+           if ( IoTGWCapability.IoTGW[connectivityType][connectivityName] === 'undefined' ){
+             IoTGWCapability.IoTGW[connectivityType][connectivityName] = {};
            }     
         
-           IoTGWCapability.IoTGW[connectivityType][key] = JSON.parse(obj.dev_capability) ;
+           IoTGWCapability.IoTGW[connectivityType][connectivityName] = JSON.parse(obj.dev_capability) ;
            //console.log('conn_type = ' + obj.conn_type);
            //IoTGWCapability += ',';
            //IoTGWCapability += key;
