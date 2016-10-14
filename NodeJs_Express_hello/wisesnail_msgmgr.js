@@ -5,6 +5,8 @@ var vgw_map = new HashMap();
 var sensorHubMap = new HashMap();
 var connectivityMap = new HashMap();
 
+var client  = mqtt.connect('mqtt://172.22.214.60');
+client.queueQoSZero = false;
 
 const msgType = { error: -1, unknown: 0,
                   vgw_connect: 1, vgw_os_info: 2, vgw_info_spec: 3, vgw_willmessage: 4,
@@ -587,9 +589,6 @@ module.exports = {
     return;
   }
 };
-
-var client  = mqtt.connect('mqtt://172.22.214.60');
-client.queueQoSZero = false;
 
 client.on('connect', mqttConnectCallback );
 client.on('message', mqttMessageCallback);
