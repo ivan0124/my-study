@@ -548,7 +548,7 @@ function get_id( topic ){
   return 'key1';
 }
 */
-function listObj( apiPath, keyStr, jsonObj, outputObj ){
+function listObj( apiPath, keyStr, jsonObj, outStr ){
   
   //console.log( 'listObj Start-------------------------------------------------');
   for (key in jsonObj) {
@@ -556,7 +556,7 @@ function listObj( apiPath, keyStr, jsonObj, outputObj ){
       var jsonKeyStr = keyStr + '/' + key ; 
       if ( apiPath === jsonKeyStr ){
         console.log( 'jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
-        outputObj.resultStr = JSON.stringify(jsonObj[key]);
+        outStr.resultStr = JSON.stringify(jsonObj[key]);
       }
     }
   }
@@ -565,7 +565,7 @@ function listObj( apiPath, keyStr, jsonObj, outputObj ){
     if (jsonObj.hasOwnProperty(key)) {
       //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
       if (typeof jsonObj[key] === 'object' ){
-        listObj( apiPath, keyStr + '/' + key, jsonObj[key], outputObj);
+        listObj( apiPath, keyStr + '/' + key, jsonObj[key], outStr);
       }
       else{
         //console.log( 'listObj return -------------------------------------------------key=' + key);
