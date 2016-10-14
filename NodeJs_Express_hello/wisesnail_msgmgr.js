@@ -565,7 +565,7 @@ function listObj( apiPath, keyStr, jsonObj, outputObj ){
     if (jsonObj.hasOwnProperty(key)) {
       //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
       if (typeof jsonObj[key] === 'object' ){
-        listObj( apiPath, keyStr + '/' + key, jsonObj[key], outputStr);
+        listObj( apiPath, keyStr + '/' + key, jsonObj[key], outputObj);
       }
       else{
         //console.log( 'listObj return -------------------------------------------------key=' + key);
