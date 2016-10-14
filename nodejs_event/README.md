@@ -1,15 +1,13 @@
 #How to install Express
 
-1.Now install Express in the `NodeJs_Express_hello` directory and save it in the dependencies list. For example:
+1.Now install Express in the `nodejs_event` directory and save it in the dependencies list. For example:
 <pre>
 $ cd  ~NodeJs_Express_hello
 $ npm install express --save
-$ npm install mqtt --save
-$ npm install hashmap --save
 </pre>
 
 #How to test
 <pre>
-$node hello.js
+$node ./web.js
 </pre>
 
