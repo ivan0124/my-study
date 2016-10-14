@@ -548,7 +548,7 @@ function get_id( topic ){
   return 'key1';
 }
 */
-function listObj( apiPath, keyStr, jsonObj, outStr ){
+function listObj( apiPath, keyStr, jsonObj, outputObj ){
   
   //console.log( 'listObj Start-------------------------------------------------');
   for (key in jsonObj) {
@@ -556,7 +556,7 @@ function listObj( apiPath, keyStr, jsonObj, outStr ){
       var jsonKeyStr = keyStr + '/' + key ; 
       if ( apiPath === jsonKeyStr ){
         console.log( 'jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
-        outStr.resultStr = JSON.stringify(jsonObj[key]);
+        outputObj.resultStr = JSON.stringify(jsonObj[key]);
       }
     }
   }
@@ -565,7 +565,7 @@ function listObj( apiPath, keyStr, jsonObj, outStr ){
     if (jsonObj.hasOwnProperty(key)) {
       //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
       if (typeof jsonObj[key] === 'object' ){
-        listObj( apiPath, keyStr + '/' + key, jsonObj[key], outStr);
+        listObj( apiPath, keyStr + '/' + key, jsonObj[key], outputObj);
       }
       else{
         //console.log( 'listObj return -------------------------------------------------key=' + key);
@@ -606,10 +606,10 @@ function getTotalConnectivityCapability(){
   //console.log('IoTGWCapability = \n' + JSON.stringify(IoTGWCapability) );
   const path = '/IoTGW/BLE/0007000E40ABCD31';
   var keyStr = '' ;
-  var outStr = {} ; 
-  listObj(path, keyStr, IoTGWCapability, outStr);
+  var outputObj = {} ; 
+  listObj(path, keyStr, IoTGWCapability, outputObj);
   console.log('-----------------------------------------');
-  console.log(outStr.resultStr);
+  console.log(outputObj.resultStr);
   console.log('-----------------------------------------');
   
   
