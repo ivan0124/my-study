@@ -515,16 +515,8 @@ function get_id( topic ){
 }
 
 module.exports = {
-  set_connectivity: function() {
-    console.log('[wise_snail_data] set_connectivity');
-    var conn=conn_map.get('key1');
-    if (typeof conn !== 'undefined') {
-       var sensor1 = { cmd: 'xxxx_1', msg: 'yyyy_1' };
-       conn.sensor_hub.set('123', sensor1);
-       //
-       var sensor2 = { cmd: 'xxxx_2', msg: 'yyyy_2' };
-       conn.sensor_hub.set('456', sensor2);
-    }    
+  test: function() {
+    console.log('[wise_snail_data] test');
     return;
   },
        
