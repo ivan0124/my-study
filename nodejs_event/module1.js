@@ -1,4 +1,5 @@
 // module1.js
+var mqtt = require('mqtt');
 // module that has events
 const EventEmitter = require('events');
 // create EventEmitter object
@@ -24,3 +25,27 @@ var someData = 'this event test';
 setInterval(function() {
     obj.emit("someEvent", someData);
 }, 3000);
+
+var mqttConnectCallback =  function () {
+  console.log('[module1.js] mqtt connect !!!!');
+  client.subscribe('/cagent/admin/+/agentinfoack');
+  client.subscribe('/cagent/admin/+/willmessage');
+  client.subscribe('/cagent/admin/+/agentactionreq');
+  client.subscribe('/cagent/admin/+/deviceinfo'); 
+   
+}
+
+var mqttMessageCallback = function (topic, message){
+  // message is Buffer 
+
+  console.log('--------------------------------------------------------------');
+  console.log('topic=' + topic.toString() );
+  //console.log('msg=' + message.toString());
+  console.log('--------------------------------------------------------------');
+}
+
+var client  = mqtt.connect('mqtt://172.22.214.60');
+client.queueQoSZero = false;
+
+client.on('connect', mqttConnectCallback );
+client.on('message', mqttMessageCallback);
