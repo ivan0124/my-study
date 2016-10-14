@@ -568,7 +568,7 @@ function getTotalConnectivityCapability(){
              IoTGWCapability.IoTGW[connectivityType][key] = {};
            }     
         
-           IoTGWCapability.IoTGW[connectivityType][key] = obj.dev_capability ;
+           IoTGWCapability.IoTGW[connectivityType][key] = JSON.parse(obj.dev_capability) ;
            //console.log('conn_type = ' + obj.conn_type);
            //IoTGWCapability += ',';
            //IoTGWCapability += key;
