@@ -26,6 +26,9 @@ setInterval(function() {
     obj.emit("someEvent", someData);
 }, 3000);
 
+var client  = mqtt.connect('mqtt://172.22.214.60');
+client.queueQoSZero = false;
+
 var mqttConnectCallback =  function () {
   console.log('[module1.js] mqtt connect !!!!');
   client.subscribe('/cagent/admin/+/agentinfoack');
@@ -43,9 +46,6 @@ var mqttMessageCallback = function (topic, message){
   //console.log('msg=' + message.toString());
   console.log('--------------------------------------------------------------');
 }
-
-var client  = mqtt.connect('mqtt://172.22.214.60');
-client.queueQoSZero = false;
 
 client.on('connect', mqttConnectCallback );
 client.on('message', mqttMessageCallback);
