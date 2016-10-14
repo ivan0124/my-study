@@ -2,7 +2,7 @@
 var mqtt = require('mqtt');
 var HashMap = require('hashmap').HashMap;
 var VgwMap = new HashMap();
-var sensorHubMap = new HashMap();
+var SensorHubMap = new HashMap();
 var connectivityMap = new HashMap();
 
 var client  = mqtt.connect('mqtt://172.22.214.60');
@@ -285,11 +285,11 @@ function sensorHubMapUpdate(messageType, device_id, message){
     for (var i=0 ; i < sensorHubList.length ; i++){
       if(sensorHubList[i] === device_id){
         //console.log('sensorHub(' + device_id + '): conn_id=' + obj.conn_id + ', vgw_id=' + obj.vgw_id  );
-        if ( sensorHubMap.has(device_id) === false ) {
+        if ( SensorHubMap.has(device_id) === false ) {
           var sensorhub = JSON.parse(JSON.stringify(devObj));
         }
         else{
-          var sensorhub = sensorHubMap.get(device_id);
+          var sensorhub = SensorHubMap.get(device_id);
         }
         sensorhub.vgw_id = obj.vgw_id;
         sensorhub.os_info = obj.os_info;
@@ -305,7 +305,7 @@ function sensorHubMapUpdate(messageType, device_id, message){
           sensorhub.dev_info = message;
         }            
         
-        sensorHubMap.set(device_id, sensorhub );        
+        SensorHubMap.set(device_id, sensorhub );        
         return;
       }
     }
@@ -465,11 +465,11 @@ function remove_vgw( vgw_id ){
     });     
     console.log('Show all connectivityMap. count= ' + connectivityMap.count());
     console.log('--------------------------------------------------------------');
-    console.log('Show all sensorHubMap. count= ' + sensorHubMap.count());
-    sensorHubMap.forEach(function(obj, key) {
+    console.log('Show all SensorHubMap. count= ' + SensorHubMap.count());
+    SensorHubMap.forEach(function(obj, key) {
       console.log('key = ' + key); 
       if ( vgw_id === obj.vgw_id ){
-         console.log('sensorHubMap.remove() key = ' + key);
+         console.log('SensorHubMap.remove() key = ' + key);
         /*
          console.log('----');
          console.log('vgw_id = ' + obj.vgw_id);
@@ -482,10 +482,10 @@ function remove_vgw( vgw_id ){
          //console.log('conn_type = ' + obj.conn_type);
          console.log('----');
          */
-         sensorHubMap.remove(key);
+         SensorHubMap.remove(key);
       }
     });     
-    console.log('Show all sensorHubMap. count= ' + sensorHubMap.count());
+    console.log('Show all SensorHubMap. count= ' + SensorHubMap.count());
     console.log('--------------------------------------------------------------');  
   
 }
