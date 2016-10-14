@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var m1 = require('./module1.js');
 
-m1.on("someEvent", function(data) {
+m1.eObj.on("someEvent", function(data) {
     // process data when someEvent occurs
   console.log('[RECEIVE] someEvent data = ' + data);
 });
