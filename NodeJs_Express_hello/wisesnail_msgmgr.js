@@ -153,7 +153,7 @@ var mqttMessageCallback = function (topic, message){
       }
     case msgType.sen_info:
       {    
-        console.log('[' + device_id + ']' + ': sen_info');
+        //console.log('[' + device_id + ']' + ': sen_info');
         sensorHubMapUpdate(msgType.sen_info, device_id, message.toString());
         break;
       }
