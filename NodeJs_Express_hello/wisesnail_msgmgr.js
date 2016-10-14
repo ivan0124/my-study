@@ -20,7 +20,7 @@ var devObj = { vgw_id: 'null',
                os_info: 'null', 
                dev_info_spec: 'null',  
                dev_info: 'null',
-               dev_info_spec_plus: 'null',
+               dev_capability: 'null',
              };
 
 var mqttConnectCallback =  function () {
@@ -251,24 +251,24 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                    for ( var i=0 ; i < tmpInfoSpecObj['Info']['e'].length ; i++){
                      if ( typeof tmpInfoSpecObj['Info']['e'][i].v !== 'undefined' && infoObj['Info']['e'][i].v !== 'undefined' ){
                        tmpInfoSpecObj['Info']['e'][i].v =  infoObj['Info']['e'][i].v;
-                       console.log('v..tmpInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]['n']));
+                       //console.log('v..tmpInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]['n']));
                      }
                      
                      if ( typeof tmpInfoSpecObj['Info']['e'][i].sv !== 'undefined' && infoObj['Info']['e'][i].sv !== 'undefined' ){
                        tmpInfoSpecObj['Info']['e'][i].sv =  infoObj['Info']['e'][i].sv;
-                       console.log('sv..tmpInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]['n']));
+                       //console.log('sv..tmpInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]['n']));
                      } 
                      
                      if ( typeof tmpInfoSpecObj['Info']['e'][i].bv !== 'undefined' && infoObj['Info']['e'][i].bv !== 'undefined' ){
                        tmpInfoSpecObj['Info']['e'][i].bv =  infoObj['Info']['e'][i].bv;
-                       console.log('bv..tmpInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]['n']));
+                       //console.log('bv..tmpInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]['n']));
                      }                        
                       
                      console.log('tmpInfoSpecObj.e['+ i +'] = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]));
                    }
                    connectivity.dev_info = JSON.stringify(infoObj['Info']);
                  }
-                 connectivity.dev_info_spec_plus = JSON.stringify(tmpInfoSpecObj);
+                 connectivity.dev_capability = JSON.stringify(tmpInfoSpecObj);
                  //console.log('[' + device_id + ']' + ': update ConnectivityMap key pairs');
                  ConnectivityMap.set(device_id, connectivity );                
                  return;
