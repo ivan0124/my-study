@@ -564,13 +564,12 @@ function getTotalConnectivityCapability(){
            if ( typeof IoTGWCapability.IoTGW[connectivityType] === 'undefined' ){
              IoTGWCapability.IoTGW[connectivityType] = {};
            }
-           /*
-           if ( IoTGWCapability.IoTGW[connectivityType][connectivityName] === 'undefined' ){
+           
+           if ( typeof IoTGWCapability.IoTGW[connectivityType][connectivityName] === 'undefined' ){
              IoTGWCapability.IoTGW[connectivityType][connectivityName] = {};
            } 
-           */
-           
-           //IoTGWCapability.IoTGW[connectivityType][connectivityName] = JSON.parse(obj.dev_capability) ;
+        
+           IoTGWCapability.IoTGW[connectivityType][connectivityName] = JSON.parse(obj.dev_capability) ;
            //console.log('conn_type = ' + obj.conn_type);
            //IoTGWCapability += ',';
            //IoTGWCapability += key;
