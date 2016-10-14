@@ -548,7 +548,7 @@ function get_id( topic ){
   return 'key1';
 }
 */
-function listObj( apiPath, keyStr, jsonObj, outputStr ){
+function listObj( apiPath, keyStr, jsonObj, outputObj ){
   
   //console.log( 'listObj Start-------------------------------------------------');
   for (key in jsonObj) {
@@ -556,7 +556,7 @@ function listObj( apiPath, keyStr, jsonObj, outputStr ){
       var jsonKeyStr = keyStr + '/' + key ; 
       if ( apiPath === jsonKeyStr ){
         console.log( 'jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
-        outputStr = JSON.stringify(jsonObj[key]);
+        outputObj.resultStr = JSON.stringify(jsonObj[key]);
       }
     }
   }
@@ -607,7 +607,7 @@ function getTotalConnectivityCapability(){
   const path = '/IoTGW/BLE/0007000E40ABCD31';
   var keyStr = '' ;
   var outStr = {} ; 
-  listObj(path, keyStr, IoTGWCapability, outStr );
+  listObj(path, keyStr, IoTGWCapability, JSON.stringify(outStr.resultStr) );
   console.log('-----------------------------------------');
   console.log(outStr);
   console.log('-----------------------------------------');
