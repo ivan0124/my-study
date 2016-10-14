@@ -264,7 +264,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                        //console.log('bv..tmpInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]['n']));
                      }                        
                       
-                     console.log('tmpInfoSpecObj.e['+ i +'] = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]));
+                     //console.log('tmpInfoSpecObj.e['+ i +'] = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]));
                    }
                    connectivity.dev_info = JSON.stringify(infoObj['Info']);
                  }
