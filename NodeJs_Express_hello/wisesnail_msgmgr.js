@@ -587,7 +587,7 @@ module.exports = {
   }
 };
 
-var client  = mqtt.connect('mqtt://127.0.0.1');
+var client  = mqtt.connect('mqtt://172.22.214.60');
 client.queueQoSZero = false;
 
 client.on('connect', mqttConnectCallback );
