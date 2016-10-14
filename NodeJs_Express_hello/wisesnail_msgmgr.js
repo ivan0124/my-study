@@ -4,6 +4,7 @@ var HashMap = require('hashmap').HashMap;
 var VgwMap = new HashMap();
 var SensorHubMap = new HashMap();
 var ConnectivityMap = new HashMap();
+var IoTGWCapability;
 
 var client  = mqtt.connect('mqtt://172.22.214.60');
 client.queueQoSZero = false;
@@ -548,22 +549,34 @@ function get_id( topic ){
 }
 */
 
-var IoTGWCapability='';
+
 function getTotalConnectivityCapability(){
   console.log('getTotalConnectivityCapability');
+      IoTGWCapability = {};
+      IoTGWCapability.IoTGW = {};
       ConnectivityMap.forEach(function(obj, key) {
         
            console.log('----');
            console.log('key = ' + key); 
            console.log('conn dev_capability = \n' + obj.dev_capability);
+           var connectivityType = obj.conn_type;
+           if ( IoTGWCapability.IoTGW[connectivityType] === 'undefined' ){
+             IoTGWCapability.IoTGW[connectivityType] = {};
+           }
+        
+           if ( IoTGWCapability.IoTGW[connectivityType][key] === 'undefined' ){
+             IoTGWCapability.IoTGW[connectivityType][key] = {};
+           }     
+        
+           IoTGWCapability.IoTGW[connectivityType][key] = obj.dev_capability ;
            //console.log('conn_type = ' + obj.conn_type);
-           IoTGWCapability += ',';
-           IoTGWCapability += key;
+           //IoTGWCapability += ',';
+           //IoTGWCapability += key;
            console.log('----');
 
       });       
   
-   console.log('IoTGWCapability = \n' + IoTGWCapability);
+   console.log('IoTGWCapability = \n' + JSON.stringify(IoTGWCapability) );
 }
 
 module.exports = {
