@@ -1,3 +1,4 @@
+var EVENT = require('./wisesnail_event.js');
 var express = require('express');
 var app = express();
 var m1 = require('./module1.js');
