@@ -19,7 +19,7 @@ module.exports = {
   }
 };
 
-module.exports.eObj = obj;
+module.exports.notification = obj;
 
 var someData = 'this event test';
 // other code in the module that does something to trigger events
