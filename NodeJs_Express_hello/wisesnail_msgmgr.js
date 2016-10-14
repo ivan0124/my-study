@@ -214,24 +214,26 @@ function getObjKeyValue( jsonObj, outObj){
 }
 
 function getDeviceCapability( devInfoSpecObj, devInfoObj ){
-                  for ( var i=0 ; i < devInfoSpecObj['Info']['e'].length ; i++){
-                     if ( typeof devInfoSpecObj['Info']['e'][i].v !== 'undefined' && devInfoObj['Info']['e'][i].v !== 'undefined' ){
-                       devInfoSpecObj['Info']['e'][i].v =  devInfoObj['Info']['e'][i].v;
-                       console.log('v..devInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(devInfoSpecObj['Info']['e'][i]['n']));
-                     }
+                  
+  for ( var i=0 ; i < devInfoSpecObj['Info']['e'].length ; i++){
+    if ( typeof devInfoSpecObj['Info']['e'][i].v !== 'undefined' && devInfoObj['Info']['e'][i].v !== 'undefined' ){
+      devInfoSpecObj['Info']['e'][i].v =  devInfoObj['Info']['e'][i].v;
+      //console.log('v..devInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(devInfoSpecObj['Info']['e'][i]['n']));
+    }
                      
-                     if ( typeof devInfoSpecObj['Info']['e'][i].sv !== 'undefined' && devInfoObj['Info']['e'][i].sv !== 'undefined' ){
-                       devInfoSpecObj['Info']['e'][i].sv =  devInfoObj['Info']['e'][i].sv;
-                       console.log('sv..devInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(devInfoSpecObj['Info']['e'][i]['n']));
-                     } 
+    if ( typeof devInfoSpecObj['Info']['e'][i].sv !== 'undefined' && devInfoObj['Info']['e'][i].sv !== 'undefined' ){
+      devInfoSpecObj['Info']['e'][i].sv =  devInfoObj['Info']['e'][i].sv;
+      //console.log('sv..devInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(devInfoSpecObj['Info']['e'][i]['n']));
+    } 
                      
-                     if ( typeof devInfoSpecObj['Info']['e'][i].bv !== 'undefined' && devInfoObj['Info']['e'][i].bv !== 'undefined' ){
-                       devInfoSpecObj['Info']['e'][i].bv =  devInfoObj['Info']['e'][i].bv;
-                       console.log('bv..devInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(devInfoSpecObj['Info']['e'][i]['n']));
-                     }                        
+    if ( typeof devInfoSpecObj['Info']['e'][i].bv !== 'undefined' && devInfoObj['Info']['e'][i].bv !== 'undefined' ){
+      devInfoSpecObj['Info']['e'][i].bv =  devInfoObj['Info']['e'][i].bv;
+      //console.log('bv..devInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(devInfoSpecObj['Info']['e'][i]['n']));
+    }                        
                       
-                     console.log('tmpInfoSpecObj.e['+ i +'] = ' +  JSON.stringify(devInfoSpecObj['Info']['e'][i]));
-                   }  
+    //console.log('devInfoSpecObj.e['+ i +'] = ' +  JSON.stringify(devInfoSpecObj['Info']['e'][i]));
+  }  
+  
 }
 
 function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, infoObj){
