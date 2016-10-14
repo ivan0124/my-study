@@ -6,48 +6,9 @@ var HashMap = require('hashmap').HashMap;
 var map = new HashMap();
 var app = express();
 
-/*
-var m1 = require('./module1.js');
-m1.on("someEvent", function(data) {
-    // process data when someEvent occurs
-  console.log('[RECEIVE] someEvent data = ' + data);
-});
-*/
-
-//Mqtt
-/*
-var mqtt = require('mqtt');
-//var client  = mqtt.connect('mqtt://test.mosquitto.org');
-var client  = mqtt.connect('mqtt://127.0.0.1');
-client.queueQoSZero = false;
-
-client.on('connect', function () {
-  console.log('hello.js mqtt connect !!!!');
-  client.subscribe('presence');
-  client.publish('agentinfo', 'Hello mqtt');
-})
- 
-client.on('message', function (topic, message) {
-  // message is Buffer 
-  console.log(message.toString())
-  //client.end()
-})
-*/
-
-/*
-app.get('/', function (req, res) {
-  ws.test();
-  res.send('test');
-});
-app.get('/start', function (req, res) {
-  ws.start();
-  res.send('start');
-});
-*/
-
-app.get('/show_all_vgw_map', function (req, res) {
-  ws_data.show_all_vgw_map();
-  res.send('show_all_vgw_map!');
+app.get('/show_all_VgwMap', function (req, res) {
+  ws_data.show_all_VgwMap();
+  res.send('show_all_VgwMap!');
 });
 
 app.get('/wise_snail_data', function (req, res) {
