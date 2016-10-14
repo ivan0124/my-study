@@ -7,6 +7,11 @@ m1.eObj.on("someEvent", function(data) {
   console.log('[RECEIVE] someEvent data = ' + data);
 });
 
+app.get('/', function (req, res) {
+  //m1.sayHelloInEnglish();
+  console.log('sayHelloInEnglish() return = ' + m1.sayHelloInEnglish());
+  res.send('sayHelloInEnglish!');
+});
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!!!!');
