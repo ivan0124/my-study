@@ -7,6 +7,7 @@ var obj = new EventEmitter();
 // export the EventEmitter object so others can use it
 module.exports = obj;
 
+var someData = 'this evnent test';
 // other code in the module that does something to trigger events
 // this is just one example using a timer
 setInterval(function() {
