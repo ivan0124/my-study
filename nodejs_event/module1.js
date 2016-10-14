@@ -44,6 +44,7 @@ var mqttMessageCallback = function (topic, message){
   console.log('--------------------------------------------------------------');
   console.log('topic=' + topic.toString() );
   //console.log('msg=' + message.toString());
+  obj.emit("someEvent", topic.toString());
   console.log('--------------------------------------------------------------');
 }
 
