@@ -6,7 +6,7 @@ const EventEmitter = require('events');
 // create EventEmitter object
 var obj = new EventEmitter();
 
-console.log('EVENT.eConnectivity_Capability = ' + EVENT.eConnectivity_Capability  );
+//console.log('EVENT.eConnectivity_Capability = ' + EVENT.eConnectivity_Capability  );
 // export the EventEmitter object so others can use it
 
 module.exports = {
@@ -47,7 +47,8 @@ var mqttMessageCallback = function (topic, message){
   console.log('--------------------------------------------------------------');
   console.log('topic=' + topic.toString() );
   //console.log('msg=' + message.toString());
-  obj.emit("someEvent", topic.toString());
+  obj.emit(EVENT.eConnectivity_Capability, 'this CONN Capability');
+  obj.emit(EVENT.eConnectivity_UpdateData , 'this CONN UpdateData ');
   console.log('--------------------------------------------------------------');
 }
 
