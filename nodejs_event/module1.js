@@ -1,10 +1,12 @@
 // module1.js
+var EVENT = require('./wisesnail_event.js');
 var mqtt = require('mqtt');
 // module that has events
 const EventEmitter = require('events');
 // create EventEmitter object
 var obj = new EventEmitter();
 
+console.log('EVENT.eConnectivity_Capability = ' + EVENT.eConnectivity_Capability  );
 // export the EventEmitter object so others can use it
 
 module.exports = {
