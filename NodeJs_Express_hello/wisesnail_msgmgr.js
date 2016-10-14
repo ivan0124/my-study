@@ -550,7 +550,7 @@ function get_id( topic ){
 */
 function listObj( apiPath, keyStr, jsonObj ){
   
-  console.log( 'listObj Start-------------------------------------------------');
+  //console.log( 'listObj Start-------------------------------------------------');
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
       var jsonKeyStr = keyStr + '/' + key ; 
@@ -573,7 +573,7 @@ function listObj( apiPath, keyStr, jsonObj ){
     }
   }  
   
-  console.log( 'listObj return -------------------------------------------------key=' + key);
+  //console.log( 'listObj return -------------------------------------------------key=' + key);
   return;  
 
 }
@@ -603,7 +603,7 @@ function getTotalConnectivityCapability(){
   });       
 
   //console.log('IoTGWCapability = \n' + JSON.stringify(IoTGWCapability) );
-  const path = '/IoTGW/BLE/0007000E40ABCD31';
+  const path = '/IoTGW/BLE/0007000E40ABCD35';
   var keyStr = '' ;
   listObj(path, keyStr, IoTGWCapability);
   return JSON.stringify(IoTGWCapability);
