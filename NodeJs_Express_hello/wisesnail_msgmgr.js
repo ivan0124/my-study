@@ -5,6 +5,19 @@ var vgw_map = new HashMap();
 var sensorHubMap = new HashMap();
 var connectivityMap = new HashMap();
 
+// create EventEmitter object
+var EventEmitter = require('events');
+var eventObj = new EventEmitter();
+
+// export the EventEmitter object so others can use it
+module.exports = eventObj;
+
+// other code in the module that does something to trigger events
+// this is just one example using a timer
+setInterval(function() {
+    eventObj.emit("someEvent", someData);
+}, 5000);
+
 const msgType = { error: -1, unknown: 0,
                   vgw_connect: 1, vgw_os_info: 2, vgw_info_spec: 3, vgw_willmessage: 4,
                   vgw_disconnect: 5, vgw_info: 6,
@@ -593,16 +606,4 @@ client.queueQoSZero = false;
 client.on('connect', mqttConnectCallback );
 client.on('message', mqttMessageCallback);
 
-// create EventEmitter object
-var EventEmitter = require('events');
-var obj = new EventEmitter();
-
-// export the EventEmitter object so others can use it
-module.exports = obj;
-
-// other code in the module that does something to trigger events
-// this is just one example using a timer
-setInterval(function() {
-    obj.emit("someEvent", someData);
-}, 5000);
 
