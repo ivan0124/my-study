@@ -550,6 +550,15 @@ function get_id( topic ){
 
 function getTotalConnectivityCapability(){
   console.log('getTotalConnectivityCapability');
+      ConnectivityMap.forEach(function(obj, key) {
+        
+           console.log('----');
+           console.log('key = ' + key); 
+           console.log('conn dev_capability = \n' + obj.dev_capability);
+           //console.log('conn_type = ' + obj.conn_type);
+           console.log('----');
+
+      });       
 }
 
 module.exports = {
