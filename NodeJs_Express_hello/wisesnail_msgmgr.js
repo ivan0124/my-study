@@ -254,12 +254,15 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                                  };
                    //getObjKeyValue(infoObj, outObj);
                    */
+                   
                    var tmpInfoSpecObj = JSON.parse(connectivity.dev_info_spec);
+                   /*
                    for ( var i=0 ; i < tmpInfoSpecObj['Info']['e'].length ; i++){
                      //infoObj['Info']['e'][i].asm = 'r'; //tmpInfoSpecObj['Info']['e'][i].asm;
                      console.log('tmpInfoSpecObj.Info.e['+ i +'] = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]));
                    }
-                   
+                   */
+                   console.log('tmpInfoSpecObj = ' +  JSON.stringify(tmpInfoSpecObj));
                    for ( var i=0 ; i < infoObj['Info']['e'].length ; i++){
                      //infoObj['Info']['e'][i].asm = 'r'; //tmpInfoSpecObj['Info']['e'][i].asm;
                      console.log('infoObj.Info.e['+ i +'] = ' +  JSON.stringify(infoObj['Info']['e'][i]));
