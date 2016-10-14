@@ -19,7 +19,8 @@ var devObj = { vgw_id: 'null',
                connect: 'null', 
                os_info: 'null', 
                dev_info_spec: 'null',  
-               dev_info: 'null'
+               dev_info: 'null',
+               dev_info_spec+: 'null',
              };
 
 var mqttConnectCallback =  function () {
@@ -267,6 +268,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                    }
                    connectivity.dev_info = JSON.stringify(infoObj['Info']);
                  }
+                 connectivity.dev_info_spec+ = JSON.stringify(tmpInfoSpecObj);
                  //console.log('[' + device_id + ']' + ': update ConnectivityMap key pairs');
                  ConnectivityMap.set(device_id, connectivity );                
                  return;
