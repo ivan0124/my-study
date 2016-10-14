@@ -607,9 +607,9 @@ function getTotalConnectivityCapability(){
   const path = '/IoTGW/BLE/0007000E40ABCD31';
   var keyStr = '' ;
   var outStr = {} ; 
-  listObj(path, keyStr, IoTGWCapability, JSON.stringify(outStr.resultStr) );
+  listObj(path, keyStr, IoTGWCapability, outStr);
   console.log('-----------------------------------------');
-  console.log(outStr);
+  console.log( JSON.stringify(outStr.resultStr));
   console.log('-----------------------------------------');
   
   
