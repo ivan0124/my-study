@@ -5,19 +5,6 @@ var vgw_map = new HashMap();
 var sensorHubMap = new HashMap();
 var connectivityMap = new HashMap();
 
-const EventEmitter = require('events');
-// create EventEmitter object
-var obj = new EventEmitter();
-
-// export the EventEmitter object so others can use it
-module.exports = obj;
-
-var someData = 'this evnent test';
-// other code in the module that does something to trigger events
-// this is just one example using a timer
-setInterval(function() {
-    obj.emit("someEvent", someData);
-}, 3000);
 
 const msgType = { error: -1, unknown: 0,
                   vgw_connect: 1, vgw_os_info: 2, vgw_info_spec: 3, vgw_willmessage: 4,
