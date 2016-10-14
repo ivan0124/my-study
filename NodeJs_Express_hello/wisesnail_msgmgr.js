@@ -600,6 +600,8 @@ function getTotalConnectivityCapability(){
   });       
 
   //console.log('IoTGWCapability = \n' + JSON.stringify(IoTGWCapability) );
+  var keyStr = '' ;
+  listObj(keyStr, IoTGWCapability);
   return JSON.stringify(IoTGWCapability);
 }
 
