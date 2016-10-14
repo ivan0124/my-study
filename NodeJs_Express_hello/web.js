@@ -5,6 +5,12 @@ var ws_data = require('./wisesnail_msgmgr.js');
 var HashMap = require('hashmap').HashMap;
 var map = new HashMap();
 var app = express();
+
+
+ws_data.on("someEvent", function(data) {
+    // process data when someEvent occurs
+  console.log('[RECEIVE] someEvent data = ' + data);
+});
 //Mqtt
 /*
 var mqtt = require('mqtt');
