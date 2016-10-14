@@ -551,33 +551,30 @@ function get_id( topic ){
 
 
 function getTotalConnectivityCapability(){
-  console.log('getTotalConnectivityCapability');
-      IoTGWCapability = {};
-      IoTGWCapability.IoTGW = {};
-      ConnectivityMap.forEach(function(obj, key) {
-        
-           console.log('----');
-           console.log('key = ' + key); 
-           console.log('conn dev_capability = \n' + obj.dev_capability);
-           var connectivityName = obj.conn_id;
-           var connectivityType = obj.conn_type;
-           if ( typeof IoTGWCapability.IoTGW[connectivityType] === 'undefined' ){
-             IoTGWCapability.IoTGW[connectivityType] = {};
-           }
-           
-           if ( typeof IoTGWCapability.IoTGW[connectivityType][connectivityName] === 'undefined' ){
-             IoTGWCapability.IoTGW[connectivityType][connectivityName] = {};
-           } 
-        
-           IoTGWCapability.IoTGW[connectivityType][connectivityName] = JSON.parse(obj.dev_capability) ;
-           //console.log('conn_type = ' + obj.conn_type);
-           //IoTGWCapability += ',';
-           //IoTGWCapability += key;
-           console.log('----');
-
-      });       
   
-   //console.log('IoTGWCapability = \n' + JSON.stringify(IoTGWCapability) );
+  console.log('getTotalConnectivityCapability');
+  IoTGWCapability = {};
+  IoTGWCapability.IoTGW = {};
+  ConnectivityMap.forEach(function(obj, key) {
+    console.log('----');
+    console.log('key = ' + key); 
+    console.log('conn dev_capability = \n' + obj.dev_capability);
+    var connectivityName = obj.conn_id;
+    var connectivityType = obj.conn_type;
+    
+    if ( typeof IoTGWCapability.IoTGW[connectivityType] === 'undefined' ){
+      IoTGWCapability.IoTGW[connectivityType] = {};
+    }      
+    if ( typeof IoTGWCapability.IoTGW[connectivityType][connectivityName] === 'undefined' ){
+      IoTGWCapability.IoTGW[connectivityType][connectivityName] = {};
+    } 
+        
+    IoTGWCapability.IoTGW[connectivityType][connectivityName] = JSON.parse(obj.dev_capability) ;
+    console.log('----');
+
+  });       
+  
+  //console.log('IoTGWCapability = \n' + JSON.stringify(IoTGWCapability) );
   return JSON.stringify(IoTGWCapability);
 }
 
