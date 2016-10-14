@@ -26,7 +26,7 @@ var someData = 'this event test';
 // this is just one example using a timer
 setInterval(function() {
     obj.emit(EVENT.eConnectivity_Capability, someData);
-}, 10 * 1000);
+}, 3000);
 
 
 var client  = mqtt.connect('mqtt://172.22.214.60');
