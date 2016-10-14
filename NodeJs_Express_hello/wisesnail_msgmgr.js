@@ -548,9 +548,14 @@ function get_id( topic ){
 }
 */
 
+function getTotalConnectivityCapability(){
+  console.log('getTotalConnectivityCapability');
+}
+
 module.exports = {
   test: function() {
     console.log('[wise_snail_data] test');
+    getTotalConnectivityCapability();
     return;
   },
        
