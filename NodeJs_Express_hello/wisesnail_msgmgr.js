@@ -573,9 +573,17 @@ function getTotalConnectivityCapability(){
     console.log('----');
 
   });       
-  
+  /*
+  var outObj = {
+                  key:'SenHubList',
+                  is_n_sv_format: true, 
+                  result:''
+                 };
+  getObjKeyValue(infoObj, outObj);
+  */
+  IoTGWCapability['IoTGW']['BLE']['0007000E40ABCD31']
   //console.log('IoTGWCapability = \n' + JSON.stringify(IoTGWCapability) );
-  return JSON.stringify(IoTGWCapability);
+  return JSON.stringify(IoTGWCapability['IoTGW']['BLE']['0007000E40ABCD31']);
 }
 
 module.exports = {
