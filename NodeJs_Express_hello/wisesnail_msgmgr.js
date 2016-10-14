@@ -585,10 +585,14 @@ function getTotalConnectivityCapability(){
   var pathList = path.split('/');
   //var str0 = 'IoTGW';
   //var str1 = 'BLE';
-  
+  /*
   for (var i=0 ; i < pathList.length ; i++){
     IoTGWCapability += [pathList[i]];
   }
+  */
+  for(var attributename in IoTGWCapability){
+    console.log(attributename+": "+IoTGWCapability[attributename]);
+}
   
   //console.log('IoTGWCapability = \n' + JSON.stringify(IoTGWCapability) );
   return JSON.stringify(IoTGWCapability);
