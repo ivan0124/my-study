@@ -250,17 +250,17 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                    for ( var i=0 ; i < tmpInfoSpecObj['Info']['e'].length ; i++){
                      if ( typeof tmpInfoSpecObj['Info']['e'][i].v !== 'undefined' && infoObj['Info']['e'][i].v !== 'undefined' ){
                        tmpInfoSpecObj['Info']['e'][i].v =  infoObj['Info']['e'][i].v;
-                       console.log('tmpInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]['n']));
+                       console.log('v..tmpInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]['n']));
                      }
                      
                      if ( typeof tmpInfoSpecObj['Info']['e'][i].sv !== 'undefined' && infoObj['Info']['e'][i].sv !== 'undefined' ){
                        tmpInfoSpecObj['Info']['e'][i].sv =  infoObj['Info']['e'][i].sv;
-                       console.log('tmpInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]['n']));
+                       console.log('sv..tmpInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]['n']));
                      } 
                      
                      if ( typeof tmpInfoSpecObj['Info']['e'][i].bv !== 'undefined' && infoObj['Info']['e'][i].bv !== 'undefined' ){
                        tmpInfoSpecObj['Info']['e'][i].bv =  infoObj['Info']['e'][i].bv;
-                       console.log('tmpInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]['n']));
+                       console.log('bv..tmpInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]['n']));
                      }                        
                       
                      console.log('tmpInfoSpecObj.e['+ i +'] = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]));
