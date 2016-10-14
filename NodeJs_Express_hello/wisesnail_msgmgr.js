@@ -213,6 +213,27 @@ function getObjKeyValue( jsonObj, outObj){
    return;  
 }
 
+function getDeviceCapability( devInfoSpecObj, devInfoObj ){
+                  for ( var i=0 ; i < devInfoSpecObj['Info']['e'].length ; i++){
+                     if ( typeof devInfoSpecObj['Info']['e'][i].v !== 'undefined' && devInfoObj['Info']['e'][i].v !== 'undefined' ){
+                       devInfoSpecObj['Info']['e'][i].v =  devInfoObj['Info']['e'][i].v;
+                       //console.log('v..tmpInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]['n']));
+                     }
+                     
+                     if ( typeof devInfoSpecObj['Info']['e'][i].sv !== 'undefined' && devInfoObj['Info']['e'][i].sv !== 'undefined' ){
+                       devInfoSpecObj['Info']['e'][i].sv =  devInfoObj['Info']['e'][i].sv;
+                       //console.log('sv..tmpInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]['n']));
+                     } 
+                     
+                     if ( typeof devInfoSpecObj['Info']['e'][i].bv !== 'undefined' && devInfoObj['Info']['e'][i].bv !== 'undefined' ){
+                       devInfoSpecObj['Info']['e'][i].bv =  devInfoObj['Info']['e'][i].bv;
+                       //console.log('bv..tmpInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]['n']));
+                     }                        
+                      
+                     console.log('tmpInfoSpecObj.e['+ i +'] = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]));
+                   }  
+}
+
 function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, infoObj){
   
   //console.log( 'Start-------------------------------------------------');
@@ -247,7 +268,8 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                  if ( messageType === msgType.vgw_info ){
   
                    var tmpInfoSpecObj = JSON.parse(connectivity.dev_info_spec);
-                   
+                   getDeviceCapability(tmpInfoSpecObj, infoObj);
+                   /*
                    for ( var i=0 ; i < tmpInfoSpecObj['Info']['e'].length ; i++){
                      if ( typeof tmpInfoSpecObj['Info']['e'][i].v !== 'undefined' && infoObj['Info']['e'][i].v !== 'undefined' ){
                        tmpInfoSpecObj['Info']['e'][i].v =  infoObj['Info']['e'][i].v;
@@ -266,9 +288,11 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                       
                      //console.log('tmpInfoSpecObj.e['+ i +'] = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]));
                    }
+                   */
                    connectivity.dev_info = JSON.stringify(infoObj['Info']);
+                   connectivity.dev_capability = JSON.stringify(tmpInfoSpecObj);
                  }
-                 connectivity.dev_capability = JSON.stringify(tmpInfoSpecObj);
+                 
                  //console.log('[' + device_id + ']' + ': update ConnectivityMap key pairs');
                  ConnectivityMap.set(device_id, connectivity );                
                  return;
