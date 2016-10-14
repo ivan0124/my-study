@@ -240,45 +240,28 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                    connectivity.os_info = osInfo;
                    connectivity.conn_id = device_id; 
                    connectivity.conn_type = connType;
-                   connectivity.dev_info_spec = JSON.stringify(infoObj['Info']);
+                   connectivity.dev_info_spec = JSON.stringify(infoObj);
                  }
                    
                  if ( messageType === msgType.vgw_info ){
-                   /*
-                   var tmpInfoObj = infoObj['Info'];
-                   var tmpInfoSpecObj = JSON.parse(JSON.parse(connectivity.dev_info_spec));
-                   var outObj = {
-                                  key:'SenHubList',
-                                  is_n_sv_format: true, 
-                                  result:''
-                                 };
-                   //getObjKeyValue(infoObj, outObj);
-                   */
-                   
+  
                    var tmpInfoSpecObj = JSON.parse(connectivity.dev_info_spec);
                    
-                   for ( var i=0 ; i < tmpInfoSpecObj['e'].length ; i++){
-                     if ( typeof tmpInfoSpecObj['e'][i].v !== 'undefined' && infoObj['Info']['e'][i].v !== 'undefined' ){
-                       tmpInfoSpecObj['e'][i].v =  infoObj['Info']['e'][i].v;
+                   for ( var i=0 ; i < tmpInfoSpecObj['Info']['e'].length ; i++){
+                     if ( typeof tmpInfoSpecObj['Info']['e'][i].v !== 'undefined' && infoObj['Info']['e'][i].v !== 'undefined' ){
+                       tmpInfoSpecObj['Info']['e'][i].v =  infoObj['Info']['e'][i].v;
                      }
                      
                      if ( typeof tmpInfoSpecObj['e'][i].sv !== 'undefined' && infoObj['Info']['e'][i].sv !== 'undefined' ){
-                       tmpInfoSpecObj['e'][i].sv =  infoObj['Info']['e'][i].sv;
+                       tmpInfoSpecObj['Info']['e'][i].sv =  infoObj['Info']['e'][i].sv;
                      } 
                      
                      if ( typeof tmpInfoSpecObj['e'][i].bv !== 'undefined' && infoObj['Info']['e'][i].bv !== 'undefined' ){
-                       tmpInfoSpecObj['e'][i].bv =  infoObj['Info']['e'][i].bv;
+                       tmpInfoSpecObj['Info']['e'][i].bv =  infoObj['Info']['e'][i].bv;
                      }                        
                       
-                     console.log('tmpInfoSpecObj.e['+ i +'] = ' +  JSON.stringify(tmpInfoSpecObj['e'][i]));
+                     console.log('tmpInfoSpecObj.e['+ i +'] = ' +  JSON.stringify(tmpInfoSpecObj['Info']['e'][i]));
                    }
-                   /*
-                   console.log('tmpInfoSpecObj = ' +  JSON.stringify(tmpInfoSpecObj['e'][0]));
-                   for ( var i=0 ; i < infoObj['Info']['e'].length ; i++){
-                     //infoObj['Info']['e'][i].asm = 'r'; //tmpInfoSpecObj['Info']['e'][i].asm;
-                     console.log('infoObj.Info.e['+ i +'] = ' +  JSON.stringify(infoObj['Info']['e'][i]));
-                   }
-                   */
                    connectivity.dev_info = JSON.stringify(infoObj['Info']);
                  }
                  //console.log('[' + device_id + ']' + ': update ConnectivityMap key pairs');
