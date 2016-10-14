@@ -244,6 +244,19 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                  }
                    
                  if ( messageType === msgType.vgw_info ){
+                   /*
+                   var tmpInfoObj = infoObj['Info'];
+                   var tmpInfoSpecObj = JSON.parse(JSON.parse(connectivity.dev_info_spec));
+                   var outObj = {
+                                  key:'SenHubList',
+                                  is_n_sv_format: true, 
+                                  result:''
+                                 };
+                   //getObjKeyValue(infoObj, outObj);
+                   */
+                   for ( var i=0 ; i < infoObj['Info']['e'].length ; i++){
+                     console.log('infoObj.Info.e['+ i +'] = ' +  JSON.stringify(infoObj['Info']['e'][i]));
+                   }
                    connectivity.dev_info = JSON.stringify(infoObj['Info']);
                  }
                  //console.log('[' + device_id + ']' + ': update ConnectivityMap key pairs');
