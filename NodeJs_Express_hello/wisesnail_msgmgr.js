@@ -548,12 +548,15 @@ function get_id( topic ){
   return 'key1';
 }
 */
-function listObj( keyStr, jsonObj ){
+function listObj( apiPath, keyStr, jsonObj ){
   
   console.log( 'listObj Start-------------------------------------------------');
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
-      console.log( 'keyStr=======>' + keyStr + '/' + key + ', keyVal=======>' + jsonObj[key]);
+      var jsonKeyStr = keyStr + '/' + key ; 
+      if ( apiPath === jsonKeyStr ){
+        console.log( 'jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + jsonObj[key]);
+      }
     }
   }
   //
@@ -561,7 +564,7 @@ function listObj( keyStr, jsonObj ){
     if (jsonObj.hasOwnProperty(key)) {
       //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
       if (typeof jsonObj[key] === 'object' ){
-        listObj( keyStr + '/' + key, jsonObj[key]);
+        listObj( apiPath, keyStr + '/' + key, jsonObj[key]);
       }
       else{
         //console.log( 'listObj return -------------------------------------------------key=' + key);
@@ -600,8 +603,9 @@ function getTotalConnectivityCapability(){
   });       
 
   //console.log('IoTGWCapability = \n' + JSON.stringify(IoTGWCapability) );
+  const path = '/IoTGW/BLE/0007000E40ABCD31';
   var keyStr = '' ;
-  listObj(keyStr, IoTGWCapability);
+  listObj(path, keyStr, IoTGWCapability);
   return JSON.stringify(IoTGWCapability);
 }
 
