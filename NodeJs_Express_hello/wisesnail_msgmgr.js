@@ -548,6 +548,7 @@ function get_id( topic ){
 }
 */
 
+var IoTGWCapability='';
 function getTotalConnectivityCapability(){
   console.log('getTotalConnectivityCapability');
       ConnectivityMap.forEach(function(obj, key) {
@@ -556,9 +557,13 @@ function getTotalConnectivityCapability(){
            console.log('key = ' + key); 
            console.log('conn dev_capability = \n' + obj.dev_capability);
            //console.log('conn_type = ' + obj.conn_type);
+           IoTGWCapability += ',';
+           IoTGWCapability += key;
            console.log('----');
 
       });       
+  
+   console.log('IoTGWCapability = \n' + IoTGWCapability);
 }
 
 module.exports = {
