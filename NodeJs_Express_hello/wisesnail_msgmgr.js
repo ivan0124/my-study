@@ -464,59 +464,61 @@ function remove_vgw( vgw_id ){
 
     console.log('--------------------------------------------------------------');
   
-    console.log('Show all VgwMap. count= ' + VgwMap.count());
-    VgwMap.forEach(function(obj, key) {
-      console.log('key = ' + key); 
-      if ( vgw_id === key ){
-        console.log('VgwMap.remove() key = ' + key);
-        VgwMap.remove(key);
-      }
-    });     
-    console.log('Show all VgwMap. count= ' + VgwMap.count());
-    console.log('--------------------------------------------------------------');    
-    console.log('Show all ConnectivityMap. count= ' + ConnectivityMap.count());
-    ConnectivityMap.forEach(function(obj, key) {
-      console.log('key = ' + key); 
-      if ( vgw_id === obj.vgw_id ){
-         console.log('ConnectivityMap.remove() key = ' + key);
-        
-         console.log('----');
-         console.log('vgw_id = ' + obj.vgw_id);
-         console.log('conn_id = ' + obj.conn_id);
-         console.log('conn_type = ' + obj.conn_type);
-         console.log('os info = \n' + obj.os_info);
-         console.log('conn dev_info_spec = \n' + obj.dev_info_spec);
-         console.log('conn dev_info = \n' + obj.dev_info);
-         console.log('conn dev_capability = \n' + obj.dev_capability);
-         //console.log('conn_type = ' + obj.conn_type);
-         console.log('----');
-         
-         ConnectivityMap.remove(key);
-      }
-    });     
-    console.log('Show all ConnectivityMap. count= ' + ConnectivityMap.count());
-    console.log('--------------------------------------------------------------');
-    console.log('Show all SensorHubMap. count= ' + SensorHubMap.count());
-    SensorHubMap.forEach(function(obj, key) {
-      console.log('key = ' + key); 
-      if ( vgw_id === obj.vgw_id ){
-         console.log('SensorHubMap.remove() key = ' + key);
-        /*
-         console.log('----');
-         console.log('vgw_id = ' + obj.vgw_id);
-         console.log('conn_id = ' + obj.conn_id);
-         console.log('conn_type = ' + obj.conn_type);
-         console.log('os info = \n' + obj.os_info);
-         console.log('sensorhub connect = \n' + obj.connect);
-         console.log('sensorhub dev_info_spec = \n' + obj.dev_info_spec);
-         console.log('sensorhub dev_info = \n' + obj.dev_info);
-         //console.log('conn_type = ' + obj.conn_type);
-         console.log('----');
-         */
-         SensorHubMap.remove(key);
-      }
-    });     
-    console.log('Show all SensorHubMap. count= ' + SensorHubMap.count());
+    if ( getOSType(vgw_id) == osType.none_ip_base){
+      console.log('Show all VgwMap. count= ' + VgwMap.count());
+      VgwMap.forEach(function(obj, key) {
+        console.log('key = ' + key); 
+        if ( vgw_id === key ){
+          console.log('VgwMap.remove() key = ' + key);
+          VgwMap.remove(key);
+        }
+      });     
+      console.log('Show all VgwMap. count= ' + VgwMap.count());
+      console.log('--------------------------------------------------------------');    
+      console.log('Show all ConnectivityMap. count= ' + ConnectivityMap.count());
+      ConnectivityMap.forEach(function(obj, key) {
+        console.log('key = ' + key); 
+        if ( vgw_id === obj.vgw_id ){
+           console.log('ConnectivityMap.remove() key = ' + key);
+
+           console.log('----');
+           console.log('vgw_id = ' + obj.vgw_id);
+           console.log('conn_id = ' + obj.conn_id);
+           console.log('conn_type = ' + obj.conn_type);
+           console.log('os info = \n' + obj.os_info);
+           console.log('conn dev_info_spec = \n' + obj.dev_info_spec);
+           console.log('conn dev_info = \n' + obj.dev_info);
+           console.log('conn dev_capability = \n' + obj.dev_capability);
+           //console.log('conn_type = ' + obj.conn_type);
+           console.log('----');
+
+           ConnectivityMap.remove(key);
+        }
+      });     
+      console.log('Show all ConnectivityMap. count= ' + ConnectivityMap.count());
+      console.log('--------------------------------------------------------------');
+      console.log('Show all SensorHubMap. count= ' + SensorHubMap.count());
+      SensorHubMap.forEach(function(obj, key) {
+        console.log('key = ' + key); 
+        if ( vgw_id === obj.vgw_id ){
+           console.log('SensorHubMap.remove() key = ' + key);
+          /*
+           console.log('----');
+           console.log('vgw_id = ' + obj.vgw_id);
+           console.log('conn_id = ' + obj.conn_id);
+           console.log('conn_type = ' + obj.conn_type);
+           console.log('os info = \n' + obj.os_info);
+           console.log('sensorhub connect = \n' + obj.connect);
+           console.log('sensorhub dev_info_spec = \n' + obj.dev_info_spec);
+           console.log('sensorhub dev_info = \n' + obj.dev_info);
+           //console.log('conn_type = ' + obj.conn_type);
+           console.log('----');
+           */
+           SensorHubMap.remove(key);
+        }
+      });     
+      console.log('Show all SensorHubMap. count= ' + SensorHubMap.count());
+    }
     console.log('--------------------------------------------------------------');  
   
 }
