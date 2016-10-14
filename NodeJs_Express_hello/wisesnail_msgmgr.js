@@ -548,7 +548,32 @@ function get_id( topic ){
   return 'key1';
 }
 */
+function listObj( keyStr, jsonObj ){
+  
+  console.log( 'listObj Start-------------------------------------------------');
+  for (key in jsonObj) {
+    if (jsonObj.hasOwnProperty(key)) {
+      console.log( 'keyStr=======>' + keyStr + '/' + key + ', keyVal=======>' + jsonObj[key]);
+    }
+  }
+  //
+  for (key in jsonObj) {
+    if (jsonObj.hasOwnProperty(key)) {
+      //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
+      if (typeof jsonObj[key] === 'object' ){
+        listObj( keyStr + '/' + key, jsonObj[key]);
+      }
+      else{
+        //console.log( 'listObj return -------------------------------------------------key=' + key);
+        //return;
+      }
+    }
+  }  
+  
+  console.log( 'listObj return -------------------------------------------------key=' + key);
+  return;  
 
+}
 
 function getTotalConnectivityCapability(){
   
@@ -573,27 +598,7 @@ function getTotalConnectivityCapability(){
     console.log('----');
 
   });       
-  /*
-  var outObj = {
-                  key:'SenHubList',
-                  is_n_sv_format: true, 
-                  result:''
-                 };
-  getObjKeyValue(infoObj, outObj);
-  */
-  var path = 'IoTGW/BLE/0007000E40ABCD31';
-  var pathList = path.split('/');
-  //var str0 = 'IoTGW';
-  //var str1 = 'BLE';
-  /*
-  for (var i=0 ; i < pathList.length ; i++){
-    IoTGWCapability += [pathList[i]];
-  }
-  */
-  for(var attributename in IoTGWCapability){
-    console.log(attributename+": "+IoTGWCapability[attributename]);
-}
-  
+
   //console.log('IoTGWCapability = \n' + JSON.stringify(IoTGWCapability) );
   return JSON.stringify(IoTGWCapability);
 }
