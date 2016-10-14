@@ -11,16 +11,11 @@ app.get('/show_all_VgwMap', function (req, res) {
   res.send('show_all_VgwMap!');
 });
 
-app.get('/wise_snail_data', function (req, res) {
-  ws_data.set_connectivity();
-  client.publish('agentinfo', 'Hello WiseSnail Data');
-  res.send('Hello WiseSnail Data!');
+app.get('/test', function (req, res) {
+  ws_data.test();
+  res.send('test');
 });
 
-app.get('/get_wise_snail_data', function (req, res) {
-  ws_data.get_connectivity();
-  res.send('Get WiseSnail Data!');
-});
 
 function is_ip_valid( ip ){
   
