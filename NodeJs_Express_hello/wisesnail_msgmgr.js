@@ -581,9 +581,10 @@ function getTotalConnectivityCapability(){
                  };
   getObjKeyValue(infoObj, outObj);
   */
-  IoTGWCapability['IoTGW']['BLE']['0007000E40ABCD31']
+  var path = 'IoTGW.BLE.0007000E40ABCD31'
+  
   //console.log('IoTGWCapability = \n' + JSON.stringify(IoTGWCapability) );
-  return JSON.stringify(IoTGWCapability['IoTGW']['BLE']['0007000E40ABCD31']);
+  return JSON.stringify(IoTGWCapability.path);
 }
 
 module.exports = {
