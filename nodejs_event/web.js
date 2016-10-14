@@ -5,12 +5,12 @@ var m1 = require('./module1.js');
 
 m1.notification .on(EVENT.eConnectivity_Capability, function(data) {
     // process data when someEvent occurs
-  console.log('[RECEIVE] EVENT.eConnectivity_Capability, data = ' + data);
+  console.log('[RECEIVE] EVENT : ' + EVENT.eConnectivity_Capability + ', data = ' + data);
 });
 
 m1.notification .on(EVENT.eConnectivity_UpdateData , function(data) {
     // process data when someEvent occurs
-  console.log('EVENT.eConnectivity_UpdateData, data = ' + data);
+  console.log('[RECEIVE] EVENT : ' + EVENT.eConnectivity_UpdateData + ', data = ' + data);
 });
 
 app.get('/', function (req, res) {
