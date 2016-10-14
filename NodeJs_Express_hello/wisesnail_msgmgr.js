@@ -4,6 +4,7 @@ var HashMap = require('hashmap').HashMap;
 var vgw_map = new HashMap();
 var sensorHubMap = new HashMap();
 var connectivityMap = new HashMap();
+const EventEmitter = require('events');
 
 const msgType = { error: -1, unknown: 0,
                   vgw_connect: 1, vgw_os_info: 2, vgw_info_spec: 3, vgw_willmessage: 4,
