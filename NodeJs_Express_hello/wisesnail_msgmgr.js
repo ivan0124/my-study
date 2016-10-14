@@ -577,13 +577,14 @@ function getTotalConnectivityCapability(){
 
       });       
   
-   console.log('IoTGWCapability = \n' + JSON.stringify(IoTGWCapability) );
+   //console.log('IoTGWCapability = \n' + JSON.stringify(IoTGWCapability) );
+  return JSON.stringify(IoTGWCapability);
 }
 
 module.exports = {
   test: function() {
     console.log('[wise_snail_data] test');
-    getTotalConnectivityCapability();
+    console.log('TotalConnectivityCapability ======== ' + getTotalConnectivityCapability());
     return;
   },
        
