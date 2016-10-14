@@ -541,11 +541,12 @@ function is_ip_valid( ip ){
   
   return false;
 }
-
+/*
 function get_id( topic ){
   console.log('[get_id] get topic id' );
   return 'key1';
 }
+*/
 
 module.exports = {
   test: function() {
