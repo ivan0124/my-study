@@ -23,6 +23,6 @@ $ node-gyp build
 #How to test
 1. run index.js
 <pre>
-$ node index.js
+$ node ./index.js
 </pre>
 
