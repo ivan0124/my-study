@@ -2,8 +2,8 @@
 #include <cmath>
 #include <nan.h>
 
-int hello(double a, double b){
-    printf("a = %f, b = %f\n", a, b);
+int myHello(double a, double b){
+    printf("[myHello] a = %f, b = %f\n", a, b);
     return 99;
 }
 
@@ -21,7 +21,7 @@ void hello(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 
     double arg0 = info[0]->NumberValue();
     double arg1 = info[1]->NumberValue();
-    v8::Local<v8::Number> num = Nan::New(hello(arg0, arg1));
+    v8::Local<v8::Number> num = Nan::New(myHello(arg0, arg1));
 
     info.GetReturnValue().Set(num);
 }
