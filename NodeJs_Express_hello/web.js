@@ -5,52 +5,17 @@ var ws_data = require('./wisesnail_msgmgr.js');
 var HashMap = require('hashmap').HashMap;
 var map = new HashMap();
 var app = express();
-//Mqtt
-/*
-var mqtt = require('mqtt');
-//var client  = mqtt.connect('mqtt://test.mosquitto.org');
-var client  = mqtt.connect('mqtt://127.0.0.1');
-client.queueQoSZero = false;
 
-client.on('connect', function () {
-  console.log('hello.js mqtt connect !!!!');
-  client.subscribe('presence');
-  client.publish('agentinfo', 'Hello mqtt');
-})
- 
-client.on('message', function (topic, message) {
-  // message is Buffer 
-  console.log(message.toString())
-  //client.end()
-})
-*/
+app.get('/show_all_VgwMap', function (req, res) {
+  ws_data.show_all_VgwMap();
+  res.send('show_all_VgwMap!');
+});
 
-/*
-app.get('/', function (req, res) {
-  ws.test();
+app.get('/test', function (req, res) {
+  ws_data.test();
   res.send('test');
 });
-app.get('/start', function (req, res) {
-  ws.start();
-  res.send('start');
-});
-*/
 
-app.get('/show_all_vgw_map', function (req, res) {
-  ws_data.show_all_vgw_map();
-  res.send('show_all_vgw_map!');
-});
-
-app.get('/wise_snail_data', function (req, res) {
-  ws_data.set_connectivity();
-  client.publish('agentinfo', 'Hello WiseSnail Data');
-  res.send('Hello WiseSnail Data!');
-});
-
-app.get('/get_wise_snail_data', function (req, res) {
-  ws_data.get_connectivity();
-  res.send('Get WiseSnail Data!');
-});
 
 function is_ip_valid( ip ){
   

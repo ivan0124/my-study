@@ -1,10 +1,9 @@
 //Mqtt
 var mqtt = require('mqtt');
 var HashMap = require('hashmap').HashMap;
-var VgwMap = new HashMap();
-var SensorHubMap = new HashMap();
-var ConnectivityMap = new HashMap();
-var IoTGWCapability;
+var vgw_map = new HashMap();
+var sensorHubMap = new HashMap();
+var connectivityMap = new HashMap();
 
 var client  = mqtt.connect('mqtt://172.22.214.60');
 client.queueQoSZero = false;
@@ -20,8 +19,7 @@ var devObj = { vgw_id: 'null',
                connect: 'null', 
                os_info: 'null', 
                dev_info_spec: 'null',  
-               dev_info: 'null',
-               dev_capability: 'null',
+               dev_info: 'null'
              };
 
 var mqttConnectCallback =  function () {
@@ -59,17 +57,17 @@ var mqttMessageCallback = function (topic, message){
       {
           console.log('[' + device_id + ']' + ': vgw_connect');
          
-          if ( VgwMap.has(device_id) === false ) {
+          if ( vgw_map.has(device_id) === false ) {
               //copy devObj object as vgw objcect
               var vgw = JSON.parse(JSON.stringify(devObj));
           }
           else{
-             var vgw = VgwMap.get(device_id);
+             var vgw = vgw_map.get(device_id);
           }
               
           vgw.connect = message.toString();            
           vgw.vgw_id = device_id.toString();
-          VgwMap.set(device_id, vgw );        
+          vgw_map.set(device_id, vgw );        
           break;
       }
     case msgType.vgw_disconnect:
@@ -81,14 +79,14 @@ var mqttMessageCallback = function (topic, message){
     case msgType.vgw_os_info:
       {
           console.log('[' + device_id + ']' + ': vgw_os_info, IP=' + jsonObj.susiCommData.osInfo.IP);
-          if ( VgwMap.has(device_id) === true ) {
-                var vgw=VgwMap.get(device_id);
+          if ( vgw_map.has(device_id) === true ) {
+                var vgw=vgw_map.get(device_id);
                 if (typeof vgw !== 'undefined') {
                   vgw.os_info = message.toString();
                 }
           }
           else{
-               console.log('[msgType.vgw_os_info]: VgwMap does not exist !!');
+               console.log('[msgType.vgw_os_info]: vgw_map does not exist !!');
           }
           
           break;
@@ -96,37 +94,37 @@ var mqttMessageCallback = function (topic, message){
     case msgType.vgw_info_spec:
       {
           console.log('[' + device_id + ']' + ': vgw_info_spec');
-          if ( VgwMap.has(device_id) === true ) {
-                var vgw = VgwMap.get(device_id);
+          if ( vgw_map.has(device_id) === true ) {
+                var vgw = vgw_map.get(device_id);
                 if (typeof vgw !== 'undefined') {
                   vgw.dev_info_spec = message.toString();
-                  //add ConnectivityMap here
+                  //add connectivityMap here
                     var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
-                    //console.log( '[ConnectivityMapUpdate] Start-------------------------------------------------');
+                    //console.log( '[connectivityMapUpdate] Start-------------------------------------------------');
                     connectivityMapUpdate(msgType.vgw_info_spec, device_id , vgw.os_info, 0, 'null', infoObj); 
-                    //console.log( '[ConnectivityMapUpdate] End---------------------------------------------------');                  
+                    //console.log( '[connectivityMapUpdate] End---------------------------------------------------');                  
                 }
           }
           else{
-               console.log('[msgType.vgw_info_spec]: VgwMap does not exist !!');
+               console.log('[msgType.vgw_info_spec]: vgw_map does not exist !!');
           }        
           break;
       }
     case msgType.vgw_info:
       {
           console.log('[' + device_id + ']' + ': vgw_info');
-          if ( VgwMap.has(device_id) === true ) {
-                var vgw=VgwMap.get(device_id);
+          if ( vgw_map.has(device_id) === true ) {
+                var vgw=vgw_map.get(device_id);
                 if (typeof vgw !== 'undefined') {
                   vgw.dev_info = message.toString();
                   var infoObj=jsonObj.susiCommData.data.IoTGW;
-                  //console.log( '[ConnectivityMapUpdate] Start-------------------------------------------------');
+                  //console.log( '[connectivityMapUpdate] Start-------------------------------------------------');
                   connectivityMapUpdate(msgType.vgw_info, device_id , vgw.os_info, 0, 'null', infoObj); 
-                  //console.log( '[ConnectivityMapUpdate] End---------------------------------------------------');   
+                  //console.log( '[connectivityMapUpdate] End---------------------------------------------------');   
                 }
           }
           else{
-               console.log('[msgType.vgw_info]: VgwMap does not exist !!');
+               console.log('[msgType.vgw_info]: vgw_map does not exist !!');
           }         
           break;
       }
@@ -154,7 +152,7 @@ var mqttMessageCallback = function (topic, message){
       }
     case msgType.sen_info:
       {    
-        //console.log('[' + device_id + ']' + ': sen_info');
+        console.log('[' + device_id + ']' + ': sen_info');
         sensorHubMapUpdate(msgType.sen_info, device_id, message.toString());
         break;
       }
@@ -214,29 +212,6 @@ function getObjKeyValue( jsonObj, outObj){
    return;  
 }
 
-function getDeviceCapability( devInfoSpecObj, devInfoObj ){
-                  
-  for ( var i=0 ; i < devInfoSpecObj['Info']['e'].length ; i++){
-    if ( typeof devInfoSpecObj['Info']['e'][i].v !== 'undefined' && devInfoObj['Info']['e'][i].v !== 'undefined' ){
-      devInfoSpecObj['Info']['e'][i].v =  devInfoObj['Info']['e'][i].v;
-      //console.log('v..devInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(devInfoSpecObj['Info']['e'][i]['n']));
-    }
-                     
-    if ( typeof devInfoSpecObj['Info']['e'][i].sv !== 'undefined' && devInfoObj['Info']['e'][i].sv !== 'undefined' ){
-      devInfoSpecObj['Info']['e'][i].sv =  devInfoObj['Info']['e'][i].sv;
-      //console.log('sv..devInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(devInfoSpecObj['Info']['e'][i]['n']));
-    } 
-                     
-    if ( typeof devInfoSpecObj['Info']['e'][i].bv !== 'undefined' && devInfoObj['Info']['e'][i].bv !== 'undefined' ){
-      devInfoSpecObj['Info']['e'][i].bv =  devInfoObj['Info']['e'][i].bv;
-      //console.log('bv..devInfoSpecObj.e['+ i +'].n = ' +  JSON.stringify(devInfoSpecObj['Info']['e'][i]['n']));
-    }                        
-                      
-    //console.log('devInfoSpecObj.e['+ i +'] = ' +  JSON.stringify(devInfoSpecObj['Info']['e'][i]));
-  }  
-  
-}
-
 function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, infoObj){
   
   //console.log( 'Start-------------------------------------------------');
@@ -252,12 +227,12 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
               if ( layer === 3 ){
                  //console.log( 'messageType =' + messageType + ', [layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] );
                  var device_id=infoObj[key];
-                 if ( ConnectivityMap.has(device_id) === false ) {
+                 if ( connectivityMap.has(device_id) === false ) {
                    //copy devObj object as vgw objcect
                    var connectivity = JSON.parse(JSON.stringify(devObj));
                  }
                  else{
-                   var connectivity = ConnectivityMap.get(device_id);
+                   var connectivity = connectivityMap.get(device_id);
                  }
                 
                  if ( messageType === msgType.vgw_info_spec ){ 
@@ -265,20 +240,14 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                    connectivity.os_info = osInfo;
                    connectivity.conn_id = device_id; 
                    connectivity.conn_type = connType;
-                   connectivity.dev_info_spec = JSON.stringify(infoObj);
+                   connectivity.dev_info_spec = JSON.stringify(infoObj['Info']);
                  }
                    
                  if ( messageType === msgType.vgw_info ){
-  
-                   var tmpInfoSpecObj = JSON.parse(connectivity.dev_info_spec);
-                   getDeviceCapability(tmpInfoSpecObj, infoObj);
-                   
                    connectivity.dev_info = JSON.stringify(infoObj['Info']);
-                   connectivity.dev_capability = JSON.stringify(tmpInfoSpecObj);
                  }
-                 
-                 //console.log('[' + device_id + ']' + ': update ConnectivityMap key pairs');
-                 ConnectivityMap.set(device_id, connectivity );                
+                 //console.log('[' + device_id + ']' + ': update connectivityMap key pairs');
+                 connectivityMap.set(device_id, connectivity );                
                  return;
               }
                
@@ -303,7 +272,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
 function sensorHubMapUpdate(messageType, device_id, message){
           
   //console.log('message ===== ' + message);
-  ConnectivityMap.forEach(function(obj, key) {
+  connectivityMap.forEach(function(obj, key) {
     //console.log('obj.dev_info = ' + obj.dev_info);
     var infoObj = JSON.parse ( obj.dev_info );
     var outObj = {
@@ -316,11 +285,11 @@ function sensorHubMapUpdate(messageType, device_id, message){
     for (var i=0 ; i < sensorHubList.length ; i++){
       if(sensorHubList[i] === device_id){
         //console.log('sensorHub(' + device_id + '): conn_id=' + obj.conn_id + ', vgw_id=' + obj.vgw_id  );
-        if ( SensorHubMap.has(device_id) === false ) {
+        if ( sensorHubMap.has(device_id) === false ) {
           var sensorhub = JSON.parse(JSON.stringify(devObj));
         }
         else{
-          var sensorhub = SensorHubMap.get(device_id);
+          var sensorhub = sensorHubMap.get(device_id);
         }
         sensorhub.vgw_id = obj.vgw_id;
         sensorhub.os_info = obj.os_info;
@@ -336,7 +305,7 @@ function sensorHubMapUpdate(messageType, device_id, message){
           sensorhub.dev_info = message;
         }            
         
-        SensorHubMap.set(device_id, sensorhub );        
+        sensorHubMap.set(device_id, sensorhub );        
         return;
       }
     }
@@ -430,14 +399,14 @@ function getStatusFromMsg( connectMsg ){
 function getOSType( vgw_id ){
 
   console.log('[getOSType]vgw_id=' + vgw_id);
-  if ( VgwMap.has(vgw_id) === false ) {
-    console.log('[getOSType] VgwMap.has(vgw_id) === false');
+  if ( vgw_map.has(vgw_id) === false ) {
+    console.log('[getOSType] vgw_map.has(vgw_id) === false');
     return 'null';
   }
     
-  var vgw=VgwMap.get(vgw_id);
+  var vgw=vgw_map.get(vgw_id);
   if (typeof vgw === 'undefined') {
-    console.log('[getOSType] VgwMap.has(vgw_id) === false');
+    console.log('[getOSType] vgw_map.has(vgw_id) === false');
     return 'null';                 
   }
   
@@ -465,61 +434,58 @@ function remove_vgw( vgw_id ){
 
     console.log('--------------------------------------------------------------');
   
-    if ( getOSType(vgw_id) == osType.none_ip_base){
-      console.log('Show all VgwMap. count= ' + VgwMap.count());
-      VgwMap.forEach(function(obj, key) {
-        console.log('key = ' + key); 
-        if ( vgw_id === key ){
-          console.log('VgwMap.remove() key = ' + key);
-          VgwMap.remove(key);
-        }
-      });     
-      console.log('Show all VgwMap. count= ' + VgwMap.count());
-      console.log('--------------------------------------------------------------');    
-      console.log('Show all ConnectivityMap. count= ' + ConnectivityMap.count());
-      ConnectivityMap.forEach(function(obj, key) {
-        console.log('key = ' + key); 
-        if ( vgw_id === obj.vgw_id ){
-           console.log('ConnectivityMap.remove() key = ' + key);
-
-           console.log('----');
-           console.log('vgw_id = ' + obj.vgw_id);
-           console.log('conn_id = ' + obj.conn_id);
-           console.log('conn_type = ' + obj.conn_type);
-           console.log('os info = \n' + obj.os_info);
-           console.log('conn dev_info_spec = \n' + obj.dev_info_spec);
-           console.log('conn dev_info = \n' + obj.dev_info);
-           console.log('conn dev_capability = \n' + obj.dev_capability);
-           //console.log('conn_type = ' + obj.conn_type);
-           console.log('----');
-
-           ConnectivityMap.remove(key);
-        }
-      });     
-      console.log('Show all ConnectivityMap. count= ' + ConnectivityMap.count());
-      console.log('--------------------------------------------------------------');
-      console.log('Show all SensorHubMap. count= ' + SensorHubMap.count());
-      SensorHubMap.forEach(function(obj, key) {
-        console.log('key = ' + key); 
-        if ( vgw_id === obj.vgw_id ){
-           console.log('SensorHubMap.remove() key = ' + key);
-          /*
-           console.log('----');
-           console.log('vgw_id = ' + obj.vgw_id);
-           console.log('conn_id = ' + obj.conn_id);
-           console.log('conn_type = ' + obj.conn_type);
-           console.log('os info = \n' + obj.os_info);
-           console.log('sensorhub connect = \n' + obj.connect);
-           console.log('sensorhub dev_info_spec = \n' + obj.dev_info_spec);
-           console.log('sensorhub dev_info = \n' + obj.dev_info);
-           //console.log('conn_type = ' + obj.conn_type);
-           console.log('----');
-           */
-           SensorHubMap.remove(key);
-        }
-      });     
-      console.log('Show all SensorHubMap. count= ' + SensorHubMap.count());
-    }
+    console.log('Show all vgw_map. count= ' + vgw_map.count());
+    vgw_map.forEach(function(obj, key) {
+      console.log('key = ' + key); 
+      if ( vgw_id === key ){
+        console.log('vgw_map.remove() key = ' + key);
+        vgw_map.remove(key);
+      }
+    });     
+    console.log('Show all vgw_map. count= ' + vgw_map.count());
+    console.log('--------------------------------------------------------------');    
+    console.log('Show all connectivityMap. count= ' + connectivityMap.count());
+    connectivityMap.forEach(function(obj, key) {
+      console.log('key = ' + key); 
+      if ( vgw_id === obj.vgw_id ){
+         console.log('connectivityMap.remove() key = ' + key);
+        /*
+         console.log('----');
+         console.log('vgw_id = ' + obj.vgw_id);
+         console.log('conn_id = ' + obj.conn_id);
+         console.log('conn_type = ' + obj.conn_type);
+         console.log('os info = \n' + obj.os_info);
+         console.log('conn dev_info_spec = \n' + obj.dev_info_spec);
+         console.log('conn dev_info = \n' + obj.dev_info);
+         //console.log('conn_type = ' + obj.conn_type);
+         console.log('----');
+         */
+         connectivityMap.remove(key);
+      }
+    });     
+    console.log('Show all connectivityMap. count= ' + connectivityMap.count());
+    console.log('--------------------------------------------------------------');
+    console.log('Show all sensorHubMap. count= ' + sensorHubMap.count());
+    sensorHubMap.forEach(function(obj, key) {
+      console.log('key = ' + key); 
+      if ( vgw_id === obj.vgw_id ){
+         console.log('sensorHubMap.remove() key = ' + key);
+        /*
+         console.log('----');
+         console.log('vgw_id = ' + obj.vgw_id);
+         console.log('conn_id = ' + obj.conn_id);
+         console.log('conn_type = ' + obj.conn_type);
+         console.log('os info = \n' + obj.os_info);
+         console.log('sensorhub connect = \n' + obj.connect);
+         console.log('sensorhub dev_info_spec = \n' + obj.dev_info_spec);
+         console.log('sensorhub dev_info = \n' + obj.dev_info);
+         //console.log('conn_type = ' + obj.conn_type);
+         console.log('----');
+         */
+         sensorHubMap.remove(key);
+      }
+    });     
+    console.log('Show all sensorHubMap. count= ' + sensorHubMap.count());
     console.log('--------------------------------------------------------------');  
   
 }
@@ -542,107 +508,23 @@ function is_ip_valid( ip ){
   
   return false;
 }
-/*
+
 function get_id( topic ){
   console.log('[get_id] get topic id' );
   return 'key1';
 }
-*/
-function listObj( apiPath, keyStr, jsonObj, outputObj ){
-  
-  //console.log( 'listObj Start-------------------------------------------------');
-  for (key in jsonObj) {
-    if (jsonObj.hasOwnProperty(key)) {
-      var jsonKeyStr = keyStr + '/' + key ; 
-      if ( apiPath === jsonKeyStr ){
-        console.log( 'jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
-        outputObj.resultStr = JSON.stringify(jsonObj[key]);
-      }
-    }
-  }
-  //
-  for (key in jsonObj) {
-    if (jsonObj.hasOwnProperty(key)) {
-      //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
-      if (typeof jsonObj[key] === 'object' ){
-        listObj( apiPath, keyStr + '/' + key, jsonObj[key], outputObj);
-      }
-      else{
-        //console.log( 'listObj return -------------------------------------------------key=' + key);
-        //return;
-      }
-    }
-  }  
-  
-  //console.log( 'listObj return -------------------------------------------------key=' + key);
-  return;  
-
-}
-
-function getTotalConnectivityCapability(){
-  
-  console.log('getTotalConnectivityCapability');
-  IoTGWCapability = {};
-  IoTGWCapability.IoTGW = {};
-  ConnectivityMap.forEach(function(obj, key) {
-    console.log('----');
-    console.log('key = ' + key); 
-    console.log('conn dev_capability = \n' + obj.dev_capability);
-    var connectivityName = obj.conn_id;
-    var connectivityType = obj.conn_type;
-    
-    if ( typeof IoTGWCapability.IoTGW[connectivityType] === 'undefined' ){
-      IoTGWCapability.IoTGW[connectivityType] = {};
-    }      
-    if ( typeof IoTGWCapability.IoTGW[connectivityType][connectivityName] === 'undefined' ){
-      IoTGWCapability.IoTGW[connectivityType][connectivityName] = {};
-    } 
-        
-    IoTGWCapability.IoTGW[connectivityType][connectivityName] = JSON.parse(obj.dev_capability) ;
-    console.log('----');
-
-  });       
-
-  //console.log('IoTGWCapability = \n' + JSON.stringify(IoTGWCapability) );
-  const path = '/IoTGW/BLE/0007000E40ABCD35';
-  var keyStr = '' ;
-  var outputObj = {} ; 
-  listObj(path, keyStr, IoTGWCapability, outputObj);
-  console.log('-----------------------------------------');
-  console.log(outputObj.resultStr);
-  console.log('-----------------------------------------');
-  
-  
-  return JSON.stringify(IoTGWCapability);
-}
 
 module.exports = {
   test: function() {
-    console.log('[wise_snail_data] test');
-    console.log('TotalConnectivityCapability ======== ' + getTotalConnectivityCapability());
+    console.log('test');
     return;
   },
        
-  get_connectivity: function() {
-    console.log('[get_connectivity] conn_map.count() = ' + conn_map.count());
-    var conn=conn_map.get('key1');
-    if (typeof conn !== 'undefined') {
-      
-      conn.sensor_hub.forEach(function(obj, key) {
-          if (typeof obj !== 'undefined') {
-              console.log('key=' +  key + ', sen.cmd=' + obj.cmd + ', sen.msg=' + obj.msg );
-          }
-      });
-      
-    }
-    return;
-  },
-  
-  show_all_VgwMap: function() {
+  show_all_vgw_map: function() {
     /*
     console.log('--------------------------------------------------------------');
-    console.log('Show all VgwMap');
-    VgwMap.forEach(function(obj, key) {
+    console.log('Show all vgw_map');
+    vgw_map.forEach(function(obj, key) {
       if (typeof obj !== 'undefined') {
           console.log('['+key+']'+'[connect]' + ' : ' + obj.connect);
           console.log('['+key+']'+'[os_info]' + ' : ' + obj.os_info);
