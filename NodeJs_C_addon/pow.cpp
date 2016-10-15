@@ -45,10 +45,13 @@ void Pow(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info.GetReturnValue().Set(num);
 }
 
-void Init(v8::Local<v8::Object> exports) {  
+void Init(v8::Local<v8::Object> exports) { 
+    
+    /*export pow function*/
     exports->Set(Nan::New("pow").ToLocalChecked(),
                  Nan::New<v8::FunctionTemplate>(Pow)->GetFunction());
     
+    /*export hello function*/
     exports->Set(Nan::New("hello").ToLocalChecked(),
                  Nan::New<v8::FunctionTemplate>(hello)->GetFunction());    
 }
