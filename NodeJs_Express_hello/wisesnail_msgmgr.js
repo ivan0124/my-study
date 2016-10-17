@@ -604,6 +604,7 @@ function getTotalConnectivityCapability(){
   });       
 
   //console.log('IoTGWCapability = \n' + JSON.stringify(IoTGWCapability) );
+  /*
   const path = '/IoTGW/BLE/0007000E40ABCD31';
   var keyStr = '' ;
   var outputObj = {} ; 
@@ -611,14 +612,24 @@ function getTotalConnectivityCapability(){
   console.log('-----------------------------------------');
   console.log(outputObj.resultStr);
   console.log('-----------------------------------------');
-  
+  */
   
   return JSON.stringify(IoTGWCapability);
 }
 
 var wsnget = function( uri, inParam, outData ) {
   console.log('uri = ' + uri);
-  getTotalConnectivityCapability();
+  var IoTGWCapability ;
+  var capability = getTotalConnectivityCapability();
+  IoTGWCapability = JSON.parse(capability);
+  
+  const path = '/IoTGW/BLE/0007000E40ABCD31';
+  var keyStr = '' ;
+  var outputObj = {} ; 
+  getRESTFulValue(path, keyStr, IoTGWCapability, outputObj);
+  console.log('-----------------------------------------');
+  console.log(outputObj.resultStr);
+  console.log('-----------------------------------------');  
   //var code = STATUS.INTERNAL_SERVER_ERROR;
   //outData.ret = RESULT;
   //code = STATUS.OK;
