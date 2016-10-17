@@ -621,7 +621,7 @@ var wsnget = function( uri, inParam, outData ) {
   //var code = STATUS.INTERNAL_SERVER_ERROR;
   //outData.ret = RESULT;
   //code = STATUS.OK;
-  return code;
+  return 0;
 }
 
 module.exports = {
