@@ -9,20 +9,36 @@ var ConnectivityMap = new HashMap();
 var Client  = Mqtt.connect('mqtt://172.22.214.60');
 Client.queueQoSZero = false;
 
-const MSG_TYPE = { error: -1, unknown: 0,
-                  vgw_connect: 1, vgw_os_info: 2, vgw_info_spec: 3, vgw_willmessage: 4,
-                  vgw_disconnect: 5, vgw_info: 6,
-                  sen_connect: 7, sen_disconnect: 8, sen_info_spec: 9, sen_info: 10 };
-const OS_TYPE = { none_ip_base: 'none_ip_base', ip_base: 'ip_base'};
-const DEVICE_OBJ = { vgw_id: 'null', 
-               conn_id: 'null',
-               conn_type: 'null',
-               connect: 'null', 
-               os_info: 'null', 
-               dev_info_spec: 'null',  
-               dev_info: 'null',
-               dev_capability: 'null',
-             };
+const MSG_TYPE = { 
+                   error: -1, 
+				   unknown: 0,
+                   vgw_connect: 1, 
+				   vgw_os_info: 2, 
+				   vgw_info_spec: 3, 
+				   vgw_willmessage: 4,
+                   vgw_disconnect: 5, 
+				   vgw_info: 6,
+                   sen_connect: 7, 
+				   sen_disconnect: 8, 
+				   sen_info_spec: 9, 
+				   sen_info: 10 
+				 };
+				 
+const OS_TYPE = { 
+                  none_ip_base: 'none_ip_base', 
+				  ip_base: 'ip_base'
+				};
+				
+const DEVICE_OBJ = { 
+                     vgw_id: 'null', 
+                     conn_id: 'null',
+                     conn_type: 'null',
+                     connect: 'null', 
+                     os_info: 'null', 
+                     dev_info_spec: 'null',  
+                     dev_info: 'null',
+                     dev_capability: 'null',
+                   };
 
 var mqttConnectCallback =  function () {
   console.log('[wisesnail_msgmgr] Mqtt connect !!!!');
