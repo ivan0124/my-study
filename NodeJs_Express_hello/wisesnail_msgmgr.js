@@ -1,12 +1,12 @@
 //Mqtt
-var mqtt = require('mqtt');
+var Mqtt = require('mqtt');
 var HashMap = require('hashmap').HashMap;
 var VgwMap = new HashMap();
 var SensorHubMap = new HashMap();
 var ConnectivityMap = new HashMap();
 //var IoTGWCapability;
 
-var client  = mqtt.connect('mqtt://172.22.214.60');
+var client  = Mqtt.connect('mqtt://172.22.214.60');
 client.queueQoSZero = false;
 
 const msgType = { error: -1, unknown: 0,
@@ -25,7 +25,7 @@ var devObj = { vgw_id: 'null',
              };
 
 var mqttConnectCallback =  function () {
-  console.log('[wise_snail_data] mqtt connect !!!!');
+  console.log('[wisesnail_msgmgr] Mqtt connect !!!!');
   client.subscribe('/cagent/admin/+/agentinfoack');
   client.subscribe('/cagent/admin/+/willmessage');
   client.subscribe('/cagent/admin/+/agentactionreq');
