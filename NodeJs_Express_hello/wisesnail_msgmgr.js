@@ -616,7 +616,16 @@ function getTotalConnectivityCapability(){
   return JSON.stringify(IoTGWCapability);
 }
 
+var wsnget = function( uri, inParam, outData ) {
+  console.log('uri = ' + uri);
+  //var code = STATUS.INTERNAL_SERVER_ERROR;
+  //outData.ret = RESULT;
+  //code = STATUS.OK;
+  return code;
+}
+
 module.exports = {
+  get: wsnget,
   test: function() {
     console.log('[wise_snail_data] test');
     console.log('TotalConnectivityCapability ======== ' + getTotalConnectivityCapability());
