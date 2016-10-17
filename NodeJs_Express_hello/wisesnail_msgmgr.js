@@ -4,7 +4,7 @@ var HashMap = require('hashmap').HashMap;
 var VgwMap = new HashMap();
 var SensorHubMap = new HashMap();
 var ConnectivityMap = new HashMap();
-var IoTGWCapability;
+//var IoTGWCapability;
 
 var client  = mqtt.connect('mqtt://172.22.214.60');
 client.queueQoSZero = false;
