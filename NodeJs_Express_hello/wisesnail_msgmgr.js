@@ -58,6 +58,7 @@ var mqttMessageCallback = function (topic, message){
     case msgType.vgw_connect:
       {
           console.log('[' + device_id + ']' + ': vgw_connect');
+          remove_vgw( device_id );
          
           if ( VgwMap.has(device_id) === false ) {
               //copy devObj object as vgw objcect
