@@ -579,7 +579,7 @@ function getRESTFulValue( apiPath, keyStr, jsonObj, outputObj ){
 
 }
 
-function getTotalConnectivityCapability(){
+function getIoTGWConnectivityCapability(){
   
   console.log('getTotalConnectivityCapability');
   IoTGWCapability = {};
@@ -609,7 +609,7 @@ function getTotalConnectivityCapability(){
 var wsnget = function( uri, inParam, outData ) {
   console.log('uri = ' + uri);
   var IoTGWCapability ;
-  var capability = getTotalConnectivityCapability();
+  var capability = getIoTGWConnectivityCapability();
   IoTGWCapability = JSON.parse(capability);
   
   const path = '/IoTGW/BLE/0007000E40ABCD31';
