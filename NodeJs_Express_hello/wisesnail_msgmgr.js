@@ -559,20 +559,14 @@ function is_ip_valid( ip ){
   
   return false;
 }
-/*
-function get_id( topic ){
-  console.log('[get_id] get topic id' );
-  return 'key1';
-}
-*/
+
 function getRESTFulValue( apiPath, keyStr, jsonObj, outputObj ){
   
-  //console.log( 'listObj Start-------------------------------------------------');
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
       var jsonKeyStr = keyStr + '/' + key ; 
       if ( apiPath === jsonKeyStr ){
-        console.log( 'jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
+        //console.log( 'jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
         outputObj.resultStr = JSON.stringify(jsonObj[key]);
       }
     }
@@ -580,18 +574,12 @@ function getRESTFulValue( apiPath, keyStr, jsonObj, outputObj ){
   //
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
-      //console.log(key + " ===> " + jsonObj[key] + " ,type = " + typeof jsonObj[key]);
       if (typeof jsonObj[key] === 'object' ){
         getRESTFulValue( apiPath, keyStr + '/' + key, jsonObj[key], outputObj);
       }
-      else{
-        //console.log( 'listObj return -------------------------------------------------key=' + key);
-        //return;
-      }
     }
   }  
-  
-  //console.log( 'listObj return -------------------------------------------------key=' + key);
+	
   return;  
 
 }
