@@ -13,7 +13,7 @@ const MSG_TYPE = { error: -1, unknown: 0,
                   vgw_connect: 1, vgw_os_info: 2, vgw_info_spec: 3, vgw_willmessage: 4,
                   vgw_disconnect: 5, vgw_info: 6,
                   sen_connect: 7, sen_disconnect: 8, sen_info_spec: 9, sen_info: 10 };
-const osType = { none_ip_base: 'none_ip_base', ip_base: 'ip_base'};
+const OS_TYPE = { none_ip_base: 'none_ip_base', ip_base: 'ip_base'};
 var devObj = { vgw_id: 'null', 
                conn_id: 'null',
                conn_type: 'null',
@@ -450,12 +450,12 @@ function getOSType( vgw_id ){
   }  
   
   if ( is_ip_valid( os_info_obj.susiCommData.osInfo.IP) === true ){
-    console.log('[' + vgw_id + ']' + ': ' + osType.ip_base);
-    return osType.ip_base;
+    console.log('[' + vgw_id + ']' + ': ' + OS_TYPE.ip_base);
+    return OS_TYPE.ip_base;
   }
   else{
-    console.log('[' + vgw_id + ']' + ':' + osType.none_ip_base);
-    return osType.none_ip_base;
+    console.log('[' + vgw_id + ']' + ':' + OS_TYPE.none_ip_base);
+    return OS_TYPE.none_ip_base;
   }  
   
   return 'null';
@@ -466,7 +466,7 @@ function remove_vgw( vgw_id ){
 
     console.log('--------------------------------------------------------------');
   
-    if ( getOSType(vgw_id) == osType.none_ip_base){
+    if ( getOSType(vgw_id) == OS_TYPE.none_ip_base){
       console.log('Show all VgwMap. count= ' + VgwMap.count());
       VgwMap.forEach(function(obj, key) {
         console.log('key = ' + key); 
