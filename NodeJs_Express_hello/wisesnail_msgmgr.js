@@ -6,8 +6,8 @@ var SensorHubMap = new HashMap();
 var ConnectivityMap = new HashMap();
 //var IoTGWCapability;
 
-var client  = Mqtt.connect('mqtt://172.22.214.60');
-client.queueQoSZero = false;
+var Client  = Mqtt.connect('mqtt://172.22.214.60');
+Client.queueQoSZero = false;
 
 const msgType = { error: -1, unknown: 0,
                   vgw_connect: 1, vgw_os_info: 2, vgw_info_spec: 3, vgw_willmessage: 4,
@@ -26,10 +26,10 @@ var devObj = { vgw_id: 'null',
 
 var mqttConnectCallback =  function () {
   console.log('[wisesnail_msgmgr] Mqtt connect !!!!');
-  client.subscribe('/cagent/admin/+/agentinfoack');
-  client.subscribe('/cagent/admin/+/willmessage');
-  client.subscribe('/cagent/admin/+/agentactionreq');
-  client.subscribe('/cagent/admin/+/deviceinfo'); 
+  Client.subscribe('/cagent/admin/+/agentinfoack');
+  Client.subscribe('/cagent/admin/+/willmessage');
+  Client.subscribe('/cagent/admin/+/agentactionreq');
+  Client.subscribe('/cagent/admin/+/deviceinfo'); 
    
 }
 
@@ -630,7 +630,7 @@ module.exports = {
   get: wsnget,
 };
 
-client.on('connect', mqttConnectCallback );
-client.on('message', mqttMessageCallback);
+Client.on('connect', mqttConnectCallback );
+Client.on('message', mqttMessageCallback);
 
 
