@@ -618,6 +618,7 @@ function getTotalConnectivityCapability(){
 
 var wsnget = function( uri, inParam, outData ) {
   console.log('uri = ' + uri);
+  getTotalConnectivityCapability();
   //var code = STATUS.INTERNAL_SERVER_ERROR;
   //outData.ret = RESULT;
   //code = STATUS.OK;
