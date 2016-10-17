@@ -11,23 +11,23 @@ Client.queueQoSZero = false;
 
 const MSG_TYPE = { 
                    error: -1, 
-				   unknown: 0,
+		   unknown: 0,
                    vgw_connect: 1, 
-				   vgw_os_info: 2, 
-				   vgw_info_spec: 3, 
-				   vgw_willmessage: 4,
+		   vgw_os_info: 2, 
+		   vgw_info_spec: 3, 
+	           vgw_willmessage: 4,
                    vgw_disconnect: 5, 
-				   vgw_info: 6,
+		   vgw_info: 6,
                    sen_connect: 7, 
-				   sen_disconnect: 8, 
-				   sen_info_spec: 9, 
-				   sen_info: 10 
-				 };
+		   sen_disconnect: 8, 
+		   sen_info_spec: 9, 
+		   sen_info: 10 
+		 };
 				 
 const OS_TYPE = { 
                   none_ip_base: 'none_ip_base', 
-				  ip_base: 'ip_base'
-				};
+		  ip_base: 'ip_base'
+		};
 				
 const DEVICE_OBJ = { 
                      vgw_id: 'null', 
