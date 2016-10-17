@@ -58,7 +58,7 @@ var mqttMessageCallback = function (topic, message){
     case MSG_TYPE.vgw_connect:
       {
           console.log('[' + device_id + ']' + ': vgw_connect');
-          remove_vgw( device_id );
+          removeVGW( device_id );
          
           if ( VgwMap.has(device_id) === false ) {
               //copy devObj object as vgw objcect
@@ -76,7 +76,7 @@ var mqttMessageCallback = function (topic, message){
     case MSG_TYPE.vgw_disconnect:
       {
           console.log('[' + device_id + ']' + ': vgw_disconnect');
-          remove_vgw( device_id );
+          removeVGW( device_id );
           break;        
       }      
     case MSG_TYPE.vgw_os_info:
@@ -134,7 +134,7 @@ var mqttMessageCallback = function (topic, message){
     case MSG_TYPE.vgw_willmessage:
       {
           console.log('[' + device_id + ']' + ': vgw_willmessage');
-          remove_vgw( device_id );
+          removeVGW( device_id );
           break;
       }
     case MSG_TYPE.sen_connect:
@@ -462,7 +462,7 @@ function getOSType( vgw_id ){
   
 }
 
-function remove_vgw( vgw_id ){
+function removeVGW( vgw_id ){
 
     console.log('--------------------------------------------------------------');
   
