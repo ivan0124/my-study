@@ -14,7 +14,7 @@ const MSG_TYPE = { error: -1, unknown: 0,
                   vgw_disconnect: 5, vgw_info: 6,
                   sen_connect: 7, sen_disconnect: 8, sen_info_spec: 9, sen_info: 10 };
 const OS_TYPE = { none_ip_base: 'none_ip_base', ip_base: 'ip_base'};
-var devObj = { vgw_id: 'null', 
+const DEVICE_OBJ = { vgw_id: 'null', 
                conn_id: 'null',
                conn_type: 'null',
                connect: 'null', 
@@ -61,8 +61,8 @@ var mqttMessageCallback = function (topic, message){
           removeVGW( device_id );
          
           if ( VgwMap.has(device_id) === false ) {
-              //copy devObj object as vgw objcect
-              var vgw = JSON.parse(JSON.stringify(devObj));
+              //copy DEVICE_OBJ object as vgw objcect
+              var vgw = JSON.parse(JSON.stringify(DEVICE_OBJ));
           }
           else{
              var vgw = VgwMap.get(device_id);
@@ -254,8 +254,8 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                  //console.log( 'messageType =' + messageType + ', [layer] :' + layer + ', connType='+ connType +', infoObj[' + key +']=======>' + infoObj[key] );
                  var device_id=infoObj[key];
                  if ( ConnectivityMap.has(device_id) === false ) {
-                   //copy devObj object as vgw objcect
-                   var connectivity = JSON.parse(JSON.stringify(devObj));
+                   //copy DEVICE_OBJ object as vgw objcect
+                   var connectivity = JSON.parse(JSON.stringify(DEVICE_OBJ));
                  }
                  else{
                    var connectivity = ConnectivityMap.get(device_id);
@@ -318,7 +318,7 @@ function sensorHubMapUpdate(messageType, device_id, message){
       if(sensorHubList[i] === device_id){
         //console.log('sensorHub(' + device_id + '): conn_id=' + obj.conn_id + ', vgw_id=' + obj.vgw_id  );
         if ( SensorHubMap.has(device_id) === false ) {
-          var sensorhub = JSON.parse(JSON.stringify(devObj));
+          var sensorhub = JSON.parse(JSON.stringify(DEVICE_OBJ));
         }
         else{
           var sensorhub = SensorHubMap.get(device_id);
