@@ -9,7 +9,7 @@ var ConnectivityMap = new HashMap();
 var Client  = Mqtt.connect('mqtt://172.22.214.60');
 Client.queueQoSZero = false;
 
-const msgType = { error: -1, unknown: 0,
+const MSG_TYPE = { error: -1, unknown: 0,
                   vgw_connect: 1, vgw_os_info: 2, vgw_info_spec: 3, vgw_willmessage: 4,
                   vgw_disconnect: 5, vgw_info: 6,
                   sen_connect: 7, sen_disconnect: 8, sen_info_spec: 9, sen_info: 10 };
@@ -55,7 +55,7 @@ var mqttMessageCallback = function (topic, message){
   
   
   switch(msg_type){
-    case msgType.vgw_connect:
+    case MSG_TYPE.vgw_connect:
       {
           console.log('[' + device_id + ']' + ': vgw_connect');
           remove_vgw( device_id );
@@ -73,13 +73,13 @@ var mqttMessageCallback = function (topic, message){
           VgwMap.set(device_id, vgw );        
           break;
       }
-    case msgType.vgw_disconnect:
+    case MSG_TYPE.vgw_disconnect:
       {
           console.log('[' + device_id + ']' + ': vgw_disconnect');
           remove_vgw( device_id );
           break;        
       }      
-    case msgType.vgw_os_info:
+    case MSG_TYPE.vgw_os_info:
       {
           console.log('[' + device_id + ']' + ': vgw_os_info, IP=' + jsonObj.susiCommData.osInfo.IP);
           if ( VgwMap.has(device_id) === true ) {
@@ -89,12 +89,12 @@ var mqttMessageCallback = function (topic, message){
                 }
           }
           else{
-               console.log('[msgType.vgw_os_info]: VgwMap does not exist !!');
+               console.log('[MSG_TYPE.vgw_os_info]: VgwMap does not exist !!');
           }
           
           break;
       }
-    case msgType.vgw_info_spec:
+    case MSG_TYPE.vgw_info_spec:
       {
           console.log('[' + device_id + ']' + ': vgw_info_spec');
           if ( VgwMap.has(device_id) === true ) {
@@ -104,16 +104,16 @@ var mqttMessageCallback = function (topic, message){
                   //add ConnectivityMap here
                     var infoObj=jsonObj.susiCommData.infoSpec.IoTGW;
                     //console.log( '[ConnectivityMapUpdate] Start-------------------------------------------------');
-                    connectivityMapUpdate(msgType.vgw_info_spec, device_id , vgw.os_info, 0, 'null', infoObj); 
+                    connectivityMapUpdate(MSG_TYPE.vgw_info_spec, device_id , vgw.os_info, 0, 'null', infoObj); 
                     //console.log( '[ConnectivityMapUpdate] End---------------------------------------------------');                  
                 }
           }
           else{
-               console.log('[msgType.vgw_info_spec]: VgwMap does not exist !!');
+               console.log('[MSG_TYPE.vgw_info_spec]: VgwMap does not exist !!');
           }        
           break;
       }
-    case msgType.vgw_info:
+    case MSG_TYPE.vgw_info:
       {
           console.log('[' + device_id + ']' + ': vgw_info');
           if ( VgwMap.has(device_id) === true ) {
@@ -122,45 +122,45 @@ var mqttMessageCallback = function (topic, message){
                   vgw.dev_info = message.toString();
                   var infoObj=jsonObj.susiCommData.data.IoTGW;
                   //console.log( '[ConnectivityMapUpdate] Start-------------------------------------------------');
-                  connectivityMapUpdate(msgType.vgw_info, device_id , vgw.os_info, 0, 'null', infoObj); 
+                  connectivityMapUpdate(MSG_TYPE.vgw_info, device_id , vgw.os_info, 0, 'null', infoObj); 
                   //console.log( '[ConnectivityMapUpdate] End---------------------------------------------------');   
                 }
           }
           else{
-               console.log('[msgType.vgw_info]: VgwMap does not exist !!');
+               console.log('[MSG_TYPE.vgw_info]: VgwMap does not exist !!');
           }         
           break;
       }
-    case msgType.vgw_willmessage:
+    case MSG_TYPE.vgw_willmessage:
       {
           console.log('[' + device_id + ']' + ': vgw_willmessage');
           remove_vgw( device_id );
           break;
       }
-    case msgType.sen_connect:
+    case MSG_TYPE.sen_connect:
       {
           console.log('[' + device_id + ']' + ': sen_connect');
-          sensorHubMapUpdate(msgType.sen_connect, device_id, message.toString());
+          sensorHubMapUpdate(MSG_TYPE.sen_connect, device_id, message.toString());
           break;
       }
-    case msgType.sen_disconnect:
+    case MSG_TYPE.sen_disconnect:
       {
           console.log('[' + device_id + ']' + ': sen_disconnect');
       }
-    case msgType.sen_info_spec:
+    case MSG_TYPE.sen_info_spec:
       {
          console.log('[' + device_id + ']' + ': sen_info_spec');
-         sensorHubMapUpdate(msgType.sen_info_spec, device_id, message.toString());
+         sensorHubMapUpdate(MSG_TYPE.sen_info_spec, device_id, message.toString());
          break;
       }
-    case msgType.sen_info:
+    case MSG_TYPE.sen_info:
       {    
         //console.log('[' + device_id + ']' + ': sen_info');
-        sensorHubMapUpdate(msgType.sen_info, device_id, message.toString());
+        sensorHubMapUpdate(MSG_TYPE.sen_info, device_id, message.toString());
         break;
       }
-    case msgType.unknown:
-      console.log('msgType.unknown');
+    case MSG_TYPE.unknown:
+      console.log('MSG_TYPE.unknown');
       break;
     default:
       console.log('default');
@@ -261,7 +261,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                    var connectivity = ConnectivityMap.get(device_id);
                  }
                 
-                 if ( messageType === msgType.vgw_info_spec ){ 
+                 if ( messageType === MSG_TYPE.vgw_info_spec ){ 
                    connectivity.vgw_id = vgw_id;
                    connectivity.os_info = osInfo;
                    connectivity.conn_id = device_id; 
@@ -269,7 +269,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                    connectivity.dev_info_spec = JSON.stringify(infoObj);
                  }
                    
-                 if ( messageType === msgType.vgw_info ){
+                 if ( messageType === MSG_TYPE.vgw_info ){
   
                    var tmpInfoSpecObj = JSON.parse(connectivity.dev_info_spec);
                    getDeviceCapability(tmpInfoSpecObj, infoObj);
@@ -327,13 +327,13 @@ function sensorHubMapUpdate(messageType, device_id, message){
         sensorhub.os_info = obj.os_info;
         sensorhub.conn_id = obj.conn_id;
         sensorhub.conn_type = obj.conn_type;
-        if ( msgType.sen_connect === messageType){
+        if ( MSG_TYPE.sen_connect === messageType){
           sensorhub.connect = message;
         }
-        if ( msgType.sen_info_spec === messageType){
+        if ( MSG_TYPE.sen_info_spec === messageType){
           sensorhub.dev_info_spec = message;
         }        
-        if ( msgType.sen_info === messageType){
+        if ( MSG_TYPE.sen_info === messageType){
           sensorhub.dev_info = message;
         }            
         
@@ -356,36 +356,36 @@ function getMsgType(topic, jsonObj){
         if ( jsonObj.susiCommData.type === 'IoTGW' && 
              jsonObj.susiCommData.commCmd === 1 ){
              if ( jsonObj.susiCommData.status === 1){
-                 return msgType.vgw_connect;
+                 return MSG_TYPE.vgw_connect;
              }
              if ( jsonObj.susiCommData.status === 0){
-                 return msgType.vgw_disconnect;
+                 return MSG_TYPE.vgw_disconnect;
              }
         }
       
         if ( jsonObj.susiCommData.type === 'SenHub' && 
              jsonObj.susiCommData.commCmd === 1 ){
              if ( jsonObj.susiCommData.status === '1' || jsonObj.susiCommData.status === 1){
-                 return msgType.sen_connect;
+                 return MSG_TYPE.sen_connect;
              }
              if ( jsonObj.susiCommData.status === '0' || jsonObj.susiCommData.status === 0){
-                 return msgType.sen_disconnect;
+                 return MSG_TYPE.sen_disconnect;
              }
         }      
     }
   
     if ( topic_arr[4] === 'agentactionreq'){
         if ( jsonObj.susiCommData.commCmd === 116 ){
-            return msgType.vgw_os_info;
+            return MSG_TYPE.vgw_os_info;
         }
       
         if ( jsonObj.susiCommData.commCmd === 2052 ){
             if ( typeof jsonObj.susiCommData.infoSpec.IoTGW !== 'undefined' ){
-                return msgType.vgw_info_spec;
+                return MSG_TYPE.vgw_info_spec;
             }  
           
             if ( typeof jsonObj.susiCommData.infoSpec.SenHub !== 'undefined' ){
-                return msgType.sen_info_spec;
+                return MSG_TYPE.sen_info_spec;
             }  
         }       
     }
@@ -393,22 +393,22 @@ function getMsgType(topic, jsonObj){
     if ( topic_arr[4] === 'deviceinfo'){   
         if ( jsonObj.susiCommData.commCmd === 2055 ){
             if ( typeof jsonObj.susiCommData.data.IoTGW !== 'undefined' ){
-                return msgType.vgw_info;
+                return MSG_TYPE.vgw_info;
             }  
           
             if ( typeof jsonObj.susiCommData.data.SenHub !== 'undefined' ){
-                return msgType.sen_info;
+                return MSG_TYPE.sen_info;
             }          
           
         }       
     }  
   
     if ( topic_arr[4] === 'willmessage'){
-        return msgType.vgw_willmessage;
+        return MSG_TYPE.vgw_willmessage;
     }
     
     
-    return msgType.unknown;
+    return MSG_TYPE.unknown;
 }
 
 function getStatusFromMsg( connectMsg ){
