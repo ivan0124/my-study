@@ -5,7 +5,7 @@ var flag = 0;
 var timerObj;
 
 module.exports = {
-  sayHelloInEnglish: function( query, callback) {
+  wsnset: function( query, callback) {
     
     i = 0;
     timerObj = setInterval(function () {
@@ -20,7 +20,7 @@ module.exports = {
        
        i++
     }, 500);
-    return "HELLO";
+    return;
   },
        
   sayHelloInSpanish: function() {
