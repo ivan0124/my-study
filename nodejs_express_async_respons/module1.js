@@ -23,7 +23,7 @@ var set = function( query, callback) {
   }
 
 module.exports = {
-  wsnset = set;
+  wsnset: set,
   /*
   wsnset: function( query, callback) {
     
