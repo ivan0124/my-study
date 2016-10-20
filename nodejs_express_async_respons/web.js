@@ -1,9 +1,11 @@
 var express = require('express');
-var ws_data = require('./wise_snail_data.js');
+var m1 = require('./module1.js');
 var app = express();
 
 app.get('/', function (req, res) {
-  res.send('show_all_vgw_map!');
+  
+  console.log( 'm1.sayHelloInEnglish()' + m1.sayHelloInEnglish());
+  res.send('!');
 });
 
 
