@@ -14,7 +14,7 @@ var set = function( query, callback) {
       
     if ( flag === 1 || i > 6 ){
       clearInterval(timerObj); 
-      callback('callbak from module1. i = ' + i);
+      callback('callbak from module1. i = ' + i + 'flag = ' + flag);
     }
     else{
       console.log('wait... i = ' + i);
