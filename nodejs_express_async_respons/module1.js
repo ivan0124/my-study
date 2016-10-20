@@ -8,16 +8,16 @@ module.exports = {
     
     i = 0;
     setInterval(function () {
-       /*
-       if ( flag == 1 ){
+       
+       if ( flag === 1 || i > 10 ){
          callback('callbak from module1. i = ' + i);
        }
        else{
          console.log('wait. i = ' + i);
        }
-       */
+       
        i++
-    }, 3000);
+    }, 1000);
     return "HELLO";
   },
        
