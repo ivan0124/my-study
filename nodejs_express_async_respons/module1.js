@@ -7,6 +7,8 @@ var timerObj;
 var set = function( query, callback) {
     
   i = 0;
+  //publish mqtt here  
+    
   timerObj = setInterval(function () {
       
     if ( flag === 1 || i > 6 ){
