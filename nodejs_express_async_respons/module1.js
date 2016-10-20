@@ -7,7 +7,7 @@ module.exports = {
   sayHelloInEnglish: function( query, callback) {
     
     i = 0;
-    setInterval((function () {
+    setInterval(function () {
        /*
        if ( flag == 1 ){
          callback('callbak from module1. i = ' + i);
