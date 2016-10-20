@@ -20,7 +20,7 @@ var set = function( query, callback) {
       
     if ( flag === 1 || i > 100 ){
       clearInterval(timerObj); 
-      callback('callbak from module1. i = ' + i + ', flag = ' + flag);
+      callback('callbak from module1. set OK. i = ' + i + ', flag = ' + flag);
       setRunning = false;
     }
     else{
