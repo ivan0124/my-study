@@ -9,11 +9,14 @@ var callbackTimer = function(){
 module.exports = {
   sayHelloInEnglish: function( query, callback) {
     
-    callback('callbak from module1');
+    //callback('callbak from module1');
     /*
     CallBack = callback;
     setInterval( callbackTimer(), 3000);    
     */
+    setTimeout(function (callback) {
+       callback('callbak from module1');
+    }, 3000);
     return "HELLO";
   },
        
