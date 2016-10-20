@@ -14,7 +14,7 @@ module.exports = {
     CallBack = callback;
     setInterval( callbackTimer(), 3000);    
     */
-    setTimeout(function (callback) {
+    setTimeout(function () {
        callback('callbak from module1');
     }, 3000);
     return "HELLO";
