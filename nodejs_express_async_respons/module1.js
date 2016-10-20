@@ -12,7 +12,7 @@ var set = function( query, callback) {
     
   timerObj = setInterval(function () {
       
-    if ( flag === 1 || i > 6 ){
+    if ( flag === 1 || i > 100 ){
       clearInterval(timerObj); 
       callback('callbak from module1. i = ' + i + ', flag = ' + flag);
     }
