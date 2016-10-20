@@ -3,7 +3,10 @@
 module.exports = {
   sayHelloInEnglish: function( query, callback) {
     
-    callback('callbak from module1');
+    setInterval(function(callback) {
+      callback('callbak from module1');
+    }, 3000);    
+    
     return "HELLO";
   },
        
@@ -12,6 +15,4 @@ module.exports = {
   }
 }
 
-setInterval(function() {
-   
-}, 3000);
+
