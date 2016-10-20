@@ -8,6 +8,7 @@ var set = function( query, callback) {
     
   i = 0;
   //publish mqtt here  
+  console.log(query);
     
   timerObj = setInterval(function () {
       
