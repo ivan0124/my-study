@@ -9,7 +9,7 @@ module.exports = {
     i = 0;
     setInterval(function () {
        
-       if ( flag === 1 || i > 10 ){
+       if ( flag === 1 || i > 1 ){
          callback('callbak from module1. i = ' + i);
        }
        else{
