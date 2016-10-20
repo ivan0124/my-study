@@ -11,6 +11,11 @@ app.get('/show_all_VgwMap', function (req, res) {
   res.send('show_all_VgwMap!');
 });
 
+app.get('/get', function (req, res) {
+  ws_data.get('123','456','789');
+  res.send('test');
+});
+
 app.get('/test', function (req, res) {
   ws_data.test();
   res.send('test');
