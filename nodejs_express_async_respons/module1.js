@@ -1,7 +1,9 @@
 // module1.js
 
 module.exports = {
-  sayHelloInEnglish: function() {
+  sayHelloInEnglish: function( query, callback) {
+    
+    callback('callbak from module1');
     return "HELLO";
   },
        
