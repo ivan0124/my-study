@@ -2,14 +2,16 @@
 
 var i=0;
 var flag = 0;
+var timerObj;
 
 module.exports = {
   sayHelloInEnglish: function( query, callback) {
     
     i = 0;
-    setInterval(function () {
+    timerObj = setInterval(function () {
        
        if ( flag === 1 || i > 1 ){
+         clearInterval(timerObj); 
          callback('callbak from module1. i = ' + i);
        }
        else{
