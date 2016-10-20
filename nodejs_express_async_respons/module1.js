@@ -10,7 +10,7 @@ module.exports = {
     i = 0;
     timerObj = setInterval(function () {
        
-       if ( flag === 1 || i > 1 ){
+       if ( flag === 1 || i > 6 ){
          clearInterval(timerObj); 
          callback('callbak from module1. i = ' + i);
        }
@@ -19,7 +19,7 @@ module.exports = {
        }
        
        i++
-    }, 1000);
+    }, 500);
     return "HELLO";
   },
        
