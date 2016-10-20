@@ -6,6 +6,7 @@ app.get('/', function (req, res) {
   
   //console.log( 'm1.sayHelloInEnglish() = ' + m1.sayHelloInEnglish());
   m1.sayHelloInEnglish(res.query, function (data) {
+    console.log( 'callback return ======= ');
     res.send('data === ' + data);
   });
   //res.send('!');
