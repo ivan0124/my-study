@@ -29,7 +29,7 @@ var mqttConnectCallback =  function () {
   console.log('[module1] Mqtt connect !!!!');
   Client.subscribe('/cagent/admin/+/agentinfoack');
   //Client.subscribe('/cagent/admin/+/willmessage');
-  //Client.subscribe('/cagent/admin/+/agentactionreq');
+  Client.subscribe('/cagent/admin/+/agentactionreq');
   //Client.subscribe('/cagent/admin/+/deviceinfo'); 
    
 }
@@ -37,8 +37,11 @@ var mqttConnectCallback =  function () {
 var mqttMessageCallback = function (topic, message){
   console.log('[module1] Mqtt message !!!!');
   responseData = message.toString();
+  console.log('-----------------------------------------------------');
+  console.log(message.toString());
+  console.log('-----------------------------------------------------');
 
-  if ( myCallback !== 'null' && myRes !== 'null'){
+  if ( typeof myCallback !== 'undefined' && typeof myRes !== 'undefined' && myCallback !== 'null' && myRes !== 'null'){
     myCallback(myRes, 'callbak from module1. set OK. i = ' + i + ', flag = ' + flag + ', responseData =\n' + responseData);
     myCallback = 'null';
     myRes = 'null';
@@ -50,6 +53,25 @@ var set = function( res, callback) {
     
   myRes = res;
   myCallback = callback;
+/*
+  //Sensor Hub Set
+  var message = '{\"susiCommData\":{\"sensorIDList\":{\"e\":[{\"sv\":\"SenHub1\",\"n\":\"SenHub/Info/Name\"}]},\
+                  \"sessionID\":\"4DDF0B6DE2773176095F55E8C930507A\",\"commCmd\":525,\"requestID\":0,\
+                  \"agentID\":\"\",\"handlerName\":\"SenHub\",\"sendTS\":1466088605}}';
+  console.log('publish 0017000E40000000 ===========================>');
+  Client.publish('/cagent/admin/0017000E40000000/agentcallbackreq', message);
+*/
+
+  //Connectivity Set (use Virtual Gateway ID)
+  //Sensor Hub Set
+  var message = '{\"susiCommData\":{\"sensorIDList\":{\"e\":[{\"bv\":0,\"n\":\"IoTGW/WSN/0007000E40ABCDEF/Info/reset\"}]},\
+                  \"sessionID\":\"26366CCF4E34D0E69FA9480B460C35D3\",\"commCmd\":525,\"requestID\":0,\"agentID\":\"\",\
+                  \"handlerName\":\"IoTGW\",\"sendTS\":1477021205}}';
+  console.log('publish to 0000000E40ABCDEF ===========================>');
+  /* response data
+{"susiCommData":{"commCmd":526,"handlerName":"IoTGW","sessionID":"26366CCF4E34D0E69FA9480B460C35D3","sensorInfoList":{"e":[{"n":"/Info/reset","sv":"Success","StatusCode":200}]}}}
+  */
+  Client.publish('/cagent/admin/0000000E40ABCDEF/agentcallbackreq', message);
 
   return;
 }
