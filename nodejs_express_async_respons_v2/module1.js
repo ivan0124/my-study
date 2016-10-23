@@ -26,6 +26,14 @@ var responseData;
 var myRes;
 var myCallback;
 
+
+var timerFn = function () {
+    console.log('timer session ID ===' + sessionID );
+    //myCallback(myRes, 'callbak from module1. set fail.');
+    //myCallback = 'null';
+    //myRes = 'null';    
+}
+
 var mqttConnectCallback =  function () {
 
   console.log('[module1] Mqtt connect !!!!');
@@ -76,12 +84,7 @@ var set = function( res, callback) {
   var sessionID = Uuid.v4().replace(/-/g,'');
   console.log('session ID ===' + sessionID );
   
-  setTimeout(function () {
-    console.log('timer session ID ===' + sessionID );
-    myCallback(myRes, 'callbak from module1. set fail.');
-    myCallback = 'null';
-    myRes = 'null';    
-    }, 60000, sessionID);
+  setTimeout(timerFn , 3000, sessionID);
   
   Client.publish('/cagent/admin/0000000E40ABCDEF/agentcallbackreq', message);
 
