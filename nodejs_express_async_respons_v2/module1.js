@@ -4,18 +4,7 @@ var Client  = Mqtt.connect('mqtt://172.22.214.60');
 var Uuid = require('node-uuid');
 
 Client.queueQoSZero = false;
-var mqttConnectCallback =  function () {
 
-  console.log('[module1] Mqtt connect !!!!');
-  Client.subscribe('/cagent/admin/+/agentinfoack');
-  //Client.subscribe('/cagent/admin/+/willmessage');
-  //Client.subscribe('/cagent/admin/+/agentactionreq');
-  //Client.subscribe('/cagent/admin/+/deviceinfo'); 
-   
-}
-
-var mqttMessageCallback = function (topic, message){
-}
 
 
 var i=0;
@@ -26,14 +15,6 @@ var responseData;
 var myRes;
 var myCallback;
 
-/*
-var timerFn = function () {
-    console.log('timer session ID ===' + sessionID );
-    //myCallback(myRes, 'callbak from module1. set fail.');
-    //myCallback = 'null';
-    //myRes = 'null';    
-}
-*/
 
 var mqttConnectCallback =  function () {
 
