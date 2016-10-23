@@ -81,7 +81,7 @@ var set = function( res, callback) {
     myCallback(myRes, 'callbak from module1. set fail.');
     myCallback = 'null';
     myRes = 'null';    
-    }, 3000, sessionID);
+    }, 60000, sessionID);
   
   Client.publish('/cagent/admin/0000000E40ABCDEF/agentcallbackreq', message);
 
