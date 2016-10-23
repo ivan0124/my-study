@@ -23,7 +23,6 @@ var setRunning = false ;
 var responseData;
 var myRes;
 var myCallback;
-var sessionID;
 
 var mqttConnectCallback =  function () {
 
@@ -47,13 +46,6 @@ var mqttMessageCallback = function (topic, message){
     myCallback = 'null';
     myRes = 'null';
   }
-}
-
-var timeFn = function ( sessionID ) {
-    console.log('timer session ID ===' + sessionID );
-    myCallback(myRes, 'callbak from module1. set fail.');
-    myCallback = 'null';
-    myRes = 'null';    
 }
  
 
@@ -79,7 +71,7 @@ var set = function( res, callback) {
   /* response data
 {"susiCommData":{"commCmd":526,"handlerName":"IoTGW","sessionID":"26366CCF4E34D0E69FA9480B460C35D3","sensorInfoList":{"e":[{"n":"/Info/reset","sv":"Success","StatusCode":200}]}}}
   */
-  sessionID = new Date().toISOString();
+  var sessionID = new Date().toISOString();
   console.log('session ID ===' + sessionID );
   
   setTimeout(function () {
