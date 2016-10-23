@@ -48,6 +48,13 @@ var mqttMessageCallback = function (topic, message){
     myRes = 'null';
   }
 }
+
+var timeFn = function ( sessionID ) {
+    console.log('timer session ID ===' + sessionID );
+    myCallback(myRes, 'callbak from module1. set fail.');
+    myCallback = 'null';
+    myRes = 'null';    
+}
  
 
 var set = function( res, callback) {
@@ -75,12 +82,7 @@ var set = function( res, callback) {
   sessionID = new Date().toISOString();
   console.log('session ID ===' + sessionID );
   
-  setTimeout(function ( sessionID ) {
-    console.log('timer session ID ===' + sessionID );
-    myCallback(myRes, 'callbak from module1. set fail.');
-    myCallback = 'null';
-    myRes = 'null';    
-  }, 3000);
+  setTimeout(timeFn(sessinoID), 3000);
   
   Client.publish('/cagent/admin/0000000E40ABCDEF/agentcallbackreq', message);
 
