@@ -61,7 +61,6 @@ var set = function( res, callback) {
   var message = '{\"susiCommData\":{\"sensorIDList\":{\"e\":[{\"bv\":0,\"n\":\"IoTGW/WSN/0007000E40ABCDEF/Info/reset\"}]},\
                   \"sessionID\":\"26366CCF4E34D0E69FA9480B460C35D3\",\"commCmd\":525,\"requestID\":0,\"agentID\":\"\",\
                   \"handlerName\":\"IoTGW\",\"sendTS\":1477021205}}';
-  console.log('publish to 0000000E40ABCDEF ===========================>');
   /* response data
 {"susiCommData":{"commCmd":526,"handlerName":"IoTGW","sessionID":"26366CCF4E34D0E69FA9480B460C35D3","sensorInfoList":{"e":[{"n":"/Info/reset","sv":"Success","StatusCode":200}]}}}
   */
@@ -86,8 +85,9 @@ var set = function( res, callback) {
     //myCallback = 'null';
     //myRes = 'null';
     }
-  } , 3000, sessionID);
+  } , 60000, sessionID);
   
+  console.log('publish to 0000000E40ABCDEF ===========================>');
   Client.publish('/cagent/admin/0000000E40ABCDEF/agentcallbackreq', message);
 
   return;
