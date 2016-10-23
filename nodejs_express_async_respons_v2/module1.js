@@ -71,6 +71,7 @@ var set = function( res, callback) {
   /* response data
 {"susiCommData":{"commCmd":526,"handlerName":"IoTGW","sessionID":"26366CCF4E34D0E69FA9480B460C35D3","sensorInfoList":{"e":[{"n":"/Info/reset","sv":"Success","StatusCode":200}]}}}
   */
+  console.log('Date ===' + new Date().toISOString() );
   Client.publish('/cagent/admin/0000000E40ABCDEF/agentcallbackreq', message);
 
   return;
