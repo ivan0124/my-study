@@ -1,6 +1,8 @@
 // module1.js
 var Mqtt = require('mqtt');
 var Client  = Mqtt.connect('mqtt://172.22.214.60');
+var Uuid = require('node-uuid');
+
 Client.queueQoSZero = false;
 var mqttConnectCallback =  function () {
 
@@ -71,7 +73,7 @@ var set = function( res, callback) {
   /* response data
 {"susiCommData":{"commCmd":526,"handlerName":"IoTGW","sessionID":"26366CCF4E34D0E69FA9480B460C35D3","sensorInfoList":{"e":[{"n":"/Info/reset","sv":"Success","StatusCode":200}]}}}
   */
-  var sessionID = new Date().toISOString();
+  var sessionID = Uuid.v4();
   console.log('session ID ===' + sessionID );
   
   setTimeout(function () {
