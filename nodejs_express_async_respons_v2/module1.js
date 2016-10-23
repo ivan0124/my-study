@@ -72,6 +72,8 @@ var set = function( res, callback) {
   pubObj.callback = callback;
   MqttPublishMap.set(sessionID, pubObj);
   
+  var timeout = 3000;
+  
   setTimeout(function () {
     console.log('timer session ID ===' + sessionID );
     if ( MqttPublishMap.has(sessionID) === true){
@@ -85,7 +87,7 @@ var set = function( res, callback) {
     //myCallback = 'null';
     //myRes = 'null';
     }
-  } , 60000, sessionID);
+  } , timeout, sessionID);
   
   console.log('publish to 0000000E40ABCDEF ===========================>');
   Client.publish('/cagent/admin/0000000E40ABCDEF/agentcallbackreq', message);
