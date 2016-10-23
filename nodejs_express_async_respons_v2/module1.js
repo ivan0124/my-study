@@ -82,7 +82,7 @@ var set = function( res, callback) {
   sessionID = new Date().toISOString();
   console.log('session ID ===' + sessionID );
   
-  setTimeout(timeFn(sessinoID), 3000);
+  setTimeout(timeFn(sessionID), 3000);
   
   Client.publish('/cagent/admin/0000000E40ABCDEF/agentcallbackreq', message);
 
