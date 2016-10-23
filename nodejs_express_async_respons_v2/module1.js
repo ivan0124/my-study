@@ -80,6 +80,7 @@ var set = function( res, callback) {
       if ( typeof pubObj !== 'undefined' ){
         pubObj.callback(pubObj.res, 'callbak from module1. set fail.');
         MqttPublishMap.remove(sessionID);
+        console.log(' MqttPublishMap.count() =' + MqttPublishMap.count())
       }
     //myCallback(myRes, 'callbak from module1. set fail.');
     //myCallback = 'null';
