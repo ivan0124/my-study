@@ -72,8 +72,10 @@ var set = function( res, callback) {
   pubObj.callback = callback;
   MqttPublishMap.set(sessionID, pubObj);
   
-  var timeout = 3000;
+  console.log('publish to 0000000E40ABCDEF ===========================>');
+  Client.publish('/cagent/admin/0000000E40ABCDEF/agentcallbackreq', message);
   
+  var timeout = 3000;
   setTimeout(function () {
     console.log('timer session ID ===' + sessionID );
     if ( MqttPublishMap.has(sessionID) === true){
@@ -83,14 +85,8 @@ var set = function( res, callback) {
         MqttPublishMap.remove(sessionID);
         console.log(' MqttPublishMap.count() =' + MqttPublishMap.count())
       }
-    //myCallback(myRes, 'callbak from module1. set fail.');
-    //myCallback = 'null';
-    //myRes = 'null';
     }
-  } , timeout, sessionID);
-  
-  console.log('publish to 0000000E40ABCDEF ===========================>');
-  Client.publish('/cagent/admin/0000000E40ABCDEF/agentcallbackreq', message);
+  } , timeout, sessionID);  
 
   return;
 }
