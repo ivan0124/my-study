@@ -2,6 +2,8 @@
 var Mqtt = require('mqtt');
 var Client  = Mqtt.connect('mqtt://172.22.214.60');
 var Uuid = require('node-uuid');
+var HashMap = require('hashmap').HashMap;
+var MqttPublishMap = new HashMap();
 
 Client.queueQoSZero = false;
 
@@ -66,11 +68,23 @@ var set = function( res, callback) {
   var sessionID = Uuid.v4().replace(/-/g,'');
   console.log('session ID ===' + sessionID );
   
+  var pubObj = {};
+  pubObj.res = res;
+  pubObj.callback = callback;
+  MqttPublishMap.set(sessionID, pubObj);
+  
   setTimeout(function () {
     console.log('timer session ID ===' + sessionID );
+    if ( MqttPublishMap.has(sessionID) === true){
+      var pubObj = MqttPublishMap.get(sessionID);
+      if ( typeof pubObj !== 'undefined' ){
+        pubObj.callback(pubObj.res, 'callbak from module1. set fail.');
+        MqttPublishMap.remove(sessionID);
+      }
     //myCallback(myRes, 'callbak from module1. set fail.');
     //myCallback = 'null';
-    //myRes = 'null';    
+    //myRes = 'null';
+    }
   } , 3000, sessionID);
   
   Client.publish('/cagent/admin/0000000E40ABCDEF/agentcallbackreq', message);
