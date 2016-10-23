@@ -71,7 +71,16 @@ var set = function( res, callback) {
   /* response data
 {"susiCommData":{"commCmd":526,"handlerName":"IoTGW","sessionID":"26366CCF4E34D0E69FA9480B460C35D3","sensorInfoList":{"e":[{"n":"/Info/reset","sv":"Success","StatusCode":200}]}}}
   */
-  console.log('Date ===' + new Date().toISOString() );
+  var sessionID = new Date().toISOString();
+  console.log('session ID ===' + sessionID );
+  
+  setTimeout(function ( sessionID ) {
+    console.log('timer session ID ===' + sessionID );
+    myCallback(myRes, 'callbak from module1. set fail.');
+    myCallback = 'null';
+    myRes = 'null';    
+  }, 3000);
+  
   Client.publish('/cagent/admin/0000000E40ABCDEF/agentcallbackreq', message);
 
   return;
