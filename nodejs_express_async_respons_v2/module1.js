@@ -23,6 +23,7 @@ var setRunning = false ;
 var responseData;
 var myRes;
 var myCallback;
+var sessionID;
 
 var mqttConnectCallback =  function () {
 
@@ -71,7 +72,7 @@ var set = function( res, callback) {
   /* response data
 {"susiCommData":{"commCmd":526,"handlerName":"IoTGW","sessionID":"26366CCF4E34D0E69FA9480B460C35D3","sensorInfoList":{"e":[{"n":"/Info/reset","sv":"Success","StatusCode":200}]}}}
   */
-  var sessionID = new Date().toISOString();
+  sessionID = new Date().toISOString();
   console.log('session ID ===' + sessionID );
   
   setTimeout(function ( sessionID ) {
