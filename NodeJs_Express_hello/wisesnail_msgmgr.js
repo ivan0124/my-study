@@ -566,7 +566,7 @@ function getRESTFulList( keyStr, jsonObj, outputObj ){
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
       var jsonKeyStr = keyStr + '/' + key ; 
-      if ( jsonObj[key] !==  'object' ){
+      if ( typeof jsonObj[key] !==  'object' ){
         console.log( '[getRESTFulList]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
         //outputObj.resultStr = JSON.stringify(jsonObj[key]);
       }
