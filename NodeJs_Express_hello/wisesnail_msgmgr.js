@@ -587,7 +587,7 @@ function getRESTFulList( keyStr, jsonObj, outputObj ){
 	  }		
 	  
 	  var restObj = {};
-          restObj.path = restPath;
+          restObj.path = restPath.replace(/^\//g,'');
 	  restObj.val = restPathValue;
 	  outputObj.push(restObj);
           console.log('restPath = ' + restPath + ', restPathValue = ' + restPathValue);
