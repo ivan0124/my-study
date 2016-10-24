@@ -572,7 +572,18 @@ function getRESTFulList( keyStr, jsonObj, outputObj ){
 	if ( regexArrayPath.test(jsonKeyStr) ){
           console.log( '[getRESTFulList]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
 	  var restPath = jsonKeyStr.replace(/e\/[0-9]*\/n\/?$/g,jsonObj[key]);
-          console.log('restPath = ' + restPath);
+          var restPathValue;
+          if ( typeof jsonObj['v'] !== 'undefined' ){
+            restPathValue = jsonObj['v'] 
+	  }
+          if ( typeof jsonObj['sv'] !== 'undefined' ){
+            restPathValue = jsonObj['sv'] 
+	  }	
+          if ( typeof jsonObj['bv'] !== 'undefined' ){
+            restPathValue = jsonObj['bv'] 
+	  }		
+	 
+          console.log('restPath = ' + restPath + ', restPathValue = ' + restPathValue);
 	}
         //outputObj.resultStr = JSON.stringify(jsonObj[key]);
       }
