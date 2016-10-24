@@ -563,7 +563,7 @@ function is_ip_valid( ip ){
 /*getRESTFulList*/
 function getRESTFulList( keyStr, jsonObj, outputObj ){
   
-  var regexArrayPath = new RegExp('\/e\/[0-9]*\/(n|v|sv|bv)\/?$');
+  var regexArrayPath = new RegExp('e\/[0-9]*\/n\/?$');
 	
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
@@ -571,6 +571,8 @@ function getRESTFulList( keyStr, jsonObj, outputObj ){
       if ( typeof jsonObj[key] !==  'object' ){
 	if ( regexArrayPath.test(jsonKeyStr) ){
           console.log( '[getRESTFulList]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
+	  var restPath = jsonKeyStr.replace(/e\/[0-9]*\/n\/?$/g,JSON.stringify(jsonObj[key]));
+          console.log('restPath = ' + restPath);
 	}
         //outputObj.resultStr = JSON.stringify(jsonObj[key]);
       }
