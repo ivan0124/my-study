@@ -563,11 +563,15 @@ function is_ip_valid( ip ){
 /*getRESTFulList*/
 function getRESTFulList( keyStr, jsonObj, outputObj ){
   
+  var regexArrayPath = new RegExp('\/e\/[0-9]*\/(n|v|sv|bv)\/?$');
+	
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
       var jsonKeyStr = keyStr + '/' + key ; 
       if ( typeof jsonObj[key] !==  'object' ){
-        console.log( '[getRESTFulList]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
+	if ( regexArrayPath.test(jsonKeyStr) ){
+          console.log( '[getRESTFulList]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
+	}
         //outputObj.resultStr = JSON.stringify(jsonObj[key]);
       }
     }
