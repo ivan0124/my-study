@@ -180,7 +180,7 @@ var mqttMessageCallback = function (topic, message){
 	//code one
         var keyStr = '';
 	var restObjList = [];
-	DeviceInfoMapUpdate(keyStr, jsonObj.susiCommData.data);
+	DeviceInfoMapUpdate(device_id, keyStr, jsonObj.susiCommData.data);
 	      
 	DeviceInfoMap.forEach(function(obj, key) {
           console.log('restPath = ' + key + ', restPath val = ' + obj.val);
@@ -620,7 +620,7 @@ function buildAllDeviceInfoObj( keyStr, jsonObj){
 }
 
 
-function DeviceInfoMapSetToObj( keyStr, jsonObj){
+function DeviceInfoMapSetToObj( deviceID, keyStr, jsonObj){
   
   var regexArrayPath = new RegExp('e\/[0-9]*\/n\/?$');
 	
@@ -632,7 +632,7 @@ function DeviceInfoMapSetToObj( keyStr, jsonObj){
 	  var restPath = jsonKeyStr.replace(/e\/[0-9]*\/n\/?$/g,jsonObj[key]);
  	
 	  restPath = restPath.replace(/^\//g,'');
-	  var restObj = DeviceInfoMap.get(restPath);
+	  var restObj = DeviceInfoMap.get(deviceID + '/' + restPath);
 	  if ( typeof restObj !== 'undefined'){
 	    console.log( '[setRESTFulList]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));	  
             jsonObj[restObj.valKey] = restObj.val;
@@ -648,7 +648,7 @@ function DeviceInfoMapSetToObj( keyStr, jsonObj){
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
       if (typeof jsonObj[key] === 'object' ){
-        DeviceInfoMapSetToObj( keyStr + '/' + key, jsonObj[key]);
+        DeviceInfoMapSetToObj( deviceID, keyStr + '/' + key, jsonObj[key]);
       }
     }
   }  
@@ -658,7 +658,7 @@ function DeviceInfoMapSetToObj( keyStr, jsonObj){
 }
 
 
-function DeviceInfoMapUpdate( keyStr, jsonObj ){
+function DeviceInfoMapUpdate( deviceID, keyStr, jsonObj ){
   
   var regexArrayPath = new RegExp('e\/[0-9]*\/n\/?$');
 	
@@ -689,8 +689,8 @@ function DeviceInfoMapUpdate( keyStr, jsonObj ){
 	  restObj.val = restPathValue;
           restObj.valKey = restPathValueKey;
 	  //outputObj.push(restObj);
-	  DeviceInfoMap.set(restObj.path, restObj);
-          console.log('restPath = ' + restPath + ', restPathValue = ' + restPathValue);
+	  DeviceInfoMap.set(deviceID + '/' + restObj.path, restObj);
+          console.log('restPath = ' + restObj.path + ', restPathValue = ' + restObj.val);
 	}
         
       }
@@ -700,7 +700,7 @@ function DeviceInfoMapUpdate( keyStr, jsonObj ){
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
       if (typeof jsonObj[key] === 'object' ){
-        DeviceInfoMapUpdate( keyStr + '/' + key, jsonObj[key]);
+        DeviceInfoMapUpdate( deviceID, keyStr + '/' + key, jsonObj[key]);
       }
     }
   }  
