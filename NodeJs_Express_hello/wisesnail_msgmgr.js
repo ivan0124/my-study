@@ -4,6 +4,7 @@ var HashMap = require('hashmap').HashMap;
 var VgwMap = new HashMap();
 var SensorHubMap = new HashMap();
 var ConnectivityMap = new HashMap();
+var UpdateInfoMap = new HashMap();
 //var IoTGWCapability;
 
 var Client  = Mqtt.connect('mqtt://127.0.0.1');
@@ -176,9 +177,16 @@ var mqttMessageCallback = function (topic, message){
         var keyStr = '';
 	var restObjList = [];
 	getRESTFulList(keyStr, jsonObj.susiCommData.data, restObjList);
+	      
+	UpdateInfoMap.forEach(function(obj, key) {
+          console.log('restPath = ' + key + ', restPath val = ' + obj.val);
+        });       
+	      
+	/*      
 	for (var i=0 ; i < restObjList.length ; i++){
           console.log('restObjList[' + i + '].path = ' + restObjList[i].path + ', restObjList[' + i + '].val = ' + restObjList[i].val);
 	}
+	*/
         break;
       }
     case MSG_TYPE.unknown:
@@ -564,6 +572,47 @@ function is_ip_valid( ip ){
   return false;
 }
 /*getRESTFulList*/
+/*
+function setRESTFulList( keyStr, jsonObj, inputObjList ){
+  
+  var regexArrayPath = new RegExp('e\/[0-9]*\/n\/?$');
+	
+  for (key in jsonObj) {
+    if (jsonObj.hasOwnProperty(key)) {
+      var jsonKeyStr = keyStr + '/' + key ; 
+      if ( typeof jsonObj[key] !==  'object' ){
+	if ( regexArrayPath.test(jsonKeyStr) ){
+          console.log( '[setRESTFulList]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
+	  var restPath = jsonKeyStr.replace(/e\/[0-9]*\/n\/?$/g,jsonObj[key]);
+          var restPathValueKeyName;
+          if ( typeof jsonObj['v'] !== 'undefined' ){
+            restPathValueKeyName = 'v'; 
+	  }
+          if ( typeof jsonObj['sv'] !== 'undefined' ){
+            restPathValueKeyName = 'sv'; 
+	  }	
+          if ( typeof jsonObj['bv'] !== 'undefined' ){
+            restPathValueKeyName = 'bv'; 
+	  }		 
+	}
+        
+      }
+    }
+  }
+  //
+  for (key in jsonObj) {
+    if (jsonObj.hasOwnProperty(key)) {
+      if (typeof jsonObj[key] === 'object' ){
+        setRESTFulList( keyStr + '/' + key, jsonObj[key], inputObjList);
+      }
+    }
+  }  
+	
+  return;  
+
+}
+*/
+
 function getRESTFulList( keyStr, jsonObj, outputObj ){
   
   var regexArrayPath = new RegExp('e\/[0-9]*\/n\/?$');
@@ -589,10 +638,11 @@ function getRESTFulList( keyStr, jsonObj, outputObj ){
 	  var restObj = {};
           restObj.path = restPath.replace(/^\//g,'');
 	  restObj.val = restPathValue;
-	  outputObj.push(restObj);
+	  //outputObj.push(restObj);
+	  UpdateInfoMap.set(restObj.path, restObj);
           console.log('restPath = ' + restPath + ', restPathValue = ' + restPathValue);
 	}
-        //outputObj.resultStr = JSON.stringify(jsonObj[key]);
+        
       }
     }
   }
