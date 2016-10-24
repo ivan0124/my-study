@@ -37,19 +37,12 @@ var mqttMessageCallback = function (topic, message){
     if ( MqttPublishMap.has('4DDF0B6DE2773176095F55E8C930507A') === true){
       var pubObj = MqttPublishMap.get('4DDF0B6DE2773176095F55E8C930507A');
       if ( typeof pubObj !== 'undefined' ){
-        pubObj.callback(pubObj.res, 'callbak from module1. OK.');
+        pubObj.callback(pubObj.res, 'callback from module1. OK.');
         MqttPublishMap.remove(sessionID);
         console.log(' MqttPublishMap.count() =' + MqttPublishMap.count())
       }
     }
 
-/*
-  if ( typeof myCallback !== 'undefined' && typeof myRes !== 'undefined' && myCallback !== 'null' && myRes !== 'null'){
-    myCallback(myRes, 'callbak from module1. set OK. i = ' + i + ', flag = ' + flag + ', responseData =\n' + responseData);
-    myCallback = 'null';
-    myRes = 'null';
-  }
-*/
 }
  
 
