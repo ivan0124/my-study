@@ -4,7 +4,7 @@ var HashMap = require('hashmap').HashMap;
 var VgwMap = new HashMap();
 var SensorHubMap = new HashMap();
 var ConnectivityMap = new HashMap();
-var UpdateInfoMap = new HashMap();
+var DeviceInfoMap = new HashMap();
 //var IoTGWCapability;
 
 var Client  = Mqtt.connect('mqtt://127.0.0.1');
@@ -178,15 +178,10 @@ var mqttMessageCallback = function (topic, message){
 	var restObjList = [];
 	getRESTFulList(keyStr, jsonObj.susiCommData.data, restObjList);
 	      
-	UpdateInfoMap.forEach(function(obj, key) {
+	DeviceInfoMap.forEach(function(obj, key) {
           console.log('restPath = ' + key + ', restPath val = ' + obj.val);
         });       
 	      
-	/*      
-	for (var i=0 ; i < restObjList.length ; i++){
-          console.log('restObjList[' + i + '].path = ' + restObjList[i].path + ', restObjList[' + i + '].val = ' + restObjList[i].val);
-	}
-	*/
         break;
       }
     case MSG_TYPE.unknown:
@@ -639,7 +634,7 @@ function getRESTFulList( keyStr, jsonObj, outputObj ){
           restObj.path = restPath.replace(/^\//g,'');
 	  restObj.val = restPathValue;
 	  //outputObj.push(restObj);
-	  UpdateInfoMap.set(restObj.path, restObj);
+	  DeviceInfoMap.set(restObj.path, restObj);
           console.log('restPath = ' + restPath + ', restPathValue = ' + restPathValue);
 	}
         
