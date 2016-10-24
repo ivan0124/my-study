@@ -585,13 +585,15 @@ function setRESTFulList( keyStr, jsonObj, inputObjList ){
       var jsonKeyStr = keyStr + '/' + key ; 
       if ( typeof jsonObj[key] !==  'object' ){
 	if ( regexArrayPath.test(jsonKeyStr) ){
-          console.log( '[setRESTFulList]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
 	  var restPath = jsonKeyStr.replace(/e\/[0-9]*\/n\/?$/g,jsonObj[key]);
  	
 	  restPath = restPath.replace(/^\//g,'');
 	  var restObj = DeviceInfoMap.get(restPath);
 	  if ( typeof restObj !== 'undefined'){
+	    console.log( '[setRESTFulList]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));	  
             jsonObj[restObj.valKey] = restObj.val;
+            DeviceInfoMap.remove(restPath);
+            console.log( 'DeviceInfoMap.count() = ' + DeviceInfoMap.count());
 	  }
 	}
         
