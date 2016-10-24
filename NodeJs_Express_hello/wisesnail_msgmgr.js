@@ -186,12 +186,12 @@ var mqttMessageCallback = function (topic, message){
         });
 	*/
 	
-	/*
+	
 	// code two
 	var sensorHub = SensorHubMap.get( device_id);    
 	var jsonInfoSpec = JSON.parse(sensorHub.dev_info_spec );
 	//console.log( sensorHub.dev_info_spec );
-	
+	/*
 	keyStr = '';
 	setRESTFulList( keyStr = '', jsonInfoSpec.susiCommData.infoSpec, {});     
 	console.log( JSON.stringify(jsonInfoSpec) );
