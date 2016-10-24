@@ -200,7 +200,7 @@ var mqttMessageCallback = function (topic, message){
 	//console.log( sensorHub.dev_full_devinfo );
 	//
 	keyStr = '';
-	setRESTFulList( keyStr = '', allDeviceInfoObj, {});     
+	setRESTFulList( keyStr = '', allDeviceInfoObj);     
 	console.log( JSON.stringify(allDeviceInfoObj) );
 		      
         break;
@@ -620,7 +620,7 @@ function buildAllDeviceInfoObj( keyStr, jsonObj){
 }
 
 
-function setRESTFulList( keyStr, jsonObj, inputObjList ){
+function setRESTFulList( keyStr, jsonObj){
   
   var regexArrayPath = new RegExp('e\/[0-9]*\/n\/?$');
 	
@@ -648,7 +648,7 @@ function setRESTFulList( keyStr, jsonObj, inputObjList ){
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
       if (typeof jsonObj[key] === 'object' ){
-        setRESTFulList( keyStr + '/' + key, jsonObj[key], inputObjList);
+        setRESTFulList( keyStr + '/' + key, jsonObj[key]);
       }
     }
   }  
