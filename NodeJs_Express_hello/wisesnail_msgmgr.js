@@ -179,7 +179,7 @@ var mqttMessageCallback = function (topic, message){
 	
 	//code one
         var keyStr = '';
-	var restObjList = [];
+	//var restObjList = [];
 	DeviceInfoMapUpdate(device_id, keyStr, jsonObj.susiCommData.data);
 	      
 	DeviceInfoMap.forEach(function(obj, key) {
@@ -632,11 +632,12 @@ function DeviceInfoMapSetToObj( deviceID, keyStr, jsonObj){
 	  var restPath = jsonKeyStr.replace(/e\/[0-9]*\/n\/?$/g,jsonObj[key]);
  	
 	  restPath = restPath.replace(/^\//g,'');
-	  var restObj = DeviceInfoMap.get(deviceID + '/' + restPath);
+          var mapID = deviceID + '/' + restPath;
+	  var restObj = DeviceInfoMap.get(mapID);
 	  if ( typeof restObj !== 'undefined'){
-	    console.log( '[setRESTFulList]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));	  
+	    console.log( '[DeviceInfoMapSetToObj]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));	  
             jsonObj[restObj.valKey] = restObj.val;
-            DeviceInfoMap.remove(restPath);
+            DeviceInfoMap.remove(mapID);
             console.log( 'DeviceInfoMap.count() = ' + DeviceInfoMap.count());
 	  }
 	}
