@@ -3,20 +3,21 @@ var m1 = require('./module1.js');
 var app = express();
 
 app.get('/', function (req, res) {
-  
+  /*
   //console.log( 'm1.sayHelloInEnglish() = ' + m1.sayHelloInEnglish());
   m1.wsnset(res, function (myRes, data) {
     console.log( 'get callback return <======= ');
     myRes.send('data === ' + data);
   });
-  //res.send('!');
+  */
+  res.send('get !');
 });
 
 app.put('/', function (req, res) {
 
   //console.log( 'm1.sayHelloInEnglish() = ' + m1.sayHelloInEnglish());
   m1.wsnset(res, function (myRes, data) {
-    console.log( 'pug callback return <======= ');
+    console.log( 'put callback return <======= ');
     myRes.send('data === ' + data);
   });
   //res.send('!');
