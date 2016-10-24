@@ -176,7 +176,7 @@ var mqttMessageCallback = function (topic, message){
         sensorHubMapUpdate(MSG_TYPE.sen_info, device_id, message.toString());
         var keyStr = '';
 	var restObjList = [];
-	getRESTFulList(keyStr, jsonObj.susiCommData.data, restObjList);
+	DeviceInfoMapUpdate(keyStr, jsonObj.susiCommData.data);
 	      
 	DeviceInfoMap.forEach(function(obj, key) {
           console.log('restPath = ' + key + ', restPath val = ' + obj.val);
@@ -608,7 +608,7 @@ function setRESTFulList( keyStr, jsonObj, inputObjList ){
 }
 */
 
-function getRESTFulList( keyStr, jsonObj, outputObj ){
+function DeviceInfoMapUpdate( keyStr, jsonObj ){
   
   var regexArrayPath = new RegExp('e\/[0-9]*\/n\/?$');
 	
@@ -617,7 +617,7 @@ function getRESTFulList( keyStr, jsonObj, outputObj ){
       var jsonKeyStr = keyStr + '/' + key ; 
       if ( typeof jsonObj[key] !==  'object' ){
 	if ( regexArrayPath.test(jsonKeyStr) ){
-          console.log( '[getRESTFulList]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
+          console.log( '[DeviceInfoMapUpdate]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
 	  var restPath = jsonKeyStr.replace(/e\/[0-9]*\/n\/?$/g,jsonObj[key]);
           var restPathValue;
           if ( typeof jsonObj['v'] !== 'undefined' ){
@@ -645,7 +645,7 @@ function getRESTFulList( keyStr, jsonObj, outputObj ){
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
       if (typeof jsonObj[key] === 'object' ){
-        getRESTFulList( keyStr + '/' + key, jsonObj[key], outputObj);
+        DeviceInfoMapUpdate( keyStr + '/' + key, jsonObj[key]);
       }
     }
   }  
