@@ -588,14 +588,18 @@ function is_ip_valid( ip ){
 /*getRESTFulList*/
 function buildAllDeviceInfoObj( keyStr, jsonObj){
   
-  var regexArrayPath = new RegExp('e\/[0-9]*\/(n|v|sv|bv)\/?$');
+  var regexArrayPath = new RegExp('e\/[0-9]*\/[A-Z a-z 0-9]*\/?$');
+  var regexArrayOKPath = new RegExp('e\/[0-9]*\/(n|v|sv|bv)\/?$');
 	
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
       var jsonKeyStr = keyStr + '/' + key ;
       console.log( '[buildAllDeviceInfoObj]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
-      if ( regexArrayPath.test(jsonKeyStr) === false ){
-        delete jsonObj[key];
+      if ( regexArrayPath.test(jsonKeyStr) ){
+	if (regexArrayOKPath.test(jsonKeyStr) ){
+          console.log('delete ' + jsonKeyStr);
+          delete jsonObj[key];
+	}
       }
     }
   }
