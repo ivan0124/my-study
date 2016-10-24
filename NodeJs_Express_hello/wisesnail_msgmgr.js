@@ -197,7 +197,7 @@ var mqttMessageCallback = function (topic, message){
 	var allDeviceInfoObj = JSON.parse(JSON.stringify(jsonInfoSpec.susiCommData.infoSpec));
         buildAllDeviceInfoObj(keyStr, allDeviceInfoObj);
 	sensorHub.dev_full_devinfo = JSON.stringify(allDeviceInfoObj);
-	console.log( sensorHub.dev_full_devinfo );
+	//console.log( sensorHub.dev_full_devinfo );
 	//
 	keyStr = '';
 	setRESTFulList( keyStr = '', allDeviceInfoObj, {});     
@@ -596,7 +596,7 @@ function buildAllDeviceInfoObj( keyStr, jsonObj){
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
       var jsonKeyStr = keyStr + '/' + key ;
-      console.log( '[buildAllDeviceInfoObj]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
+      //console.log( '[buildAllDeviceInfoObj]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
       if ( regexArrayPath.test(jsonKeyStr) ){
 	if (regexArrayOKPath.test(jsonKeyStr) === false ){
           console.log('delete ' + jsonKeyStr);
