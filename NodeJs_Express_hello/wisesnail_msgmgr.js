@@ -183,12 +183,13 @@ var mqttMessageCallback = function (topic, message){
         });   
 	
 	//
-	var sensorHub = SensorHubMap.get( device_id);     
-	console.log( sensorHub.dev_info_spec );
-	/*
+	var sensorHub = SensorHubMap.get( device_id);    
+	var jsonInfoSpec = JSON.parse(sensorHub.dev_info_spec );
+	//console.log( sensorHub.dev_info_spec );
+	
 	keyStr = '';
-	setRESTFulList( keyStr = '', jsonObj.susiCommData.data, {});     
-	*/      
+	setRESTFulList( keyStr = '', jsonInfoSpec.susiCommData.infoSpec, {});     
+	console.log( JSON.stringify(jsonInfoSpec) );     
         break;
       }
     case MSG_TYPE.unknown:
