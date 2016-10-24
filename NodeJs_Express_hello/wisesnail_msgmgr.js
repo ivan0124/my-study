@@ -174,8 +174,11 @@ var mqttMessageCallback = function (topic, message){
         //console.log('[' + device_id + ']' + ': sen_info');
         sensorHubMapUpdate(MSG_TYPE.sen_info, device_id, message.toString());
         var keyStr = '';
-	var outListObj = {};
-	getRESTFulList(keyStr, jsonObj.susiCommData.data, outListObj);
+	var restObjList = [];
+	getRESTFulList(keyStr, jsonObj.susiCommData.data, restObjList);
+	for (var i=0 ; i < restObjList.length ; i++){
+          console.log('restObjList[' + i + '].path = ' + restObjList[i].path + ', restObjList[' + i + '].val = ' + restObjList[i].val);
+	}
         break;
       }
     case MSG_TYPE.unknown:
@@ -582,7 +585,11 @@ function getRESTFulList( keyStr, jsonObj, outputObj ){
           if ( typeof jsonObj['bv'] !== 'undefined' ){
             restPathValue = jsonObj['bv'] 
 	  }		
-	 
+	  
+	  var restObj = {};
+          restObj.path = restPath;
+	  restObj.val = restPathValue;
+	  outputObj.push(restObj);
           console.log('restPath = ' + restPath + ', restPathValue = ' + restPathValue);
 	}
         //outputObj.resultStr = JSON.stringify(jsonObj[key]);
