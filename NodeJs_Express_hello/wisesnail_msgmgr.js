@@ -176,7 +176,7 @@ var mqttMessageCallback = function (topic, message){
         //console.log('[' + device_id + ']' + ': sen_info');
         sensorHubMapUpdate(MSG_TYPE.sen_info, device_id, message.toString());
 	      
-	/*
+	
 	//code one
         var keyStr = '';
 	var restObjList = [];
@@ -185,7 +185,7 @@ var mqttMessageCallback = function (topic, message){
 	DeviceInfoMap.forEach(function(obj, key) {
           console.log('restPath = ' + key + ', restPath val = ' + obj.val);
         });
-	*/
+	
 	
 	
 	// code two
@@ -599,7 +599,7 @@ function buildAllDeviceInfoObj( keyStr, jsonObj){
       //console.log( '[buildAllDeviceInfoObj]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
       if ( regexArrayPath.test(jsonKeyStr) ){
 	if (regexArrayOKPath.test(jsonKeyStr) === false ){
-          console.log('delete ' + jsonKeyStr);
+          //console.log('delete ' + jsonKeyStr);
           delete jsonObj[key];
 	}
       }
