@@ -6,7 +6,7 @@ var SensorHubMap = new HashMap();
 var ConnectivityMap = new HashMap();
 //var IoTGWCapability;
 
-var Client  = Mqtt.connect('mqtt://172.22.214.60');
+var Client  = Mqtt.connect('mqtt://127.0.0.1');
 Client.queueQoSZero = false;
 
 const MSG_TYPE = { 
