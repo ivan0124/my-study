@@ -174,26 +174,32 @@ var mqttMessageCallback = function (topic, message){
       {    
         //console.log('[' + device_id + ']' + ': sen_info');
         sensorHubMapUpdate(MSG_TYPE.sen_info, device_id, message.toString());
+	      
+	/*
+	//code one
         var keyStr = '';
 	var restObjList = [];
 	DeviceInfoMapUpdate(keyStr, jsonObj.susiCommData.data);
 	      
 	DeviceInfoMap.forEach(function(obj, key) {
           console.log('restPath = ' + key + ', restPath val = ' + obj.val);
-        });   
+        });
+	*/
 	
-	//
+	/*
+	// code two
 	var sensorHub = SensorHubMap.get( device_id);    
 	var jsonInfoSpec = JSON.parse(sensorHub.dev_info_spec );
 	//console.log( sensorHub.dev_info_spec );
 	
 	keyStr = '';
 	setRESTFulList( keyStr = '', jsonInfoSpec.susiCommData.infoSpec, {});     
-	console.log( JSON.stringify(jsonInfoSpec) );  
+	console.log( JSON.stringify(jsonInfoSpec) );
+	*/
 	//
 	keyStr = '';
-	var allDeviceInfoObj = {};
-        buildAllDeviceInfoObj(keyStr, jsonInfoSpec.susiCommData.infoSpec, allDeviceInfoObj);
+	var allDeviceInfoObj = JSON.parse(JSON.stringify(jsonInfoSpec.susiCommData.infoSpec));
+        buildAllDeviceInfoObj(keyStr, allDeviceInfoObj);
 	console.log( JSON.stringify(allDeviceInfoObj) );
         break;
       }
@@ -580,23 +586,23 @@ function is_ip_valid( ip ){
   return false;
 }
 /*getRESTFulList*/
-function buildAllDeviceInfoObj( keyStr, jsonObj, outputObj ){
+function buildAllDeviceInfoObj( keyStr, jsonObj){
   
   var regexArrayPath = new RegExp('e\/[0-9]*\/(n|v|sv|bv)\/?$');
 	
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
       var jsonKeyStr = keyStr + '/' + key ;
-      console.log( '[setRESTFulList]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
-      outputObj[key] = jsonObj[key];
+      console.log( '[buildAllDeviceInfoObj]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
+      //outputObj[key] = jsonObj[key];
     }
   }
   //
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
       if (typeof jsonObj[key] === 'object' ){
-	outputObj[key] = {};
-        buildAllDeviceInfoObj( keyStr, jsonObj[key], outputObj);
+	//outputObj[key] = {};
+        buildAllDeviceInfoObj( keyStr + '/' + key, jsonObj[key]);
       }
     }
   }  
