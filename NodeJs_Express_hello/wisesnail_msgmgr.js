@@ -183,7 +183,7 @@ var mqttMessageCallback = function (topic, message){
 	DeviceInfoMapUpdate(device_id, keyStr, jsonObj.susiCommData.data);
 	      
 	DeviceInfoMap.forEach(function(obj, key) {
-          console.log('restPath = ' + key + ', restPath val = ' + obj.val);
+          console.log('restPath = ' + obj.path + ', restPath val = ' + obj.val);
         });
 	
 	
