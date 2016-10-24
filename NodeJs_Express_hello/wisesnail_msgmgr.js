@@ -173,6 +173,9 @@ var mqttMessageCallback = function (topic, message){
       {    
         //console.log('[' + device_id + ']' + ': sen_info');
         sensorHubMapUpdate(MSG_TYPE.sen_info, device_id, message.toString());
+        var keyStr = '';
+	var outListObj = {};
+	getRESTFulList(keyStr, jsonObj.susiCommData.data.SenHub, outListObj);
         break;
       }
     case MSG_TYPE.unknown:
@@ -556,6 +559,30 @@ function is_ip_valid( ip ){
   }
   
   return false;
+}
+/*getRESTFulList*/
+function getRESTFulList( keyStr, jsonObj, outputObj ){
+  
+  for (key in jsonObj) {
+    if (jsonObj.hasOwnProperty(key)) {
+      var jsonKeyStr = keyStr + '/' + key ; 
+      if ( jsonObj[key] !==  'object' ){
+        console.log( '[getRESTFulList]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
+        //outputObj.resultStr = JSON.stringify(jsonObj[key]);
+      }
+    }
+  }
+  //
+  for (key in jsonObj) {
+    if (jsonObj.hasOwnProperty(key)) {
+      if (typeof jsonObj[key] === 'object' ){
+        getRESTFulList( keyStr + '/' + key, jsonObj[key], outputObj);
+      }
+    }
+  }  
+	
+  return;  
+
 }
 
 function getRESTFulValue( apiPath, keyStr, jsonObj, outputObj ){
