@@ -180,8 +180,15 @@ var mqttMessageCallback = function (topic, message){
 	      
 	DeviceInfoMap.forEach(function(obj, key) {
           console.log('restPath = ' + key + ', restPath val = ' + obj.val);
-        });       
-	      
+        });   
+	
+	//
+	var sensorHub = SensorHubMap.get( device_id);     
+	console.log( sensorHub.dev_info_spec );
+	/*
+	keyStr = '';
+	setRESTFulList( keyStr = '', jsonObj.susiCommData.data, {});     
+	*/      
         break;
       }
     case MSG_TYPE.unknown:
@@ -567,7 +574,7 @@ function is_ip_valid( ip ){
   return false;
 }
 /*getRESTFulList*/
-/*
+
 function setRESTFulList( keyStr, jsonObj, inputObjList ){
   
   var regexArrayPath = new RegExp('e\/[0-9]*\/n\/?$');
@@ -579,16 +586,12 @@ function setRESTFulList( keyStr, jsonObj, inputObjList ){
 	if ( regexArrayPath.test(jsonKeyStr) ){
           console.log( '[setRESTFulList]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
 	  var restPath = jsonKeyStr.replace(/e\/[0-9]*\/n\/?$/g,jsonObj[key]);
-          var restPathValueKeyName;
-          if ( typeof jsonObj['v'] !== 'undefined' ){
-            restPathValueKeyName = 'v'; 
+ 	
+	  restPath = restPath.replace(/^\//g,'');
+	  var restObj = DeviceInfoMap.get(restPath);
+	  if ( typeof restObj !== 'undefined'){
+            jsonObj[restObj.valKey] = restObj.val;
 	  }
-          if ( typeof jsonObj['sv'] !== 'undefined' ){
-            restPathValueKeyName = 'sv'; 
-	  }	
-          if ( typeof jsonObj['bv'] !== 'undefined' ){
-            restPathValueKeyName = 'bv'; 
-	  }		 
 	}
         
       }
@@ -606,7 +609,7 @@ function setRESTFulList( keyStr, jsonObj, inputObjList ){
   return;  
 
 }
-*/
+
 
 function DeviceInfoMapUpdate( keyStr, jsonObj ){
   
@@ -620,19 +623,24 @@ function DeviceInfoMapUpdate( keyStr, jsonObj ){
           console.log( '[DeviceInfoMapUpdate]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
 	  var restPath = jsonKeyStr.replace(/e\/[0-9]*\/n\/?$/g,jsonObj[key]);
           var restPathValue;
+          var restPathValueKey;
           if ( typeof jsonObj['v'] !== 'undefined' ){
-            restPathValue = jsonObj['v'] 
+            restPathValue = jsonObj['v'];
+ 	    restPathValueKey = 'v';
 	  }
           if ( typeof jsonObj['sv'] !== 'undefined' ){
-            restPathValue = jsonObj['sv'] 
+            restPathValue = jsonObj['sv']; 
+            restPathValueKey = 'sv';
 	  }	
           if ( typeof jsonObj['bv'] !== 'undefined' ){
-            restPathValue = jsonObj['bv'] 
+            restPathValue = jsonObj['bv'];
+	    restPathValueKey = 'bv';	  
 	  }		
 	  
 	  var restObj = {};
           restObj.path = restPath.replace(/^\//g,'');
 	  restObj.val = restPathValue;
+          restObj.valKey = restPathValueKey;
 	  //outputObj.push(restObj);
 	  DeviceInfoMap.set(restObj.path, restObj);
           console.log('restPath = ' + restPath + ', restPathValue = ' + restPathValue);
