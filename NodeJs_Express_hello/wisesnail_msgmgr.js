@@ -189,7 +189,12 @@ var mqttMessageCallback = function (topic, message){
 	
 	keyStr = '';
 	setRESTFulList( keyStr = '', jsonInfoSpec.susiCommData.infoSpec, {});     
-	console.log( JSON.stringify(jsonInfoSpec) );     
+	console.log( JSON.stringify(jsonInfoSpec) );  
+	//
+	keyStr = '';
+	var allDeviceInfoObj = {};
+        buildAllDeviceInfoObj(keyStr, jsonInfoSpec.susiCommData.infoSpec, allDeviceInfoObj);
+	console.log( JSON.stringify(allDeviceInfoObj) );
         break;
       }
     case MSG_TYPE.unknown:
@@ -575,6 +580,31 @@ function is_ip_valid( ip ){
   return false;
 }
 /*getRESTFulList*/
+function buildAllDeviceInfoObj( keyStr, jsonObj, outputObj ){
+  
+  var regexArrayPath = new RegExp('e\/[0-9]*\/(n|v|sv|bv)\/?$');
+	
+  for (key in jsonObj) {
+    if (jsonObj.hasOwnProperty(key)) {
+      var jsonKeyStr = keyStr + '/' + key ;
+      console.log( '[setRESTFulList]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
+      outputObj[key] = jsonObj[key];
+    }
+  }
+  //
+  for (key in jsonObj) {
+    if (jsonObj.hasOwnProperty(key)) {
+      if (typeof jsonObj[key] === 'object' ){
+	outputObj[key] = {};
+        buildAllDeviceInfoObj( keyStr, jsonObj[key], outputObj);
+      }
+    }
+  }  
+	
+  return;  
+
+}
+
 
 function setRESTFulList( keyStr, jsonObj, inputObjList ){
   
