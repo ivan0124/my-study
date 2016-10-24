@@ -200,7 +200,7 @@ var mqttMessageCallback = function (topic, message){
 	//console.log( sensorHub.dev_full_devinfo );
 	//
 	keyStr = '';
-	DeviceInfoMapSetToObj( keyStr = '', allDeviceInfoObj);     
+	DeviceInfoMapSetToObj( device_id, keyStr = '', allDeviceInfoObj);     
 	console.log( JSON.stringify(allDeviceInfoObj) );
 		      
         break;
