@@ -39,6 +39,7 @@ const DEVICE_OBJ = {
                      dev_info_spec: 'null',  
                      dev_info: 'null',
                      dev_capability: 'null',
+	             dev_full_devinfo: 'null',
                    };
 
 var mqttConnectCallback =  function () {
@@ -191,16 +192,17 @@ var mqttMessageCallback = function (topic, message){
 	var sensorHub = SensorHubMap.get( device_id);    
 	var jsonInfoSpec = JSON.parse(sensorHub.dev_info_spec );
 	//console.log( sensorHub.dev_info_spec );
-	/*
-	keyStr = '';
-	setRESTFulList( keyStr = '', jsonInfoSpec.susiCommData.infoSpec, {});     
-	console.log( JSON.stringify(jsonInfoSpec) );
-	*/
 	//
 	keyStr = '';
 	var allDeviceInfoObj = JSON.parse(JSON.stringify(jsonInfoSpec.susiCommData.infoSpec));
         buildAllDeviceInfoObj(keyStr, allDeviceInfoObj);
+	sensorHub.dev_full_devinfo = JSON.stringify(allDeviceInfoObj);
+	console.log( sensorHub.dev_full_devinfo );
+	//
+	keyStr = '';
+	setRESTFulList( keyStr = '', allDeviceInfoObj, {});     
 	console.log( JSON.stringify(allDeviceInfoObj) );
+		      
         break;
       }
     case MSG_TYPE.unknown:
