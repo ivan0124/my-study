@@ -596,7 +596,7 @@ function buildAllDeviceInfoObj( keyStr, jsonObj){
       var jsonKeyStr = keyStr + '/' + key ;
       console.log( '[buildAllDeviceInfoObj]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
       if ( regexArrayPath.test(jsonKeyStr) ){
-	if (regexArrayOKPath.test(jsonKeyStr) ){
+	if (regexArrayOKPath.test(jsonKeyStr) === false ){
           console.log('delete ' + jsonKeyStr);
           delete jsonObj[key];
 	}
