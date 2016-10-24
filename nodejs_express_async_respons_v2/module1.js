@@ -34,12 +34,22 @@ var mqttMessageCallback = function (topic, message){
   console.log('-----------------------------------------------------');
   console.log(message.toString());
   console.log('-----------------------------------------------------');
+    if ( MqttPublishMap.has('4DDF0B6DE2773176095F55E8C930507A') === true){
+      var pubObj = MqttPublishMap.get('4DDF0B6DE2773176095F55E8C930507A');
+      if ( typeof pubObj !== 'undefined' ){
+        pubObj.callback(pubObj.res, 'callbak from module1. OK.');
+        MqttPublishMap.remove(sessionID);
+        console.log(' MqttPublishMap.count() =' + MqttPublishMap.count())
+      }
+    }
 
+/*
   if ( typeof myCallback !== 'undefined' && typeof myRes !== 'undefined' && myCallback !== 'null' && myRes !== 'null'){
     myCallback(myRes, 'callbak from module1. set OK. i = ' + i + ', flag = ' + flag + ', responseData =\n' + responseData);
     myCallback = 'null';
     myRes = 'null';
   }
+*/
 }
  
 
@@ -47,24 +57,21 @@ var set = function( res, callback) {
     
   myRes = res;
   myCallback = callback;
-/*
-  //Sensor Hub Set
-  var message = '{\"susiCommData\":{\"sensorIDList\":{\"e\":[{\"sv\":\"SenHub1\",\"n\":\"SenHub/Info/Name\"}]},\
-                  \"sessionID\":\"4DDF0B6DE2773176095F55E8C930507A\",\"commCmd\":525,\"requestID\":0,\
-                  \"agentID\":\"\",\"handlerName\":\"SenHub\",\"sendTS\":1466088605}}';
-  console.log('publish 0017000E40000000 ===========================>');
-  Client.publish('/cagent/admin/0017000E40000000/agentcallbackreq', message);
-*/
+
+
+
 
   //Connectivity Set (use Virtual Gateway ID)
   //Sensor Hub Set
+/*
   var message = '{\"susiCommData\":{\"sensorIDList\":{\"e\":[{\"bv\":0,\"n\":\"IoTGW/WSN/0007000E40ABCDEF/Info/reset\"}]},\
                   \"sessionID\":\"26366CCF4E34D0E69FA9480B460C35D3\",\"commCmd\":525,\"requestID\":0,\"agentID\":\"\",\
                   \"handlerName\":\"IoTGW\",\"sendTS\":1477021205}}';
+*/
   /* response data
 {"susiCommData":{"commCmd":526,"handlerName":"IoTGW","sessionID":"26366CCF4E34D0E69FA9480B460C35D3","sensorInfoList":{"e":[{"n":"/Info/reset","sv":"Success","StatusCode":200}]}}}
   */
-  var sessionID = Uuid.v4().replace(/-/g,'');
+  var sessionID = '4DDF0B6DE2773176095F55E8C930507A';//Uuid.v4().replace(/-/g,'');
   console.log('session ID ===' + sessionID );
   
   var pubObj = {};
@@ -72,10 +79,16 @@ var set = function( res, callback) {
   pubObj.callback = callback;
   MqttPublishMap.set(sessionID, pubObj);
   
-  console.log('publish to 0000000E40ABCDEF ===========================>');
-  Client.publish('/cagent/admin/0000000E40ABCDEF/agentcallbackreq', message);
+  //Sensor Hub Set
+  var message = '{\"susiCommData\":{\"sensorIDList\":{\"e\":[{\"sv\":\"SenHub1\",\"n\":\"SenHub/Info/Name\"}]},\
+                  \"sessionID\":\"4DDF0B6DE2773176095F55E8C930507A\",\"commCmd\":525,\"requestID\":0,\
+                  \"agentID\":\"\",\"handlerName\":\"SenHub\",\"sendTS\":1466088605}}';
+  console.log('publish 0017000E40000000 ===========================>');
+  Client.publish('/cagent/admin/0017000E40000000/agentcallbackreq', message);
+  //console.log('publish to 0000000E40ABCDEF ===========================>');
+  //Client.publish('/cagent/admin/0000000E40ABCDEF/agentcallbackreq', message);
   
-  var timeout = 3000;
+  var timeout = 60000;
   setTimeout(function () {
     console.log('timer session ID ===' + sessionID );
     if ( MqttPublishMap.has(sessionID) === true){

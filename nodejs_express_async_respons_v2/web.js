@@ -6,11 +6,22 @@ app.get('/', function (req, res) {
   
   //console.log( 'm1.sayHelloInEnglish() = ' + m1.sayHelloInEnglish());
   m1.wsnset(res, function (myRes, data) {
-    console.log( 'callback return <======= ');
+    console.log( 'get callback return <======= ');
     myRes.send('data === ' + data);
   });
   //res.send('!');
 });
+
+app.put('/', function (req, res) {
+
+  //console.log( 'm1.sayHelloInEnglish() = ' + m1.sayHelloInEnglish());
+  m1.wsnset(res, function (myRes, data) {
+    console.log( 'pug callback return <======= ');
+    myRes.send('data === ' + data);
+  });
+  //res.send('!');
+});
+
 
 
 app.listen(3000, function () {
