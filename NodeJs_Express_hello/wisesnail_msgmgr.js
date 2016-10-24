@@ -594,7 +594,9 @@ function buildAllDeviceInfoObj( keyStr, jsonObj){
     if (jsonObj.hasOwnProperty(key)) {
       var jsonKeyStr = keyStr + '/' + key ;
       console.log( '[buildAllDeviceInfoObj]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
-      //outputObj[key] = jsonObj[key];
+      if ( regexArrayPath.test(jsonKeyStr) === false ){
+        delete jsonObj[key];
+      }
     }
   }
   //
