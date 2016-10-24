@@ -175,7 +175,7 @@ var mqttMessageCallback = function (topic, message){
         sensorHubMapUpdate(MSG_TYPE.sen_info, device_id, message.toString());
         var keyStr = '';
 	var outListObj = {};
-	getRESTFulList(keyStr, jsonObj.susiCommData.data.SenHub, outListObj);
+	getRESTFulList(keyStr, jsonObj.susiCommData.data, outListObj);
         break;
       }
     case MSG_TYPE.unknown:
