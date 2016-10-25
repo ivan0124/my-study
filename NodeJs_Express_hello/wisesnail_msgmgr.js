@@ -330,6 +330,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                    
                    connectivity.dev_info = JSON.stringify(infoObj['Info']);
                    connectivity.dev_capability = JSON.stringify(tmpInfoSpecObj);
+			 
 		   ///////
 	           var keyStr = '';
 		   CovertJsonObjToRESTFulArrayValueMap(device_id, keyStr, infoObj);
@@ -337,6 +338,11 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
 		   RESTFulArrayValueMap.forEach(function(obj, key) {
 		     console.log('[connectivityMapUpdate]restPath = ' + obj.path + ', restPath val = ' + obj.val);
 		   });
+			 
+		   keyStr = '';
+		   allDeviceInfoObj = JSON.parse(connectivity.dev_full_devinfo);	 
+		   setRESTFulArrayValueMapToJsonObj( device_id, keyStr = '', allDeviceInfoObj);      
+		   console.log( JSON.stringify(allDeviceInfoObj) );			 
 		   ////	 
 
                  }
