@@ -180,7 +180,7 @@ var mqttMessageCallback = function (topic, message){
 	//code one
         var keyStr = '';
 	//var restObjList = [];
-	CovertJsonObjToRESTFulArrayValueMap(device_id, keyStr, jsonObj.susiCommData.data);
+	convertJsonObjToRESTFulArrayValueMap(device_id, keyStr, jsonObj.susiCommData.data);
 	/*      
 	RESTFulArrayValueMap.forEach(function(obj, key) {
           console.log('restPath = ' + obj.path + ', restPath val = ' + obj.val);
@@ -333,7 +333,7 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
 			 
 		   ///////
 	           var keyStr = '';
-		   CovertJsonObjToRESTFulArrayValueMap(device_id, keyStr, infoObj);
+		   convertJsonObjToRESTFulArrayValueMap(device_id, keyStr, infoObj);
 
 		   RESTFulArrayValueMap.forEach(function(obj, key) {
 		     console.log('[connectivityMapUpdate]restPath = ' + obj.path + ', restPath val = ' + obj.val);
@@ -684,7 +684,7 @@ function setRESTFulArrayValueMapToJsonObj( deviceID, keyStr, jsonObj){
 }
 
 
-function CovertJsonObjToRESTFulArrayValueMap( deviceID, keyStr, jsonObj ){
+function convertJsonObjToRESTFulArrayValueMap( deviceID, keyStr, jsonObj ){
   
   var regexArrayPath = new RegExp('e\/[0-9]*\/n\/?$');
 	
@@ -693,7 +693,7 @@ function CovertJsonObjToRESTFulArrayValueMap( deviceID, keyStr, jsonObj ){
       var jsonKeyStr = keyStr + '/' + key ; 
       if ( typeof jsonObj[key] !==  'object' ){
 	if ( regexArrayPath.test(jsonKeyStr) ){
-          console.log( '[CovertJsonObjToRESTFulArrayValueMap]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
+          console.log( '[convertJsonObjToRESTFulArrayValueMap]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
 	  var restPath = jsonKeyStr.replace(/e\/[0-9]*\/n\/?$/g,jsonObj[key]);
           var restPathValue;
           var restPathValueKey;
@@ -726,7 +726,7 @@ function CovertJsonObjToRESTFulArrayValueMap( deviceID, keyStr, jsonObj ){
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
       if (typeof jsonObj[key] === 'object' ){
-        CovertJsonObjToRESTFulArrayValueMap( deviceID, keyStr + '/' + key, jsonObj[key]);
+        convertJsonObjToRESTFulArrayValueMap( deviceID, keyStr + '/' + key, jsonObj[key]);
       }
     }
   }  
