@@ -180,7 +180,7 @@ var mqttMessageCallback = function (topic, message){
 	//code one
         var keyStr = '';
 	//var restObjList = [];
-	DeviceInfoMapUpdate(device_id, keyStr, jsonObj.susiCommData.data);
+	CovertJsonObjToRESTFulArrayValueMap(device_id, keyStr, jsonObj.susiCommData.data);
 	      
 	RESTFulArrayValueMap.forEach(function(obj, key) {
           console.log('restPath = ' + obj.path + ', restPath val = ' + obj.val);
@@ -659,7 +659,7 @@ function DeviceInfoMapSetToObj( deviceID, keyStr, jsonObj){
 }
 
 
-function DeviceInfoMapUpdate( deviceID, keyStr, jsonObj ){
+function CovertJsonObjToRESTFulArrayValueMap( deviceID, keyStr, jsonObj ){
   
   var regexArrayPath = new RegExp('e\/[0-9]*\/n\/?$');
 	
@@ -668,7 +668,7 @@ function DeviceInfoMapUpdate( deviceID, keyStr, jsonObj ){
       var jsonKeyStr = keyStr + '/' + key ; 
       if ( typeof jsonObj[key] !==  'object' ){
 	if ( regexArrayPath.test(jsonKeyStr) ){
-          console.log( '[DeviceInfoMapUpdate]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
+          console.log( '[CovertJsonObjToRESTFulArrayValueMap]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
 	  var restPath = jsonKeyStr.replace(/e\/[0-9]*\/n\/?$/g,jsonObj[key]);
           var restPathValue;
           var restPathValueKey;
@@ -701,7 +701,7 @@ function DeviceInfoMapUpdate( deviceID, keyStr, jsonObj ){
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
       if (typeof jsonObj[key] === 'object' ){
-        DeviceInfoMapUpdate( deviceID, keyStr + '/' + key, jsonObj[key]);
+        CovertJsonObjToRESTFulArrayValueMap( deviceID, keyStr + '/' + key, jsonObj[key]);
       }
     }
   }  
