@@ -615,8 +615,8 @@ function is_ip_valid( ip ){
 /*getRESTFulList*/
 function buildAllDeviceInfoObj( keyStr, jsonObj){
   
-  var regexArrayPath = new RegExp('e\/[0-9]*\/[A-Z a-z 0-9]*\/?$');
-  var regexArrayOKPath = new RegExp('e\/[0-9]*\/(n|v|sv|bv)\/?$');
+  var regexArrayPath = new RegExp('e\/[0-9]+\/[A-Z a-z 0-9]+\/?$');
+  var regexArrayOKPath = new RegExp('e\/[0-9]+\/(n|v|sv|bv)\/?$');
 	
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
@@ -647,14 +647,14 @@ function buildAllDeviceInfoObj( keyStr, jsonObj){
 
 function setRESTFulArrayValueMapToJsonObj( deviceID, keyStr, jsonObj){
   
-  var regexArrayPath = new RegExp('e\/[0-9]*\/n\/?$');
+  var regexArrayPath = new RegExp('e\/[0-9]+\/n\/?$');
 	
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
       var jsonKeyStr = keyStr + '/' + key ; 
       if ( typeof jsonObj[key] !==  'object' ){
 	if ( regexArrayPath.test(jsonKeyStr) ){
-	  var restPath = jsonKeyStr.replace(/e\/[0-9]*\/n\/?$/g,jsonObj[key]);
+	  var restPath = jsonKeyStr.replace(/e\/[0-9]+\/n\/?$/g,jsonObj[key]);
  	
 	  restPath = restPath.replace(/^\//g,'');
           var mapID = deviceID + '/' + restPath;
@@ -686,7 +686,7 @@ function setRESTFulArrayValueMapToJsonObj( deviceID, keyStr, jsonObj){
 
 function convertJsonObjToRESTFulArrayValueMap( deviceID, keyStr, jsonObj ){
   
-  var regexArrayPath = new RegExp('e\/[0-9]*\/n\/?$');
+  var regexArrayPath = new RegExp('e\/[0-9]+\/n\/?$');
 	
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
@@ -694,7 +694,7 @@ function convertJsonObjToRESTFulArrayValueMap( deviceID, keyStr, jsonObj ){
       if ( typeof jsonObj[key] !==  'object' ){
 	if ( regexArrayPath.test(jsonKeyStr) ){
           console.log( '[convertJsonObjToRESTFulArrayValueMap]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));
-	  var restPath = jsonKeyStr.replace(/e\/[0-9]*\/n\/?$/g,jsonObj[key]);
+	  var restPath = jsonKeyStr.replace(/e\/[0-9]+\/n\/?$/g,jsonObj[key]);
           var restPathValue;
           var restPathValueKey;
           if ( typeof jsonObj['v'] !== 'undefined' ){
