@@ -200,7 +200,8 @@ var mqttMessageCallback = function (topic, message){
 	//console.log( sensorHub.dev_full_devinfo );
 	//
 	keyStr = '';
-	DeviceInfoMapSetToObj( device_id, keyStr = '', allDeviceInfoObj);     
+	//DeviceInfoMapSetToObj( device_id, keyStr = '', allDeviceInfoObj);
+	setRESTFulArrayValueMapToJsonObj( device_id, keyStr = '', allDeviceInfoObj);      
 	console.log( JSON.stringify(allDeviceInfoObj) );
 		      
         break;
@@ -620,7 +621,7 @@ function buildAllDeviceInfoObj( keyStr, jsonObj){
 }
 
 
-function DeviceInfoMapSetToObj( deviceID, keyStr, jsonObj){
+function setRESTFulArrayValueMapToJsonObj( deviceID, keyStr, jsonObj){
   
   var regexArrayPath = new RegExp('e\/[0-9]*\/n\/?$');
 	
@@ -635,7 +636,7 @@ function DeviceInfoMapSetToObj( deviceID, keyStr, jsonObj){
           var mapID = deviceID + '/' + restPath;
 	  var restObj = RESTFulArrayValueMap.get(mapID);
 	  if ( typeof restObj !== 'undefined'){
-	    console.log( '[DeviceInfoMapSetToObj]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));	  
+	    console.log( '[setRESTFulArrayValueMapToJsonObj]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));	  
             jsonObj[restObj.valKey] = restObj.val;
             RESTFulArrayValueMap.remove(mapID);
             console.log( 'RESTFulArrayValueMap.count() = ' + RESTFulArrayValueMap.count());
@@ -649,7 +650,7 @@ function DeviceInfoMapSetToObj( deviceID, keyStr, jsonObj){
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
       if (typeof jsonObj[key] === 'object' ){
-        DeviceInfoMapSetToObj( deviceID, keyStr + '/' + key, jsonObj[key]);
+        setRESTFulArrayValueMapToJsonObj( deviceID, keyStr + '/' + key, jsonObj[key]);
       }
     }
   }  
