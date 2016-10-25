@@ -4,7 +4,7 @@ var HashMap = require('hashmap').HashMap;
 var VgwMap = new HashMap();
 var SensorHubMap = new HashMap();
 var ConnectivityMap = new HashMap();
-var DeviceInfoMap = new HashMap();
+var RESTFulArrayValueMap = new HashMap();
 //var IoTGWCapability;
 
 var Client  = Mqtt.connect('mqtt://127.0.0.1');
@@ -182,7 +182,7 @@ var mqttMessageCallback = function (topic, message){
 	//var restObjList = [];
 	DeviceInfoMapUpdate(device_id, keyStr, jsonObj.susiCommData.data);
 	      
-	DeviceInfoMap.forEach(function(obj, key) {
+	RESTFulArrayValueMap.forEach(function(obj, key) {
           console.log('restPath = ' + obj.path + ', restPath val = ' + obj.val);
         });
 	
@@ -633,12 +633,12 @@ function DeviceInfoMapSetToObj( deviceID, keyStr, jsonObj){
  	
 	  restPath = restPath.replace(/^\//g,'');
           var mapID = deviceID + '/' + restPath;
-	  var restObj = DeviceInfoMap.get(mapID);
+	  var restObj = RESTFulArrayValueMap.get(mapID);
 	  if ( typeof restObj !== 'undefined'){
 	    console.log( '[DeviceInfoMapSetToObj]jsonKeyStr =======>' + jsonKeyStr + ', jsonKeyVal=======>' + JSON.stringify(jsonObj[key]));	  
             jsonObj[restObj.valKey] = restObj.val;
-            DeviceInfoMap.remove(mapID);
-            console.log( 'DeviceInfoMap.count() = ' + DeviceInfoMap.count());
+            RESTFulArrayValueMap.remove(mapID);
+            console.log( 'RESTFulArrayValueMap.count() = ' + RESTFulArrayValueMap.count());
 	  }
 	}
         
@@ -690,7 +690,7 @@ function DeviceInfoMapUpdate( deviceID, keyStr, jsonObj ){
 	  restObj.val = restPathValue;
           restObj.valKey = restPathValueKey;
 	  //outputObj.push(restObj);
-	  DeviceInfoMap.set(deviceID + '/' + restObj.path, restObj);
+	  RESTFulArrayValueMap.set(deviceID + '/' + restObj.path, restObj);
           console.log('restPath = ' + restObj.path + ', restPathValue = ' + restObj.val);
 	}
         
