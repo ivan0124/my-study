@@ -181,10 +181,11 @@ var mqttMessageCallback = function (topic, message){
         var keyStr = '';
 	//var restObjList = [];
 	CovertJsonObjToRESTFulArrayValueMap(device_id, keyStr, jsonObj.susiCommData.data);
-	      
+	/*      
 	RESTFulArrayValueMap.forEach(function(obj, key) {
           console.log('restPath = ' + obj.path + ', restPath val = ' + obj.val);
         });
+	*/
 	
 	
 	
@@ -202,7 +203,7 @@ var mqttMessageCallback = function (topic, message){
 	keyStr = '';
 	//DeviceInfoMapSetToObj( device_id, keyStr = '', allDeviceInfoObj);
 	setRESTFulArrayValueMapToJsonObj( device_id, keyStr = '', allDeviceInfoObj);      
-	console.log( JSON.stringify(allDeviceInfoObj) );
+	//console.log( JSON.stringify(allDeviceInfoObj) );
 		      
         break;
       }
@@ -321,6 +322,15 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                    
                    connectivity.dev_info = JSON.stringify(infoObj['Info']);
                    connectivity.dev_capability = JSON.stringify(tmpInfoSpecObj);
+		   ///////
+	           var keyStr = '';
+		   CovertJsonObjToRESTFulArrayValueMap(device_id, keyStr, infoObj);
+
+		   RESTFulArrayValueMap.forEach(function(obj, key) {
+		     console.log('[connectivityMapUpdate]restPath = ' + obj.path + ', restPath val = ' + obj.val);
+		   });
+		   ////	 
+
                  }
                  
                  //console.log('[' + device_id + ']' + ': update ConnectivityMap key pairs');
