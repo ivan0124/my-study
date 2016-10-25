@@ -313,6 +313,14 @@ function connectivityMapUpdate( messageType, vgw_id, osInfo, layer, connType, in
                    connectivity.conn_id = device_id; 
                    connectivity.conn_type = connType;
                    connectivity.dev_info_spec = JSON.stringify(infoObj);
+			 
+	           //////////
+		   var keyStr = '';
+		   var allDeviceInfoObj = JSON.parse(JSON.stringify(infoObj));
+		   buildAllDeviceInfoObj(keyStr, allDeviceInfoObj);
+		   connectivity.dev_full_devinfo = JSON.stringify(allDeviceInfoObj);	
+		   console.log(connectivity.dev_full_devinfo);
+	           /////////
                  }
                    
                  if ( messageType === MSG_TYPE.vgw_info ){
