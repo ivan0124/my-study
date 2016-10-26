@@ -1,6 +1,6 @@
 #How to install R
 
-1.Now install Express in the `nodejs_event` directory and save it in the dependencies list. For example:
+1.installing R
 <pre>
 $ sudo apt-get update
 $ sudo apt-get -y install r-base
