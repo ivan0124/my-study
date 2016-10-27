@@ -1,11 +1,11 @@
 
 #load trained model
 load("model.RData")
-exp(train.result$coef)
+#exp(train.result$coef)
 
-confint(train.result)
+#confint(train.result)
 
-exp(confint(train.result))
+#exp(confint(train.result))
 
 test_data =read.table("./test_data.txt", header =T)
 cut_value_file =read.table("./cut_value.txt", header =T)
