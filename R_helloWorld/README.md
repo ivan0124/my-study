@@ -1,5 +1,3 @@
-[Nodejs call R script Tutorial](https://www.npmjs.com/package/r-script)
-
 #How to install R
 
 1.installing R
@@ -10,7 +8,7 @@ $ sudo apt-get -y install r-base
 
 #How to test
 <pre>
-$ Rscript a.R 123,456,789
+$ Rscript ./a.R 123,456,789
 or 
 $ node ./test.js
 </pre>
