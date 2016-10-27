@@ -7,3 +7,6 @@ sayHello <- function(){
 }
 
 sayHello()
+
+#pass exit code 85 to nodejs
+quit(save = "no", status = 85, runLast = FALSE)
