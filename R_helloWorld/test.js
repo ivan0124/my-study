@@ -6,7 +6,7 @@ var opts = { cwd: './',
              env: process.env
            }
 
-var RCall = ['--no-restore','--no-save','a.R','111,222,333']
+var RCall = ['--no-restore','--no-save','myPredictCode.R','111,222,333']
 var R  = spawn('Rscript', RCall, opts)
 
 R.on('exit',function(code){
