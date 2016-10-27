@@ -1,0 +1,4 @@
+failure	smart5	smart9	smart187	smart192	smart194	smart197	smart198
+1	2772	48350	0	0	32	0	0
+0	0	21837	0	137	28	0	0
+0	0	7593	0	47	24	0	0
