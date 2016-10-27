@@ -6,6 +6,8 @@ babiesssss$fail =as.factor(fail)
 p=0.7
 index =sample(2, nrow(babiesssss), replace =TRUE, prob =c(p, 1-p))
 
+cat("index: = ", index, "% \n")
+
 babiesssss.train =babiesssss[index == 1, ]
 babiesssss.test =babiesssss[index == 2, ]
 nrow(babiesssss.train)
@@ -32,4 +34,4 @@ rownames(tab) = catnames
 colnames(tab) =catnames
 tab
 
-cat("正確分類比例 = ", 100*sum(diag(tab))/sum(tab), "% \n")
+cat("Accuracy = ", 100*sum(diag(tab))/sum(tab), "% \n")
