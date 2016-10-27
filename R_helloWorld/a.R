@@ -1,7 +1,9 @@
 #!/usr/bin/env Rscript
 
+args <- commandArgs(trailingOnly = TRUE);
+
 sayHello <- function(){
-   print('hello')
+   print(args)
 }
 
 sayHello()
