@@ -1,4 +1,4 @@
-babiesssss =read.table("d:/babiesssss.txt", header =T)
+babiesssss =read.table("./babiesssss.txt", header =T)
 babiesssss = na.exclude(babiesssss)
 fail = babiesssss$fail
 babiesssss$fail =as.factor(fail)
