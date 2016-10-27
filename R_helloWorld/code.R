@@ -22,7 +22,7 @@ confint(train.result)
 exp(confint(train.result))
 
 pred = predict(train.result, newdata =babiesssss.test, type ="response")
-for(j in 1:3000) {
+for(j in 1:562) {
   if (pred[j] <=0.385) pred[j]=0  else  pred[j]=1
 }
 pred = round(pred) 
