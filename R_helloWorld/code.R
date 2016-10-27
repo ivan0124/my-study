@@ -6,7 +6,7 @@ babiesssss$fail =as.factor(fail)
 p=0.7
 index =sample(2, nrow(babiesssss), replace =TRUE, prob =c(p, 1-p))
 
-cat("index: = ", index, "% \n")
+cat("index = ", index, "\n")
 
 babiesssss.train =babiesssss[index == 1, ]
 babiesssss.test =babiesssss[index == 2, ]
