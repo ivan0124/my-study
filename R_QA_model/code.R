@@ -16,14 +16,15 @@ train.result = glm(fail ~ smart5 + smart9 + smart187 + smart192 +smart197 +smart
 summary(train.result)
 
 print(train.result)
-#save train result
-save(train.result, file = "model.RData")
 
 exp(train.result$coef)
 
 confint(train.result)
 
 exp(confint(train.result))
+
+#save train result
+save(train.result, file = "model.RData")
 
 pred = predict(train.result, newdata =babiesssss.test, type ="response")
 for(j in 1:562) {
