@@ -1,2 +1,2 @@
-failure	smart5	smart9	smart187	smart192	smart194	smart197	smart198
+failure	smart5	smart9	smart187  smart192 smart194 smart197 smart198
 0	0	7593	0	47	24	0	0
