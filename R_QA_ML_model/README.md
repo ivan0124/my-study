@@ -9,12 +9,12 @@ $ sudo apt-get -y install r-base
 
 
 #How to test
-1. generate and save trained `model.RData` file
+1. generate and save trained `Model.RData` file
 <pre>
-$ Rscript ./code.R
+$ Rscript ./TrainModel.R
 </pre>
 
-2. load `model.RData` and predict `test_data.txt` HDD data
+2. load `Model.RData` and predict `test_data.txt` HDD data
 <pre>
 $ Rscript ./myPredictCode.R
 </pre>
