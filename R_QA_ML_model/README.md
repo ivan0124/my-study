@@ -14,7 +14,7 @@ $ sudo apt-get -y install r-base
 $ Rscript ./TrainModel.R
 </pre>
 
-2. load `Model.RData` and predict `test_data.txt` HDD data
+2. load `Model.RData` and predict HDD `Feature.data`
 <pre>
 $ Rscript ./PredictionModel.R
 </pre>
