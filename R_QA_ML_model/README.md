@@ -19,3 +19,9 @@ $ Rscript ./TrainModel.R
 $ Rscript ./PredictionModel.R
 </pre>
 
+#Use NodeJS to test
+1. use NodeJS app to communicate with `PredictionModel.R`
+<pre>
+$ node ./app.js
+</pre>
+
