@@ -16,6 +16,6 @@ $ Rscript ./TrainModel.R
 
 2. load `Model.RData` and predict `test_data.txt` HDD data
 <pre>
-$ Rscript ./myPredictCode.R
+$ Rscript ./PredictionModel.R
 </pre>
 
