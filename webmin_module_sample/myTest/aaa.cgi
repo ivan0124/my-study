@@ -10,6 +10,13 @@ print "<title>Page Title</title>\n";
 print "</head>\n";
 print "<body>\n";
 
+if (&ReadParse(*in)) {
+   print &PrintHeader;
+   print &HtmlTop("Input Values Received");
+   print &PrintVariables(*in);
+   print &HtmlBot;
+}
+
 print "<h1>This is a aaa.cgi YYYYYYYYY</h1>\n";
 
 print "</body>\n";
