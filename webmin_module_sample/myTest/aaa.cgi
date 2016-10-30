@@ -8,9 +8,9 @@ print "<html>\n";
 #
 print "<head>\n";
 print "<title>Page Title</title>\n";
-print "<script>"
+print "<script>";
 print "document.getElementById(\"demo\").innerHTML = \"My First JavaScript\"";
-print "<script>"
+print "<script>";
 print "</head>\n";
 #
 print "<body>\n";
@@ -21,7 +21,7 @@ foreach $key (keys %in) {
     print "<p>key= $key, value = $in{$key}</p>\n";
 };
 
-print "<p id=\"demo\">A Paragraph</p>"
+print "<p id=\"demo\">A Paragraph</p>";
 
 print "</body>\n";
 print "</html>\n";
