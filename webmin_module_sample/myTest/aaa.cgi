@@ -10,13 +10,12 @@ print "<title>Page Title</title>\n";
 print "</head>\n";
 print "<body>\n";
 
+#read input cgi parameters
 &ReadParse();
-
-#print "in = $in\n";
 foreach $key (keys %in) {
     print "<p>key= $key, value = $in{$key}</p>\n";
 };
-print "<h1>This is a aaa.cgi YYYYYYYYY~~</h1>\n";
+
 
 print "</body>\n";
 print "</html>\n";
