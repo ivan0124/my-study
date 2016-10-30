@@ -24,7 +24,7 @@ foreach $key (keys %in) {
 };
 
 print "<p id=\"demo\">A Paragraph</p>";
-print "<button type=\"button\" onclick=\"myFunction()\">Try it</button>"
+print "<button type=\"button\" onclick=\"myFunction()\">Try it</button>";
 
 print "</body>\n";
 print "</html>\n";
