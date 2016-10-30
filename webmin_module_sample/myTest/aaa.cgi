@@ -11,10 +11,11 @@ print "</head>\n";
 print "<body>\n";
 
 if (&ReadParse(*in)) {
-   print &PrintHeader;
-   print &HtmlTop("Input Values Received");
+   #print &PrintHeader;
+   #print &HtmlTop("Input Values Received");
+   print "<h1>This is a aaa.cgi GGGGGGGGGGG</h1>\n";
    print &PrintVariables(*in);
-   print &HtmlBot;
+   #print &HtmlBot;
 }
 
 print "<h1>This is a aaa.cgi YYYYYYYYY</h1>\n";
