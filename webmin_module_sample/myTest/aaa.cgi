@@ -10,7 +10,7 @@ print "<head>\n";
 print "<title>Page Title</title>\n";
 print "<script>";
 print "function myFunction() {
-    document.getElementById(\"demo\").innerHTML = \"Paragraph changed.\";
+    document.getElementById(\"demo\").innerHTML = \"Paragraph changed from print.\";
 }";
 print "</script>";
 print "</head>\n";
