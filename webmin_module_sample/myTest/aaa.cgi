@@ -14,7 +14,7 @@ print "<body>\n";
 
 #print "in = $in\n";
 foreach $key (keys %in) {
-    print "$in{$key}\n";
+    print "key= $key, value = $in{$key}\n";
 };
 print "<h1>This is a aaa.cgi YYYYYYYYY~~</h1>\n";
 
