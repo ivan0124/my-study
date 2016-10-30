@@ -18,7 +18,8 @@ if (&ReadParse(*in)) {
    #print &HtmlBot;
 }
 
-print "<h1>This is a aaa.cgi YYYYYYYYY</h1>\n";
+print &PrintVariables(*in);
+print "<h1>This is a aaa.cgi YYYYYYYYY~~</h1>\n";
 
 print "</body>\n";
 print "</html>\n";
