@@ -12,7 +12,7 @@ print "<body>\n";
 
 &ReadParse();
 
-print "in = $in{'name'}\n";
+print "in = $in\n";
 print "<h1>This is a aaa.cgi YYYYYYYYY~~</h1>\n";
 
 print "</body>\n";
