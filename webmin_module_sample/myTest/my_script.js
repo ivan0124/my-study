@@ -1,4 +1,3 @@
-
-print "function myFunction() {
-    document.getElementById(\"demo\").innerHTML = \"Paragraph changed by script.\";
-}";
+function myFunction() {
+    document.getElementById("demo").innerHTML = "Paragraph changed by script.";
+};
