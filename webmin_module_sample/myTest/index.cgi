@@ -16,6 +16,7 @@ print "<body>\n";
 print "<form action=\"aaa.cgi\">\n";
   print "First name:<br>\n";
   print "<input type=\"text\" name=\"firstname\" value=\"Mickey\"><br>";
+  print "<input type=\"text\" name=\"lastname\" value=\"Wang\"><br>";
   print "<input type=\"submit\" value=\"Submit\">\n";
 print "</form>\n";
 #
