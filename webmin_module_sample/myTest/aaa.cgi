@@ -10,15 +10,9 @@ print "<title>Page Title</title>\n";
 print "</head>\n";
 print "<body>\n";
 
-if (&ReadParse(*in)) {
-   #print &PrintHeader;
-   #print &HtmlTop("Input Values Received");
-   print "<h1>This is a aaa.cgi GGGGGGGGGGG</h1>\n";
-   print &PrintVariables(*in);
-   #print &HtmlBot;
-}
+&ReadParse();
 
-print &PrintVariables(*in);
+print "in = $in\n";
 print "<h1>This is a aaa.cgi YYYYYYYYY~~</h1>\n";
 
 print "</body>\n";
