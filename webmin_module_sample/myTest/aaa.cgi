@@ -8,10 +8,10 @@ print "<html>\n";
 #
 print "<head>\n";
 print "<title>Page Title</title>\n";
-print "<script src=\"my_script\">";
-#print "function myFunction() {
-#    document.getElementById(\"demo\").innerHTML = \"Paragraph changed from print.\";
-#}";
+print "<script>";
+print "function myFunction() {
+    document.getElementById(\"demo\").innerHTML = \"Paragraph changed from print.\";
+}";
 print "</script>";
 print "</head>\n";
 #
