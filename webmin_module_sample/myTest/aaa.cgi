@@ -9,7 +9,9 @@ print "<html>\n";
 print "<head>\n";
 print "<title>Page Title</title>\n";
 print "<script>";
-print "document.getElementById(\"demo\").innerHTML = \"Paragraph changed.\";";
+print "function myFunction() {
+    document.getElementById(\"demo\").innerHTML = \"Paragraph changed.\";
+}";
 print "</script>";
 print "</head>\n";
 #
@@ -22,6 +24,7 @@ foreach $key (keys %in) {
 };
 
 print "<p id=\"demo\">A Paragraph</p>";
+print "<button type=\"button\" onclick=\"myFunction()\">Try it</button>"
 
 print "</body>\n";
 print "</html>\n";
