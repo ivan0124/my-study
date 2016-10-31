@@ -12,11 +12,14 @@ td{
 }
 
 th{
-    background-color: #000000;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;    
+    background-color: #dddddd;
 }
 
 tr{
-    background-color: #dddddd;
+    background-color: #ffffff;
 }
 </style>
 
