@@ -18,7 +18,7 @@ print "function myUpdate() {
 print "</script>";
 
 print "</head>\n";
-print "<body onload = \"myUpdate()\">\n";
+print "<body onload = \"setInterval(myUpdate,3000)\">\n";
 
 #
 print "<form action=\"aaa.cgi\">\n";
