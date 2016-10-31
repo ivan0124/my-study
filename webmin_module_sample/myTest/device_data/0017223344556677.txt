@@ -1,2 +1,2 @@
-<tr> <td><a href="./sensor_data/0017112233445566.cgi">0017223344556677</a></td> <td> WSN </td> <td>0007223344556677</td> </tr>  
+<tr> <td><a href="./sensor_data/0017223344556677.cgi">0017223344556677</a></td> <td> WSN </td> <td>0007223344556677</td> </tr>  
 
