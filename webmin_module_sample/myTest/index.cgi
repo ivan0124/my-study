@@ -30,20 +30,29 @@ print "<body onload = \"setInterval(myUpdate,3000)\">\n";
         # Use a regular expression to ignore files beginning with a period
         next if ($file =~ m/^\./);
 
-	print "$file\n";
+	#print "$file\n";
+	open(my $fh, '<:encoding(UTF-8)', $file)
+	  or die "Could not open file '$filename' $!";
+	while (my $row = <$fh>) {
+	  chomp $row;
+	  print "$row\n";
+	} 
+	close($fs);	
 
     }
 
     closedir(DIR);
 #
-my $filename = 'data.txt';
-open(my $fh, '<:encoding(UTF-8)', $filename)
-  or die "Could not open file '$filename' $!";
-while (my $row = <$fh>) {
-  chomp $row;
-  print "$row\n";
-} 
-close($fs);
+#my $filename = 'data.txt';
+#open(my $fh, '<:encoding(UTF-8)', $filename)
+#  or die "Could not open file '$filename' $!";
+#while (my $row = <$fh>) {
+#  chomp $row;
+#  print "$row\n";
+#} 
+#close($fs);
+
+
 #my $row = <$fh>;
 #print "$row\n";
 #
@@ -58,14 +67,14 @@ close($fs);
 print "<h1>This is a Headingxxxxxxxxxx</h1>\n";
 print "<p id=\"demo1\">This is a paragraph.</p>\n";
 
-my $filename = 'data.txt';
-open(my $fh, '<:encoding(UTF-8)', $filename)
-  or die "Could not open file '$filename' $!";
-while (my $row = <$fh>) {
-  chomp $row;
-  print "$row\n";
-} 
-close($fs);
+#my $filename = 'data.txt';
+#open(my $fh, '<:encoding(UTF-8)', $filename)
+#  or die "Could not open file '$filename' $!";
+#while (my $row = <$fh>) {
+#  chomp $row;
+#  print "$row\n";
+#} 
+#close($fs);
 
 print "</body>\n";
 print "</html>\n";
