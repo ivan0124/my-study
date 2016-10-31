@@ -21,13 +21,13 @@ td{
     padding: 8px;
 }
 th{
-    border: 10px solid #00ff00;
+    border: 10px solid #000000;
     text-align: left;
     padding: 8px;    
-    background-color: #ff0000;
+    background-color: #dddddd;
 }
 tr{
-    background-color: #ffffff;
+    background-color: #dddddd;
 }
 </style>";
 
