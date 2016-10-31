@@ -33,14 +33,14 @@ print "<body onload = \"setInterval(myUpdate,3000)\">\n";
 	}
 	else{
 
-	  print "$file\n";
-	  open(my $fh, '<:encoding(UTF-8)', $dir+'/'+$file)
-	    or die "Could not open file '$file' $!";
-	  while (my $row = <$fh>) {
-	    chomp $row;
-	    print "$row\n";
-	  } 
-	  close($fs);
+	  print "$dir+'/'+$file\n";
+	  #open(my $fh, '<:encoding(UTF-8)', $dir+'/'+$file)
+	  #  or die "Could not open file '$file' $!";
+	  #while (my $row = <$fh>) {
+	  #  chomp $row;
+	  #  print "$row\n";
+	  #} 
+	  #close($fs);
 	}
 
     }
