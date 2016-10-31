@@ -42,7 +42,7 @@ print "<body onload = \"setInterval(myUpdate,3000)\">\n";
 	    chomp $row;
 	    print "$row\n";
 	  } 
-	  #close($fs);
+	  close($fh);
 	}
 
     }
