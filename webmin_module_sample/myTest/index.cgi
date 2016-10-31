@@ -41,7 +41,8 @@ print "function myUpdate() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-     document.getElementById(\"content\").innerHTML = this.responseText;
+     document.getElementById(\"content\").innerHTML = \
+     \"<tr> <th>Sensor Hub ID</th> <th> Connectivity type </th> <th> Connectivity ID</th> </tr>\" + this.responseText;
     }
   };
   xhttp.open(\"GET\", \"data.cgi\", true);
@@ -55,7 +56,7 @@ print "</head>\n";
 print "<body onload = \"setTimeout(myUpdate,0)\">\n";
 
 print "<table id=\"content\">";
-print "<tr> <th>Sensor Hub ID</th> <th> Connectivity type </th> <th> Connectivity ID</th> </tr>";
+#print "<tr> <th>Sensor Hub ID</th> <th> Connectivity type </th> <th> Connectivity ID</th> </tr>";
 print "</table>\n";
 
 
