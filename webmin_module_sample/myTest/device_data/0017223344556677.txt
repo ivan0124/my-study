@@ -1,24 +1,4 @@
-<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-td{
-    border: 1px solid #000000;
-    text-align: left;
-    padding: 8px;
-}
-th{
-    border: 1px solid #000000;
-    text-align: left;
-    padding: 8px;    
-    background-color: #dddddd;
-}
-tr{
-    background-color: #ffffff;
-}
-</style>
+
 <tr> <td>0017556677889911</td> <td> WSN </td> <td>0007556677889911</td> </tr>
 <tr> <td><a href="./sensor_data/0017112233445566.cgi">0017112233445566</a></td> <td> WSN </td> <td>0007223344556677</td> </tr>  
 <tr> <td>0017223344556607</td> <td> WSN </td> <td>0007223344556607</td> </tr>  
