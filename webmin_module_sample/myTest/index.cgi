@@ -38,7 +38,10 @@ print "function myUpdate() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
      document.getElementById(\"content\").innerHTML =  \
-     '<tr> <th>Sensor Hub ID</th> <th> Connectivity type </th> <th> Connectivity ID</th> </tr>' + this.responseText;
+     '<tr> <th style = \"border: 1px solid #000000; text-align: left; padding: 8px;\"> Sensor Hub ID</th> \
+           <th style = \"border: 1px solid #000000; text-align: left; padding: 8px;\"> Connectivity type </th>\ 
+           <th style = \"border: 1px solid #000000; text-align: left; padding: 8px;\"> Connectivity ID</th> \
+      </tr>' + this.responseText;
     }
   };
   xhttp.open(\"GET\", \"data.cgi\", true);
