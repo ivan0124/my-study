@@ -33,13 +33,14 @@ tr{
 
 print "<script>";
 print "function myUpdate() {
-
+</style>
   var th{
         border: 1px solid #000000;
         text-align: left;
         padding: 8px;    
         background-color: #dddddd;
    }
+</style>   
   //
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
