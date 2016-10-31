@@ -39,33 +39,33 @@ print "</head>\n";
 print "<body onload = \"setInterval(myUpdate,3000)\">\n";
 
 print "<div id=\"content\">";
-    my $dir = './device_data';
+    #my $dir = './device_data';
 
-    opendir(DIR, $dir) or die $!;
+    #opendir(DIR, $dir) or die $!;
 
-    while (my $file = readdir(DIR)) {
+    #while (my $file = readdir(DIR)) {
 
         # Use a regular expression to ignore files beginning with a period
-        if ($file =~ m/^\./){
-    	  next;
-    	}
-    	else{
+    #    if ($file =~ m/^\./){
+    #	  next;
+    #	}
+    #	else{
           
 	  #print HTML file
-    	  my $path = "$dir/$file";
-    	  print "$path\n";
-    	  open(my $fh, '<:encoding(UTF-8)', $path)
-    	    or die "Could not open file '$path' $!";
-    	  while (my $row = <$fh>) {
-    	    chomp $row;
-    	    print "$row\n";
-    	  } 
-    	  close($fh);
-    	}
+   # 	  my $path = "$dir/$file";
+    #	  print "$path\n";
+    #	  open(my $fh, '<:encoding(UTF-8)', $path)
+    #	    or die "Could not open file '$path' $!";
+    # 	  while (my $row = <$fh>) {
+    #	    chomp $row;
+    #	    print "$row\n";
+    #	  } 
+    #	  close($fh);
+    #	}
 
-    }
+#    }
 
-    closedir(DIR);
+#    closedir(DIR);
 print "</div>";
 
 #print "<h1>This is a Headingxxxxxxxxxx</h1>\n";
