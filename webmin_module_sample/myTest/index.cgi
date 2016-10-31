@@ -7,7 +7,7 @@ ui_print_header(undef);
 
 print "<!DOCTYPE html>\n";
 print "<html>\n";
-print "<style>
+my $style = "<style>
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -32,6 +32,8 @@ tr{
 }
 </style>";
 
+my $table_header = "<tr> <th>Sensor Hub ID</th> <th> Connectivity type </th> <th> Connectivity ID</th> </tr>";
+
 print "<head>\n";
 print "<title>Page Title</title>\n";
 
@@ -41,8 +43,7 @@ print "function myUpdate() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-     document.getElementById(\"content\").innerHTML = \
-     \"<tr> <th>Sensor Hub ID</th> <th> Connectivity type </th> <th> Connectivity ID</th> </tr>\" + this.responseText;
+     document.getElementById(\"content\").innerHTML =  $table_header + this.responseText;
     }
   };
   xhttp.open(\"GET\", \"data.cgi\", true);
