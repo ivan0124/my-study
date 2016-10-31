@@ -26,7 +26,7 @@ print "function myUpdate() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-     document.getElementById(\"content\").innerHTML = this.responseText;
+     document.getElementById(\"demo1\").innerHTML = this.responseText;
     }
   };
   xhttp.open(\"GET\", \"data.cgi\", true);
@@ -38,7 +38,7 @@ print "</script>";
 print "</head>\n";
 print "<body onload = \"setInterval(myUpdate,3000)\">\n";
 
-print "<div id=\"content\">";
+#print "<div id=\"content\">";
     #my $dir = './device_data';
 
     #opendir(DIR, $dir) or die $!;
@@ -66,10 +66,10 @@ print "<div id=\"content\">";
 #    }
 
 #    closedir(DIR);
-print "</div>\n";
+#print "</div>\n";
 
 #print "<h1>This is a Headingxxxxxxxxxx</h1>\n";
-#print "<p id=\"demo1\">This is a paragraph.</p>\n";
+print "<p id=\"demo1\"></p>\n";
 
 
 print "</body>\n";
