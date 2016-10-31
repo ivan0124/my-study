@@ -28,6 +28,7 @@ while (my $row = <$fh>) {
   chomp $row;
   print "$row\n";
 } 
+close($fs);
 #my $row = <$fh>;
 #print "$row\n";
 #
