@@ -3,7 +3,7 @@
 # Output HTML for the file manager applet
 
 require './myTest-lib.pl';
-ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
+ui_print_header(undef);
 
 print "<!DOCTYPE html>\n";
 print "<html>\n";
@@ -37,7 +37,7 @@ print "function myUpdate() {
 print "</script>";
 
 print "</head>\n";
-print "<body onload = \"setTimeout(myUpdate,100)\">\n";
+print "<body onload = \"setTimeout(myUpdate,0)\">\n";
 
 print "<div id=\"content\">";
     #my $dir = './device_data';
