@@ -1,7 +1,7 @@
 <form action="aaa.cgi">
 First name:<br>
-<input type="text" name="firstname" value="Mickey_data11111.txt"><br>
-<a href="./0017112233445566.cgi">0017112233445566</a>
+<input type="text" name="firstname" value="Mickey_data11111222.txt"><br>
+<a href="./sensor_data/0017112233445566.cgi">0017112233445566</a>
 <input type="text" name="lastname" value="Wang_data1111.txt"><br>
 <input type="submit" value="Submit">
 </form>
