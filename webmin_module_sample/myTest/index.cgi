@@ -31,12 +31,13 @@ print "function myUpdate() {
   };
   xhttp.open(\"GET\", \"data.cgi\", true);
   xhttp.send();
+  setTimeout(myUpdate,3000)
 }";
 
 print "</script>";
 
 print "</head>\n";
-print "<body onload = \"setInterval(myUpdate,3000)\">\n";
+print "<body onload = \"setTimeout(myUpdate,100)\">\n";
 
 print "<div id=\"content\">";
     #my $dir = './device_data';
