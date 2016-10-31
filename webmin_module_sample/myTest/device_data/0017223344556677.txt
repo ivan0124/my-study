@@ -6,7 +6,7 @@ table {
 }
 
 td, th {
-    border: 1px solid #00ff00;
+    border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
 }
@@ -19,4 +19,5 @@ tr:nth-child(even) {
 <table>
   <tr> <th>Sensor Hub ID</th> <th> Connectivity type </th> <th> Connectivity ID</th> </tr>
   <tr> <td>0017223344556677</td> <td> WSN </td> <td>0007223344556677</td> </tr>  
+  <tr> <td>0017556677889911</td> <td> WSN </td> <td>0007556677889911</td> </tr>
 </table>
