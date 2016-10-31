@@ -13,7 +13,7 @@ print "<title>Page Title</title>\n";
 $i = 0;
 print "<script>";
 print "function myUpdate() {
-    document.getElementById(\"demo1\").innerHTML = \"change_name.$i++\";
+    document.getElementById(\"demo1\").innerHTML = \"change_name.\";
     
 }";
 print "</script>";
