@@ -21,13 +21,19 @@ print "</script>";
 print "</head>\n";
 print "<body onload = \"setInterval(myUpdate,3000)\">\n";
 
+my $filename = 'data.txt';
+open(my $fh, '<:encoding(UTF-8)', $filename)
+  or die "Could not open file '$filename' $!";
+ 
+my $row = <$fh>;
+print "$row\n";
 #
-print "<form action=\"aaa.cgi\">\n";
-  print "First name:<br>\n";
-  print "<input type=\"text\" name=\"firstname\" value=\"Mickey\"><br>";
-  print "<input type=\"text\" name=\"lastname\" value=\"Wang\"><br>";
-  print "<input type=\"submit\" value=\"Submit\">\n";
-print "</form>\n";
+#print "<form action=\"aaa.cgi\">\n";
+#  print "First name:<br>\n";
+#  print "<input type=\"text\" name=\"firstname\" value=\"Mickey\"><br>";
+#  print "<input type=\"text\" name=\"lastname\" value=\"Wang\"><br>";
+#  print "<input type=\"submit\" value=\"Submit\">\n";
+#print "</form>\n";
 #
 
 print "<h1>This is a Headingxxxxxxxxxx</h1>\n";
