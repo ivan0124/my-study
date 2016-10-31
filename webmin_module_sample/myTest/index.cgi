@@ -33,7 +33,7 @@ print "<body onload = \"setInterval(myUpdate,3000)\">\n";
 	}
 	else{
           
-	  my $path .= $dir + '/' + $file;
+	  my $path = "$dir/$file";
 	  print "$path\n";
 	  #open(my $fh, '<:encoding(UTF-8)', $dir+'/'+$file)
 	  #  or die "Could not open file '$file' $!";
