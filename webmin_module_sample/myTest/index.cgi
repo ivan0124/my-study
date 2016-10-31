@@ -13,7 +13,7 @@ print "<title>Page Title</title>\n";
 print "<script>";
 print "function myUpdate() {
     document.getElementById(\"demo1\").innerHTML = \"change_name.\";
-    setInterval(function(){ alert(\"Hello\"); }, 3000);
+    
 }";
 print "</script>";
 
