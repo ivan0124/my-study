@@ -9,8 +9,15 @@ print "<!DOCTYPE html>\n";
 print "<html>\n";
 print "<head>\n";
 print "<title>Page Title</title>\n";
+
+print "<script>";
+print "function myUpdate() {
+    document.getElementByName(\"firstname\").innerHTML = \"change_name.\";
+}";
+print "</script>";
+
 print "</head>\n";
-print "<body>\n";
+print "<body onload = \"myUpdate()\">\n";
 
 #
 print "<form action=\"aaa.cgi\">\n";
