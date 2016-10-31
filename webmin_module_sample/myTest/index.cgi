@@ -7,33 +7,6 @@ ui_print_header(undef);
 
 print "<!DOCTYPE html>\n";
 print "<html>\n";
-my $style = "<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 70%;
-}
-
-td{
-    border: 1px solid #000000;
-    text-align: left;
-    padding: 8px;
-}
-
-th{
-    border: 1px solid #000000;
-    text-align: left;
-    padding: 8px;    
-    background-color: #dddddd;
-}
-
-tr{
-    background-color: #ffffff;
-}
-</style>";
-
-my $table_header = '<tr> <th>Sensor Hub ID</th> <th> Connectivity type </th> <th> Connectivity ID</th> </tr>';
-
 print "<head>\n";
 print "<title>Page Title</title>\n";
 
