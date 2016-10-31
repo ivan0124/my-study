@@ -12,14 +12,11 @@ td, th {
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #ff0000;
 }
 </style>
 
 <table>
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
+  <tr> <th>Company</th> <th>Contact</th> <th>Country</th> </tr>
+  <tr> <td>Alfreds Futterkiste</td> <td>Maria Anders</td> <td>Germany</td> </tr>  
 </table>
