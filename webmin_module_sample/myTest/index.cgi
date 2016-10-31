@@ -29,7 +29,7 @@ print "function myUpdate() {
      document.getElementById(\"demo1\").innerHTML = this.responseText;
     }
   };
-  xhttp.open(\"GET\", \"index.cgi\", true);
+  xhttp.open(\"GET\", \"data.cgi\", true);
   xhttp.send();
 }";
 
