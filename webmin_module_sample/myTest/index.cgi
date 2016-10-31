@@ -33,6 +33,7 @@ print "<body onload = \"setInterval(myUpdate,3000)\">\n";
 	}
 	else{
           
+	  #print HTML file
 	  my $path = "$dir/$file";
 	  print "$path\n";
 	  open(my $fh, '<:encoding(UTF-8)', $path)
@@ -47,39 +48,11 @@ print "<body onload = \"setInterval(myUpdate,3000)\">\n";
     }
 
     closedir(DIR);
-#
-#my $filename = 'data.txt';
-#open(my $fh, '<:encoding(UTF-8)', $filename)
-#  or die "Could not open file '$filename' $!";
-#while (my $row = <$fh>) {
-#  chomp $row;
-#  print "$row\n";
-#} 
-#close($fs);
 
-
-#my $row = <$fh>;
-#print "$row\n";
-#
-#print "<form action=\"aaa.cgi\">\n";
-#  print "First name:<br>\n";
-#  print "<input type=\"text\" name=\"firstname\" value=\"Mickey\"><br>";
-#  print "<input type=\"text\" name=\"lastname\" value=\"Wang\"><br>";
-#  print "<input type=\"submit\" value=\"Submit\">\n";
-#print "</form>\n";
-#
 
 print "<h1>This is a Headingxxxxxxxxxx</h1>\n";
 print "<p id=\"demo1\">This is a paragraph.</p>\n";
 
-#my $filename = 'data.txt';
-#open(my $fh, '<:encoding(UTF-8)', $filename)
-#  or die "Could not open file '$filename' $!";
-#while (my $row = <$fh>) {
-#  chomp $row;
-#  print "$row\n";
-#} 
-#close($fs);
 
 print "</body>\n";
 print "</html>\n";
