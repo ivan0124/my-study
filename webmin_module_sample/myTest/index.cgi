@@ -13,7 +13,16 @@ print "<title>Page Title</title>\n";
 $i = 0;
 print "<script>";
 print "function myUpdate() {
-
+  //Remove all child of the div
+  el =  document.getElementById(\"content\");
+  if ( el.hasChildNodes() )
+  {
+    while ( el.childNodes.length >= 1 )
+    {
+       el.removeChild( el.firstChild );       
+    } 
+  }
+  //
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -29,6 +38,7 @@ print "</script>";
 print "</head>\n";
 print "<body onload = \"setInterval(myUpdate,3000)\">\n";
 
+print "<div id=\"content\">";
     my $dir = './device_data';
 
     opendir(DIR, $dir) or die $!;
@@ -56,7 +66,7 @@ print "<body onload = \"setInterval(myUpdate,3000)\">\n";
     }
 
     closedir(DIR);
-
+print "</div>"
 
 print "<h1>This is a Headingxxxxxxxxxx</h1>\n";
 print "<p id=\"demo1\">This is a paragraph.</p>\n";
