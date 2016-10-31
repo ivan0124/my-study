@@ -28,16 +28,20 @@ print "<body onload = \"setInterval(myUpdate,3000)\">\n";
     while (my $file = readdir(DIR)) {
 
         # Use a regular expression to ignore files beginning with a period
-        next if ($file =~ m/^\./);
+        if ($file =~ m/^\./){
+	  next;
+	}
+	else{
 
-	print "$file\n";
-	#open(my $fh, '<:encoding(UTF-8)', $file)
-	#  or die "Could not open file '$filename' $!";
-	#while (my $row = <$fh>) {
-	#  chomp $row;
-	#  print "$row\n";
-	#} 
-	#close($fs);	
+	  print "$file\n";
+	  open(my $fh, '<:encoding(UTF-8)', $file)
+	    or die "Could not open file '$file' $!";
+	  while (my $row = <$fh>) {
+	    chomp $row;
+	    print "$row\n";
+	  } 
+	  close($fs);
+	}
 
     }
 
