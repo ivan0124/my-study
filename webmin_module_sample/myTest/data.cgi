@@ -16,7 +16,7 @@ ui_print_header(undef);
     close($fh_css);
 #print "Content-type:text/html\r\n\r\n";
 #print "<div id=\"content\">";
-    my $dir = './device_data';
+    my $dir = './device_table';
 
     opendir(DIR, $dir) or die $!;
 
