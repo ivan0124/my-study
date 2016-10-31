@@ -30,8 +30,8 @@ print "</script>";
 print "</head>\n";
 print "<body onload = \"setTimeout(myUpdate,0)\">\n";
 
-print "<div id=\"content\">";
-print "</div>\n";
+print "<table id=\"content\">";
+print "</table>\n";
 
 
 print "</body>\n";
