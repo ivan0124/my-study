@@ -21,7 +21,7 @@ print "function myUpdate() {
      '<th> Connectivity type </th> <th> Connectivity ID</th> </tr>' + this.responseText;
     }
   };
-  xhttp.open(\"GET\", \"data.cgi\", true);
+  xhttp.open(\"GET\", \"device_table.cgi\", true);
   xhttp.send();
   setTimeout(myUpdate,3000)
 }";
