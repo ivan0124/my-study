@@ -13,17 +13,6 @@ print "<title>Page Title</title>\n";
 $i = 0;
 print "<script>";
 print "function myUpdate() {
-  //Remove all child of the div
-  /*
-  el =  document.getElementById(\"content\");
-  if ( el.hasChildNodes() )
-  {
-    while ( el.childNodes.length >= 1 )
-    {
-       el.removeChild( el.firstChild );       
-    } 
-  }
-  */
   //
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -42,37 +31,7 @@ print "</head>\n";
 print "<body onload = \"setTimeout(myUpdate,0)\">\n";
 
 print "<div id=\"content\">";
-    #my $dir = './device_data';
-
-    #opendir(DIR, $dir) or die $!;
-
-    #while (my $file = readdir(DIR)) {
-
-        # Use a regular expression to ignore files beginning with a period
-    #    if ($file =~ m/^\./){
-    #	  next;
-    #	}
-    #	else{
-          
-	  #print HTML file
-   # 	  my $path = "$dir/$file";
-    #	  print "$path\n";
-    #	  open(my $fh, '<:encoding(UTF-8)', $path)
-    #	    or die "Could not open file '$path' $!";
-    # 	  while (my $row = <$fh>) {
-    #	    chomp $row;
-    #	    print "$row\n";
-    #	  } 
-    #	  close($fh);
-    #	}
-
-#    }
-
-#    closedir(DIR);
 print "</div>\n";
-
-#print "<h1>This is a Headingxxxxxxxxxx</h1>\n";
-#print "<p id=\"demo1\"></p>\n";
 
 
 print "</body>\n";
