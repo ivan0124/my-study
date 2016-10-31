@@ -26,7 +26,7 @@ print "function myUpdate() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-     document.getElementById(\"demo1\").innerHTML = this.responseText;
+     //document.getElementById(\"demo1\").innerHTML = this.responseText;
     }
   };
   xhttp.open(\"GET\", \"index.cgi\", true);
@@ -68,8 +68,8 @@ print "<div id=\"content\">";
     closedir(DIR);
 print "</div>";
 
-print "<h1>This is a Headingxxxxxxxxxx</h1>\n";
-print "<p id=\"demo1\">This is a paragraph.</p>\n";
+#print "<h1>This is a Headingxxxxxxxxxx</h1>\n";
+#print "<p id=\"demo1\">This is a paragraph.</p>\n";
 
 
 print "</body>\n";
