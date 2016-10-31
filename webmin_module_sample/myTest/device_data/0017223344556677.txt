@@ -11,7 +11,7 @@ td, th {
     padding: 8px;
 }
 
-tr:nth-child {
+tr{
     background-color: #ff0000;
 }
 </style>
