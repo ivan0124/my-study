@@ -12,7 +12,7 @@ print "<title>Page Title</title>\n";
 
 print "<script>";
 print "function myUpdate() {
-    document.getElementByName(\"firstname\").innerHTML = \"change_name.\";
+    document.getElementById(\"demo1\").innerHTML = \"change_name.\";
 }";
 print "</script>";
 
@@ -29,7 +29,7 @@ print "</form>\n";
 #
 
 print "<h1>This is a Headingxxxxxxxxxx</h1>\n";
-print "<p>This is a paragraph.</p>\n";
+print "<p id=\"demo1\">This is a paragraph.</p>\n";
 
 print "</body>\n";
 print "</html>\n";
