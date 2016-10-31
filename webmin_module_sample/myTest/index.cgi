@@ -14,6 +14,7 @@ $i = 0;
 print "<script>";
 print "function myUpdate() {
   //Remove all child of the div
+  /*
   el =  document.getElementById(\"content\");
   if ( el.hasChildNodes() )
   {
@@ -22,11 +23,12 @@ print "function myUpdate() {
        el.removeChild( el.firstChild );       
     } 
   }
+  */
   //
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-     document.getElementById(\"demo1\").innerHTML = this.responseText;
+     document.getElementById(\"content\").innerHTML = this.responseText;
     }
   };
   xhttp.open(\"GET\", \"data.cgi\", true);
@@ -70,7 +72,7 @@ print "<div id=\"content\">";
 print "</div>\n";
 
 #print "<h1>This is a Headingxxxxxxxxxx</h1>\n";
-print "<p id=\"demo1\"></p>\n";
+#print "<p id=\"demo1\"></p>\n";
 
 
 print "</body>\n";
