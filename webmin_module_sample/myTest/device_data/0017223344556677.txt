@@ -5,14 +5,18 @@ table {
     width: 100%;
 }
 
-td, th {
+td{
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
 }
 
+th{
+    background-color: #000000;
+}
+
 tr{
-    background-color: #ff0000;
+    background-color: #dddddd;
 }
 </style>
 
