@@ -10,9 +10,10 @@ print "<html>\n";
 print "<head>\n";
 print "<title>Page Title</title>\n";
 
+$i = 0;
 print "<script>";
 print "function myUpdate() {
-    document.getElementById(\"demo1\").innerHTML = \"change_name.\";
+    document.getElementById(\"demo1\").innerHTML = \"change_name.$i++\";
     
 }";
 print "</script>";
