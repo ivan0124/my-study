@@ -9,6 +9,27 @@ print "<!DOCTYPE html>\n";
 print "<html>\n";
 print "<head>\n";
 print "<title>Page Title</title>\n";
+print "<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+td{
+    border: 1px solid #000000;
+    text-align: left;
+    padding: 8px;
+}
+th{
+    border: 1px solid #000000;
+    text-align: left;
+    padding: 8px;    
+    background-color: #dddddd;
+}
+tr{
+    background-color: #ffffff;
+}
+</style>";
 
 print "<script>";
 print "function myUpdate() {
