@@ -43,7 +43,8 @@ print "function myUpdate() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-     document.getElementById(\"content\").innerHTML =  $table_header + this.responseText;
+     document.getElementById(\"content\").innerHTML =  \
+     \"<tr> <th>Sensor Hub ID</th> <th> Connectivity type </th> <th> Connectivity ID</th> </tr>\" + this.responseText;
     }
   };
   xhttp.open(\"GET\", \"data.cgi\", true);
