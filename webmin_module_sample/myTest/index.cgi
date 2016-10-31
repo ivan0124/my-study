@@ -24,7 +24,7 @@ th{
     border: 1px solid #000000;
     text-align: left;
     padding: 8px;    
-    background-color: #dddddd;
+    background-color: #ff0000;
 }
 tr{
     background-color: #ffffff;
