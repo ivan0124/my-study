@@ -13,11 +13,12 @@ print "<title>Page Title</title>\n";
 print "<script>";
 print "function myUpdate() {
     document.getElementById(\"demo1\").innerHTML = \"change_name.\";
+    setInterval(function(){ alert(\"Hello\"); }, 3000);
 }";
 print "</script>";
 
 print "</head>\n";
-print "<body onload = \"setInterval(function(){ alert(\"Hello\"); }, 3000);\">\n";
+print "<body onload = \"myUpdate()\">\n";
 
 #
 print "<form action=\"aaa.cgi\">\n";
