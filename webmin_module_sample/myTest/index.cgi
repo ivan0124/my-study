@@ -7,6 +7,31 @@ ui_print_header(undef);
 
 print "<!DOCTYPE html>\n";
 print "<html>\n";
+print "<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+}
+
+td{
+    border: 1px solid #000000;
+    text-align: left;
+    padding: 8px;
+}
+
+th{
+    border: 1px solid #000000;
+    text-align: left;
+    padding: 8px;    
+    background-color: #dddddd;
+}
+
+tr{
+    background-color: #ffffff;
+}
+</style>";
+
 print "<head>\n";
 print "<title>Page Title</title>\n";
 
@@ -31,6 +56,7 @@ print "</head>\n";
 print "<body onload = \"setTimeout(myUpdate,0)\">\n";
 
 print "<table id=\"content\">";
+print "<tr> <th>Sensor Hub ID</th> <th> Connectivity type </th> <th> Connectivity ID</th> </tr>";
 print "</table>\n";
 
 
