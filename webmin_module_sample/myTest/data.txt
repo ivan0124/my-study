@@ -1,6 +1,6 @@
-<form action=\aaa.cgi">
+<form action="aaa.cgi">
 First name:<br>
 <input type="text" name="firstname" value="Mickey_data.txt"><br>
-<input type="text" name="lastname" value=Wang_data.txt"><br>
+<input type="text" name="lastname" value="Wang_data.txt"><br>
 <input type="submit" value="Submit">
 </form>
