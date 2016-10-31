@@ -21,7 +21,7 @@ print "</script>";
 print "</head>\n";
 print "<body onload = \"setInterval(myUpdate,3000)\">\n";
 
-    my $dir = './';
+    my $dir = './device_data';
 
     opendir(DIR, $dir) or die $!;
 
