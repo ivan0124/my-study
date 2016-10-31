@@ -30,14 +30,14 @@ print "<body onload = \"setInterval(myUpdate,3000)\">\n";
         # Use a regular expression to ignore files beginning with a period
         next if ($file =~ m/^\./);
 
-	#print "$file\n";
-	open(my $fh, '<:encoding(UTF-8)', $file)
-	  or die "Could not open file '$filename' $!";
-	while (my $row = <$fh>) {
-	  chomp $row;
-	  print "$row\n";
-	} 
-	close($fs);	
+	print "$file\n";
+	#open(my $fh, '<:encoding(UTF-8)', $file)
+	#  or die "Could not open file '$filename' $!";
+	#while (my $row = <$fh>) {
+	#  chomp $row;
+	#  print "$row\n";
+	#} 
+	#close($fs);	
 
     }
 
