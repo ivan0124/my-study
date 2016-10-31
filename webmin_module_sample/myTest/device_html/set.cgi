@@ -23,7 +23,9 @@ my  $restful_path;
 &ReadParse();
 foreach $key (keys %in) {
     print "<p>key= $key, value = $in{$key}</p>\n";
-    $restful_path = $key;
+    if ( $key ne 'restful' ){
+      $restful_path = $key;
+    }
 };
 
 
