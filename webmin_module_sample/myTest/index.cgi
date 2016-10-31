@@ -24,9 +24,12 @@ print "<body onload = \"setInterval(myUpdate,3000)\">\n";
 my $filename = 'data.txt';
 open(my $fh, '<:encoding(UTF-8)', $filename)
   or die "Could not open file '$filename' $!";
- 
-my $row = <$fh>;
-print "$row\n";
+while (my $row = <$fh>) {
+  chomp $row;
+  print "$row\n";
+} 
+#my $row = <$fh>;
+#print "$row\n";
 #
 #print "<form action=\"aaa.cgi\">\n";
 #  print "First name:<br>\n";
