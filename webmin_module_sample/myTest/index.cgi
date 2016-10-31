@@ -35,7 +35,6 @@ tr{
 print "<head>\n";
 print "<title>Page Title</title>\n";
 
-$i = 0;
 print "<script>";
 print "function myUpdate() {
   //
