@@ -10,13 +10,13 @@ td{
     padding: 8px;
 }
 th{
-    border: 10px solid #000000;
+    border: 1px solid #000000;
     text-align: left;
     padding: 8px;    
     background-color: #dddddd;
 }
 tr{
-    background-color: #dddddd;
+    background-color: #000000;
 }
 </style>
 <tr> <td>0017556677889911</td> <td> WSN </td> <td>0007556677889911</td> </tr>
