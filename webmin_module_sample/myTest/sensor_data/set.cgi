@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
-require '../../myTest-lib.pl';
-ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
+require '../myTest-lib.pl';
+ui_print_header(undef);
 
 print "<!DOCTYPE html>\n";
 print "<html>\n";
