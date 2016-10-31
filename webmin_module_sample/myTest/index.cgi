@@ -44,27 +44,6 @@ print "function myUpdate() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
      document.getElementById(\"content\").innerHTML =  \
-     '<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 70%;
-}
-td{
-    border: 1px solid #000000;
-    text-align: left;
-    padding: 8px;
-}
-th{
-    border: 1px solid #000000;
-    text-align: left;
-    padding: 8px;    
-    background-color: #dddddd;
-}
-tr{
-    background-color: #ffffff;
-}
-</style>' + \
      '<tr> <th>Sensor Hub ID</th> <th> Connectivity type </th> <th> Connectivity ID</th> </tr>' + this.responseText;
     }
   };
