@@ -32,8 +32,9 @@ print "<body onload = \"setInterval(myUpdate,3000)\">\n";
 	  next;
 	}
 	else{
-
-	  print "$dir+'/'+$file\n";
+          
+	  my $path .= $dir + '/' + $file;
+	  print "$path\n";
 	  #open(my $fh, '<:encoding(UTF-8)', $dir+'/'+$file)
 	  #  or die "Could not open file '$file' $!";
 	  #while (my $row = <$fh>) {
