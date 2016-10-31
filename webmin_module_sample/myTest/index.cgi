@@ -33,12 +33,19 @@ tr{
 
 print "<script>";
 print "function myUpdate() {
+
+  var th{
+        border: 1px solid #000000;
+        text-align: left;
+        padding: 8px;    
+        background-color: #dddddd;
+   }
   //
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
      document.getElementById(\"content\").innerHTML =  \
-     '<tr> <th style = \"border: 1px solid #000000; text-align: left; padding: 8px;\"> Sensor Hub ID</th>' +\
+     '<tr> <th> Sensor Hub ID</th>' +\
      '<th> Connectivity type </th> <th> Connectivity ID</th> </tr>' + this.responseText;
     }
   };
