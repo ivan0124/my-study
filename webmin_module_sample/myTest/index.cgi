@@ -66,10 +66,10 @@ print "<div id=\"content\">";
 #    }
 
 #    closedir(DIR);
-print "</div>";
+print "</div>\n";
 
 #print "<h1>This is a Headingxxxxxxxxxx</h1>\n";
-print "<p id=\"demo1\">This is a paragraph.</p>\n";
+#print "<p id=\"demo1\">This is a paragraph.</p>\n";
 
 
 print "</body>\n";
