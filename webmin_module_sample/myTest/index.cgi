@@ -17,8 +17,8 @@ print "function myUpdate() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
      document.getElementById(\"content\").innerHTML =  \
-     '<tr> <th> Sensor Hub ID</th>' +\
-     '<th> Connectivity type </th> <th> Connectivity ID</th> </tr>' + this.responseText;
+     '<tr> <th> Device ID</th> <th> Device type </th>' +\
+     '<th> Connected connectivity ID </th> <th> Connected connectivity Type</th> </tr>' + this.responseText;
     }
   };
   xhttp.open(\"GET\", \"device_table.cgi\", true);
