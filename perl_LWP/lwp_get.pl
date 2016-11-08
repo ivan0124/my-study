@@ -16,8 +16,9 @@ require LWP::UserAgent;
   my $res = $ua->request($req);
 
   # Check the outcome of the response
+  my $RESTful_content = $res->content;
   if ($res->is_success) {
-      print "$res->content\n";
+      print "$RESTful_content\n";
   } else {
       print "$res->status_line\n";
   }
