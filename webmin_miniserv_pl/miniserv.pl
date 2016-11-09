@@ -28,6 +28,9 @@ if ($config{'perllib'}) {
 	}
 @startup_msg = ( );
 
+#advan
+my $restapi_server = $config{'restapi_server'};
+
 # Check if SSL is enabled and available
 if ($config{'ssl'}) {
 	eval "use Net::SSLeay";
@@ -621,13 +624,15 @@ if (!$config{'nofork'}) {
 eval { setsid(); };	# may not work on Windows
 
 # Close standard file handles
-open(STDIN, "</dev/null");
-open(STDOUT, ">/dev/null");
-&redirect_stderr_to_log();
-&log_error("miniserv.pl started");
-foreach $msg (@startup_msg) {
-	&log_error($msg);
-	}
+#advan del start
+#open(STDIN, "</dev/null");
+#open(STDOUT, ">/dev/null");
+#&redirect_stderr_to_log();
+#&log_error("miniserv.pl started");
+#foreach $msg (@startup_msg) {
+#	&log_error($msg);
+#	}
+#advan del start end
 
 # write out the PID file
 &write_pid_file();
@@ -2280,6 +2285,33 @@ if ($is_restapi) {
 		require "restapi.pl";
 		local $uriout = &handle_restapi($method, $posted_data, $resturi);
 		local $etime = &get_expires_time($simple);
+                #############
+                # advan
+                if ( $resturi =~ /^\/wsnmanage\// && $method eq 'GET') {
+                    print "Found RESTful API: method = $method, resturi = $resturi\n";
+                    my $curl_get_method = 'curl --connect-timeout 3 -H "Content-Type: application/json" -X GET ';
+                    my $uri_type = 'http://';
+                    my $curl_cmd = $curl_get_method . $uri_type . $restapi_server . '/restapi' . $resturi . ' |'; 
+                    
+                    open(CURL,$curl_cmd) || die "Failed: $!\n";
+    
+                    my $content;
+                    for($i=0; $line=<CURL>; $i++) {
+                        $content .= $line
+                    }
+                    close(CURL);
+
+                    my $exit_value = $?>>8;
+                    print "exit value == $exit_value\n";
+                    if ( $exit_value == 0 ){
+                        #print "___ content = $content\n";
+                        $uriout = $content;
+                    }
+                    else{
+                        &http_error(404, "404 Not found");
+                        return 0;
+                    }
+                }  
 		local $resp = "HTTP/1.0 $ok_code $ok_message\r\n".
 		      "Access-Control-Allow-Origin: *\r\n".
 		      "Date: $datestr\r\n".
