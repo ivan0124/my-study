@@ -2289,7 +2289,7 @@ if ($is_restapi) {
                 # advan
                 if ( $resturi =~ /^\/wsnmanage\// && $method eq 'GET') {
                     print "Found RESTful API: method = $method, resturi = $resturi\n";
-                    my $curl_get_method = 'curl --connect-timeout 3 -H "Content-Type: application/json" -X GET ';
+                    my $curl_get_method = 'curl --connect-timeout 3 --max-time 30 -H "Content-Type: application/json" -X GET ';
                     my $uri_type = 'http://';
                     my $curl_cmd = $curl_get_method . $uri_type . $restapi_server . '/restapi' . $resturi . ' |'; 
                     
