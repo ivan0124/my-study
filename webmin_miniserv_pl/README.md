@@ -1,41 +1,9 @@
-#How to setup TensorFlow environment ( for Ubuntu 14.04 64bit/single CPU)
-Tutorial
-
-https://www.tensorflow.org/versions/r0.10/get_started/os_setup.html
-
-2. install pip
+1. svn source code location:
 <pre>
-# Ubuntu/Linux 64-bit
-$ sudo apt-get install python-pip python-dev
+$ https://172.20.2.44/svn/essrisc/iMX6/Linux/Gateway/WISE-3310/fsl-yocto-3.10.17_1.0.0/fsl-release-bsp
 </pre>
 
-3. export path
+2.svn `miniserv.pl` location:
 <pre>
-# Ubuntu/Linux 64-bit, CPU only, Python 2.7
-$ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0rc0-cp27-none-linux_x86_64.whl
+$ ~fsl-release-bsp/sources/meta-advantech/recipes-webadmin/webmin/webmin/restapi/miniserv.pl
 </pre>
-
-4. install TensorFlow
-<pre>
-# Python 2
-$ sudo pip install --upgrade $TF_BINARY_URL
-</pre>
-
-5. install other dependencies
-<pre>
-# For Python 2.7:
-$ sudo apt-get install python-numpy swig python-dev python-wheel
-</pre>
-
-# How to use TensorBoard (for Ubuntu 14.04)
-1. run `tf_test.py` to generate logs
-<pre>
-$ ./tf_test.py
-</pre>
-2. specify logs folder and start `TensorBoard`
-<pre>
-$ tensorboard --logdir=/mnt/my-study/TF_hello/logs
-</pre>
-3. use Browser 127.0.0.1:6006 to see logs.
-
-![link images](https://github.com/ivan0124/my-study/blob/master/TF_hello/images/20160822_5.png)
