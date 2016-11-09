@@ -1,5 +1,6 @@
 #How to test
 <pre>
-$ lwp.pl
+$ perl_curl_get.pl
+$ perl_curl_put.pl
 </pre>
 
