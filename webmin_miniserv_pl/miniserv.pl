@@ -2287,11 +2287,17 @@ if ($is_restapi) {
 		local $etime = &get_expires_time($simple);
                 #############
                 # advan
-                if ( $resturi =~ /^\/wsnmanage\// && $method eq 'GET') {
+                print "RESTful API: method = $method, resturi = $resturi, posted_data == $posted_data \n";
+                if ( $resturi =~ /^\/wsnmanage\// && ( $method eq 'GET' || $method eq 'PUT' ) ) {
                     print "Found RESTful API: method = $method, resturi = $resturi\n";
-                    my $curl_get_method = 'curl --connect-timeout 3 --max-time 30 -H "Content-Type: application/json" -X GET ';
+                    my $curl_method = 'curl --connect-timeout 3 --max-time 30 -H "Content-Type: application/json" -X GET ';
+                        
+                    if ( $method eq 'PUT'){
+                        $curl_method = 'curl --connect-timeout 3 --max-time 30 -H "Content-Type: application/json" -X PUT -d ' . '\''.$posted_data .'\'' . ' ';
+                    }
                     my $uri_type = 'http://';
-                    my $curl_cmd = $curl_get_method . $uri_type . $restapi_server . '/restapi' . $resturi . ' |'; 
+                    my $curl_cmd = $curl_method . $uri_type . $restapi_server . '/restapi' . $resturi . ' |'; 
+                    print "curl_cmd ====== $curl_cmd \n";
                     
                     open(CURL,$curl_cmd) || die "Failed: $!\n";
     
