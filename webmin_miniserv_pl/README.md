@@ -16,4 +16,5 @@ $ ~fsl-release-bsp/sources/meta-advantech/recipes-webadmin/webmin/webmin/default
 4. use ssh to copy file to wise-3310
 <pre>
 $ scp ./miniserv.pl  root@172.22.12.7:/usr/lib/webmin/webmin
+$ scp ./miniserv.conf root@172.22.12.7:/etc/webmin/
 </pre>
