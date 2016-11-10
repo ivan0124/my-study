@@ -28,8 +28,9 @@ if ($config{'perllib'}) {
 	}
 @startup_msg = ( );
 
-#advan
+#20161110: ivan add start
 my $restapi_server = $config{'restapi_server'};
+#20161110: ivan add end
 
 # Check if SSL is enabled and available
 if ($config{'ssl'}) {
@@ -624,15 +625,13 @@ if (!$config{'nofork'}) {
 eval { setsid(); };	# may not work on Windows
 
 # Close standard file handles
-#advan del start
-#open(STDIN, "</dev/null");
-#open(STDOUT, ">/dev/null");
-#&redirect_stderr_to_log();
-#&log_error("miniserv.pl started");
-#foreach $msg (@startup_msg) {
-#	&log_error($msg);
-#	}
-#advan del start end
+open(STDIN, "</dev/null");
+open(STDOUT, ">/dev/null");
+&redirect_stderr_to_log();
+&log_error("miniserv.pl started");
+foreach $msg (@startup_msg) {
+	&log_error($msg);
+	}
 
 # write out the PID file
 &write_pid_file();
@@ -2285,9 +2284,8 @@ if ($is_restapi) {
 		require "restapi.pl";
 		local $uriout = &handle_restapi($method, $posted_data, $resturi);
 		local $etime = &get_expires_time($simple);
-                #############
-                # advan
-                print "RESTful API: method = $method, resturi = $resturi, posted_data == $posted_data \n";
+                #20161110: ivan add start
+                #print "RESTful API: method = $method, resturi = $resturi, posted_data == $posted_data \n";
                 if ( $resturi =~ /^\/wsnmanage\// && ( $method eq 'GET' || $method eq 'PUT' ) ) {
                     print "Found RESTful API: method = $method, resturi = $resturi\n";
                     my $curl_method = 'curl --connect-timeout 3 --max-time 30 -H "Content-Type: application/json" -X GET ';
@@ -2317,7 +2315,9 @@ if ($is_restapi) {
                         &http_error(404, "404 Not found");
                         return 0;
                     }
-                }  
+                }
+                #20161110: ivan add end.
+  
 		local $resp = "HTTP/1.0 $ok_code $ok_message\r\n".
 		      "Access-Control-Allow-Origin: *\r\n".
 		      "Date: $datestr\r\n".
