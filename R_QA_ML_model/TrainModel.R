@@ -1,4 +1,5 @@
 babiesssss =read.table("./babiesssss.txt", header =T)
+write.csv(babiesssss, file = "MyData.csv", row.names=FALSE)
 babiesssss = na.exclude(babiesssss)
 fail = babiesssss$fail
 babiesssss$fail =as.factor(fail)
