@@ -17,3 +17,8 @@ $ sudo docker run -it --name hdd_ml_dev -v $PWD:/home/adv:rw -p 3000:3000 eis/hd
 <pre>
 $ sudo docker start -ai hdd_ml_dev
 </pre>
+
+3. stop container
+<pre>
+$ sudo docker rm  hdd_ml_dev
+</pre>
