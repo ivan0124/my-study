@@ -1,4 +1,6 @@
 # TensorFlow Docker File
+Tutorial: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/docker/Dockerfile
+
 # How to build docker image
 1. in `docker_TensorFlow` folder 
 <pre>
