@@ -1,2 +1,5 @@
 # EISRestfulAPI_Dockerfile
-Build up &amp; Sync Dev Environment 
+# How to build docker image
+<pre>
+$ sudo docker build -t eis/restapi_dev .
+</pre>
