@@ -1,4 +1,4 @@
-# EISRestfulAPI_Dockerfile
+# TensorFlow Docker File
 # How to build docker image
 1. in `docker_TensorFlow` folder 
 <pre>
