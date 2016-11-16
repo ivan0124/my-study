@@ -7,7 +7,7 @@ RUN apt-get update
 RUN apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath socat libsdl1.2-dev xterm
 RUN apt-get install -y sed cvs coreutils texi2html docbook-utils python-pysqlite2 help2man desktop-file-utils libgl1-mesa-dev libglu1-mesa-dev mercurial autoconf automake groff curl lzop asciidoc
 
-#install TensorFlow
+# Install TensorFlow
 # Pick up some TF dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
@@ -86,6 +86,9 @@ RUN useradd -m -k /home/adv adv -p adv -s /bin/bash -G sudo
 RUN echo "adv ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 WORKDIR /home/adv
 USER adv
+#RUN apt-get install -y git
+RUN git clone https://github.com/ivan0124/python-programming.git
+RUN git clone https://github.com/ivan0124/my-study.git
 
 
 #Setting docker port and run node-red
