@@ -44,7 +44,7 @@ var client  = mqtt.connect('mqtt://' + mqtt_server);
 client.queueQoSZero = false;
 
 client.on('connect', function () {
-  console.log('[wise_snail] mqtt connect to ' + mqtt_server );
+  console.log('mqtt connect to ' + mqtt_server );
   client.subscribe('/ML_HDD/+/predict');
 
   sendToMqttBroker('/ML_HDD/12345/predict_result', 'ML_model response');
