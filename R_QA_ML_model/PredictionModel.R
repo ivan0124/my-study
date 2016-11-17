@@ -14,17 +14,17 @@ cut_value_file =read.table("./Threshold.data", header =T)
 #cat("title name  = ", names(cut_value_file)[1], "\n")
 #cat("cut_value_file$cut_value[1] = ", cut_value_file$cut_value[1], "\n")
 threshold = cut_value_file$cut_value[1];
-cat("threshold = ", threshold, "\n")
+#cat("threshold = ", threshold, "\n")
 
 pred = predict(train.result, newdata =feature_data, type ="response")
 for(j in 1:nrow(feature_data)) {
 
   if (pred[j] <= threshold){
     pred[j]=0
-    cat("===> predict result = GOOD.\n")
+    cat("{\"HDD_data\":{\"Health\" : 0},SessionID: 12345}")
   } 
   else{
     pred[j]=1
-    cat("===> predict result = FAIL.\n")
+    cat("{\"HDD_data\":{\"Health\" : 1},SessionID: 12345}")
   }
 }
