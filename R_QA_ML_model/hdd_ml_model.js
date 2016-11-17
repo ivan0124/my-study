@@ -107,7 +107,11 @@ client.on('message', function (topic, message) {
 
   R.stdout.on('data', (data) => {
     console.log('stdout:' + data);
-    sendToMqttBroker('/ML_HDD/12345/predict_result', data);
+    var responsObj = {};
+    responsObj = JSON.parse(data);
+    responsObj.SessionID = 12345;
+
+    sendToMqttBroker('/ML_HDD/12345/predict_result', JSON.stringify(responsObj));
   });
 })
 
