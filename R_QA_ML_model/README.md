@@ -20,7 +20,7 @@ $ Rscript ./PredictionModel.R
 </pre>
 
 #Use NodeJS to test
-1. use NodeJS app to communicate with `PredictionModel.R`
+1. use NodeJS app to communicate with `PredictionModel.R`. MUST use nodejs `v4.6.2`
 <pre>
 $ node ./app.js
 </pre>
