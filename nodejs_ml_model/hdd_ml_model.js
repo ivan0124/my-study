@@ -66,6 +66,15 @@ client.on('message', function (topic, message) {
   console.log('----------------------------------------------------------------------------');
   
   sendToMqttBroker('/ML_HDD/12345/predict_result', 'ML_model response');
+  
+  var feature_data ='failure smart5 smart9 smart187 smart192 smart194 smart197 smart198\n1 8 1761 4 0 30 0 0'
+  fs.writeFile("./Feature.data", feature_data, function(err) {
+    if(err) {
+      return console.log(err);
+    }
+
+    console.log("The file was saved!");
+  }); 
 })
 
 function sendToMqttBroker(topic, message){
