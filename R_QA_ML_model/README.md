@@ -1,4 +1,4 @@
-#How to install R
+# install R environment
 
 1.installing R: [how-to-set-up-r-on-ubuntu-14-04](https://www.digitalocean.com/community/tutorials/how-to-set-up-r-on-ubuntu-14-04)
 <pre>
@@ -6,7 +6,11 @@ $ sudo apt-get update
 $ sudo apt-get -y install r-base
 </pre>
 
-
+# install nodejs module
+<pre>
+$ npm install mqtt --save
+$ npm install keypress -- save
+</pre>
 
 #How to test
 1. generate and save trained `Model.RData` file
