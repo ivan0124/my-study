@@ -21,10 +21,10 @@ for(j in 1:nrow(feature_data)) {
 
   if (pred[j] <= threshold){
     pred[j]=0
-    cat("{\"HDD_data\":{\"Health\" : 0},SessionID: 12345}")
+    cat("{\"HDD_data\":{\"Health\" : 0}}")
   } 
   else{
     pred[j]=1
-    cat("{\"HDD_data\":{\"Health\" : 1},SessionID: 12345}")
+    cat("{\"HDD_data\":{\"Health\" : 1}}")
   }
 }
