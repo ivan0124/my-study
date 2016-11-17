@@ -1,5 +1,6 @@
 var mqtt = require('mqtt');
 var fs = require('fs');
+var spawn = require('child_process').spawn
 
 const VGW_ID_PREFIX = '0000';
 const CONN_ID_PREFIX = '0007';
@@ -124,21 +125,5 @@ function getFeatureObj( jsonObj, outputObj ){
 
   return;
 
-}
-
-
-
-function sendVGWInfoSpec( msgObj ){
-  //
-  var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/agentactionreq';
-  var message = JSON.stringify(msgObj);
-  sendToMqttBroker(topic, message);
-}
-
-function sendVGWInfo( msgObj ){
-  
-  var topic = '/cagent/admin/' + msgObj.susiCommData.agentID + '/deviceinfo';
-  var message = JSON.stringify(msgObj);
-   sendToMqttBroker(topic, message);  
 }
 
