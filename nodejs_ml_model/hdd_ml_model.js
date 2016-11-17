@@ -68,7 +68,7 @@ client.on('message', function (topic, message) {
   outputObj.featureList = 'failure ';
   outputObj.featureVal = '1 ';
 
-  listRESTfulObj( jsonObj, outputObj );
+  getFeatureObj( jsonObj, outputObj );
   console.log('featureList =' + outputObj.featureList);
   console.log('featureVal =' + outputObj.featureVal);
 
@@ -98,7 +98,7 @@ function sendToMqttBroker(topic, message){
 }
 
 
-function listRESTfulObj( jsonObj, outputObj ){
+function getFeatureObj( jsonObj, outputObj ){
   
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
@@ -117,7 +117,7 @@ function listRESTfulObj( jsonObj, outputObj ){
   for (key in jsonObj) {
     if (jsonObj.hasOwnProperty(key)) {
       if (typeof jsonObj[key] === 'object' ){
-        listRESTfulObj( jsonObj[key], outputObj);
+        getFeatureObj( jsonObj[key], outputObj);
       }
     }
   }
