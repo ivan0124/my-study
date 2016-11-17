@@ -24,8 +24,8 @@ $ Rscript ./PredictionModel.R
 </pre>
 
 #Use NodeJS to test
-1. use NodeJS app to communicate with `PredictionModel.R`. MUST use nodejs `v4.6.2`
+1. use NodeJS app to communicate with `PredictionModel.R`. MUST use nodejs `v4.6.2`. launch HDD ML service:
 <pre>
-$ node ./app.js
+$ node ./hdd_ml_model.js
 </pre>
 
