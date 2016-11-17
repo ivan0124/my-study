@@ -9,6 +9,6 @@ $ npm install keypress -- save
 
 #How to test
 1. 
-<pre>\
+<pre>
 $ node ./hdd_ml_model.js
 </pre>
