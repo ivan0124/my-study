@@ -12,6 +12,9 @@ RUN apt-get -y install r-base
 
 # Install TensorFlow
 # Pick up some TF dependencies
+RUN apt-get install -y python-pip python-dev
+RUN pip install pandas --upgrade
+RUN apt-get -y install python-tk
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         curl \
@@ -21,6 +24,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         pkg-config \
         python \
         python-dev \
+        python-numpy \
+        python-pandas \
+        python-matplotlib \
         rsync \
         software-properties-common \
         unzip \
