@@ -28,8 +28,10 @@ foreach $key (keys %in) {
     }
 };
 
+## send curl to get/set data here
+##
 
-
+# show curl get/set result here
 print "<p id=\"demo\">rsetful_path = $restful_path</p>";
 print "<button type=\"button\" onclick=\"myFunction()\">Try it</button>";
 
