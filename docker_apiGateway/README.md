@@ -1,5 +1,5 @@
 # How to build docker image
-1. in `docker_TensorFlow` folder 
+1. in `docker_apiGateway` folder 
 <pre>
 $ sudo docker build -t eis/api_gateway .
 </pre>
