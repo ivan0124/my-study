@@ -13,12 +13,12 @@ $ sudo docker run -it --name hdd_failure_predict_service -v $PWD:/home/adv:rw ei
 
 </pre>
 
-2. restart container. name is `hdd_ml_dev`
+2. restart container. name is `hdd_failure_predict_service`
 <pre>
 $ sudo docker start -ai hdd_failure_predict_service
 </pre>
 
-3. stop container. name is `hdd_ml_dev`
+3. stop container. name is `hdd_failure_predict_service`
 <pre>
 $ sudo docker rm  hdd_failure_predict_service
 </pre>
