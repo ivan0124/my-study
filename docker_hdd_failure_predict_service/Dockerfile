@@ -28,6 +28,7 @@ WORKDIR /home/adv
 # install APIGateway
 #RUN git clone https://github.com/ADVANTECH-Corp/APIGateway.git /home/adv/APIGateway
 #RUN cp APIGateway/script/advigw-restapi /usr/local/bin/.
+RUN git clone https://github.com/ADVANTECH-Corp/hdd_failure_predict_service.git
 
 USER adv
 
