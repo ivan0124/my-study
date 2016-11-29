@@ -1,5 +1,5 @@
 # How to build docker image
-1. in `docker_TensorFlow` folder 
+1. in `docker_hdd_failure_predict_service` folder 
 <pre>
 $ sudo docker build -t eis/hdd_failure_predict_service .
 </pre>
