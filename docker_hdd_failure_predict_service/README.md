@@ -5,7 +5,7 @@ $ sudo docker build -t eis/hdd_failure_predict_service .
 </pre>
 
 # How to run docker image
-1. start container. name is `api_gateway`
+1. start container. name is `hdd_failure_predict_service`
 <pre>
 $ sudo docker run -it --name hdd_failure_predict_service eis/hdd_failure_predict_service
 or 
