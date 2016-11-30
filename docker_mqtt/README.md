@@ -1,24 +1,24 @@
 # How to build docker image
-1. in `docker_hdd_failure_predict_service` folder 
+1. in `docker_mqtt` folder 
 <pre>
 $ sudo docker build -t eis/hdd_failure_predict_service .
 </pre>
 
 # How to run docker image
-1. start container. name is `api_gateway`
+1. start container. name is `mqtt`
 <pre>
-$ sudo docker run -it --name hdd_failure_predict_service eis/hdd_failure_predict_service
+$ sudo docker run -it --name mqtt eis/mqtt
 or 
-$ sudo docker run -it --name hdd_failure_predict_service -v $PWD:/home/adv:rw eis/hdd_failure_predict_service
+$ sudo docker run -it --name mqtt -v $PWD:/home/adv:rw eis/mqtt
 
 </pre>
 
-2. restart container. name is `hdd_failure_predict_service`
+2. restart container. name is `mqtt`
 <pre>
-$ sudo docker start -ai hdd_failure_predict_service
+$ sudo docker start -ai mqtt
 </pre>
 
-3. stop container. name is `hdd_failure_predict_service`
+3. stop container. name is `mqtt`
 <pre>
-$ sudo docker rm  hdd_failure_predict_service
+$ sudo docker rm  mqtt
 </pre>
