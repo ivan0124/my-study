@@ -13,12 +13,12 @@ $ sudo docker run -it --name api_gateway -v $PWD:/home/adv:rw -p 3000:3000 eis/a
 
 </pre>
 
-2. restart container. name is `hdd_ml_dev`
+2. restart container. name is `api_gateway`
 <pre>
 $ sudo docker start -ai api_gateway
 </pre>
 
-3. stop container. name is `hdd_ml_dev`
+3. stop container. name is `api_gateway`
 <pre>
 $ sudo docker rm  api_gateway
 </pre>
