@@ -1,7 +1,7 @@
 # How to build docker image
 1. in `docker_mqtt` folder 
 <pre>
-$ sudo docker build -t eis/hdd_failure_predict_service .
+$ sudo docker build -t eis/mqtt .
 </pre>
 
 # How to run docker image
