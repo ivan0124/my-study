@@ -1,24 +1,15 @@
-# How to build docker image
-1. in `docker_mqtt` folder 
-<pre>
-$ sudo docker build -t eis/mqtt .
-</pre>
+# Dockerfile location
+- mqtt-bus Dockerfile: 
 
-# How to run docker image
-1. start container. name is `mqtt`
-<pre>
-$ sudo docker run -it --name mqtt eis/mqtt
-or 
-$ sudo docker run -it --name mqtt -v $PWD:/home/adv:rw eis/mqtt
+https://github.com/ADVANTECH-Corp/docker-igw-image-x86/tree/mqtt-bus
 
-</pre>
+- hdd-failure-predict Dockerfile:
 
-2. restart container. name is `mqtt`
-<pre>
-$ sudo docker start -ai mqtt
-</pre>
+https://github.com/ADVANTECH-Corp/docker-igw-image-x86/tree/hdd-failure-predict
 
-3. stop container. name is `mqtt`
-<pre>
-$ sudo docker rm  mqtt
-</pre>
+# Source code location
+
+- hdd-failure-predict GitHub: 
+
+https://github.com/ADVANTECH-Corp/hdd_failure_predict_service
+
