@@ -17,6 +17,6 @@ https://github.com/ADVANTECH-Corp/hdd_failure_predict_service
 
 - use `setup.sh` to auto pull and run `mqtt-bus` and `hdd-failure-predict` container
 <pre>
-$ ./setup
+$ ./setup.sh
 </pre>
 
