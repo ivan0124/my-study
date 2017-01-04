@@ -1,6 +1,6 @@
 # How to packaging Webmin module
 <pre>
-$ tar cvzf ./wisecloud.wbm.gz ./wisecloud/
+$ tar cvzf ./wisecloud_status.wbm.gz ./wisecloud_status/
 </pre>
 
 # How to install Webmin module
