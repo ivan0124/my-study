@@ -26,7 +26,7 @@ save_agent_config($in{'serverip'}, $in{'devicename'}, $in{'amtid'}, encrypt_amt_
 
 # Restart 
 local $temp = "/tmp/saveagent.log";
-local $rv = &system_logged("/etc/init.d/saagent restart >$temp 2>&1");
+local $rv = &system_logged("service saagent restart >$temp 2>&1");
 local $out = `cat $temp`;
 unlink($temp);
 if ($rv) { &error("$out"); }
