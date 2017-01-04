@@ -22,7 +22,6 @@ $is_cagent_active = &check_cagent_active();
 sub check_cagent_cloud_conn
 {
 	local $stat = `cat $cagnet_status_file`;
-        print "stat = \n $stat";
     $stat = substr($stat,0,1);
 	local $output = `netstat -an|grep :1883`;
 	local @arr = split(' ', $output);
