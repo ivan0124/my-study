@@ -1,5 +1,1 @@
-#How to test
-<pre>
-$ array.pl
-</pre>
-
+* [[Webmin-How to install wisecloud module]]
