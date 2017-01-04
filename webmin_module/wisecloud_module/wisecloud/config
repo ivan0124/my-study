@@ -1,0 +1,2 @@
+wise_conf=/etc/wise.conf
+agentconf_path=/usr/local/AgentService/agent_config.xml

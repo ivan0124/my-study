@@ -1,0 +1,9 @@
+index_title=WISE Cloud Setting
+general=General Configuration
+cloudserver=WISE-Cloud Server Setting
+serverip=IP Address
+serverport=Port Number
+username=User Name
+password=Password
+savewise=Save config and Restart Agent
+save_err=Failed to save config file
