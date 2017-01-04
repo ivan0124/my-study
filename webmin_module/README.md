@@ -1,1 +1,2 @@
-* [Webmin-How to install wisecloud.wbm.gz module](https://github.com/ivan0124/my-study/wiki/Webmin-How-to-install-wisecloud-module)
+# How to install module
+1. go to each module directory and check README.md
