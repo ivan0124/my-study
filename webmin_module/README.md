@@ -1,5 +1,5 @@
-# How to install module
-Step1. check webmin how to install module from web page:
+# How to install Webmin module
+Step1. check Webmin how to install module from web page:
 
 https://github.com/ivan0124/my-study/wiki/webmin-formal-method-to-add-module
 
