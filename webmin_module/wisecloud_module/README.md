@@ -5,3 +5,7 @@ $ tar cvzf ./wisecloud.wbm.gz ./wisecloud/
 
 # How to install Webmin module
 [Webmin-How to install wisecloud.wbm.gz module](https://github.com/ivan0124/my-study/wiki/Webmin-How-to-install-wisecloud-module)
+
+# Previous module package directory
+
+- please check `module.wbm.gz` directory
