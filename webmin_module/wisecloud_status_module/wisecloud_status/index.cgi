@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 require './wisecloud-lib.pl';
+&foreign_require("wisecloud", "wisecloud-lib.pl");
 
 ui_print_header(undef, $module_info{'desc'}, "", undef, 1, 1);
 
@@ -32,6 +33,7 @@ sub check_cagent_cloud_conn
 	}
 }
 $is_cagent_cloud_conn = &check_cagent_cloud_conn();
+%wiseconf = &wisecloud::get_config('wise_conf');
 
 print "<center>\n";
 print "<a href=http://www.advantech.com/ target=_new><img src=images/logo.png border=0></a><p>\n";
@@ -50,7 +52,7 @@ if($is_cagent_cloud_conn) {
 	print $disconnected_img;
 }
 print "<td><a target=right href='../wisecloud/index.cgi'>";
-print "<img src=images/wise-cloud.gif border=0 title='192.168.1.1'></a></td>\n";
+print "<img src=images/wise-cloud.gif border=0 title=$wiseconf{'ServerIP'}></a></td>\n";
 print "</tr></table>\n";
 
 print &ui_hr();
