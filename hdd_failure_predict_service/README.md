@@ -8,7 +8,7 @@ https://docs.docker.com/engine/installation/linux/ubuntulinux/
 $ ./deploy.sh
 </pre>
 
-#How to build `hddPredict.so`
+#How to build shared library
 
 https://github.com/ivan0124/my-study/tree/master/nodejs_call_hdd_predict_C
 
