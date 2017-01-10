@@ -1,0 +1,388 @@
+total 12
+drwxr-xr-x    3 root     root          4096 Jan  5 15:00 [1;34m.[0m
+drwxr-xr-x    3 root     root          4096 Jan  5 15:00 [1;34m..[0m
+drwxrwxrwx    5 root     root          4096 Jan  5 15:00 [1;34mhdd_failure_predict[0m
+require nodejs module done
+mqtt connect to advigw-mqtt-bus
+--------------------------receive mqtt message------------------------------
+topic=/cagent/admin/123779999/deviceinfo
+msg={"susiCommData":{"data":{"HDDMonitor":{"hddInfoList":[{"e":[{"n":"hddType","sv":"STDDisk"},{"n":"hddName","sv":"ST9250315AS"},{"n":"hddIndex","v":0},{"n":"powerOnTime","v":14243,"u":"hour"},{"n":"hddHealthPercent","v":100,"u":"percent"},{"n":"hddTemp","v":31,"u":"celsius"}],"bn":"Disk0-ST9250315AS","ver":1,"asm":"R"}],"hddSmartInfoList":[{"BaseInfo":{"e":[{"n":"hddType","sv":"STDDisk"},{"n":"hddName","sv":"ST9250315AS"},{"n":"hddIndex","v":0}],"bn":"BaseInfo","asm":"R"},"FreeFallProtection":{"e":[{"n":"type","v":5},{"n":"flags","v":12800},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"00000000FD08"}],"bn":"FreeFallProtection","asm":"R"},"UltraDMACRCErrorCount":{"e":[{"n":"type","v":9},{"n":"flags","v":15872},{"n":"worst","v":200},{"n":"value","v":200},{"n":"vendorData","sv":"000000004E71"}],"bn":"UltraDMACRCErrorCount","asm":"R"},"UncorrectableSectorCount":{"e":[{"n":"type","v":198},{"n":"flags","v":4096},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000038"}],"bn":"UncorrectableSectorCount","asm":"R"},"CurrentPendingSectorCount":{"e":[{"n":"type","v":197},{"n":"flags","v":4608},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000038"}],"bn":"CurrentPendingSectorCount","asm":"R"},"HardwareECCRecovered":{"e":[{"n":"type","v":187},{"n":"flags","v":6656},{"n":"worst","v":45},{"n":"value","v":47},{"n":"vendorData","sv":"000000000349"}],"bn":"HardwareECCRecovered","asm":"R"},"Temperature":{"e":[{"n":"type","v":194},{"n":"flags","v":8704},{"n":"worst","v":43},{"n":"value","v":31},{"n":"vendorData","sv":"000000000016"}],"bn":"Temperature","asm":"R"},"LoadCycleCount":{"e":[{"n":"type","v":193},{"n":"flags","v":12800},{"n":"worst","v":1},{"n":"value","v":1},{"n":"vendorData","sv":"0000000356EC"}],"bn":"LoadCycleCount","asm":"R"},"PoweroffRetractCount":{"e":[{"n":"type","v":192},{"n":"flags","v":12800},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000008"}],"bn":"PoweroffRetractCount","asm":"R"}},{"BaseInfo":{"e":[{"n":"hddType","sv":"STDDisk"},{"n":"hddName","sv":"HDD_Hello_123456"},{"n":"hddIndex","v":0}],"bn":"BaseInfo","asm":"R"},"FreeFallProtection":{"e":[{"n":"type","v":5},{"n":"flags","v":12800},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"00000001FD08"}],"bn":"FreeFallProtection","asm":"R"},"UltraDMACRCErrorCount":{"e":[{"n":"type","v":9},{"n":"flags","v":15872},{"n":"worst","v":200},{"n":"value","v":200},{"n":"vendorData","sv":"000000014E71"}],"bn":"UltraDMACRCErrorCount","asm":"R"},"UncorrectableSectorCount":{"e":[{"n":"type","v":198},{"n":"flags","v":4096},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000138"}],"bn":"UncorrectableSectorCount","asm":"R"},"CurrentPendingSectorCount":{"e":[{"n":"type","v":197},{"n":"flags","v":4608},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000138"}],"bn":"CurrentPendingSectorCount","asm":"R"},"HardwareECCRecovered":{"e":[{"n":"type","v":187},{"n":"flags","v":6656},{"n":"worst","v":45},{"n":"value","v":47},{"n":"vendorData","sv":"000000001349"}],"bn":"HardwareECCRecovered","asm":"R"},"Temperature":{"e":[{"n":"type","v":194},{"n":"flags","v":8704},{"n":"worst","v":43},{"n":"value","v":31},{"n":"vendorData","sv":"000000000116"}],"bn":"Temperature","asm":"R"},"LoadCycleCount":{"e":[{"n":"type","v":193},{"n":"flags","v":12800},{"n":"worst","v":1},{"n":"value","v":1},{"n":"vendorData","sv":"0000001356EC"}],"bn":"LoadCycleCount","asm":"R"},"PoweroffRetractCount":{"e":[{"n":"type","v":192},{"n":"flags","v":12800},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000018"}],"bn":"PoweroffRetractCount","asm":"R"}}]}}}}
+hddNum = 2
+hddName => baseInfoObj["e"][1].sv = ST9250315AS
+=============================================================>
+=============================================================>
+SMART ID =======>5
+rawData =======>64776
+=============================================================>
+SMART ID =======>9
+rawData =======>20081
+=============================================================>
+SMART ID =======>198
+rawData =======>56
+=============================================================>
+SMART ID =======>197
+rawData =======>56
+=============================================================>
+SMART ID =======>187
+rawData =======>841
+=============================================================>
+SMART ID =======>194
+rawData =======>22
+=============================================================>
+SMART ID =======>193
+rawData =======>218860
+=============================================================>
+SMART ID =======>192
+rawData =======>8
+featureList =failure smart5 smart9 smart187 smart192 smart197
+featureVal =0 64776 20081 841 8  56
+Alert1 = 0
+Alert2 = 3.2257357701309695
+Alert3 = 0.041880384443005826
+Alert4 = 0.002788705741745929
+Alert5 = 0.002788705741745929
+Alert6 = 0
+Alert7 = 22
+Alert8 = 22
+Alert9 = 0
+x : 1822.360774, x_max : 36.043653
+{"Prediction":{"Health" :1}}
+-------------------------------------------------------------------------
+RRR record.predict_notify_count = 1
+--------------------------send mqtt message------------------------------
+topic=/cagent/admin/123779999/eventnotify
+msg={"susiCommData":{"commCmd":0,"requestID":0,"agentID":"","handlerName":"general","sendTS":0,"eventnotify":{"subtype":"predictError","msg":"HDD smart5 smart197 smart187 over the threshold.","severity":2,"handler":"MsgGen","extMsg":{"predictMsg":{"health":"Sick","suggestion0":"Please reduce the ambient temperature to 40 °C or less","suggestion1":"Please reduce the long-term use in dynamic vibration environment","suggestion2":"Please back up the hard disk as soon as possible (within 30 days)","deviceName":"ST9250315AS"},"alertMsg":{"warning":"No","deviceName":"ST9250315AS"}}}}}
+-------------------------------------------------------------------------
+hddName => baseInfoObj["e"][1].sv = HDD_Hello_123456
+=============================================================>
+=============================================================>
+SMART ID =======>5
+rawData =======>130312
+=============================================================>
+SMART ID =======>9
+rawData =======>85617
+=============================================================>
+SMART ID =======>198
+rawData =======>312
+=============================================================>
+SMART ID =======>197
+rawData =======>312
+=============================================================>
+SMART ID =======>187
+rawData =======>4937
+=============================================================>
+SMART ID =======>194
+rawData =======>278
+=============================================================>
+SMART ID =======>193
+rawData =======>1267436
+=============================================================>
+SMART ID =======>192
+rawData =======>24
+featureList =failure smart5 smart9 smart187 smart192 smart197
+featureVal =0 130312 85617 4937 24  312
+Alert1 = 0
+Alert2 = 1.522034175455809
+Alert3 = 0.05766378172559188
+Alert4 = 0.00364413609446722
+Alert5 = 0.00364413609446722
+Alert6 = 0
+Alert7 = 278
+Alert8 = 278
+Alert9 = 0
+x : 8408.274948, x_max : 36.043653
+{"Prediction":{"Health" :1}}
+-------------------------------------------------------------------------
+RRR record.alert_warning_count = 1
+--------------------------send mqtt message------------------------------
+topic=/cagent/admin/123779999/eventnotify
+msg={"susiCommData":{"commCmd":0,"requestID":0,"agentID":"","handlerName":"general","sendTS":0,"eventnotify":{"subtype":"predictError","msg":"HDD smart5 smart197 smart9 smart187 over the threshold.","severity":2,"handler":"MsgGen","extMsg":{"predictMsg":{"health":"Sick","suggestion0":"Please reduce the ambient temperature to 40 °C or less","suggestion1":"Please reduce the long-term use in dynamic vibration environment","suggestion2":"Please back up the hard disk as soon as possible (within 30 days)","deviceName":"HDD_Hello_123456"},"alertMsg":{"warning":"Yes","suggestion0":"Please reduce the ambient temperature to 40 °C or less","suggestion1":"Make sure the fan / cooling system is working properly","deviceName":"HDD_Hello_123456"}}}}}
+-------------------------------------------------------------------------
+--------------------------receive mqtt message------------------------------
+topic=/cagent/admin/123779999/deviceinfo
+msg={"susiCommData":{"data":{"HDDMonitor":{"hddInfoList":[{"e":[{"n":"hddType","sv":"STDDisk"},{"n":"hddName","sv":"ST9250315AS"},{"n":"hddIndex","v":0},{"n":"powerOnTime","v":14243,"u":"hour"},{"n":"hddHealthPercent","v":100,"u":"percent"},{"n":"hddTemp","v":31,"u":"celsius"}],"bn":"Disk0-ST9250315AS","ver":1,"asm":"R"}],"hddSmartInfoList":[{"BaseInfo":{"e":[{"n":"hddType","sv":"STDDisk"},{"n":"hddName","sv":"ST9250315AS"},{"n":"hddIndex","v":0}],"bn":"BaseInfo","asm":"R"},"FreeFallProtection":{"e":[{"n":"type","v":5},{"n":"flags","v":12800},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"00000000FD08"}],"bn":"FreeFallProtection","asm":"R"},"UltraDMACRCErrorCount":{"e":[{"n":"type","v":9},{"n":"flags","v":15872},{"n":"worst","v":200},{"n":"value","v":200},{"n":"vendorData","sv":"000000004E71"}],"bn":"UltraDMACRCErrorCount","asm":"R"},"UncorrectableSectorCount":{"e":[{"n":"type","v":198},{"n":"flags","v":4096},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000038"}],"bn":"UncorrectableSectorCount","asm":"R"},"CurrentPendingSectorCount":{"e":[{"n":"type","v":197},{"n":"flags","v":4608},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000038"}],"bn":"CurrentPendingSectorCount","asm":"R"},"HardwareECCRecovered":{"e":[{"n":"type","v":187},{"n":"flags","v":6656},{"n":"worst","v":45},{"n":"value","v":47},{"n":"vendorData","sv":"000000000349"}],"bn":"HardwareECCRecovered","asm":"R"},"Temperature":{"e":[{"n":"type","v":194},{"n":"flags","v":8704},{"n":"worst","v":43},{"n":"value","v":31},{"n":"vendorData","sv":"000000000016"}],"bn":"Temperature","asm":"R"},"LoadCycleCount":{"e":[{"n":"type","v":193},{"n":"flags","v":12800},{"n":"worst","v":1},{"n":"value","v":1},{"n":"vendorData","sv":"0000000356EC"}],"bn":"LoadCycleCount","asm":"R"},"PoweroffRetractCount":{"e":[{"n":"type","v":192},{"n":"flags","v":12800},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000008"}],"bn":"PoweroffRetractCount","asm":"R"}},{"BaseInfo":{"e":[{"n":"hddType","sv":"STDDisk"},{"n":"hddName","sv":"HDD_Hello_123456"},{"n":"hddIndex","v":0}],"bn":"BaseInfo","asm":"R"},"FreeFallProtection":{"e":[{"n":"type","v":5},{"n":"flags","v":12800},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"00000001FD08"}],"bn":"FreeFallProtection","asm":"R"},"UltraDMACRCErrorCount":{"e":[{"n":"type","v":9},{"n":"flags","v":15872},{"n":"worst","v":200},{"n":"value","v":200},{"n":"vendorData","sv":"000000014E71"}],"bn":"UltraDMACRCErrorCount","asm":"R"},"UncorrectableSectorCount":{"e":[{"n":"type","v":198},{"n":"flags","v":4096},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000138"}],"bn":"UncorrectableSectorCount","asm":"R"},"CurrentPendingSectorCount":{"e":[{"n":"type","v":197},{"n":"flags","v":4608},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000138"}],"bn":"CurrentPendingSectorCount","asm":"R"},"HardwareECCRecovered":{"e":[{"n":"type","v":187},{"n":"flags","v":6656},{"n":"worst","v":45},{"n":"value","v":47},{"n":"vendorData","sv":"000000001349"}],"bn":"HardwareECCRecovered","asm":"R"},"Temperature":{"e":[{"n":"type","v":194},{"n":"flags","v":8704},{"n":"worst","v":43},{"n":"value","v":31},{"n":"vendorData","sv":"000000000116"}],"bn":"Temperature","asm":"R"},"LoadCycleCount":{"e":[{"n":"type","v":193},{"n":"flags","v":12800},{"n":"worst","v":1},{"n":"value","v":1},{"n":"vendorData","sv":"0000001356EC"}],"bn":"LoadCycleCount","asm":"R"},"PoweroffRetractCount":{"e":[{"n":"type","v":192},{"n":"flags","v":12800},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000018"}],"bn":"PoweroffRetractCount","asm":"R"}}]}}}}
+hddNum = 2
+hddName => baseInfoObj["e"][1].sv = ST9250315AS
+=============================================================>
+=============================================================>
+SMART ID =======>5
+rawData =======>64776
+=============================================================>
+SMART ID =======>9
+rawData =======>20081
+=============================================================>
+SMART ID =======>198
+rawData =======>56
+=============================================================>
+SMART ID =======>197
+rawData =======>56
+=============================================================>
+SMART ID =======>187
+rawData =======>841
+=============================================================>
+SMART ID =======>194
+rawData =======>22
+=============================================================>
+SMART ID =======>193
+rawData =======>218860
+=============================================================>
+SMART ID =======>192
+rawData =======>8
+featureList =failure smart5 smart9 smart187 smart192 smart197
+featureVal =0 64776 20081 841 8  56
+Alert1 = 0
+Alert2 = 3.2257357701309695
+Alert3 = 0.041880384443005826
+Alert4 = 0.002788705741745929
+Alert5 = 0.002788705741745929
+Alert6 = 0
+Alert7 = 22
+Alert8 = 22
+Alert9 = 0
+x : 1822.360774, x_max : 36.043653
+{"Prediction":{"Health" :1}}
+-------------------------------------------------------------------------
+>>> record.predict_notify_count = 1
+!!! record.predict_notify_count = 2
+--------------------------send mqtt message------------------------------
+topic=/cagent/admin/123779999/eventnotify
+msg={"susiCommData":{"commCmd":0,"requestID":0,"agentID":"","handlerName":"general","sendTS":0,"eventnotify":{"subtype":"predictError","msg":"HDD smart5 smart197 smart187 over the threshold.","severity":2,"handler":"MsgGen","extMsg":{"predictMsg":{"health":"Sick","suggestion0":"Please reduce the ambient temperature to 40 °C or less","suggestion1":"Please reduce the long-term use in dynamic vibration environment","suggestion2":"Please back up the hard disk as soon as possible (within 30 days)","deviceName":"ST9250315AS"},"alertMsg":{"warning":"No","deviceName":"ST9250315AS"}}}}}
+-------------------------------------------------------------------------
+hddName => baseInfoObj["e"][1].sv = HDD_Hello_123456
+=============================================================>
+=============================================================>
+SMART ID =======>5
+rawData =======>130312
+=============================================================>
+SMART ID =======>9
+rawData =======>85617
+=============================================================>
+SMART ID =======>198
+rawData =======>312
+=============================================================>
+SMART ID =======>197
+rawData =======>312
+=============================================================>
+SMART ID =======>187
+rawData =======>4937
+=============================================================>
+SMART ID =======>194
+rawData =======>278
+=============================================================>
+SMART ID =======>193
+rawData =======>1267436
+=============================================================>
+SMART ID =======>192
+rawData =======>24
+featureList =failure smart5 smart9 smart187 smart192 smart197
+featureVal =0 130312 85617 4937 24  312
+Alert1 = 0
+Alert2 = 1.522034175455809
+Alert3 = 0.05766378172559188
+Alert4 = 0.00364413609446722
+Alert5 = 0.00364413609446722
+Alert6 = 0
+Alert7 = 278
+Alert8 = 278
+Alert9 = 0
+x : 8408.274948, x_max : 36.043653
+{"Prediction":{"Health" :1}}
+-------------------------------------------------------------------------
+>>> record.alert_warning_count = 1
+!!! record.alert_warning_count = 2
+--------------------------send mqtt message------------------------------
+topic=/cagent/admin/123779999/eventnotify
+msg={"susiCommData":{"commCmd":0,"requestID":0,"agentID":"","handlerName":"general","sendTS":0,"eventnotify":{"subtype":"predictError","msg":"HDD smart5 smart197 smart9 smart187 over the threshold.","severity":2,"handler":"MsgGen","extMsg":{"predictMsg":{"health":"Sick","suggestion0":"Please reduce the ambient temperature to 40 °C or less","suggestion1":"Please reduce the long-term use in dynamic vibration environment","suggestion2":"Please back up the hard disk as soon as possible (within 30 days)","deviceName":"HDD_Hello_123456"},"alertMsg":{"warning":"Yes","suggestion0":"Please reduce the ambient temperature to 40 °C or less","suggestion1":"Make sure the fan / cooling system is working properly","deviceName":"HDD_Hello_123456"}}}}}
+-------------------------------------------------------------------------
+--------------------------receive mqtt message------------------------------
+topic=/cagent/admin/123779999/deviceinfo
+msg={"susiCommData":{"data":{"HDDMonitor":{"hddInfoList":[{"e":[{"n":"hddType","sv":"STDDisk"},{"n":"hddName","sv":"ST9250315AS"},{"n":"hddIndex","v":0},{"n":"powerOnTime","v":14243,"u":"hour"},{"n":"hddHealthPercent","v":100,"u":"percent"},{"n":"hddTemp","v":31,"u":"celsius"}],"bn":"Disk0-ST9250315AS","ver":1,"asm":"R"}],"hddSmartInfoList":[{"BaseInfo":{"e":[{"n":"hddType","sv":"STDDisk"},{"n":"hddName","sv":"ST9250315AS"},{"n":"hddIndex","v":0}],"bn":"BaseInfo","asm":"R"},"FreeFallProtection":{"e":[{"n":"type","v":5},{"n":"flags","v":12800},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"00000000FD08"}],"bn":"FreeFallProtection","asm":"R"},"UltraDMACRCErrorCount":{"e":[{"n":"type","v":9},{"n":"flags","v":15872},{"n":"worst","v":200},{"n":"value","v":200},{"n":"vendorData","sv":"000000004E71"}],"bn":"UltraDMACRCErrorCount","asm":"R"},"UncorrectableSectorCount":{"e":[{"n":"type","v":198},{"n":"flags","v":4096},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000038"}],"bn":"UncorrectableSectorCount","asm":"R"},"CurrentPendingSectorCount":{"e":[{"n":"type","v":197},{"n":"flags","v":4608},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000038"}],"bn":"CurrentPendingSectorCount","asm":"R"},"HardwareECCRecovered":{"e":[{"n":"type","v":187},{"n":"flags","v":6656},{"n":"worst","v":45},{"n":"value","v":47},{"n":"vendorData","sv":"000000000349"}],"bn":"HardwareECCRecovered","asm":"R"},"Temperature":{"e":[{"n":"type","v":194},{"n":"flags","v":8704},{"n":"worst","v":43},{"n":"value","v":31},{"n":"vendorData","sv":"000000000016"}],"bn":"Temperature","asm":"R"},"LoadCycleCount":{"e":[{"n":"type","v":193},{"n":"flags","v":12800},{"n":"worst","v":1},{"n":"value","v":1},{"n":"vendorData","sv":"0000000356EC"}],"bn":"LoadCycleCount","asm":"R"},"PoweroffRetractCount":{"e":[{"n":"type","v":192},{"n":"flags","v":12800},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000008"}],"bn":"PoweroffRetractCount","asm":"R"}},{"BaseInfo":{"e":[{"n":"hddType","sv":"STDDisk"},{"n":"hddName","sv":"HDD_Hello_123456"},{"n":"hddIndex","v":0}],"bn":"BaseInfo","asm":"R"},"FreeFallProtection":{"e":[{"n":"type","v":5},{"n":"flags","v":12800},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"00000001FD08"}],"bn":"FreeFallProtection","asm":"R"},"UltraDMACRCErrorCount":{"e":[{"n":"type","v":9},{"n":"flags","v":15872},{"n":"worst","v":200},{"n":"value","v":200},{"n":"vendorData","sv":"000000014E71"}],"bn":"UltraDMACRCErrorCount","asm":"R"},"UncorrectableSectorCount":{"e":[{"n":"type","v":198},{"n":"flags","v":4096},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000138"}],"bn":"UncorrectableSectorCount","asm":"R"},"CurrentPendingSectorCount":{"e":[{"n":"type","v":197},{"n":"flags","v":4608},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000138"}],"bn":"CurrentPendingSectorCount","asm":"R"},"HardwareECCRecovered":{"e":[{"n":"type","v":187},{"n":"flags","v":6656},{"n":"worst","v":45},{"n":"value","v":47},{"n":"vendorData","sv":"000000001349"}],"bn":"HardwareECCRecovered","asm":"R"},"Temperature":{"e":[{"n":"type","v":194},{"n":"flags","v":8704},{"n":"worst","v":43},{"n":"value","v":31},{"n":"vendorData","sv":"000000000116"}],"bn":"Temperature","asm":"R"},"LoadCycleCount":{"e":[{"n":"type","v":193},{"n":"flags","v":12800},{"n":"worst","v":1},{"n":"value","v":1},{"n":"vendorData","sv":"0000001356EC"}],"bn":"LoadCycleCount","asm":"R"},"PoweroffRetractCount":{"e":[{"n":"type","v":192},{"n":"flags","v":12800},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000018"}],"bn":"PoweroffRetractCount","asm":"R"}}]}}}}
+hddNum = 2
+hddName => baseInfoObj["e"][1].sv = ST9250315AS
+=============================================================>
+=============================================================>
+SMART ID =======>5
+rawData =======>64776
+=============================================================>
+SMART ID =======>9
+rawData =======>20081
+=============================================================>
+SMART ID =======>198
+rawData =======>56
+=============================================================>
+SMART ID =======>197
+rawData =======>56
+=============================================================>
+SMART ID =======>187
+rawData =======>841
+=============================================================>
+SMART ID =======>194
+rawData =======>22
+=============================================================>
+SMART ID =======>193
+rawData =======>218860
+=============================================================>
+SMART ID =======>192
+rawData =======>8
+featureList =failure smart5 smart9 smart187 smart192 smart197
+featureVal =0 64776 20081 841 8  56
+Alert1 = 0
+Alert2 = 3.2257357701309695
+Alert3 = 0.041880384443005826
+Alert4 = 0.002788705741745929
+Alert5 = 0.002788705741745929
+Alert6 = 0
+Alert7 = 22
+Alert8 = 22
+Alert9 = 0
+x : 1822.360774, x_max : 36.043653
+{"Prediction":{"Health" :1}}
+-------------------------------------------------------------------------
+>>> record.predict_notify_count = 2
+!!! record.predict_notify_count = 3
+--------------------------send mqtt message------------------------------
+topic=/cagent/admin/123779999/eventnotify
+msg={"susiCommData":{"commCmd":0,"requestID":0,"agentID":"","handlerName":"general","sendTS":0,"eventnotify":{"subtype":"predictError","msg":"HDD smart5 smart197 smart187 over the threshold.","severity":2,"handler":"MsgGen","extMsg":{"predictMsg":{"health":"Sick","suggestion0":"Please reduce the ambient temperature to 40 °C or less","suggestion1":"Please reduce the long-term use in dynamic vibration environment","suggestion2":"Please back up the hard disk as soon as possible (within 30 days)","deviceName":"ST9250315AS"},"alertMsg":{"warning":"No","deviceName":"ST9250315AS"}}}}}
+-------------------------------------------------------------------------
+hddName => baseInfoObj["e"][1].sv = HDD_Hello_123456
+=============================================================>
+=============================================================>
+SMART ID =======>5
+rawData =======>130312
+=============================================================>
+SMART ID =======>9
+rawData =======>85617
+=============================================================>
+SMART ID =======>198
+rawData =======>312
+=============================================================>
+SMART ID =======>197
+rawData =======>312
+=============================================================>
+SMART ID =======>187
+rawData =======>4937
+=============================================================>
+SMART ID =======>194
+rawData =======>278
+=============================================================>
+SMART ID =======>193
+rawData =======>1267436
+=============================================================>
+SMART ID =======>192
+rawData =======>24
+featureList =failure smart5 smart9 smart187 smart192 smart197
+featureVal =0 130312 85617 4937 24  312
+Alert1 = 0
+Alert2 = 1.522034175455809
+Alert3 = 0.05766378172559188
+Alert4 = 0.00364413609446722
+Alert5 = 0.00364413609446722
+Alert6 = 0
+Alert7 = 278
+Alert8 = 278
+Alert9 = 0
+x : 8408.274948, x_max : 36.043653
+{"Prediction":{"Health" :1}}
+-------------------------------------------------------------------------
+>>> record.alert_warning_count = 2
+!!! record.alert_warning_count = 3
+--------------------------send mqtt message------------------------------
+topic=/cagent/admin/123779999/eventnotify
+msg={"susiCommData":{"commCmd":0,"requestID":0,"agentID":"","handlerName":"general","sendTS":0,"eventnotify":{"subtype":"predictError","msg":"HDD smart5 smart197 smart9 smart187 over the threshold.","severity":2,"handler":"MsgGen","extMsg":{"predictMsg":{"health":"Sick","suggestion0":"Please reduce the ambient temperature to 40 °C or less","suggestion1":"Please reduce the long-term use in dynamic vibration environment","suggestion2":"Please back up the hard disk as soon as possible (within 30 days)","deviceName":"HDD_Hello_123456"},"alertMsg":{"warning":"Yes","suggestion0":"Please reduce the ambient temperature to 40 °C or less","suggestion1":"Make sure the fan / cooling system is working properly","deviceName":"HDD_Hello_123456"}}}}}
+-------------------------------------------------------------------------
+--------------------------receive mqtt message------------------------------
+topic=/cagent/admin/123779999/deviceinfo
+msg={"susiCommData":{"data":{"HDDMonitor":{"hddInfoList":[{"e":[{"n":"hddType","sv":"STDDisk"},{"n":"hddName","sv":"ST9250315AS"},{"n":"hddIndex","v":0},{"n":"powerOnTime","v":14243,"u":"hour"},{"n":"hddHealthPercent","v":100,"u":"percent"},{"n":"hddTemp","v":31,"u":"celsius"}],"bn":"Disk0-ST9250315AS","ver":1,"asm":"R"}],"hddSmartInfoList":[{"BaseInfo":{"e":[{"n":"hddType","sv":"STDDisk"},{"n":"hddName","sv":"ST9250315AS"},{"n":"hddIndex","v":0}],"bn":"BaseInfo","asm":"R"},"FreeFallProtection":{"e":[{"n":"type","v":5},{"n":"flags","v":12800},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"00000000FD08"}],"bn":"FreeFallProtection","asm":"R"},"UltraDMACRCErrorCount":{"e":[{"n":"type","v":9},{"n":"flags","v":15872},{"n":"worst","v":200},{"n":"value","v":200},{"n":"vendorData","sv":"000000004E71"}],"bn":"UltraDMACRCErrorCount","asm":"R"},"UncorrectableSectorCount":{"e":[{"n":"type","v":198},{"n":"flags","v":4096},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000038"}],"bn":"UncorrectableSectorCount","asm":"R"},"CurrentPendingSectorCount":{"e":[{"n":"type","v":197},{"n":"flags","v":4608},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000038"}],"bn":"CurrentPendingSectorCount","asm":"R"},"HardwareECCRecovered":{"e":[{"n":"type","v":187},{"n":"flags","v":6656},{"n":"worst","v":45},{"n":"value","v":47},{"n":"vendorData","sv":"000000000349"}],"bn":"HardwareECCRecovered","asm":"R"},"Temperature":{"e":[{"n":"type","v":194},{"n":"flags","v":8704},{"n":"worst","v":43},{"n":"value","v":31},{"n":"vendorData","sv":"000000000016"}],"bn":"Temperature","asm":"R"},"LoadCycleCount":{"e":[{"n":"type","v":193},{"n":"flags","v":12800},{"n":"worst","v":1},{"n":"value","v":1},{"n":"vendorData","sv":"0000000356EC"}],"bn":"LoadCycleCount","asm":"R"},"PoweroffRetractCount":{"e":[{"n":"type","v":192},{"n":"flags","v":12800},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000008"}],"bn":"PoweroffRetractCount","asm":"R"}},{"BaseInfo":{"e":[{"n":"hddType","sv":"STDDisk"},{"n":"hddName","sv":"HDD_Hello_123456"},{"n":"hddIndex","v":0}],"bn":"BaseInfo","asm":"R"},"FreeFallProtection":{"e":[{"n":"type","v":5},{"n":"flags","v":12800},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"00000001FD08"}],"bn":"FreeFallProtection","asm":"R"},"UltraDMACRCErrorCount":{"e":[{"n":"type","v":9},{"n":"flags","v":15872},{"n":"worst","v":200},{"n":"value","v":200},{"n":"vendorData","sv":"000000014E71"}],"bn":"UltraDMACRCErrorCount","asm":"R"},"UncorrectableSectorCount":{"e":[{"n":"type","v":198},{"n":"flags","v":4096},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000138"}],"bn":"UncorrectableSectorCount","asm":"R"},"CurrentPendingSectorCount":{"e":[{"n":"type","v":197},{"n":"flags","v":4608},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000138"}],"bn":"CurrentPendingSectorCount","asm":"R"},"HardwareECCRecovered":{"e":[{"n":"type","v":187},{"n":"flags","v":6656},{"n":"worst","v":45},{"n":"value","v":47},{"n":"vendorData","sv":"000000001349"}],"bn":"HardwareECCRecovered","asm":"R"},"Temperature":{"e":[{"n":"type","v":194},{"n":"flags","v":8704},{"n":"worst","v":43},{"n":"value","v":31},{"n":"vendorData","sv":"000000000116"}],"bn":"Temperature","asm":"R"},"LoadCycleCount":{"e":[{"n":"type","v":193},{"n":"flags","v":12800},{"n":"worst","v":1},{"n":"value","v":1},{"n":"vendorData","sv":"0000001356EC"}],"bn":"LoadCycleCount","asm":"R"},"PoweroffRetractCount":{"e":[{"n":"type","v":192},{"n":"flags","v":12800},{"n":"worst","v":100},{"n":"value","v":100},{"n":"vendorData","sv":"000000000018"}],"bn":"PoweroffRetractCount","asm":"R"}}]}}}}
+hddNum = 2
+hddName => baseInfoObj["e"][1].sv = ST9250315AS
+=============================================================>
+=============================================================>
+SMART ID =======>5
+rawData =======>64776
+=============================================================>
+SMART ID =======>9
+rawData =======>20081
+=============================================================>
+SMART ID =======>198
+rawData =======>56
+=============================================================>
+SMART ID =======>197
+rawData =======>56
+=============================================================>
+SMART ID =======>187
+rawData =======>841
+=============================================================>
+SMART ID =======>194
+rawData =======>22
+=============================================================>
+SMART ID =======>193
+rawData =======>218860
+=============================================================>
+SMART ID =======>192
+rawData =======>8
+featureList =failure smart5 smart9 smart187 smart192 smart197
+featureVal =0 64776 20081 841 8  56
+Alert1 = 0
+Alert2 = 3.2257357701309695
+Alert3 = 0.041880384443005826
+Alert4 = 0.002788705741745929
+Alert5 = 0.002788705741745929
+Alert6 = 0
+Alert7 = 22
+Alert8 = 22
+Alert9 = 0
+x : 1822.360774, x_max : 36.043653
+{"Prediction":{"Health" :1}}
+-------------------------------------------------------------------------
+>>> record.predict_notify_count = 3
+!!! record.predict_notify_count = 4
+--------------------------send mqtt message------------------------------
+topic=/cagent/admin/123779999/eventnotify
+msg={"susiCommData":{"commCmd":0,"requestID":0,"agentID":"","handlerName":"general","sendTS":0,"eventnotify":{"subtype":"predictError","msg":"HDD smart5 smart197 smart187 over the threshold.","severity":2,"handler":"MsgGen","extMsg":{"predictMsg":{"health":"Sick","suggestion0":"Please reduce the ambient temperature to 40 °C or less","suggestion1":"Please reduce the long-term use in dynamic vibration environment","suggestion2":"Please back up the hard disk as soon as possible (within 30 days)","deviceName":"ST9250315AS"},"alertMsg":{"warning":"No","deviceName":"ST9250315AS"}}}}}
+-------------------------------------------------------------------------
+hddName => baseInfoObj["e"][1].sv = HDD_Hello_123456
+=============================================================>
+=============================================================>
+SMART ID =======>5
+rawData =======>130312
+=============================================================>
+SMART ID =======>9
+rawData =======>85617
+=============================================================>
+SMART ID =======>198
+rawData =======>312
+=============================================================>
+SMART ID =======>197
+rawData =======>312
+=============================================================>
+SMART ID =======>187
+rawData =======>4937
+=============================================================>
+SMART ID =======>194
+rawData =======>278
+=============================================================>
+SMART ID =======>193
+rawData =======>1267436
+=============================================================>
+SMART ID =======>192
+rawData =======>24
+featureList =failure smart5 smart9 smart187 smart192 smart197
+featureVal =0 130312 85617 4937 24  312
+Alert1 = 0
+Alert2 = 1.522034175455809
+Alert3 = 0.05766378172559188
+Alert4 = 0.00364413609446722
+Alert5 = 0.00364413609446722
+Alert6 = 0
+Alert7 = 278
+Alert8 = 278
+Alert9 = 0
+x : 8408.274948, x_max : 36.043653
+{"Prediction":{"Health" :1}}
+-------------------------------------------------------------------------
+>>> record.alert_warning_count = 3
+!!! record.alert_warning_count = 4
+--------------------------send mqtt message------------------------------
+topic=/cagent/admin/123779999/eventnotify
+msg={"susiCommData":{"commCmd":0,"requestID":0,"agentID":"","handlerName":"general","sendTS":0,"eventnotify":{"subtype":"predictError","msg":"HDD smart5 smart197 smart9 smart187 over the threshold.","severity":2,"handler":"MsgGen","extMsg":{"predictMsg":{"health":"Sick","suggestion0":"Please reduce the ambient temperature to 40 °C or less","suggestion1":"Please reduce the long-term use in dynamic vibration environment","suggestion2":"Please back up the hard disk as soon as possible (within 30 days)","deviceName":"HDD_Hello_123456"},"alertMsg":{"warning":"Yes","suggestion0":"Please reduce the ambient temperature to 40 °C or less","suggestion1":"Make sure the fan / cooling system is working properly","deviceName":"HDD_Hello_123456"}}}}}
+-------------------------------------------------------------------------
