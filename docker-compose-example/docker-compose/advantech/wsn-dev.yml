@@ -1,0 +1,23 @@
+version: '2'
+
+
+services:
+
+  advigw-wsn-simulator:
+   image: advigw4x86/wsn-simulator:${WSN_SIMULATOR_TAG}
+   container_name: advigw-wsn-simulator
+   depends_on:
+    - advigw-api-gw
+   networks:
+    - advigw-network   
+
+  advigw-wisesnail-dev:
+   image: advigw4x86/wisesnail-lib:${WSN_DEV_TAG}
+   container_name: advigw-wisesnail-dev
+   networks: 
+   - advigw-network
+   volumes:
+   - ./:/home/adv/workspace:rw
+
+networks:
+ advigw-network: 

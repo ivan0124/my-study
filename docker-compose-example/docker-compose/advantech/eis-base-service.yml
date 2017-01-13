@@ -1,0 +1,36 @@
+version: '2'
+
+
+services:
+  
+  advigw-mqtt-bus:
+   image: "advigw4x86/mqtt-bus:${MQTT_BUS_TAG}"
+   container_name: advigw-mqtt-bus
+   networks: 
+    - advigw-network
+   ports:
+    - 1883:1883
+
+
+  advigw-api-gw:
+    image: "advigw4x86/api-gw:${API_GW_TAG}"
+    container_name: advigw-api-gw
+    networks:
+     - advigw-network
+    ports:
+     - 3000:3000
+    
+  advigw-node-red:
+   image: "advigw4x86/node-red:${NODE_RED_TAG}"
+   container_name: advigw-node-red
+   networks: 
+    - advigw-network
+   ports:
+    - 1880:1880
+
+
+
+networks:
+  advigw-network:
+
+ 
