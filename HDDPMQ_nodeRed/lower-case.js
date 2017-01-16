@@ -4,6 +4,7 @@ module.exports = function(RED) {
 
     function LowerCaseNode(config) {
         RED.nodes.createNode(this,config);
+        console.log('createNode ========================> ');
 
         var node = this;
         this.status({fill:"red",shape:"dot",text:"disconnected"});
@@ -17,12 +18,30 @@ module.exports = function(RED) {
 
 	this.connect = function () {
 	  console.log('[HDDPMQ] node connecting...');
-	  node.client = mqtt.connect('mqtt://172.22.212.92');
+	  node.client = mqtt.connect('mqtt://' + config.test);
 	  node.client.queueQoSZero = false;
+          //node.client.setMaxListeners(0);
+
 	  node.client.on('connect', function () {
 	    console.log('[HDDPMQ] node.clinet.on--> connected');
             node.status({fill:"green",shape:"dot",text:"connected"});
 	  });
+
+	  node.client.on('reconnect', function () {
+	    console.log('[HDDPMQ] node.clinet.on--> reconnect');
+            node.status({fill:"yellow",shape:"dot",text:"connecting..."});
+	  });
+
+          node.client.on('close', function () {
+	    console.log('[HDDPMQ] node.clinet.on--> close');
+            node.client.end();
+            //node.status({fill:"red",shape:"dot",text:"disconnected"});
+          });
+
+          node.client.on('error', function (error) {
+	    console.log('[HDDPMQ] node.clinet.on--> error');
+          });
+
 	}
 
         node.connect();
