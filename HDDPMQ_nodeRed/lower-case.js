@@ -4,7 +4,7 @@ module.exports = function(RED) {
 
     function LowerCaseNode(config) {
         RED.nodes.createNode(this,config);
-        console.log('createNode ========================> ');
+        //console.log('createNode ========================> ');
 
         var node = this;
         this.status({fill:"red",shape:"dot",text:"disconnected"});
@@ -12,13 +12,13 @@ module.exports = function(RED) {
         this.on('input', function(msg) {
             msg.payload = msg.payload.toLowerCase();
             console.log('name========================> ' + config.name);
-            console.log('my_test ========================> ' + config.test);
+            console.log('mqtt broker IP ========================> ' + config.mqttBrokerIP);
             node.send(msg);
         });
 
 	this.connect = function () {
 	  console.log('[HDDPMQ] node connecting...');
-	  node.client = mqtt.connect('mqtt://' + config.test);
+	  node.client = mqtt.connect('mqtt://' + config.mqttBrokerIP);
 	  node.client.queueQoSZero = false;
           //node.client.setMaxListeners(0);
 
