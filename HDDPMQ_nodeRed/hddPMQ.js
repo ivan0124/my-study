@@ -24,6 +24,7 @@ module.exports = function(RED) {
 
 	  node.client.on('connect', function () {
 	    console.log('[HDDPMQ] node.clinet.on--> connected');
+            node.client.subscribe('/cagent/admin/+/deviceinfo');
             node.status({fill:"green",shape:"dot",text:"connected"});
 	  });
 
@@ -41,6 +42,13 @@ module.exports = function(RED) {
           node.client.on('error', function (error) {
 	    console.log('[HDDPMQ] node.clinet.on--> error');
           });
+
+	  node.client.on('message', function (topic, message) {
+            console.log('--------------------------------------------------------------');
+            console.log('topic=' + topic.toString() );
+            console.log('msg=' + message.toString());
+            console.log('--------------------------------------------------------------');
+	  });
 
 	}
 
