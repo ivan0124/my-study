@@ -2,7 +2,7 @@ module.exports = function(RED) {
 
     var mqtt = require('mqtt');
 
-    function LowerCaseNode(config) {
+    function HddPmqNode(config) {
         RED.nodes.createNode(this,config);
         //console.log('createNode ========================> ');
 
@@ -54,5 +54,5 @@ module.exports = function(RED) {
 
         node.connect();
     }
-    RED.nodes.registerType("hdd-pmq",LowerCaseNode);
+    RED.nodes.registerType("hdd-pmq", HddPmqNode);
 }
