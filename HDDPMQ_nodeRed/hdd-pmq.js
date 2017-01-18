@@ -36,11 +36,13 @@ module.exports = function(RED) {
           node.client.on('close', function () {
 	    console.log('[HDDPMQ] node.clinet.on--> close');
             node.client.end();
-            //node.status({fill:"red",shape:"dot",text:"disconnected"});
+            node.status({fill:"red",shape:"dot",text:"disconnected"});
           });
 
           node.client.on('error', function (error) {
 	    console.log('[HDDPMQ] node.clinet.on--> error');
+            node.client.end();
+            node.status({fill:"red",shape:"dot",text:"disconnected"});
           });
 
 	  node.client.on('message', function (topic, message) {
