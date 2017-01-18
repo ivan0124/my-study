@@ -54,5 +54,5 @@ module.exports = function(RED) {
 
         node.connect();
     }
-    RED.nodes.registerType("hddPMQ",LowerCaseNode);
+    RED.nodes.registerType("hdd-pmq",LowerCaseNode);
 }

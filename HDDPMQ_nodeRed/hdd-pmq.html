@@ -1,21 +1,21 @@
 <script type="text/javascript">
-    RED.nodes.registerType('hddPMQ',{
-        category: 'function',
-        color: '#a6bbcf',
+    RED.nodes.registerType('hdd-pmq',{
+        category: 'ADVANTECH',
+        color: '#C0DEED',
         defaults: {
             name: {value:""},
             mqttBrokerIP: {value:"127.0.0.1"},
         },
         inputs:1,
         outputs:1,
-        icon: "file.png",
+        icon: "dht.png",
         label: function() {
-            return this.name||"hddPMQ";
+            return this.name||"hdd-pmq";
         }
     });
 </script>
 
-<script type="text/x-red" data-template-name="hddPMQ">
+<script type="text/x-red" data-template-name="hdd-pmq">
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
@@ -26,6 +26,6 @@
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="hddPMQ">
-    <p>A simple node that converts the message payloads into all hddPMQ characters</p>
+<script type="text/x-red" data-help-name="hdd-pmq">
+    <p>A simple node that converts the message payloads into all hdd-pmq characters</p>
 </script>
