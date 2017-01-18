@@ -10,10 +10,10 @@ module.exports = function(RED) {
         this.status({fill:"red",shape:"dot",text:"disconnected"});
 
         this.on('input', function(msg) {
-            msg.payload = msg.payload.toLowerCase();
+            //msg.payload = msg.payload.toLowerCase();
             console.log('name========================> ' + config.name);
             console.log('mqtt broker IP ========================> ' + config.mqttBrokerIP);
-            node.send(msg);
+            //node.send(msg);
         });
 
 	this.connect = function () {
@@ -24,7 +24,7 @@ module.exports = function(RED) {
 
 	  node.client.on('connect', function () {
 	    console.log('[HDDPMQ] node.clinet.on--> connected');
-            node.client.subscribe('/cagent/admin/+/deviceinfo');
+            node.client.subscribe('/cagent/admin/+/eventnotify');
             node.status({fill:"green",shape:"dot",text:"connected"});
 	  });
 
@@ -48,6 +48,9 @@ module.exports = function(RED) {
             console.log('topic=' + topic.toString() );
             console.log('msg=' + message.toString());
             console.log('--------------------------------------------------------------');
+            var msg={};
+            msg.payload = message.toString();
+            node.send(msg);
 	  });
 
 	}
