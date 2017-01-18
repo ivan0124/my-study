@@ -18,9 +18,14 @@ module.exports = function(RED) {
 
 	this.connect = function () {
 	  console.log('[HDDPMQ] node connecting...');
-	  node.client = mqtt.connect('mqtt://' + config.mqttBrokerIP);
+          var options = {};                                                      
+          options.clientId = node.clientid;
+          //options.clean = false;
+	  //node.client = mqtt.connect('mqtt://' + config.mqttBrokerIP, {clientId: 'sub', clean: false});
+	  node.client = mqtt.connect('mqtt://' + config.mqttBrokerIP, options);
 	  node.client.queueQoSZero = false;
           //node.client.setMaxListeners(0);
+         
 
 	  node.client.on('connect', function () {
 	    console.log('[HDDPMQ] node.clinet.on--> connected');
@@ -35,13 +40,19 @@ module.exports = function(RED) {
 
           node.client.on('close', function () {
 	    console.log('[HDDPMQ] node.clinet.on--> close');
+            //node.client.end();
+            node.status({fill:"red",shape:"dot",text:"disconnected"});
+          });
+/*
+          node.client.once('close', function () {
+	    console.log('[HDDPMQ] node.clinet.once--> close');
             node.client.end();
             node.status({fill:"red",shape:"dot",text:"disconnected"});
           });
-
+*/
           node.client.on('error', function (error) {
 	    console.log('[HDDPMQ] node.clinet.on--> error');
-            node.client.end();
+            //node.client.end();
             node.status({fill:"red",shape:"dot",text:"disconnected"});
           });
 
@@ -57,6 +68,15 @@ module.exports = function(RED) {
 
 	}
 
+        this.on('close', function(done) {
+	  console.log('[HDDPMQ] node-red node on--> close');
+          node.client.end('force', function(){
+	     console.log('[HDDPMQ] node-red node on =======>  close done');
+             done();
+          });
+        });
+
+	//console.log('[HDDPMQ] node.connect =========>');
         node.connect();
     }
     RED.nodes.registerType("hdd-pmq", HddPmqNode);
