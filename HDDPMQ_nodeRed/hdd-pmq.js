@@ -10,10 +10,29 @@ module.exports = function(RED) {
         this.status({fill:"red",shape:"dot",text:"disconnected"});
 
         this.on('input', function(msg) {
-            //msg.payload = msg.payload.toLowerCase();
             console.log('name========================> ' + config.name);
             console.log('mqtt broker IP ========================> ' + config.mqttBrokerIP);
-            //node.send(msg);
+
+            var deviceID = '5566';
+            var topic = '/cagent/admin/' + deviceID + '/deviceinfo';
+            var msgObj ={};
+            msgObj.susiCommData = {};
+            msgObj.susiCommData.data = {};
+            msgObj.susiCommData.data.HDDMonitor = {};
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList = [];
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList.push({});
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].BaseInfo = {};
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].BaseInfo.e = [];
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].BaseInfo.e.push({n:'hddName', sv:'ST9250'});
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature1 = {};
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature1.e = [];
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature1.e.push({n:'type', v:5});
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature1.e.push({n:'vendorData', sv:'FD08'});
+
+            //infoSpecObj.Info.e = [];
+            //infoSpecObj.Info.e.push({n:'SenHubList', sv:'',asm:'r'});
+            var message = JSON.stringify(msgObj);
+            node.client.publish(topic, message);
         });
 
 	this.connect = function () {
