@@ -35,7 +35,7 @@ module.exports = function(RED) {
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature3 = {};
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature3.e = [];
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature3.e.push({n:'type', v:198});
-            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature3.e.push({n:'vendorData', sv:'38'});
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature3.e.push({n:'vendorData', sv: config.smart198});
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature4 = {};
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature4.e = [];
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature4.e.push({n:'type', v:197});
@@ -47,15 +47,27 @@ module.exports = function(RED) {
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature6 = {};
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature6.e = [];
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature6.e.push({n:'type', v:194});
-            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature6.e.push({n:'vendorData', sv:'16'});
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature6.e.push({n:'vendorData', sv: config.smart194});
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature7 = {};
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature7.e = [];
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature7.e.push({n:'type', v:193});
-            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature7.e.push({n:'vendorData', sv:'356EC'});
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature7.e.push({n:'vendorData', sv: config.smart193});
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature8 = {};
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature8.e = [];
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature8.e.push({n:'type', v:192});
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature8.e.push({n:'vendorData', sv: config.smart192});
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature9 = {};
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature9.e = [];
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature9.e.push({n:'type', v:199});
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature9.e.push({n:'vendorData', sv: config.smart199});
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature10 = {};
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature10.e = [];
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature10.e.push({n:'type', v:191});
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature10.e.push({n:'vendorData', sv: config.smart191});
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature11 = {};
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature11.e = [];
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature11.e.push({n:'type', v:173});
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature11.e.push({n:'vendorData', sv: config.smart173});
 
             //infoSpecObj.Info.e = [];
             //infoSpecObj.Info.e.push({n:'SenHubList', sv:'',asm:'r'});
