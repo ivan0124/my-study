@@ -23,11 +23,11 @@ module.exports = function(RED) {
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList.push({});
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].BaseInfo = {};
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].BaseInfo.e = [];
-            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].BaseInfo.e.push({n:'hddName', sv:'ST9250'});
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].BaseInfo.e.push({n:'hddName', sv: config.name});
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature1 = {};
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature1.e = [];
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature1.e.push({n:'type', v:5});
-            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature1.e.push({n:'vendorData', sv:'FD08'});
+            msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature1.e.push({n:'vendorData', sv: config.smart5});
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature2 = {};
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature2.e = [];
             msgObj.susiCommData.data.HDDMonitor.hddSmartInfoList[0].Feature2.e.push({n:'type', v:9});

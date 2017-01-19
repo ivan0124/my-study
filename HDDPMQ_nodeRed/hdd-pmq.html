@@ -5,6 +5,7 @@
         defaults: {
             name: {value:""},
             mqttBrokerIP: {value:"127.0.0.1"},
+            smart5: {value:"0"},
         },
         inputs:1,
         outputs:1,
@@ -24,6 +25,15 @@
         <label for="node-input-mqttBrokerIP"><i class="icon-tag"></i>Mqtt Broker</label>
         <input type="text" id="node-input-mqttBrokerIP" placeholder="Mqtt Broker">
     </div>
+    <div class="form-row">
+        <label for="node-input-smart5"><i class="icon-tag"></i>SMART 5</label>
+        <input type="text" id="node-input-smart5" placeholder="0">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="hdd-pmq">
+    <p>A simple node that converts the message payloads into all hdd-pmq characters</p>
+</script>
 </script>
 
 <script type="text/x-red" data-help-name="hdd-pmq">
