@@ -21,4 +21,4 @@ A simple node that can configure HDD SMART code to do HDD failure prediction
 - 0.2.1 - Feb 2017 : Initial Release
 
 ## License
-Copyright 2017 ADVANTECH Corp. under [the Apache 2.0 license](LICENSE)
+Copyright 2017 ADVANTECH Corp. under the Apache 2.0 license(LICENSE)
