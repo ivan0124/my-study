@@ -1,14 +1,8 @@
 # node-red-contrib-hddpmq
-A collection of [Node-RED](http://nodered.org) nodes to Access ADVANTECH  Wireless Sensor Network (WSN) APIs.
-
-
-## Nodes included in the package
-**wsn-gw** Get/Set information for WSN gateways.
-
-**wsn-senhub** Get/Set information for remote SensorHubs, e.g. WISE-1020, controlled by WSN gateway.
+A simple node that can configure HDD SMART code to do HDD failure prediction
 
 ## Usage example
-**[wsn-gw]**
+**[hdd-pmq]**
 
 ![Flow_wsn-gw](./image/hddpmq_20170123_2.png)
 
