@@ -8,13 +8,11 @@ A simple node that can configure HDD SMART code to do HDD failure prediction
 
 ![Edit_wsn-gw](./image/hddpmq_20170123_1.png)
 
-- **Operation :** Get or Set
-- **Net Type :** Supported network types on the platform
-- **Net ID :** List of available network interfaces of selected *Net Type* above. Options are listed in the format of : ***Interface Name ( Interface MAC )***. Ex: WSN0(00170d0000010203)
-- **Category :** Class of Attributes
-- **Attribute :** List of Attributes in selected *Category* above
-- **Set to :** Place for entering value when Operation is *Set*
 - **Name :** *(Optional)* Place for entering the name of this node
+- **Mqtt Broker :** MQTT broker's IP address or alias address name.
+- **Device ID :** identify this node-red node.
+
+
 
 ## Tested Platform 
 
