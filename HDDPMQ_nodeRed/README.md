@@ -10,7 +10,7 @@ A simple node that can configure HDD SMART code to do HDD failure prediction
 
 - **Name :** *(Optional)* Place for entering the name of this node
 - **Mqtt Broker :** MQTT broker's IP address or alias address name.
-- **Device ID :** identify this node-red node.
+- **Device ID :** For PMQ model to identify device
 
 
 
