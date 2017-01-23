@@ -13,7 +13,7 @@ module.exports = function(RED) {
             console.log('name========================> ' + config.name);
             console.log('mqtt broker IP ========================> ' + config.mqttBrokerIP);
 
-            var deviceID = '5566';
+            var deviceID = config.deviceID;
             var topic = '/cagent/admin/' + deviceID + '/deviceinfo';
             var msgObj ={};
             msgObj.susiCommData = {};
