@@ -4,6 +4,11 @@
 $ sudo apt-get install gccgo-go
 </pre>
 
+#How to run code without compiling
+<pre>
+$ go run hello.go
+</pre>
+
 # How to build code
 1. build `hello.go`
 <pre>
