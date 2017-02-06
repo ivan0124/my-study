@@ -1,4 +1,4 @@
-# How to install GO compiler (on Ubuntu)
+# How to install Go compiler (on Ubuntu)
 1. install GO compiler
 <pre>
 $ sudo apt-get install gccgo-go
