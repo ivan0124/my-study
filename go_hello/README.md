@@ -1,24 +1,17 @@
-# How to build docker image
-1. in `docker_mqtt` folder 
+# How to install GO compiler (on Ubuntu)
+1. install GO compiler
 <pre>
-$ sudo docker build -t eis/mqtt .
+$ sudo apt-get install gccgo-go
 </pre>
 
-# How to run docker image
-1. start container. name is `mqtt`
+# How to build code
+1. build `hello.go`
 <pre>
-$ sudo docker run -it --name mqtt eis/mqtt
-or 
-$ sudo docker run -it --name mqtt -v $PWD:/home/adv:rw eis/mqtt
-
+$ go build ./hello.go
 </pre>
 
-2. restart container. name is `mqtt`
+# How to run code
+1. run `hello`
 <pre>
-$ sudo docker start -ai mqtt
-</pre>
-
-3. stop container. name is `mqtt`
-<pre>
-$ sudo docker rm  mqtt
+$ ./hello
 </pre>
